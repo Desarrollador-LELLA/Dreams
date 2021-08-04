@@ -53,6 +53,7 @@ public class VPrincipal extends javax.swing.JFrame {
         butVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_ventas_32_2.png"))); // NOI18N
         butVentas.setText("Ventas");
         butVentas.setBorderPainted(false);
+        butVentas.setEnabled(false);
         butVentas.setFocusable(false);
         butVentas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         butVentas.setMaximumSize(new java.awt.Dimension(69, 69));
@@ -65,6 +66,7 @@ public class VPrincipal extends javax.swing.JFrame {
         butCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_compras_32.png"))); // NOI18N
         butCompras.setText("Compras");
         butCompras.setBorderPainted(false);
+        butCompras.setEnabled(false);
         butCompras.setFocusable(false);
         butCompras.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         butCompras.setMaximumSize(new java.awt.Dimension(69, 69));
@@ -77,6 +79,7 @@ public class VPrincipal extends javax.swing.JFrame {
         butInformes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_informes_32.png"))); // NOI18N
         butInformes.setText("Informes");
         butInformes.setBorderPainted(false);
+        butInformes.setEnabled(false);
         butInformes.setFocusable(false);
         butInformes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         butInformes.setMaximumSize(new java.awt.Dimension(69, 69));
