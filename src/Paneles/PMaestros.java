@@ -36,7 +36,7 @@ public class PMaestros extends javax.swing.JPanel {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        butComunas = new javax.swing.JButton();
         butBancos = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         butUsuarios = new javax.swing.JButton();
@@ -56,6 +56,7 @@ public class PMaestros extends javax.swing.JPanel {
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_clientes_32.png"))); // NOI18N
         jButton1.setText("Clientes");
         jButton1.setBorderPainted(false);
+        jButton1.setEnabled(false);
         jButton1.setFocusable(false);
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setMaximumSize(new java.awt.Dimension(69, 69));
@@ -68,6 +69,7 @@ public class PMaestros extends javax.swing.JPanel {
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_proveedores_32.png"))); // NOI18N
         jButton2.setText("Proveedores");
         jButton2.setBorderPainted(false);
+        jButton2.setEnabled(false);
         jButton2.setFocusable(false);
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton2.setMaximumSize(new java.awt.Dimension(69, 69));
@@ -80,6 +82,7 @@ public class PMaestros extends javax.swing.JPanel {
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_articulos_32.png"))); // NOI18N
         jButton3.setText("Articulos");
         jButton3.setBorderPainted(false);
+        jButton3.setEnabled(false);
         jButton3.setFocusable(false);
         jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton3.setMaximumSize(new java.awt.Dimension(69, 69));
@@ -92,6 +95,7 @@ public class PMaestros extends javax.swing.JPanel {
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_packs_32.png"))); // NOI18N
         jButton4.setText("Packs");
         jButton4.setBorderPainted(false);
+        jButton4.setEnabled(false);
         jButton4.setFocusable(false);
         jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton4.setMaximumSize(new java.awt.Dimension(69, 69));
@@ -104,6 +108,7 @@ public class PMaestros extends javax.swing.JPanel {
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_canales_32.png"))); // NOI18N
         jButton5.setText("Canales");
         jButton5.setBorderPainted(false);
+        jButton5.setEnabled(false);
         jButton5.setFocusable(false);
         jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton5.setMaximumSize(new java.awt.Dimension(69, 69));
@@ -116,6 +121,7 @@ public class PMaestros extends javax.swing.JPanel {
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_categorias_32.png"))); // NOI18N
         jButton6.setText("Categorias Articulos");
         jButton6.setBorderPainted(false);
+        jButton6.setEnabled(false);
         jButton6.setFocusable(false);
         jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton6.setMaximumSize(new java.awt.Dimension(69, 69));
@@ -124,22 +130,28 @@ public class PMaestros extends javax.swing.JPanel {
         jButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton6);
 
-        jButton7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_comunas_32.png"))); // NOI18N
-        jButton7.setText("Comunas");
-        jButton7.setBorderPainted(false);
-        jButton7.setFocusable(false);
-        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton7.setMaximumSize(new java.awt.Dimension(69, 69));
-        jButton7.setMinimumSize(new java.awt.Dimension(69, 69));
-        jButton7.setPreferredSize(new java.awt.Dimension(69, 69));
-        jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton7);
+        butComunas.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        butComunas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_comunas_32.png"))); // NOI18N
+        butComunas.setText("Comunas");
+        butComunas.setBorderPainted(false);
+        butComunas.setFocusable(false);
+        butComunas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        butComunas.setMaximumSize(new java.awt.Dimension(69, 69));
+        butComunas.setMinimumSize(new java.awt.Dimension(69, 69));
+        butComunas.setPreferredSize(new java.awt.Dimension(69, 69));
+        butComunas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        butComunas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butComunasActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(butComunas);
 
         butBancos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         butBancos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_bancos_32.png"))); // NOI18N
         butBancos.setText("Bancos");
         butBancos.setBorderPainted(false);
+        butBancos.setEnabled(false);
         butBancos.setFocusable(false);
         butBancos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         butBancos.setMaximumSize(new java.awt.Dimension(69, 69));
@@ -157,6 +169,7 @@ public class PMaestros extends javax.swing.JPanel {
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_estadoventas_32.png"))); // NOI18N
         jButton9.setText("Estado Ventas");
         jButton9.setBorderPainted(false);
+        jButton9.setEnabled(false);
         jButton9.setFocusable(false);
         jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton9.setMaximumSize(new java.awt.Dimension(69, 69));
@@ -274,9 +287,23 @@ public class PMaestros extends javax.swing.JPanel {
         panelVisor.repaint();
     }//GEN-LAST:event_butBancosActionPerformed
 
+    private void butComunasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butComunasActionPerformed
+        // TODO add your handling code here:
+        PComunas PanelComunas = new PComunas();
+        PanelComunas.setVisible(true);
+        PanelComunas.setSize(1000, 525);
+        PanelComunas.setLocation(0, 0);
+        
+        panelVisor.removeAll();
+        panelVisor.add(PanelComunas, BorderLayout.CENTER);
+        panelVisor.revalidate();
+        panelVisor.repaint();
+    }//GEN-LAST:event_butComunasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton butBancos;
+    private javax.swing.JButton butComunas;
     private javax.swing.JButton butUsuarios;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -288,7 +315,6 @@ public class PMaestros extends javax.swing.JPanel {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
