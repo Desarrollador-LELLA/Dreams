@@ -34,7 +34,7 @@ public class PMaestros extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        butCanales = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         butComunas = new javax.swing.JButton();
         butBancos = new javax.swing.JButton();
@@ -104,18 +104,17 @@ public class PMaestros extends javax.swing.JPanel {
         jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton4);
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_canales_32.png"))); // NOI18N
-        jButton5.setText("Canales");
-        jButton5.setBorderPainted(false);
-        jButton5.setEnabled(false);
-        jButton5.setFocusable(false);
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton5.setMaximumSize(new java.awt.Dimension(69, 69));
-        jButton5.setMinimumSize(new java.awt.Dimension(69, 69));
-        jButton5.setPreferredSize(new java.awt.Dimension(69, 69));
-        jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton5);
+        butCanales.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        butCanales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_canales_32.png"))); // NOI18N
+        butCanales.setText("Canales");
+        butCanales.setBorderPainted(false);
+        butCanales.setFocusable(false);
+        butCanales.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        butCanales.setMaximumSize(new java.awt.Dimension(69, 69));
+        butCanales.setMinimumSize(new java.awt.Dimension(69, 69));
+        butCanales.setPreferredSize(new java.awt.Dimension(69, 69));
+        butCanales.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(butCanales);
 
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_categorias_32.png"))); // NOI18N
@@ -151,7 +150,6 @@ public class PMaestros extends javax.swing.JPanel {
         butBancos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_bancos_32.png"))); // NOI18N
         butBancos.setText("Bancos");
         butBancos.setBorderPainted(false);
-        butBancos.setEnabled(false);
         butBancos.setFocusable(false);
         butBancos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         butBancos.setMaximumSize(new java.awt.Dimension(69, 69));
@@ -303,6 +301,7 @@ public class PMaestros extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton butBancos;
+    private javax.swing.JButton butCanales;
     private javax.swing.JButton butComunas;
     private javax.swing.JButton butUsuarios;
     private javax.swing.JButton jButton1;
@@ -313,7 +312,6 @@ public class PMaestros extends javax.swing.JPanel {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
