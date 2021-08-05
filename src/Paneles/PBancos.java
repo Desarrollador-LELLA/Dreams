@@ -216,5 +216,7 @@ public class PBancos extends javax.swing.JPanel {
             jTableBancos.getColumnModel().getColumn(1).setPreferredWidth(80);
         }
     }
+    
+    //Pruobando si se copia a GIT
 
 }
