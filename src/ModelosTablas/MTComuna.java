@@ -33,20 +33,20 @@ public class MTComuna implements TableModel {
 
     @Override
     public int getColumnCount() {
-        return 3;
+        return 2;
     }
 
     @Override
     public String getColumnName(int columnIndex) {
         String NombreColumna = null;
         switch(columnIndex){
+            /* case 0:
+            NombreColumna = "ID";
+            break;*/
             case 0:
-                NombreColumna = "ID";
-                break;
-            case 1:
                 NombreColumna = "Nombre";
                 break;
-            case 2:
+            case 1:
                 NombreColumna = "Estado";
                 break;
             
@@ -71,11 +71,13 @@ public class MTComuna implements TableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         String Valor = null;
         switch(columnIndex){
-            
+            /*case 0:
+            Valor = Comuna.get(rowIndex).getId();
+            break;*/
             case 0:
                 Valor = Comuna.get(rowIndex).getNombre();
                 break;
-            case 2:
+            case 1:
                 Valor = Comuna.get(rowIndex).isEstado() ? "Activado" : "Desactivado";
                 break;
         }
