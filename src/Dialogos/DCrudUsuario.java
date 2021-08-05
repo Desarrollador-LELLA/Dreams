@@ -14,6 +14,7 @@ import Objetos.OUsuario;
  */
 public class DCrudUsuario extends javax.swing.JDialog {
     public boolean Actualizar = false;
+    private OUsuario usuario = new OUsuario();
     /**
      * Creates new form DCrudUsuario
      */
@@ -41,7 +42,10 @@ public class DCrudUsuario extends javax.swing.JDialog {
         txtUsername.setText(usuario.getUsername());
         txtIngresaClave.setText(usuario.getClave());
         txtVerifiqueClave.setText(usuario.getClave());
+        jToggleButtonEstado.setText(usuario.isEstado() ? "Activado" : "Desactivado");
         jToggleButtonEstado.setSelected(usuario.isEstado());
+        
+        this.usuario = usuario;
     }
 
     /**
@@ -294,8 +298,9 @@ public class DCrudUsuario extends javax.swing.JDialog {
         }
 
         if(Validacion){
-            CUsuario Usuario = new CUsuario(0, txtNombre.getText().trim(), txtApellidos.getText().trim(), txtUsername.getText().trim(), String.valueOf(txtIngresaClave.getPassword()).trim(), jToggleButtonEstado.isSelected());
+            CUsuario Usuario = null;
             if(String.valueOf(this.getTitle()).equals("Agregar Usuario")){
+                Usuario = new CUsuario(0, txtNombre.getText().trim(), txtApellidos.getText().trim(), txtUsername.getText().trim(), String.valueOf(txtIngresaClave.getPassword()).trim(), jToggleButtonEstado.isSelected());
                 if(Usuario.ExisteUsername().isConfirma()){
                     if(Usuario.Agregar().isConfirma()){
                         DCorrecto Mensaje = new DCorrecto(new javax.swing.JDialog(), true);
@@ -317,7 +322,26 @@ public class DCrudUsuario extends javax.swing.JDialog {
                 }
             }
             else{
-                
+                Usuario = new CUsuario(usuario.getId(), txtNombre.getText().trim(), txtApellidos.getText().trim(), txtUsername.getText().trim(), String.valueOf(txtIngresaClave.getPassword()).trim(), jToggleButtonEstado.isSelected());
+                if(Usuario.ExisteUsernameDiferente().isConfirma()){
+                    if(Usuario.Editar().isConfirma()){
+                        DCorrecto Mensaje = new DCorrecto(new javax.swing.JDialog(), true);
+                        Mensaje.labMensaje.setText(Usuario.getError().getMensaje());
+                        Mensaje.setVisible(true);
+                        this.dispose();
+                        Actualizar = true;
+                    }
+                    else{
+                        DError Mensaje = new DError(new javax.swing.JDialog(), true);
+                        Mensaje.labMensaje.setText(Usuario.getError().getMensaje());
+                        Mensaje.setVisible(true);
+                    }
+                }
+                else{
+                    DError Mensaje = new DError(new javax.swing.JDialog(), true);
+                    Mensaje.labMensaje.setText(Usuario.getError().getMensaje());
+                    Mensaje.setVisible(true);
+                }
             }                
         }
     }//GEN-LAST:event_butGuardarActionPerformed
