@@ -255,8 +255,8 @@ public class PUsuarios extends javax.swing.JPanel {
             butEditar.setEnabled(true);
             butDesactivar.setEnabled(true);
             
-            RowIdSeleccionado = jTableTabla.rowAtPoint(evt.getPoint());
-            String uno = jTableTabla.getValueAt(RowIdSeleccionado, 0).toString();
+            //RowIdSeleccionado = jTableTabla.rowAtPoint(evt.getPoint());
+            //String uno = jTableTabla.getValueAt(RowIdSeleccionado, 0).toString();
             MTUsuarios dos = (MTUsuarios)jTableTabla.getModel();
             
             System.out.println(String.valueOf(dos.getUsuarios().get(RowIdSeleccionado).getId()));
