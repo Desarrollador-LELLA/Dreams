@@ -14,6 +14,7 @@ import java.util.List;
 public class CComuna extends OComuna {
     
     private final String TagCodigoClase = "CComuna - %s";
+    private OError Error = new OError();
 
     public CComuna() {
         super();
@@ -23,22 +24,80 @@ public class CComuna extends OComuna {
         super(id, nombre, estado);
     }
     
+    /*public OError Insertar(){
+    CMysqlHelp con = new CMysqlHelp();
+    OError Error = con.Conectar();
+    
+    if (Error.isConfirma()){
+    int r = 0;
+    String consulta= "INSERT INTO `dreamgifts`.`comuna` (`COM_NOMBRE`, `COM_ESTADO`) VALUES ("+this.getNombre()+", "+String.valueOf(this.isEstado())+");";
+    try{
+    Statement  stm = (Statement) con.getCon().createStatement();
+    r = stm.executeUpdate(consulta);
+    Error = new OError("Clase Comuna","Comuna Agregada Correctamente",null,true);
+    }catch(SQLException e){
+    Error = new OError("Clase Comuna","Error"+ e,null,false);
+    System.out.println(e);
+    }finally{
+    con.Desconectar();
+    }
+    }
+    return Error;
+    }*/
+    
     public OError Insertar(){
-        CMysqlHelp con = new CMysqlHelp();
-        OError Error = con.Conectar();
-       
-        if (Error.isConfirma()){ 
-            int r = 0;
-            String consulta= "INSERT INTO `dreamgifts`.`comuna` (`COM_NOMBRE`, `COM_ESTADO`) VALUES ("+this.getNombre()+", "+String.valueOf(this.isEstado())+");";
-            try{
-               Statement  stm = (Statement) con.getCon().createStatement();
-               r = stm.executeUpdate(consulta);
-               Error = new OError("Clase Comuna","Comuna Agregada Correctamente",null,true);
-            }catch(SQLException e){
-                Error = new OError("Clase Comuna","Error"+ e,null,false);
-                System.out.println(e);
-            }finally{
-                con.Desconectar();
+        PreparedStatement Preparando = null;
+        CMysqlHelp Sql = new CMysqlHelp();
+        Error = Sql.Conectar();
+        if(Error.isConfirma()){
+            try {
+                Preparando = Sql.getCon().prepareStatement("INSERT INTO comuna(COM_NOMBRE, COM_ESTADO) VALUES(?,?)");
+                Preparando.setString(1, this.getNombre());
+                Preparando.setBoolean(2, this.isEstado());
+        
+                
+                if(!Preparando.execute()){
+                    Error = new OError(String.format(TagCodigoClase, 1), "Banco Agregado Correctamente", null, true);
+                }
+                else{
+                    Error = new OError(String.format(TagCodigoClase, 2), "El Banco no fue Agregado", null, false);
+                }
+                Preparando.close();
+            } catch (SQLException ex) {
+                System.out.println("Error: " + ex);
+                Error = new OError(String.format(TagCodigoClase, 3), String.format("<html>%s (Codigo %s)</html>", ex, String.format(TagCodigoClase, 3)), null, false);
+            }
+            finally{
+                Sql.Desconectar();
+            }
+        }
+        return Error;
+    }
+    
+    public OError Editar(){
+        PreparedStatement Preparando = null;
+        CMysqlHelp Sql = new CMysqlHelp();
+        Error = Sql.Conectar();
+        if(Error.isConfirma()){
+            try {
+                Preparando = Sql.getCon().prepareStatement("UPDATE Usuarios SET COM_NOMBRE = ?,  COM_ESTADO = ? WHERE USU_ID_USUARIO = ?");
+                Preparando.setString(1, this.getNombre());
+                Preparando.setBoolean(2, this.isEstado());
+                Preparando.setInt(3, this.getId());
+                
+                if(!Preparando.execute()){
+                    Error = new OError(String.format(TagCodigoClase, 4), "Usuario Editado Correctamente", null, true);
+                }
+                else{
+                    Error = new OError(String.format(TagCodigoClase, 5), "El Usuario no fue Editado", null, false);
+                }
+                Preparando.close();
+            } catch (SQLException ex) {
+                System.out.println("Error: " + ex);
+                Error = new OError(String.format(TagCodigoClase, 6), String.format("<html>%s (Codigo %s)</html>", ex, String.format(TagCodigoClase, 6)), null, false);
+            }
+            finally{
+                Sql.Desconectar();
             }
         }
         return Error;
@@ -58,20 +117,20 @@ public class CComuna extends OComuna {
        }
         
     }
-     public int Editar(){
-         CMysqlHelp con = new CMysqlHelp();
-        int r = 0;
-        String consulta= "UPDATE `dreamgifts`.`comuna` SET `COM_NOMBRE` = "+this.getNombre()+", `COM_ESTADO` = "+String.valueOf(this.isEstado())+" WHERE (`COM_ID` = "+String.valueOf(this.getId())+");";
-       try{
-          Statement  stm = (Statement) con.getCon().createStatement();
-          r = stm.executeUpdate(consulta);
-       }catch(SQLException e){
-           System.out.println(e);
-       }finally{
-           return r;
-       }
-        
+    /* public int Editar(){
+    CMysqlHelp con = new CMysqlHelp();
+    int r = 0;
+    String consulta= "UPDATE `dreamgifts`.`comuna` SET `COM_NOMBRE` = "+this.getNombre()+", `COM_ESTADO` = "+String.valueOf(this.isEstado())+" WHERE (`COM_ID` = "+String.valueOf(this.getId())+");";
+    try{
+    Statement  stm = (Statement) con.getCon().createStatement();
+    r = stm.executeUpdate(consulta);
+    }catch(SQLException e){
+    System.out.println(e);
+    }finally{
+    return r;
     }
+    
+    }*/
     
     public ResultSet getConsulta() {
         CMysqlHelp con = new CMysqlHelp();
@@ -114,6 +173,10 @@ public class CComuna extends OComuna {
             }
         }
         return Listado;
+    }
+
+    private boolean getEstado() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
            
     
