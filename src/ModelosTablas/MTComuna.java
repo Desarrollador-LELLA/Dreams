@@ -16,8 +16,6 @@ import javax.swing.table.TableModel;
  */
 public class MTComuna implements TableModel {
     
-    
-    
     private final List<OComuna> Comuna;
     
     public MTComuna(List<OComuna> comuna){

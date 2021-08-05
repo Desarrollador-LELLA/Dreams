@@ -6,9 +6,14 @@
 package Paneles;
 
 import Clases.CUsuario;
+import Dialogos.DCorrecto;
 import Dialogos.DCrudUsuario;
 import ModelosTablas.MTUsuarios;
+import Objetos.OError;
+import Objetos.OUsuario;
 import java.awt.event.MouseEvent;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -26,6 +31,7 @@ public class PUsuarios extends javax.swing.JPanel {
         butEditar.setEnabled(false);
         butDesactivar.setEnabled(false);
         ListarUsuarios();
+        setJTexFieldChanged(txtBusqueda);
     }
     
     /**
@@ -65,7 +71,6 @@ public class PUsuarios extends javax.swing.JPanel {
         butAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_agregar_32.png"))); // NOI18N
         butAgregar.setText("Agregar");
         butAgregar.setToolTipText("Agregar un Nuevo Usuario");
-        butAgregar.setBorderPainted(false);
         butAgregar.setFocusable(false);
         butAgregar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         butAgregar.setMaximumSize(new java.awt.Dimension(69, 69));
@@ -82,7 +87,6 @@ public class PUsuarios extends javax.swing.JPanel {
         butEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_editar_32.png"))); // NOI18N
         butEditar.setText("Editar");
         butEditar.setToolTipText("Editar un Usuario Seleccionado");
-        butEditar.setBorderPainted(false);
         butEditar.setFocusable(false);
         butEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         butEditar.setMaximumSize(new java.awt.Dimension(69, 69));
@@ -99,13 +103,17 @@ public class PUsuarios extends javax.swing.JPanel {
         butDesactivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_desactivar_32.png"))); // NOI18N
         butDesactivar.setText("Desactivar");
         butDesactivar.setToolTipText("Desactivar un Usuario Seleccionado");
-        butDesactivar.setBorderPainted(false);
         butDesactivar.setFocusable(false);
         butDesactivar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         butDesactivar.setMaximumSize(new java.awt.Dimension(69, 69));
         butDesactivar.setMinimumSize(new java.awt.Dimension(69, 69));
         butDesactivar.setPreferredSize(new java.awt.Dimension(69, 69));
         butDesactivar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        butDesactivar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butDesactivarActionPerformed(evt);
+            }
+        });
         jToolBarMenu.add(butDesactivar);
 
         jTableTabla.setModel(new javax.swing.table.DefaultTableModel(
@@ -142,8 +150,8 @@ public class PUsuarios extends javax.swing.JPanel {
         });
         jScrollPaneConTabla.setViewportView(jTableTabla);
         if (jTableTabla.getColumnModel().getColumnCount() > 0) {
-            jTableTabla.getColumnModel().getColumn(0).setPreferredWidth(315);
-            jTableTabla.getColumnModel().getColumn(1).setPreferredWidth(315);
+            jTableTabla.getColumnModel().getColumn(0).setPreferredWidth(310);
+            jTableTabla.getColumnModel().getColumn(1).setPreferredWidth(310);
             jTableTabla.getColumnModel().getColumn(2).setPreferredWidth(180);
             jTableTabla.getColumnModel().getColumn(3).setResizable(false);
             jTableTabla.getColumnModel().getColumn(3).setPreferredWidth(81);
@@ -171,22 +179,23 @@ public class PUsuarios extends javax.swing.JPanel {
             .addComponent(labTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPaneConTabla, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 911, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(labBusqueda)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBoxPor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 705, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jComboBoxPor, 0, 133, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(labPagina, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(butRetroseder)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(butAvanzar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jToolBarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(butAvanzar))
+                    .addComponent(jScrollPaneConTabla, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGap(10, 10, 10)
+                .addComponent(jToolBarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,14 +209,14 @@ public class PUsuarios extends javax.swing.JPanel {
                             .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBoxPor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPaneConTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(jScrollPaneConTabla, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(butAvanzar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(butRetroseder, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(labPagina, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())
-                    .addComponent(jToolBarMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 493, Short.MAX_VALUE)))
+                            .addComponent(labPagina, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jToolBarMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         getAccessibleContext().setAccessibleParent(this);
@@ -216,16 +225,71 @@ public class PUsuarios extends javax.swing.JPanel {
     private void ListarUsuarios(){
         MTUsuarios MUsuarios = new MTUsuarios(new CUsuario().Listar());
         jTableTabla.setModel(MUsuarios);
+        FormatoTabla();
+    }
+    
+    private void Busqueda(){
+        MTUsuarios MUsuarios = new MTUsuarios(new CUsuario().Busqueda(txtBusqueda.getText(), jComboBoxPor.getSelectedIndex()));
+        jTableTabla.setModel(MUsuarios);
+        FormatoTabla();
+    }
+    
+    public void FormatoTabla(){
+        butEditar.setEnabled(false);
+        butDesactivar.setEnabled(false);
         jTableTabla.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jTableTabla.setRowHeight(30);
+        jTableTabla.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTableTabla.getTableHeader().setReorderingAllowed(false);
         jScrollPaneConTabla.setViewportView(jTableTabla);
         if (jTableTabla.getColumnModel().getColumnCount() > 0) {
-            jTableTabla.getColumnModel().getColumn(0).setPreferredWidth(315);
-            jTableTabla.getColumnModel().getColumn(1).setPreferredWidth(315);
+            jTableTabla.getColumnModel().getColumn(0).setPreferredWidth(309);
+            jTableTabla.getColumnModel().getColumn(1).setPreferredWidth(309);
             jTableTabla.getColumnModel().getColumn(2).setPreferredWidth(180);
             jTableTabla.getColumnModel().getColumn(3).setResizable(false);
             jTableTabla.getColumnModel().getColumn(3).setPreferredWidth(81);
+        }
+    }
+    
+    public void setJTexFieldChanged(javax.swing.JTextField textField){
+        DocumentListener documentListener = new DocumentListener() {
+ 
+            @Override
+            public void changedUpdate(DocumentEvent documentEvent) {
+                printIt(documentEvent);
+            }
+
+            @Override
+            public void insertUpdate(DocumentEvent documentEvent) {
+                printIt(documentEvent);
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent documentEvent) {
+                printIt(documentEvent);
+            }
+        };
+        textField.getDocument().addDocumentListener(documentListener);
+    }
+    
+    private void printIt(DocumentEvent documentEvent) {
+        DocumentEvent.EventType type = documentEvent.getType();
+ 
+        if (type.equals(DocumentEvent.EventType.CHANGE))
+        {
+            //System.out.println("CHANGE:" + txtBusqueda.getText());
+        }
+        else if (type.equals(DocumentEvent.EventType.INSERT))
+        {
+            //txtEjemploJTextFieldChanged();
+            System.out.println("INSERT:" + txtBusqueda.getText());
+            Busqueda();
+        }
+        else if (type.equals(DocumentEvent.EventType.REMOVE))
+        {
+            //txtEjemploJTextFieldChanged();
+            System.out.println("REMOVE:" + txtBusqueda.getText());
+            Busqueda();
         }
     }
     
@@ -265,6 +329,18 @@ public class PUsuarios extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_jTableTablaMouseClicked
+
+    private void butDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butDesactivarActionPerformed
+        // TODO add your handling code here:
+        OUsuario user = ((MTUsuarios)jTableTabla.getModel()).getUsuarios().get(jTableTabla.getSelectedRow());
+        OError error = new CUsuario(user.getId(), "", "", "", "", false).Desactivar();
+        if(error.isConfirma()){
+            DCorrecto Mensaje = new DCorrecto(new javax.swing.JDialog(), true);
+            Mensaje.labMensaje.setText(error.getMensaje());
+            Mensaje.setVisible(true);
+            ListarUsuarios();
+        }
+    }//GEN-LAST:event_butDesactivarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
