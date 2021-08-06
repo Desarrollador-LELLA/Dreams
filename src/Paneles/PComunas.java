@@ -1,4 +1,4 @@
-
+//asdfasfawfdasfdsafasfd
 package Paneles;
 
 import Clases.CComuna;
@@ -114,6 +114,7 @@ public class PComunas extends javax.swing.JPanel {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Comunas"));
 
+        txtId.setEditable(false);
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdActionPerformed(evt);
