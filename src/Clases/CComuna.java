@@ -6,7 +6,6 @@ import Objetos.OError;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,16 +79,18 @@ public class CComuna extends OComuna {
         Error = Sql.Conectar();
         if(Error.isConfirma()){
             try {
-                Preparando = Sql.getCon().prepareStatement("UPDATE Usuarios SET COM_NOMBRE = ?,  COM_ESTADO = ? WHERE USU_ID_USUARIO = ?");
+                Preparando = Sql.getCon().prepareStatement("UPDATE comuna SET COM_NOMBRE = ?,  COM_ESTADO = ? WHERE COM_ID = ?");
                 Preparando.setString(1, this.getNombre());
                 Preparando.setBoolean(2, this.isEstado());
                 Preparando.setInt(3, this.getId());
                 
                 if(!Preparando.execute()){
-                    Error = new OError(String.format(TagCodigoClase, 4), "Usuario Editado Correctamente", null, true);
+                    Error = new OError(String.format(TagCodigoClase, 1), "Comuna Editada Correctamente", null, true);
+                    System.out.println(Error.getMensaje());
                 }
                 else{
-                    Error = new OError(String.format(TagCodigoClase, 5), "El Usuario no fue Editado", null, false);
+                    Error = new OError(String.format(TagCodigoClase, 2), "La Comuna no fue Editado", null, false);
+                    System.out.println(Error.getMensaje());
                 }
                 Preparando.close();
             } catch (SQLException ex) {
@@ -103,20 +104,36 @@ public class CComuna extends OComuna {
         return Error;
     }
          
-    public int Eliminar(){
-        CMysqlHelp con = new CMysqlHelp();
-        int r = 0;
-        String consulta= "delete from dreamgifts.comuna where COM_ID = "+String.valueOf(this.getId())+";";
-       try{
-          Statement  stm = (Statement) con.getCon().createStatement();
-          r = stm.executeUpdate(consulta);
-       }catch(SQLException e){
-           System.out.println(e);
-       }finally{
-           return r;
-       }
+    public OError Eliminar(){
+        PreparedStatement Preparando = null;
+        CMysqlHelp Sql = new CMysqlHelp();
+        Error = Sql.Conectar();
+        if(Error.isConfirma()){
         
-    }
+            try{
+                Preparando = Sql.getCon().prepareStatement("UPDATE comuna SET COM_ESTADO = ? WHERE COM_ID = ?");
+                Preparando.setBoolean (1,this.isEstado());
+                Preparando.setInt(2, this.getId());
+                
+                if(!Preparando.execute()){
+                    Error = new OError(String.format(TagCodigoClase, 1), "COmuna Desactivada Correctamente", null, true);
+                }
+                else{
+                    Error = new OError(String.format(TagCodigoClase, 2), "La Comuna no fue Agregado", null, false);
+                }
+                Preparando.close();
+           
+            }catch(SQLException e){
+                System.out.println("error"+ e);
+                //Error = new OError(String.format(TagCodigoClase, 3), String.format("<html>%s (Codigo %s)</html>", e, String.format(TagCodigoClase, 3)), null, false);
+      
+            }finally{  
+                Sql.Desconectar();
+            }
+        
+        }
+        return Error;
+    }    
     /* public int Editar(){
     CMysqlHelp con = new CMysqlHelp();
     int r = 0;
@@ -132,20 +149,22 @@ public class CComuna extends OComuna {
     
     }*/
     
-    public ResultSet getConsulta() {
-        CMysqlHelp con = new CMysqlHelp();
-       ResultSet rs =null;
-       try{
-           Statement  stm = (Statement) con.getCon().createStatement();
-           rs = stm.executeQuery("SELECT * FROM `comuna` ");
-       }catch(SQLException e){
-           System.out.print(e);
-       }
-       
-       return rs;
-        
+    /*public ResultSet getConsulta() {
+    CMysqlHelp con = new CMysqlHelp();
+    ResultSet rs =null;
+    try{
+    Statement  stm = (Statement) con.getCon().createStatement();
+    rs = stm.executeQuery("SELECT * FROM `comuna` ");
+    }catch(SQLException e){
+    System.out.print(e);
     }
     
+    return rs;*/
+        
+    /**
+     *
+     * @return
+     */
     public List<OComuna> Listar(){
         PreparedStatement Preparando = null;
         ResultSet Resultado = null;
@@ -175,9 +194,7 @@ public class CComuna extends OComuna {
         return Listado;
     }
 
-    private boolean getEstado() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+  
            
     
 }

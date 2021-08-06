@@ -59,7 +59,6 @@ public class PComunas extends javax.swing.JPanel {
         txtNombre = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtCodigo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         Combobox = new javax.swing.JComboBox<>();
         btnCancelar = new javax.swing.JButton();
@@ -132,15 +131,10 @@ public class PComunas extends javax.swing.JPanel {
 
         jLabel3.setText("ComunaID:");
 
-        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodigoActionPerformed(evt);
-            }
-        });
-
         jLabel2.setText("Estado:");
 
-        Combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activado", "Desactivado" }));
+        Combobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Desactivado", "Activado" }));
+        Combobox.setSelectedIndex(1);
         Combobox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboboxActionPerformed(evt);
@@ -173,13 +167,9 @@ public class PComunas extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Combobox, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(44, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(Combobox, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(150, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCancelar)
@@ -192,7 +182,6 @@ public class PComunas extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(Combobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
@@ -306,14 +295,22 @@ public class PComunas extends javax.swing.JPanel {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
     this.txtNombre.setText("");
-    this.txtCodigo.setText("");
     this.txtId.setText("");
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        OError Insertar = new CComuna(Integer.valueOf(txtCodigo.getText()), txtNombre.getText(), true).Insertar();
+        int combo = Combobox.getSelectedIndex();
+        boolean auxiliar=true;
+        if(combo == 0){
+            auxiliar = false;
+        }else{
+            auxiliar = true;
+        }
+        OError Insertar = new CComuna(0, txtNombre.getText(),auxiliar).Insertar();
         if (Insertar.isConfirma()){
             ListarUsuarios();
+            this.txtNombre.setText("");
+            this.txtId.setText("");
         }
         //OError Insertar = this.Obj.Insertar(txtNombre.getText(),txtCodigo.getText());
     }//GEN-LAST:event_btnGuardarActionPerformed
@@ -323,18 +320,38 @@ public class PComunas extends javax.swing.JPanel {
     }//GEN-LAST:event_txtIdActionPerformed
 
     private void btnOcultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOcultarActionPerformed
-        CComuna comuna = new CComuna();
-        comuna.setId(Integer.valueOf(txtId.getText()));
-        int Eliminar = comuna.Eliminar();
+        OError Eliminar = new CComuna(Integer.valueOf(txtId.getText()), txtNombre.getText(),  false).Eliminar();
+        if (Eliminar.isConfirma()){
+            ListarUsuarios();
+            this.txtNombre.setText("");
+            this.txtId.setText("");
+        }else{
+            
+        }
+        System.out.println(Eliminar.getMensaje());
     }//GEN-LAST:event_btnOcultarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        /*int Editar = new CComuna(Integer.valueOf(txtId.getText()), txtNombre.getText(), true).Editar();*/
+         int combo = Combobox.getSelectedIndex();
+        boolean auxiliar=true;
+        if(combo == 0){
+            auxiliar = false;
+        }else{
+            auxiliar = true;
+        }
+        OError Editar = new CComuna(Integer.valueOf(txtId.getText()), txtNombre.getText(),auxiliar).Editar();
+        if (Editar.isConfirma()){
+            ListarUsuarios();
+            this.txtNombre.setText("");
+            this.txtId.setText("");
+        }
+        
+        //int Editar = new CComuna(Integer.valueOf(txtId.getText()), txtNombre.getText(), true).Editar();
         //int Editar = this.comuna.Editar(txtId.getText(), txtNombre.getText(), txtCodigo.getText());         
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void ComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboboxActionPerformed
-
+      
     }//GEN-LAST:event_ComboboxActionPerformed
 
     private void datosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_datosMouseClicked
@@ -344,12 +361,8 @@ public class PComunas extends javax.swing.JPanel {
        // comuna.getUsuarios().get(datos.getSelectedRow()).getId();
         txtId.setText(String.valueOf(comuna.getUsuarios().get(datos.getSelectedRow()).getId()));
         txtNombre.setText(comuna.getUsuarios().get(datos.getSelectedRow()).getNombre());
-        txtCodigo.setText(comuna.getUsuarios().get(datos.getSelectedRow()).isEstado() ? "Activado" : "Desactivado") ;
+        Combobox.setSelectedIndex(comuna.getUsuarios().get(datos.getSelectedRow()).isEstado() ? 1 : 0) ;
     }//GEN-LAST:event_datosMouseClicked
-
-    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -368,7 +381,6 @@ public class PComunas extends javax.swing.JPanel {
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JToolBar jToolBar2;
     private javax.swing.JLabel labTitulo;
-    private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
