@@ -1,4 +1,4 @@
-
+//asdfasfawfdasfdsafasfd
 package Paneles;
 
 import Clases.CComuna;
