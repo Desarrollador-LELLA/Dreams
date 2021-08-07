@@ -6,8 +6,13 @@
 package Paneles;
 
 import Clases.CBanco;
+import Clases.CMysqlHelp;
 import ModelosTablas.MTBancos;
+import ModelosTablas.MTUsuarios;
+import Objetos.OBanco;
 import Objetos.OError;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -35,8 +40,9 @@ public class PBancos extends javax.swing.JPanel {
         labTitulo = new javax.swing.JLabel();
         jToolBar1 = new javax.swing.JToolBar();
         butAgregar = new javax.swing.JButton();
-        butDesactivar = new javax.swing.JButton();
         jToolBar2 = new javax.swing.JToolBar();
+        butEditar = new javax.swing.JButton();
+        butDesactivar = new javax.swing.JButton();
         txtBusquedaBanco = new javax.swing.JTextField();
         labBusqueda = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -72,6 +78,28 @@ public class PBancos extends javax.swing.JPanel {
         });
         jToolBar1.add(butAgregar);
 
+        jToolBar2.setFloatable(false);
+        jToolBar2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jToolBar2.setRollover(true);
+        jToolBar2.setOpaque(false);
+        jToolBar1.add(jToolBar2);
+
+        butEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_editar_32.png"))); // NOI18N
+        butEditar.setText("Editar");
+        butEditar.setFocusable(false);
+        butEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        butEditar.setMaximumSize(new java.awt.Dimension(69, 69));
+        butEditar.setMinimumSize(new java.awt.Dimension(69, 69));
+        butEditar.setName(""); // NOI18N
+        butEditar.setPreferredSize(new java.awt.Dimension(69, 69));
+        butEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        butEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butEditarActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(butEditar);
+
         butDesactivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_desactivar_32.png"))); // NOI18N
         butDesactivar.setText("Desactivar");
         butDesactivar.setFocusable(false);
@@ -88,17 +116,17 @@ public class PBancos extends javax.swing.JPanel {
         });
         jToolBar1.add(butDesactivar);
 
-        jToolBar2.setFloatable(false);
-        jToolBar2.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jToolBar2.setRollover(true);
-        jToolBar2.setOpaque(false);
-        jToolBar1.add(jToolBar2);
-
         txtBusquedaBanco.setToolTipText("Tipee lo que desea Buscar");
 
         labBusqueda.setText("Busqueda");
 
         jLabel1.setText("Nombre Banco");
+
+        txtNombreBanco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreBancoActionPerformed(evt);
+            }
+        });
 
         butCancel.setText("Cancelar");
 
@@ -113,6 +141,11 @@ public class PBancos extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTableBancos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableBancosMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTableBancos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -166,31 +199,66 @@ public class PBancos extends javax.swing.JPanel {
                         .addGap(0, 10, Short.MAX_VALUE)))
                 .addContainerGap())
         );
+
+        jLabel1.getAccessibleContext().setAccessibleDescription("Agregar");
     }// </editor-fold>//GEN-END:initComponents
 
     private void butDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butDesactivarActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here: 
+        CBanco banco2 = new CBanco(0,txtNombreBanco.getText(), true);
+        banco2.setId(Integer.valueOf(txtNombreBanco.getText()));
+        int Eliminar = banco2.Eliminar();
     }//GEN-LAST:event_butDesactivarActionPerformed
-
+        
     private void butAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butAgregarActionPerformed
         // TODO add your handling code here:
+        //Agregar
         CBanco banc = new CBanco(0,txtNombreBanco.getText(), true);
         OError error = banc.Agregar();
         if(error.isConfirma()){
             ListarBancos();
             System.out.println(error.getMensaje());
+            txtNombreBanco.setText("");
             
         } else {
             System.out.println(error.getMensaje());
+        }
+       
+    }//GEN-LAST:event_butAgregarActionPerformed
+
+    private void jTableBancosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableBancosMouseClicked
+        // TODO add your handling code here:
+        OBanco bank = ((MTBancos)jTableBancos.getModel()).getBancos().get(jTableBancos.getSelectedRow());
+        txtNombreBanco.setText(bank.getNombre());
+    }//GEN-LAST:event_jTableBancosMouseClicked
+
+    private void butEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butEditarActionPerformed
+        // TODO add your handling code here:
+         //Editar
+        OBanco bank = ((MTBancos)jTableBancos.getModel()).getBancos().get(jTableBancos.getSelectedRow());
+        CBanco banc1 = new CBanco(bank.getId(),txtNombreBanco.getText(), true);
+        OError error1 = banc1.Editar();
+        if(error1.isConfirma()){
+            ListarBancos();
+            System.out.println(error1.getMensaje());
+            txtNombreBanco.setText("");
+            
+        } else {
+            System.out.println(error1.getMensaje());
 
         }
-    }//GEN-LAST:event_butAgregarActionPerformed
+    }//GEN-LAST:event_butEditarActionPerformed
+
+    private void txtNombreBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreBancoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreBancoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton butAgregar;
     private javax.swing.JButton butCancel;
     private javax.swing.JButton butDesactivar;
+    private javax.swing.JButton butEditar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableBancos;

@@ -10,6 +10,7 @@ import Objetos.OError;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,6 +61,51 @@ public class CBanco extends OBanco {
         }
         return Error;
     }
+    
+    public OError Editar(){
+        PreparedStatement Preparando = null;
+        CMysqlHelp Sql = new CMysqlHelp();
+        Error = Sql.Conectar();
+        if(Error.isConfirma()){
+            try {
+                Preparando = Sql.getCon().prepareStatement("UPDATE Bancos SET BAN_DESCRIPCION = ? WHERE BAN_ID_BANCO = ?");
+                Preparando.setString(1, this.getNombre());
+                Preparando.setInt(2, this.getId());
+                      
+                
+                if(!Preparando.execute()){
+                    Error = new OError(String.format(TagCodigoClase, 4), "Banco Editado Correctamente", null, true);
+                }
+                else{
+                    Error = new OError(String.format(TagCodigoClase, 5), "El Banco no fue Editado", null, false);
+                }
+                Preparando.close();
+            } catch (SQLException ex) {
+                System.out.println("Error: " + ex);
+                Error = new OError(String.format(TagCodigoClase, 6), String.format("<html>%s (Codigo %s)</html>", ex, String.format(TagCodigoClase, 6)), null, false);
+            }
+            finally{
+                Sql.Desconectar();
+            }
+        }
+        return Error;
+    }
+    
+    //Utiliizada con botón DESACTIVAR
+    public int Eliminar(){
+        CMysqlHelp con = new CMysqlHelp();
+        int r = 0;
+        String consulta= "delete from dreamgifts.Bancos where BAN_ID_BANCO = "+String.valueOf(this.getId())+";";
+       try{
+          Statement  stm = (Statement) con.getCon().createStatement();
+          r = stm.executeUpdate(consulta);
+       }catch(SQLException e){
+           System.out.println(e);
+       }finally{
+           return r;
+    }
+    }
+    
     public List<OBanco> Listar(){
         PreparedStatement Preparando = null;
         ResultSet Resultado = null;
