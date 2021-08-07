@@ -10,13 +10,13 @@ package Objetos;
  * @author Usuario
  */
 public class OBanco {
-    
+
     private int id;
     private String nombre;
     private Boolean estado;
 
     public OBanco() {
-        
+
     }
 
     public OBanco(int id, String nombre, Boolean estado) {
@@ -48,6 +48,5 @@ public class OBanco {
     public void setEstado(Boolean estado) {
         this.estado = estado;
     }
-    
-    
+
 }

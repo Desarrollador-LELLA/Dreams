@@ -129,6 +129,11 @@ public class PBancos extends javax.swing.JPanel {
         });
 
         butCancel.setText("Cancelar");
+        butCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butCancelActionPerformed(evt);
+            }
+        });
 
         jTableBancos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -204,45 +209,50 @@ public class PBancos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void butDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butDesactivarActionPerformed
-        // TODO add your handling code here: 
-        CBanco banco2 = new CBanco(0,txtNombreBanco.getText(), true);
-        banco2.setId(Integer.valueOf(txtNombreBanco.getText()));
-        int Eliminar = banco2.Eliminar();
+        //TODO add your handling code here:
+        OBanco bank = ((MTBancos) jTableBancos.getModel()).getBancos().get(jTableBancos.getSelectedRow());
+        OError Error = new CBanco(bank.getId(), bank.getNombre(), false).Eliminar();
+        if (Error.isConfirma()) {
+            ListarBancos();
+            this.txtNombreBanco.setText("");
+        } else {
+            System.out.println(Error.getMensaje());
+        }
     }//GEN-LAST:event_butDesactivarActionPerformed
-        
+
     private void butAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butAgregarActionPerformed
         // TODO add your handling code here:
         //Agregar
-        CBanco banc = new CBanco(0,txtNombreBanco.getText(), true);
+        CBanco banc = new CBanco(0, txtNombreBanco.getText(), true);
         OError error = banc.Agregar();
-        if(error.isConfirma()){
+        if (error.isConfirma()) {
             ListarBancos();
             System.out.println(error.getMensaje());
             txtNombreBanco.setText("");
-            
+
         } else {
             System.out.println(error.getMensaje());
         }
-       
+
     }//GEN-LAST:event_butAgregarActionPerformed
 
     private void jTableBancosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableBancosMouseClicked
         // TODO add your handling code here:
-        OBanco bank = ((MTBancos)jTableBancos.getModel()).getBancos().get(jTableBancos.getSelectedRow());
+        OBanco bank = ((MTBancos) jTableBancos.getModel()).getBancos().get(jTableBancos.getSelectedRow());
         txtNombreBanco.setText(bank.getNombre());
     }//GEN-LAST:event_jTableBancosMouseClicked
 
     private void butEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butEditarActionPerformed
         // TODO add your handling code here:
-         //Editar
-        OBanco bank = ((MTBancos)jTableBancos.getModel()).getBancos().get(jTableBancos.getSelectedRow());
-        CBanco banc1 = new CBanco(bank.getId(),txtNombreBanco.getText(), true);
+        //Editar
+        OBanco bank = ((MTBancos) jTableBancos.getModel()).getBancos().get(jTableBancos.getSelectedRow());
+        CBanco banc1 = new CBanco(bank.getId(), txtNombreBanco.getText(), true);
         OError error1 = banc1.Editar();
-        if(error1.isConfirma()){
+        if (error1.isConfirma()) {
             ListarBancos();
             System.out.println(error1.getMensaje());
             txtNombreBanco.setText("");
-            
+
         } else {
             System.out.println(error1.getMensaje());
 
@@ -252,6 +262,11 @@ public class PBancos extends javax.swing.JPanel {
     private void txtNombreBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreBancoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreBancoActionPerformed
+
+    private void butCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butCancelActionPerformed
+        // TODO add your handling code here:
+        txtNombreBanco.setText("");
+    }//GEN-LAST:event_butCancelActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -270,10 +285,10 @@ public class PBancos extends javax.swing.JPanel {
     private javax.swing.JTextField txtNombreBanco;
     // End of variables declaration//GEN-END:variables
 
-    public void ListarBancos(){
+    public void ListarBancos() {
         MTBancos ModeloBanco = new MTBancos(new CBanco().Listar());
         jTableBancos.setModel(ModeloBanco);
-        
+
         //jTableBancos.setPreferredSize(new java.awt.Dimension(891, 0));
         jTableBancos.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(jTableBancos);
@@ -284,7 +299,6 @@ public class PBancos extends javax.swing.JPanel {
             jTableBancos.getColumnModel().getColumn(1).setPreferredWidth(80);
         }
     }
-    
-    //Pruobando si se copia a GIT
 
+    //Pruobando si se copia a GIT
 }
