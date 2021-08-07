@@ -6,13 +6,10 @@
 package Paneles;
 
 import Clases.CBanco;
-import Clases.CMysqlHelp;
 import ModelosTablas.MTBancos;
-import ModelosTablas.MTUsuarios;
 import Objetos.OBanco;
 import Objetos.OError;
-import java.sql.SQLException;
-import java.sql.Statement;
+
 
 /**
  *
