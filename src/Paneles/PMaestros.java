@@ -114,6 +114,11 @@ public class PMaestros extends javax.swing.JPanel {
         butCanales.setMinimumSize(new java.awt.Dimension(69, 69));
         butCanales.setPreferredSize(new java.awt.Dimension(69, 69));
         butCanales.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        butCanales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butCanalesActionPerformed(evt);
+            }
+        });
         jToolBar1.add(butCanales);
 
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -297,6 +302,18 @@ public class PMaestros extends javax.swing.JPanel {
         panelVisor.revalidate();
         panelVisor.repaint();
     }//GEN-LAST:event_butComunasActionPerformed
+
+    private void butCanalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butCanalesActionPerformed
+        PCanales PanelCanales = new PCanales();
+        PanelCanales.setVisible(true);
+        PanelCanales.setSize(1000, 525);
+        PanelCanales.setLocation(0, 0);
+        
+        panelVisor.removeAll();
+        panelVisor.add(PanelCanales, BorderLayout.CENTER);
+        panelVisor.revalidate();
+        panelVisor.repaint();
+    }//GEN-LAST:event_butCanalesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
