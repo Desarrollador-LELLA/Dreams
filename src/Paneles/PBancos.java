@@ -101,6 +101,11 @@ public class PBancos extends javax.swing.JPanel {
         jLabel1.setText("Nombre Banco");
 
         butCancel.setText("Cancelar");
+        butCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butCancelActionPerformed(evt);
+            }
+        });
 
         jTableBancos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -185,6 +190,10 @@ public class PBancos extends javax.swing.JPanel {
 
         }
     }//GEN-LAST:event_butAgregarActionPerformed
+
+    private void butCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butCancelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_butCancelActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
