@@ -5,9 +5,15 @@
  */
 package Paneles;
 
+import Clases.CBanco;
+import ModelosTablas.MTBancos;
+import Objetos.OBanco;
+import Objetos.OError;
+
+
 /**
  *
- * @author TOULON
+ * @author Usuario
  */
 public class PBancos extends javax.swing.JPanel {
 
@@ -16,6 +22,7 @@ public class PBancos extends javax.swing.JPanel {
      */
     public PBancos() {
         initComponents();
+        ListarBancos();
     }
 
     /**
@@ -28,20 +35,18 @@ public class PBancos extends javax.swing.JPanel {
     private void initComponents() {
 
         labTitulo = new javax.swing.JLabel();
-        labBusqueda = new javax.swing.JLabel();
-        txtBusqueda = new javax.swing.JTextField();
-        jComboBoxPor = new javax.swing.JComboBox<>();
-        jToolBarMenu = new javax.swing.JToolBar();
+        jToolBar1 = new javax.swing.JToolBar();
         butAgregar = new javax.swing.JButton();
+        jToolBar2 = new javax.swing.JToolBar();
         butEditar = new javax.swing.JButton();
         butDesactivar = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        labNombre = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
-        labNombreError = new javax.swing.JLabel();
-        labNombre1 = new javax.swing.JLabel();
-        txtNombre1 = new javax.swing.JTextField();
-        labNombreError1 = new javax.swing.JLabel();
+        txtBusquedaBanco = new javax.swing.JTextField();
+        labBusqueda = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        txtNombreBanco = new javax.swing.JTextField();
+        butCancel = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableBancos = new javax.swing.JTable();
 
         labTitulo.setBackground(new java.awt.Color(102, 102, 255));
         labTitulo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -49,26 +54,18 @@ public class PBancos extends javax.swing.JPanel {
         labTitulo.setText("Bancos");
         labTitulo.setOpaque(true);
 
-        labBusqueda.setText("Busqueda");
-
-        txtBusqueda.setToolTipText("Tipee lo que desea Buscar");
-
-        jComboBoxPor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Por Nombre", "Por Apellido", "Por Username" }));
-        jComboBoxPor.setToolTipText("Seleccionar tipo de Busqueda");
-
-        jToolBarMenu.setFloatable(false);
-        jToolBarMenu.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jToolBarMenu.setRollover(true);
-        jToolBarMenu.setOpaque(false);
+        jToolBar1.setFloatable(false);
+        jToolBar1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jToolBar1.setRollover(true);
+        jToolBar1.setOpaque(false);
 
         butAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_agregar_32.png"))); // NOI18N
         butAgregar.setText("Agregar");
-        butAgregar.setToolTipText("Agregar un Nuevo Usuario");
-        butAgregar.setBorderPainted(false);
         butAgregar.setFocusable(false);
         butAgregar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         butAgregar.setMaximumSize(new java.awt.Dimension(69, 69));
         butAgregar.setMinimumSize(new java.awt.Dimension(69, 69));
+        butAgregar.setName(""); // NOI18N
         butAgregar.setPreferredSize(new java.awt.Dimension(69, 69));
         butAgregar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         butAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -76,16 +73,21 @@ public class PBancos extends javax.swing.JPanel {
                 butAgregarActionPerformed(evt);
             }
         });
-        jToolBarMenu.add(butAgregar);
+        jToolBar1.add(butAgregar);
+
+        jToolBar2.setFloatable(false);
+        jToolBar2.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jToolBar2.setRollover(true);
+        jToolBar2.setOpaque(false);
+        jToolBar1.add(jToolBar2);
 
         butEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_editar_32.png"))); // NOI18N
         butEditar.setText("Editar");
-        butEditar.setToolTipText("Editar un Usuario Seleccionado");
-        butEditar.setBorderPainted(false);
         butEditar.setFocusable(false);
         butEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         butEditar.setMaximumSize(new java.awt.Dimension(69, 69));
         butEditar.setMinimumSize(new java.awt.Dimension(69, 69));
+        butEditar.setName(""); // NOI18N
         butEditar.setPreferredSize(new java.awt.Dimension(69, 69));
         butEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         butEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -93,99 +95,88 @@ public class PBancos extends javax.swing.JPanel {
                 butEditarActionPerformed(evt);
             }
         });
-        jToolBarMenu.add(butEditar);
+        jToolBar1.add(butEditar);
 
         butDesactivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_desactivar_32.png"))); // NOI18N
         butDesactivar.setText("Desactivar");
-        butDesactivar.setToolTipText("Desactivar un Usuario Seleccionado");
-        butDesactivar.setBorderPainted(false);
         butDesactivar.setFocusable(false);
         butDesactivar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         butDesactivar.setMaximumSize(new java.awt.Dimension(69, 69));
         butDesactivar.setMinimumSize(new java.awt.Dimension(69, 69));
+        butDesactivar.setName(""); // NOI18N
         butDesactivar.setPreferredSize(new java.awt.Dimension(69, 69));
         butDesactivar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBarMenu.add(butDesactivar);
+        butDesactivar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butDesactivarActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(butDesactivar);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Nombre"));
-        jPanel1.setToolTipText("");
-        jPanel1.setName(""); // NOI18N
+        txtBusquedaBanco.setToolTipText("Tipee lo que desea Buscar");
 
-        labNombre.setText("Nombre");
+        labBusqueda.setText("Busqueda");
 
-        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtNombreKeyReleased(evt);
+        jLabel1.setText("Nombre Banco");
+
+        txtNombreBanco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreBancoActionPerformed(evt);
             }
         });
 
-        labNombreError.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_interrogante_24.png"))); // NOI18N
-
-        labNombre1.setText("Nombre");
-
-        txtNombre1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtNombre1KeyReleased(evt);
+        butCancel.setText("Cancelar");
+        butCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butCancelActionPerformed(evt);
             }
         });
 
-        labNombreError1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_interrogante_24.png"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labNombre)
-                            .addComponent(labNombre1)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE))
-                        .addGap(130, 130, 130))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtNombre1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labNombreError1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addComponent(labNombreError, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labNombre)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labNombreError, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(labNombre1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labNombreError1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(66, Short.MAX_VALUE))
-        );
+        jTableBancos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTableBancos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableBancosMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTableBancos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(labTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labBusqueda)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 693, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBoxPor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addComponent(jToolBarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(4, 4, 4)
+                        .addComponent(txtBusquedaBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNombreBanco)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(butCancel)))
+                .addGap(18, 18, 18)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,63 +184,118 @@ public class PBancos extends javax.swing.JPanel {
                 .addComponent(labTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labBusqueda)
-                            .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxPor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jToolBarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(320, Short.MAX_VALUE))
+                            .addComponent(txtBusquedaBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labBusqueda))
+                        .addGap(15, 15, 15)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNombreBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(butCancel))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 10, Short.MAX_VALUE)))
+                .addContainerGap())
         );
+
+        jLabel1.getAccessibleContext().setAccessibleDescription("Agregar");
     }// </editor-fold>//GEN-END:initComponents
+
+    private void butDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butDesactivarActionPerformed
+        //TODO add your handling code here:
+        OBanco bank = ((MTBancos) jTableBancos.getModel()).getBancos().get(jTableBancos.getSelectedRow());
+        OError Error = new CBanco(bank.getId(), bank.getNombre(), false).Eliminar();
+        if (Error.isConfirma()) {
+            ListarBancos();
+            this.txtNombreBanco.setText("");
+        } else {
+            System.out.println(Error.getMensaje());
+        }
+    }//GEN-LAST:event_butDesactivarActionPerformed
 
     private void butAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butAgregarActionPerformed
         // TODO add your handling code here:
-        /**DCrudUsuario CrudUsuario = new DCrudUsuario(new Ventanas.VPrincipal(), true);
-        CrudUsuario.setTitle("Agregar Usuario");
-        CrudUsuario.setVisible(true);
-        if(CrudUsuario.Actualizar){
-            ListarUsuarios();
-        }**/
+        //Agregar
+        CBanco banc = new CBanco(0, txtNombreBanco.getText(), true);
+        OError error = banc.Agregar();
+        if (error.isConfirma()) {
+            ListarBancos();
+            System.out.println(error.getMensaje());
+            txtNombreBanco.setText("");
+
+        } else {
+            System.out.println(error.getMensaje());
+        }
+
     }//GEN-LAST:event_butAgregarActionPerformed
+
+    private void jTableBancosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableBancosMouseClicked
+        // TODO add your handling code here:
+        OBanco bank = ((MTBancos) jTableBancos.getModel()).getBancos().get(jTableBancos.getSelectedRow());
+        txtNombreBanco.setText(bank.getNombre());
+    }//GEN-LAST:event_jTableBancosMouseClicked
 
     private void butEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butEditarActionPerformed
         // TODO add your handling code here:
-        /**DCrudUsuario CrudUsuario = new DCrudUsuario(new Ventanas.VPrincipal(), true, ((MTUsuarios)jTableTabla.getModel()).getUsuarios().get(jTableTabla.getSelectedRow()));
-        CrudUsuario.setTitle("Editar Usuario");
-        CrudUsuario.setVisible(true);
-        if(CrudUsuario.Actualizar){
-            ListarUsuarios();
-        }**/
+        //Editar
+        OBanco bank = ((MTBancos) jTableBancos.getModel()).getBancos().get(jTableBancos.getSelectedRow());
+        CBanco banc1 = new CBanco(bank.getId(), txtNombreBanco.getText(), true);
+        OError error1 = banc1.Editar();
+        if (error1.isConfirma()) {
+            ListarBancos();
+            System.out.println(error1.getMensaje());
+            txtNombreBanco.setText("");
+
+        } else {
+            System.out.println(error1.getMensaje());
+
+        }
     }//GEN-LAST:event_butEditarActionPerformed
 
-    private void txtNombreKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyReleased
+    private void txtNombreBancoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreBancoActionPerformed
         // TODO add your handling code here:
-        labNombreError.setVisible(false);
-    }//GEN-LAST:event_txtNombreKeyReleased
+    }//GEN-LAST:event_txtNombreBancoActionPerformed
 
-    private void txtNombre1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombre1KeyReleased
+    private void butCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butCancelActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombre1KeyReleased
+        txtNombreBanco.setText("");
+    }//GEN-LAST:event_butCancelActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton butAgregar;
+    private javax.swing.JButton butCancel;
     private javax.swing.JButton butDesactivar;
     private javax.swing.JButton butEditar;
-    private javax.swing.JComboBox<String> jComboBoxPor;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JToolBar jToolBarMenu;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTableBancos;
+    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JToolBar jToolBar2;
     private javax.swing.JLabel labBusqueda;
-    private javax.swing.JLabel labNombre;
-    private javax.swing.JLabel labNombre1;
-    private javax.swing.JLabel labNombreError;
-    private javax.swing.JLabel labNombreError1;
     private javax.swing.JLabel labTitulo;
-    private javax.swing.JTextField txtBusqueda;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtNombre1;
+    private javax.swing.JTextField txtBusquedaBanco;
+    private javax.swing.JTextField txtNombreBanco;
     // End of variables declaration//GEN-END:variables
+
+    public void ListarBancos() {
+        MTBancos ModeloBanco = new MTBancos(new CBanco().Listar());
+        jTableBancos.setModel(ModeloBanco);
+
+        //jTableBancos.setPreferredSize(new java.awt.Dimension(891, 0));
+        jTableBancos.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(jTableBancos);
+        if (jTableBancos.getColumnModel().getColumnCount() > 0) {
+            jTableBancos.getColumnModel().getColumn(0).setResizable(false);
+            jTableBancos.getColumnModel().getColumn(0).setPreferredWidth(390);
+            jTableBancos.getColumnModel().getColumn(1).setResizable(false);
+            jTableBancos.getColumnModel().getColumn(1).setPreferredWidth(80);
+        }
+    }
+
+    //Pruobando si se copia a GIT
 }

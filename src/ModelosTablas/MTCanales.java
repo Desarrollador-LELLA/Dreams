@@ -5,35 +5,34 @@
  */
 package ModelosTablas;
 
-import Objetos.OUsuario;
+import Objetos.OCanales;
 import java.util.List;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
 /**
  *
- * @author TOULON-NOTE
+ * @author Usuario
  */
-public class MTUsuarios implements TableModel {
-    
-    private List<OUsuario> Usuarios;
-    
-    public MTUsuarios(List<OUsuario> usuarios){
-        Usuarios = usuarios;
+public class MTCanales implements TableModel{
+    private final List<OCanales> Canal;
+
+    public MTCanales(List<OCanales> Canal) {
+        this.Canal = Canal;
     }
 
-    public List<OUsuario> getUsuarios() {
-        return Usuarios;
+    public List<OCanales> getCanal() {
+        return Canal;
     }
-    
+
     @Override
     public int getRowCount() {
-        return Usuarios.size();
+        return Canal.size();
     }
 
     @Override
     public int getColumnCount() {
-        return 4;
+        return 3;      
     }
 
     @Override
@@ -41,40 +40,23 @@ public class MTUsuarios implements TableModel {
         String NombreColumna = null;
         switch(columnIndex){
             case 0:
-                NombreColumna = "Nombre";
+                NombreColumna = "ID";
                 break;
             case 1:
-                NombreColumna = "Apellidos";
+                NombreColumna = "Nombre";
                 break;
             case 2:
-                NombreColumna = "Username";
-                break;
-            case 3:
                 NombreColumna = "Estado";
                 break;
+            
         }
         
         return NombreColumna;
+
     }
 
     @Override
     public Class<?> getColumnClass(int columnIndex) {
-        /**Class Tipo = null;
-        switch(columnIndex){
-            case 0:
-                Tipo = String.class;
-                break;
-            case 1:
-                Tipo = String.class;
-                break;
-            case 2:
-                Tipo = String.class;
-                break;
-            case 3:
-                Tipo = Boolean.class;
-                break;
-        }**/
-        
         return String.class;
     }
 
@@ -87,17 +69,12 @@ public class MTUsuarios implements TableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         String Valor = null;
         switch(columnIndex){
+            
             case 0:
-                Valor = Usuarios.get(rowIndex).getNombre();
-                break;
-            case 1:
-                Valor = Usuarios.get(rowIndex).getApellidos();
+                Valor = Canal.get(rowIndex).getNombre();
                 break;
             case 2:
-                Valor = Usuarios.get(rowIndex).getUsername();
-                break;
-            case 3:
-                Valor = Usuarios.get(rowIndex).isEstado() ? "Activado" : "Desactivado";
+                Valor = Canal.get(rowIndex).getEstado() ? "Activado" : "Desactivado";
                 break;
         }
         
@@ -106,17 +83,19 @@ public class MTUsuarios implements TableModel {
 
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        //Usuarios.set(rowIndex, (OUsuario)aValue);
+        
     }
 
     @Override
     public void addTableModelListener(TableModelListener l) {
-        //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void removeTableModelListener(TableModelListener l) {
-        //To change body of generated methods, choose Tools | Templates.
+        
     }
     
+    
 }
+

@@ -103,8 +103,31 @@ public class CUsuario extends OUsuario {
     
     //EDITANDO
     public OError Desactivar(){
-        
-        return null;
+        PreparedStatement Preparando = null;
+        CMysqlHelp Sql = new CMysqlHelp();
+        Error = Sql.Conectar();
+        if(Error.isConfirma()){
+            try {
+                Preparando = Sql.getCon().prepareStatement("UPDATE Usuarios SET USU_ESTADO = ? WHERE USU_ID_USUARIO = ?");
+                Preparando.setBoolean(1, this.isEstado());
+                Preparando.setInt(2, this.getId());
+                
+                if(!Preparando.execute()){
+                    Error = new OError(String.format(TagCodigoClase, 7), "Usuario Desactivado Correctamente", null, true);
+                }
+                else{
+                    Error = new OError(String.format(TagCodigoClase, 8), "El Usuario no fue Desactivado", null, false);
+                }
+                Preparando.close();
+            } catch (SQLException ex) {
+                System.out.println("Error: " + ex);
+                Error = new OError(String.format(TagCodigoClase, 9), String.format("<html>%s (Codigo %s)</html>", ex, String.format(TagCodigoClase, 9)), null, false);
+            }
+            finally{
+                Sql.Desconectar();
+            }
+        }
+        return Error;
     }
     
     public List<OUsuario> Listar(){
@@ -167,5 +190,82 @@ public class CUsuario extends OUsuario {
             }
         }
         return Error;
+    }
+    
+    public OError ExisteUsernameDiferente(){
+        PreparedStatement Preparando = null;
+        ResultSet Resultado = null;
+        CMysqlHelp Sql = new CMysqlHelp();
+        Error = Sql.Conectar();
+        if(Error.isConfirma()){
+            try {
+                Preparando = Sql.getCon().prepareStatement("SELECT COUNT(1) FROM Usuarios WHERE USU_USERNAME = ? AND USU_ID_USUARIO != ?");
+                Preparando.setString(1, this.getUsername());
+                Preparando.setInt(2, this.getId());
+                Resultado = Preparando.executeQuery();
+                int contador = 0;
+                while(Resultado.next()){
+                    contador = Resultado.getInt(1);
+                }
+                if(contador == 0){
+                    Error = new OError(String.format(TagCodigoClase, 15), String.format("El Username (%s) no esta siendo Utilizado", this.getUsername()), null, true);
+                }
+                else{
+                    Error = new OError(String.format(TagCodigoClase, 16), String.format("El Username (%s) ya esta siendo Utilizado", this.getUsername()), null, false);
+                }
+                Resultado.close();
+                Preparando.close();
+            } catch (SQLException ex) {
+                System.out.println("Error: " + ex);
+                Error = new OError(String.format(TagCodigoClase, 17), String.format("<html>%s (Codigo %s)</html>", ex, String.format(TagCodigoClase, 17)), null, false);
+            }
+            finally{
+                Sql.Desconectar();
+            }
+        }
+        return Error;
+    }
+    
+    public List<OUsuario> Busqueda(String datoBusqueda, int tipo){
+        //USU_NOMBRE = ?, USU_APELLIDO = ?, USU_USERNAME
+        PreparedStatement Preparando = null;
+        ResultSet Resultado = null;
+        List<OUsuario> Listado = new ArrayList();
+        CMysqlHelp Sql = new CMysqlHelp();
+        Error = Sql.Conectar();
+        if(Error.isConfirma()){
+            try {
+                String atributo = "";
+                switch(tipo){
+                    case 0:
+                        atributo = "USU_NOMBRE";
+                        break;
+                    case 1:
+                        atributo = "USU_APELLIDO";
+                        break;
+                    case 2:
+                        atributo = "USU_USERNAME";
+                        break;
+                }
+                Preparando = Sql.getCon().prepareStatement("SELECT * FROM Usuarios WHERE " + atributo + " LIKE ?");
+                Preparando.setString(1, "%" + datoBusqueda + "%");
+                Resultado = Preparando.executeQuery();
+                
+                while(Resultado.next()){
+                    Listado.add(new OUsuario(Resultado.getInt(1), Resultado.getString(2), Resultado.getString(3), Resultado.getString(4), Resultado.getString(5), Resultado.getBoolean(6)));
+                }
+                Error = new OError(String.format(TagCodigoClase, 10), "Consulta Realizada Corectamente", null, true);
+                
+                Resultado.close();
+                Preparando.close();
+            } catch (SQLException ex) {
+                System.out.println("Error: " + ex);
+                Error = new OError(String.format(TagCodigoClase, 11), String.format("<html>%s (Codigo %s)</html>", ex, String.format(TagCodigoClase, 11)), null, false);
+            }
+            finally{
+                Sql.Desconectar();
+            }
+        }
+        return Listado;
     }
 }

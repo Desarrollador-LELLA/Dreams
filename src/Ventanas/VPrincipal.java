@@ -5,6 +5,8 @@
  */
 package Ventanas;
 
+import Objetos.OUsuario;
+import Paneles.PInicioSesion;
 import Paneles.PMaestros;
 import java.awt.BorderLayout;
 
@@ -13,12 +15,20 @@ import java.awt.BorderLayout;
  * @author TOULON-NOTE
  */
 public class VPrincipal extends javax.swing.JFrame {
+    
+    private OUsuario usuario;
 
     /**
      * Creates new form VPrincipal
      */
     public VPrincipal() {
         initComponents();
+        jToolBarMenuPrincipal.setVisible(false);
+        InicioSesion();
+    }
+
+    public void setUsuario(OUsuario usuario) {
+        this.usuario = usuario;
     }
 
     /**
@@ -30,11 +40,12 @@ public class VPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jToolBar1 = new javax.swing.JToolBar();
+        jToolBarMenuPrincipal = new javax.swing.JToolBar();
         butVentas = new javax.swing.JButton();
         butCompras = new javax.swing.JButton();
         butInformes = new javax.swing.JButton();
         butMaestros = new javax.swing.JButton();
+        butCerrarSesion = new javax.swing.JButton();
         panelVisor = new javax.swing.JPanel();
         jButton15 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
@@ -45,49 +56,53 @@ public class VPrincipal extends javax.swing.JFrame {
         setTitle("Sistema");
         setResizable(false);
 
-        jToolBar1.setFloatable(false);
-        jToolBar1.setRollover(true);
-        jToolBar1.setOpaque(false);
+        jToolBarMenuPrincipal.setFloatable(false);
+        jToolBarMenuPrincipal.setRollover(true);
+        jToolBarMenuPrincipal.setOpaque(false);
 
         butVentas.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         butVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_ventas_32_2.png"))); // NOI18N
         butVentas.setText("Ventas");
         butVentas.setBorderPainted(false);
+        butVentas.setEnabled(false);
         butVentas.setFocusable(false);
         butVentas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         butVentas.setMaximumSize(new java.awt.Dimension(69, 69));
         butVentas.setMinimumSize(new java.awt.Dimension(69, 69));
         butVentas.setPreferredSize(new java.awt.Dimension(69, 69));
         butVentas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(butVentas);
+        jToolBarMenuPrincipal.add(butVentas);
 
         butCompras.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         butCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_compras_32.png"))); // NOI18N
         butCompras.setText("Compras");
         butCompras.setBorderPainted(false);
+        butCompras.setEnabled(false);
         butCompras.setFocusable(false);
         butCompras.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         butCompras.setMaximumSize(new java.awt.Dimension(69, 69));
         butCompras.setMinimumSize(new java.awt.Dimension(69, 69));
         butCompras.setPreferredSize(new java.awt.Dimension(69, 69));
         butCompras.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(butCompras);
+        jToolBarMenuPrincipal.add(butCompras);
 
         butInformes.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         butInformes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_informes_32.png"))); // NOI18N
         butInformes.setText("Informes");
         butInformes.setBorderPainted(false);
+        butInformes.setEnabled(false);
         butInformes.setFocusable(false);
         butInformes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         butInformes.setMaximumSize(new java.awt.Dimension(69, 69));
         butInformes.setMinimumSize(new java.awt.Dimension(69, 69));
         butInformes.setPreferredSize(new java.awt.Dimension(69, 69));
         butInformes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(butInformes);
+        jToolBarMenuPrincipal.add(butInformes);
 
         butMaestros.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         butMaestros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_maestros_32.png"))); // NOI18N
         butMaestros.setText("Maestros");
+        butMaestros.setToolTipText("Maestros");
         butMaestros.setBorderPainted(false);
         butMaestros.setFocusable(false);
         butMaestros.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -100,7 +115,25 @@ public class VPrincipal extends javax.swing.JFrame {
                 butMaestrosActionPerformed(evt);
             }
         });
-        jToolBar1.add(butMaestros);
+        jToolBarMenuPrincipal.add(butMaestros);
+
+        butCerrarSesion.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        butCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_cerrarsesion_32.png"))); // NOI18N
+        butCerrarSesion.setText("Cerrar Sesion");
+        butCerrarSesion.setToolTipText("Cerrar Sesion");
+        butCerrarSesion.setBorderPainted(false);
+        butCerrarSesion.setFocusable(false);
+        butCerrarSesion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        butCerrarSesion.setMaximumSize(new java.awt.Dimension(69, 69));
+        butCerrarSesion.setMinimumSize(new java.awt.Dimension(69, 69));
+        butCerrarSesion.setPreferredSize(new java.awt.Dimension(69, 69));
+        butCerrarSesion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        butCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butCerrarSesionActionPerformed(evt);
+            }
+        });
+        jToolBarMenuPrincipal.add(butCerrarSesion);
 
         jButton15.setText("jButton15");
 
@@ -139,13 +172,13 @@ public class VPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+            .addComponent(jToolBarMenuPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
             .addComponent(panelVisor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToolBarMenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelVisor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -154,6 +187,32 @@ public class VPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void InicioSesion(){
+        PInicioSesion PanelInicioSesion = new PInicioSesion(this);
+        PanelInicioSesion.setVisible(true);
+        PanelInicioSesion.setSize(1000, 631);
+        PanelInicioSesion.setLocation(0, 0);
+        
+        panelVisor.removeAll();
+        panelVisor.add(PanelInicioSesion, BorderLayout.CENTER);
+        panelVisor.revalidate();
+        panelVisor.repaint();
+    }
+    
+    public void IniciarModulos(){
+        //PInicioSesion PanelInicioSesion = new PInicioSesion();
+        //PanelInicioSesion.setVisible(true);
+        //PanelInicioSesion.setSize(1000, 631);
+        //PanelInicioSesion.setLocation(0, 0);
+        
+        jToolBarMenuPrincipal.setVisible(true);
+        panelVisor.removeAll();
+        //panelVisor.add(PanelInicioSesion, BorderLayout.CENTER);
+        //panelVisor.revalidate();
+        //panelVisor.repaint();
+        
+    }
+    
     private void butMaestrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butMaestrosActionPerformed
         // TODO add your handling code here:
         PMaestros PanelMaestros = new PMaestros();
@@ -166,6 +225,13 @@ public class VPrincipal extends javax.swing.JFrame {
         panelVisor.revalidate();
         panelVisor.repaint();
     }//GEN-LAST:event_butMaestrosActionPerformed
+
+    private void butCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butCerrarSesionActionPerformed
+        // TODO add your handling code here:
+        jToolBarMenuPrincipal.setVisible(false);
+        InicioSesion();
+        usuario = null;
+    }//GEN-LAST:event_butCerrarSesionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,6 +269,7 @@ public class VPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton butCerrarSesion;
     private javax.swing.JButton butCompras;
     private javax.swing.JButton butInformes;
     private javax.swing.JButton butMaestros;
@@ -211,7 +278,7 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
-    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JToolBar jToolBarMenuPrincipal;
     private javax.swing.JPanel panelVisor;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -16,21 +16,35 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="labTitulo" max="32767" attributes="0"/>
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="labTitulo" min="-2" pref="1000" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="labBusqueda" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="txtBusqueda" min="-2" pref="693" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jComboBoxPor" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                      <Component id="txtBusquedaBanco" min="-2" pref="447" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="jScrollPane2" pref="502" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="66" max="32767" attributes="0"/>
-              <Component id="jToolBarMenu" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="txtNombreBanco" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="butCancel" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Component id="jToolBar1" min="-2" pref="69" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -40,18 +54,27 @@
               <Component id="labTitulo" min="-2" pref="26" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jToolBar1" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtBusquedaBanco" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="labBusqueda" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtBusqueda" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                          <Component id="jComboBoxPor" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtNombreBanco" min="-2" pref="30" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="butCancel" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="jToolBarMenu" alignment="0" min="-2" pref="402" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="320" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -70,32 +93,7 @@
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="labBusqueda">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Busqueda"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtBusqueda">
-      <Properties>
-        <Property name="toolTipText" type="java.lang.String" value="Tipee lo que desea Buscar"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBoxPor">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="3">
-            <StringItem index="0" value="Por Nombre"/>
-            <StringItem index="1" value="Por Apellido"/>
-            <StringItem index="2" value="Por Username"/>
-          </StringArray>
-        </Property>
-        <Property name="toolTipText" type="java.lang.String" value="Seleccionar tipo de Busqueda"/>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
-    <Container class="javax.swing.JToolBar" name="jToolBarMenu">
+    <Container class="javax.swing.JToolBar" name="jToolBar1">
       <Properties>
         <Property name="floatable" type="boolean" value="false"/>
         <Property name="orientation" type="int" value="1"/>
@@ -111,8 +109,6 @@
               <Image iconType="3" name="/Recursos/r_ico_agregar_32.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Agregar"/>
-            <Property name="toolTipText" type="java.lang.String" value="Agregar un Nuevo Usuario"/>
-            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -121,6 +117,7 @@
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[69, 69]"/>
             </Property>
+            <Property name="name" type="java.lang.String" value="" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[69, 69]"/>
             </Property>
@@ -130,14 +127,22 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="butAgregarActionPerformed"/>
           </Events>
         </Component>
+        <Container class="javax.swing.JToolBar" name="jToolBar2">
+          <Properties>
+            <Property name="floatable" type="boolean" value="false"/>
+            <Property name="orientation" type="int" value="1"/>
+            <Property name="rollover" type="boolean" value="true"/>
+            <Property name="opaque" type="boolean" value="false"/>
+          </Properties>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
+        </Container>
         <Component class="javax.swing.JButton" name="butEditar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Recursos/r_ico_editar_32.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Editar"/>
-            <Property name="toolTipText" type="java.lang.String" value="Editar un Usuario Seleccionado"/>
-            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -146,6 +151,7 @@
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[69, 69]"/>
             </Property>
+            <Property name="name" type="java.lang.String" value="" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[69, 69]"/>
             </Property>
@@ -161,8 +167,6 @@
               <Image iconType="3" name="/Recursos/r_ico_desactivar_32.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Desactivar"/>
-            <Property name="toolTipText" type="java.lang.String" value="Desactivar un Usuario Seleccionado"/>
-            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -171,106 +175,70 @@
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[69, 69]"/>
             </Property>
+            <Property name="name" type="java.lang.String" value="" noResource="true"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[69, 69]"/>
             </Property>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="butDesactivarActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Component class="javax.swing.JTextField" name="txtBusquedaBanco">
       <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder title="Nombre"/>
-          </Border>
-        </Property>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
-        <Property name="name" type="java.lang.String" value="" noResource="true"/>
+        <Property name="toolTipText" type="java.lang.String" value="Tipee lo que desea Buscar"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labBusqueda">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Busqueda"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nombre Banco"/>
+      </Properties>
+      <AccessibilityProperties>
+        <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Agregar"/>
+      </AccessibilityProperties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtNombreBanco">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreBancoActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="butCancel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancelar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="butCancelActionPerformed"/>
+      </Events>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
 
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="labNombre" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="labNombre1" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtNombre" pref="290" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="txtNombre1" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="labNombreError1" min="-2" pref="24" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Component id="labNombreError" min="-2" pref="24" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="labNombre" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="txtNombre" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="labNombreError" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="labNombre1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="txtNombre1" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="labNombreError1" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="66" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="labNombre">
+        <Component class="javax.swing.JTable" name="jTableBancos">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Nombre"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtNombre">
-          <Events>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNombreKeyReleased"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="labNombreError">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Recursos/r_ico_interrogante_24.png"/>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+              <Table columnCount="4" rowCount="4">
+                <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                <Column editable="true" title="Title 4" type="java.lang.Object"/>
+              </Table>
             </Property>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="labNombre1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Nombre"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtNombre1">
           <Events>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNombre1KeyReleased"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableBancosMouseClicked"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="labNombreError1">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Recursos/r_ico_interrogante_24.png"/>
-            </Property>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>
