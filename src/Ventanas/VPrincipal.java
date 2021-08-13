@@ -8,6 +8,7 @@ package Ventanas;
 import Objetos.OUsuario;
 import Paneles.PInicioSesion;
 import Paneles.PMaestros;
+import Paneles.PVentas;
 import java.awt.BorderLayout;
 
 /**
@@ -63,19 +64,25 @@ public class VPrincipal extends javax.swing.JFrame {
         butVentas.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         butVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_ventas_32_2.png"))); // NOI18N
         butVentas.setText("Ventas");
+        butVentas.setToolTipText("Ventas");
         butVentas.setBorderPainted(false);
-        butVentas.setEnabled(false);
         butVentas.setFocusable(false);
         butVentas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         butVentas.setMaximumSize(new java.awt.Dimension(69, 69));
         butVentas.setMinimumSize(new java.awt.Dimension(69, 69));
         butVentas.setPreferredSize(new java.awt.Dimension(69, 69));
         butVentas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        butVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butVentasActionPerformed(evt);
+            }
+        });
         jToolBarMenuPrincipal.add(butVentas);
 
         butCompras.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         butCompras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_compras_32.png"))); // NOI18N
         butCompras.setText("Compras");
+        butCompras.setToolTipText("Compras");
         butCompras.setBorderPainted(false);
         butCompras.setEnabled(false);
         butCompras.setFocusable(false);
@@ -89,6 +96,7 @@ public class VPrincipal extends javax.swing.JFrame {
         butInformes.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         butInformes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_informes_32.png"))); // NOI18N
         butInformes.setText("Informes");
+        butInformes.setToolTipText("Informes");
         butInformes.setBorderPainted(false);
         butInformes.setEnabled(false);
         butInformes.setFocusable(false);
@@ -232,6 +240,19 @@ public class VPrincipal extends javax.swing.JFrame {
         InicioSesion();
         usuario = null;
     }//GEN-LAST:event_butCerrarSesionActionPerformed
+
+    private void butVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butVentasActionPerformed
+        // TODO add your handling code here:
+        PVentas PanelVentas = new PVentas();
+        PanelVentas.setVisible(true);
+        PanelVentas.setSize(1000, 631);
+        PanelVentas.setLocation(0, 0);
+        
+        panelVisor.removeAll();
+        panelVisor.add(PanelVentas, BorderLayout.CENTER);
+        panelVisor.revalidate();
+        panelVisor.repaint();
+    }//GEN-LAST:event_butVentasActionPerformed
 
     /**
      * @param args the command line arguments

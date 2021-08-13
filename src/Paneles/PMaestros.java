@@ -29,7 +29,7 @@ public class PMaestros extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jToolBar1 = new javax.swing.JToolBar();
+        jToolBarMenu = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -46,15 +46,16 @@ public class PMaestros extends javax.swing.JPanel {
         jButton15 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
         jButton17 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        labTitulo = new javax.swing.JLabel();
 
-        jToolBar1.setFloatable(false);
-        jToolBar1.setRollover(true);
-        jToolBar1.setOpaque(false);
+        jToolBarMenu.setFloatable(false);
+        jToolBarMenu.setRollover(true);
+        jToolBarMenu.setOpaque(false);
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_clientes_32.png"))); // NOI18N
         jButton1.setText("Clientes");
+        jButton1.setToolTipText("Clientes");
         jButton1.setBorderPainted(false);
         jButton1.setEnabled(false);
         jButton1.setFocusable(false);
@@ -63,11 +64,12 @@ public class PMaestros extends javax.swing.JPanel {
         jButton1.setMinimumSize(new java.awt.Dimension(69, 69));
         jButton1.setPreferredSize(new java.awt.Dimension(69, 69));
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton1);
+        jToolBarMenu.add(jButton1);
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_proveedores_32.png"))); // NOI18N
         jButton2.setText("Proveedores");
+        jButton2.setToolTipText("Proveedores");
         jButton2.setBorderPainted(false);
         jButton2.setEnabled(false);
         jButton2.setFocusable(false);
@@ -76,11 +78,12 @@ public class PMaestros extends javax.swing.JPanel {
         jButton2.setMinimumSize(new java.awt.Dimension(69, 69));
         jButton2.setPreferredSize(new java.awt.Dimension(69, 69));
         jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton2);
+        jToolBarMenu.add(jButton2);
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_articulos_32.png"))); // NOI18N
         jButton3.setText("Articulos");
+        jButton3.setToolTipText("Articulos");
         jButton3.setBorderPainted(false);
         jButton3.setEnabled(false);
         jButton3.setFocusable(false);
@@ -89,11 +92,12 @@ public class PMaestros extends javax.swing.JPanel {
         jButton3.setMinimumSize(new java.awt.Dimension(69, 69));
         jButton3.setPreferredSize(new java.awt.Dimension(69, 69));
         jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton3);
+        jToolBarMenu.add(jButton3);
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_packs_32.png"))); // NOI18N
         jButton4.setText("Packs");
+        jButton4.setToolTipText("Packs");
         jButton4.setBorderPainted(false);
         jButton4.setEnabled(false);
         jButton4.setFocusable(false);
@@ -102,11 +106,12 @@ public class PMaestros extends javax.swing.JPanel {
         jButton4.setMinimumSize(new java.awt.Dimension(69, 69));
         jButton4.setPreferredSize(new java.awt.Dimension(69, 69));
         jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton4);
+        jToolBarMenu.add(jButton4);
 
         butCanales.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         butCanales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_canales_32.png"))); // NOI18N
         butCanales.setText("Canales");
+        butCanales.setToolTipText("Canales");
         butCanales.setBorderPainted(false);
         butCanales.setFocusable(false);
         butCanales.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -119,11 +124,12 @@ public class PMaestros extends javax.swing.JPanel {
                 butCanalesActionPerformed(evt);
             }
         });
-        jToolBar1.add(butCanales);
+        jToolBarMenu.add(butCanales);
 
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_categorias_32.png"))); // NOI18N
         jButton6.setText("Categorias Articulos");
+        jButton6.setToolTipText("Categorias Articulos");
         jButton6.setBorderPainted(false);
         jButton6.setEnabled(false);
         jButton6.setFocusable(false);
@@ -132,11 +138,12 @@ public class PMaestros extends javax.swing.JPanel {
         jButton6.setMinimumSize(new java.awt.Dimension(69, 69));
         jButton6.setPreferredSize(new java.awt.Dimension(69, 69));
         jButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton6);
+        jToolBarMenu.add(jButton6);
 
         butComunas.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         butComunas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_comunas_32.png"))); // NOI18N
         butComunas.setText("Comunas");
+        butComunas.setToolTipText("Comunas");
         butComunas.setBorderPainted(false);
         butComunas.setFocusable(false);
         butComunas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -149,11 +156,12 @@ public class PMaestros extends javax.swing.JPanel {
                 butComunasActionPerformed(evt);
             }
         });
-        jToolBar1.add(butComunas);
+        jToolBarMenu.add(butComunas);
 
         butBancos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         butBancos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_bancos_32.png"))); // NOI18N
         butBancos.setText("Bancos");
+        butBancos.setToolTipText("Bancos");
         butBancos.setBorderPainted(false);
         butBancos.setFocusable(false);
         butBancos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -166,11 +174,12 @@ public class PMaestros extends javax.swing.JPanel {
                 butBancosActionPerformed(evt);
             }
         });
-        jToolBar1.add(butBancos);
+        jToolBarMenu.add(butBancos);
 
         jButton9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_estadoventas_32.png"))); // NOI18N
         jButton9.setText("Estado Ventas");
+        jButton9.setToolTipText("Estado Ventas");
         jButton9.setBorderPainted(false);
         jButton9.setEnabled(false);
         jButton9.setFocusable(false);
@@ -179,11 +188,12 @@ public class PMaestros extends javax.swing.JPanel {
         jButton9.setMinimumSize(new java.awt.Dimension(69, 69));
         jButton9.setPreferredSize(new java.awt.Dimension(69, 69));
         jButton9.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton9);
+        jToolBarMenu.add(jButton9);
 
         butUsuarios.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         butUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_usuarios_32.png"))); // NOI18N
         butUsuarios.setText("Usuarios");
+        butUsuarios.setToolTipText("Usuarios");
         butUsuarios.setBorderPainted(false);
         butUsuarios.setFocusable(false);
         butUsuarios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -196,7 +206,7 @@ public class PMaestros extends javax.swing.JPanel {
                 butUsuariosActionPerformed(evt);
             }
         });
-        jToolBar1.add(butUsuarios);
+        jToolBarMenu.add(butUsuarios);
 
         jLabel1.setText("PANEL MAESTROS");
 
@@ -239,26 +249,26 @@ public class PMaestros extends javax.swing.JPanel {
                     .addComponent(jButton17)))
         );
 
-        jLabel2.setBackground(new java.awt.Color(102, 102, 255));
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Maestros");
-        jLabel2.setOpaque(true);
+        labTitulo.setBackground(new java.awt.Color(102, 102, 255));
+        labTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        labTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labTitulo.setText("Maestros");
+        labTitulo.setOpaque(true);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+            .addComponent(jToolBarMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
             .addComponent(panelVisor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(labTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToolBarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelVisor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -333,8 +343,8 @@ public class PMaestros extends javax.swing.JPanel {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JToolBar jToolBarMenu;
+    private javax.swing.JLabel labTitulo;
     private javax.swing.JPanel panelVisor;
     // End of variables declaration//GEN-END:variables
 }
