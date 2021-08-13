@@ -16,17 +16,17 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jToolBar1" pref="1000" max="32767" attributes="0"/>
+          <Component id="jToolBarMenu" pref="1000" max="32767" attributes="0"/>
           <Component id="panelVisor" alignment="0" max="32767" attributes="0"/>
-          <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
+          <Component id="labTitulo" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jLabel2" min="-2" pref="25" max="-2" attributes="0"/>
+              <Component id="labTitulo" min="-2" pref="25" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jToolBar1" min="-2" pref="69" max="-2" attributes="0"/>
+              <Component id="jToolBarMenu" min="-2" pref="69" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="panelVisor" max="32767" attributes="0"/>
           </Group>
@@ -34,7 +34,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JToolBar" name="jToolBar1">
+    <Container class="javax.swing.JToolBar" name="jToolBarMenu">
       <Properties>
         <Property name="floatable" type="boolean" value="false"/>
         <Property name="rollover" type="boolean" value="true"/>
@@ -52,6 +52,7 @@
               <Image iconType="3" name="/Recursos/r_ico_clientes_32.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Clientes"/>
+            <Property name="toolTipText" type="java.lang.String" value="Clientes"/>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="enabled" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -77,6 +78,7 @@
               <Image iconType="3" name="/Recursos/r_ico_proveedores_32.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Proveedores"/>
+            <Property name="toolTipText" type="java.lang.String" value="Proveedores"/>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="enabled" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -102,6 +104,7 @@
               <Image iconType="3" name="/Recursos/r_ico_articulos_32.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Articulos"/>
+            <Property name="toolTipText" type="java.lang.String" value="Articulos"/>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="enabled" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -127,6 +130,7 @@
               <Image iconType="3" name="/Recursos/r_ico_packs_32.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Packs"/>
+            <Property name="toolTipText" type="java.lang.String" value="Packs"/>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="enabled" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -152,6 +156,7 @@
               <Image iconType="3" name="/Recursos/r_ico_canales_32.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Canales"/>
+            <Property name="toolTipText" type="java.lang.String" value="Canales"/>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -179,6 +184,7 @@
               <Image iconType="3" name="/Recursos/r_ico_categorias_32.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Categorias Articulos"/>
+            <Property name="toolTipText" type="java.lang.String" value="Categorias Articulos"/>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="enabled" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -204,6 +210,7 @@
               <Image iconType="3" name="/Recursos/r_ico_comunas_32.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Comunas"/>
+            <Property name="toolTipText" type="java.lang.String" value="Comunas"/>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -231,6 +238,7 @@
               <Image iconType="3" name="/Recursos/r_ico_bancos_32.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Bancos"/>
+            <Property name="toolTipText" type="java.lang.String" value="Bancos"/>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -258,6 +266,7 @@
               <Image iconType="3" name="/Recursos/r_ico_estadoventas_32.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Estado Ventas"/>
+            <Property name="toolTipText" type="java.lang.String" value="Estado Ventas"/>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="enabled" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
@@ -283,6 +292,7 @@
               <Image iconType="3" name="/Recursos/r_ico_usuarios_32.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Usuarios"/>
+            <Property name="toolTipText" type="java.lang.String" value="Usuarios"/>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -371,7 +381,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="labTitulo">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="66" red="66" type="rgb"/>
