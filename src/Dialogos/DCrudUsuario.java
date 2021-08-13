@@ -83,6 +83,11 @@ public class DCrudUsuario extends javax.swing.JDialog {
 
         labNombre.setText("Nombre");
 
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
         txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtNombreKeyReleased(evt);
@@ -380,6 +385,10 @@ public class DCrudUsuario extends javax.swing.JDialog {
             jToggleButtonEstado.setText("Desactivado");
         }
     }//GEN-LAST:event_jToggleButtonEstadoActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
 
     /**
      * @param args the command line arguments

@@ -23,7 +23,7 @@ public class CMysqlHelp {
     // Declaramos los datos de conexion a la bd
     private final String driver = "com.mysql.jdbc.Driver";
     private final String user = "root";
-    private final String pass = "";
+    private final String pass = "123";
     private final String url = "jdbc:mysql://localhost:3306/dreamgifts";
     private final String TagCodigoClase = "CMYSQL - %s";
     
