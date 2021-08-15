@@ -18,7 +18,7 @@ public class PVentas extends javax.swing.JPanel {
      */
     public PVentas() {
         initComponents();
-        butVentaActionPerformed(null);
+        //butVentaActionPerformed(null);
     }
 
     /**
