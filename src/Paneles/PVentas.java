@@ -81,6 +81,11 @@ public class PVentas extends javax.swing.JPanel {
         butConfirmacion.setMinimumSize(new java.awt.Dimension(69, 69));
         butConfirmacion.setPreferredSize(new java.awt.Dimension(69, 69));
         butConfirmacion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        butConfirmacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butConfirmacionActionPerformed(evt);
+            }
+        });
         jToolBarMenu.add(butConfirmacion);
 
         butListaDestinos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -94,6 +99,11 @@ public class PVentas extends javax.swing.JPanel {
         butListaDestinos.setMinimumSize(new java.awt.Dimension(69, 69));
         butListaDestinos.setPreferredSize(new java.awt.Dimension(69, 69));
         butListaDestinos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        butListaDestinos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butListaDestinosActionPerformed(evt);
+            }
+        });
         jToolBarMenu.add(butListaDestinos);
 
         butActualizacionDespacho.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -176,6 +186,32 @@ public class PVentas extends javax.swing.JPanel {
         panelVisor.revalidate();
         panelVisor.repaint();
     }//GEN-LAST:event_butVentaActionPerformed
+
+    private void butConfirmacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butConfirmacionActionPerformed
+        // TODO add your handling code here:
+        PConfirmacion PanelConfirmacion = new PConfirmacion();
+        PanelConfirmacion.setVisible(true);
+        PanelConfirmacion.setSize(1000, 525);
+        PanelConfirmacion.setLocation(0, 0);
+        
+        panelVisor.removeAll();
+        panelVisor.add(PanelConfirmacion, BorderLayout.CENTER);
+        panelVisor.revalidate();
+        panelVisor.repaint();
+    }//GEN-LAST:event_butConfirmacionActionPerformed
+
+    private void butListaDestinosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butListaDestinosActionPerformed
+        // TODO add your handling code here:
+        PListaDestinos PanelListaDestinos = new PListaDestinos();
+        PanelListaDestinos.setVisible(true);
+        PanelListaDestinos.setSize(1000, 525);
+        PanelListaDestinos.setLocation(0, 0);
+        
+        panelVisor.removeAll();
+        panelVisor.add(PanelListaDestinos, BorderLayout.CENTER);
+        panelVisor.revalidate();
+        panelVisor.repaint();
+    }//GEN-LAST:event_butListaDestinosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
