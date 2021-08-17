@@ -33,7 +33,7 @@ public class MTProveedor implements TableModel {
 
     @Override
     public int getColumnCount() {
-        return 2;
+        return 5;
     }
 
     @Override
@@ -44,9 +44,18 @@ public class MTProveedor implements TableModel {
             NombreColumna = "ID";
             break;*/
             case 0:
-                NombreColumna = "Nombre";
+                NombreColumna = "Razon Social";
                 break;
             case 1:
+                NombreColumna = "Nombre";
+                break;
+            case 2:
+                NombreColumna = "Telefono";
+                break;
+            case 3:
+                NombreColumna = "E-Mail";
+                break;
+            case 4:
                 NombreColumna = "Estado";
                 break;
             
@@ -75,10 +84,19 @@ public class MTProveedor implements TableModel {
             Valor = Comuna.get(rowIndex).getId();
             break;*/
             case 0:
-                Valor = Proveedor.get(rowIndex).getNombre();
+                Valor = Proveedor.get(rowIndex).getRsocial();
                 break;
             case 1:
-                Valor = Proveedor.get(rowIndex).isEstado() ? "Activado" : "Desactivado";
+                Valor = Proveedor.get(rowIndex).getNombre();
+                break;
+            case 2:
+                Valor = String.valueOf(Proveedor.get(rowIndex).getTelefono());
+                break;
+            case 3:
+                Valor = Proveedor.get(rowIndex).getCorreo();
+                break;    
+            case 4:
+                Valor = Proveedor.get(rowIndex).isEstado()? "Activado" : "Desactivado";
                 break;
         }
         

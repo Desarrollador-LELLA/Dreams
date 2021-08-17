@@ -11,26 +11,38 @@ package Objetos;
  */
 public class OProveedor {
     private int id;
+    private String rut;
+    private String rsocial;
     private String nombre;
     private int telefono;
-    private String Correo;
+    private String correo;
     private String direccion;
     private boolean estado;
 
     public OProveedor() {
     }
 
-    public OProveedor(int id, String nombre, int telefono, String Correo, String direccion, boolean estado) {
+    public OProveedor(int id, String rut, String rsocial, String nombre, int telefono, String Correo, String direccion, boolean estado) {
         this.id = id;
+        this.rut = rut;
+        this.rsocial = rsocial;
         this.nombre = nombre;
         this.telefono = telefono;
-        this.Correo = Correo;
+        this.correo = Correo;
         this.direccion = direccion;
         this.estado = estado;
     }
 
     public int getId() {
         return id;
+    }
+
+    public String getRut() {
+        return rut;
+    }
+
+    public String getRsocial() {
+        return rsocial;
     }
 
     public String getNombre() {
@@ -42,7 +54,7 @@ public class OProveedor {
     }
 
     public String getCorreo() {
-        return Correo;
+        return correo;
     }
 
     public String getDireccion() {
@@ -57,6 +69,14 @@ public class OProveedor {
         this.id = id;
     }
 
+    public void setRut(String rut) {
+        this.rut = rut;
+    }
+
+    public void setRsocial(String rsocial) {
+        this.rsocial = rsocial;
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -66,7 +86,7 @@ public class OProveedor {
     }
 
     public void setCorreo(String Correo) {
-        this.Correo = Correo;
+        this.correo = Correo;
     }
 
     public void setDireccion(String direccion) {
@@ -76,6 +96,7 @@ public class OProveedor {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
-            
+
+    
     
 }
