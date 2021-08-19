@@ -92,6 +92,8 @@ public class PVenta extends javax.swing.JPanel {
 
         labNumeroPedido.setText("Numero Pedido");
 
+        txtNumeroPedido.setEditable(false);
+
         labRut.setText("Rut");
 
         butBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_buscar_24.png"))); // NOI18N
@@ -100,7 +102,13 @@ public class PVenta extends javax.swing.JPanel {
 
         labNombreCliente.setText("Nombre Cliente");
 
+        txtNombreCliente.setEditable(false);
+
         labEmail.setText("Email");
+
+        txtEmail.setEditable(false);
+
+        txtTelefono.setEditable(false);
 
         labTelefono.setText("Telefono");
 
@@ -291,6 +299,12 @@ public class PVenta extends javax.swing.JPanel {
 
         labCodigo.setText("Codigo");
 
+        txtCodigo.setEditable(false);
+
+        txtNombrePack.setEditable(false);
+
+        txtPrecio.setEditable(false);
+
         labNombrePack.setText("Nombre Pack");
 
         labCantidad.setText("Cant.");
@@ -359,6 +373,7 @@ public class PVenta extends javax.swing.JPanel {
 
         labDetallePack.setText("Detalle del Pack");
 
+        txtTotal.setEditable(false);
         txtTotal.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         txtTotal.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtTotal.setText("$0");
