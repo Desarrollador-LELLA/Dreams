@@ -71,13 +71,17 @@ public class PMaestros extends javax.swing.JPanel {
         jButton2.setText("Proveedores");
         jButton2.setToolTipText("Proveedores");
         jButton2.setBorderPainted(false);
-        jButton2.setEnabled(false);
         jButton2.setFocusable(false);
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton2.setMaximumSize(new java.awt.Dimension(69, 69));
         jButton2.setMinimumSize(new java.awt.Dimension(69, 69));
         jButton2.setPreferredSize(new java.awt.Dimension(69, 69));
         jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jToolBarMenu.add(jButton2);
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -325,6 +329,17 @@ public class PMaestros extends javax.swing.JPanel {
         panelVisor.revalidate();
         panelVisor.repaint();
     }//GEN-LAST:event_butCanalesActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        PProveedor PanelCanales = new PProveedor();
+        PanelCanales.setVisible(true);
+        PanelCanales.setSize(1000, 525);
+        PanelCanales.setLocation(0, 0);
+        
+        panelVisor.removeAll();
+        panelVisor.add(PanelCanales, BorderLayout.CENTER);
+        panelVisor.revalidate();
+        panelVisor.repaint();    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
