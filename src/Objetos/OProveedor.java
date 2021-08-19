@@ -11,34 +11,32 @@ package Objetos;
  */
 public class OProveedor {
     private int id;
-    private String rut;
     private String rsocial;
     private String nombre;
+    private String apellido;
     private int telefono;
     private String correo;
     private String direccion;
+    private String rut;
     private boolean estado;
 
     public OProveedor() {
     }
 
-    public OProveedor(int id, String rut, String rsocial, String nombre, int telefono, String Correo, String direccion, boolean estado) {
+    public OProveedor(int id, String rsocial, String nombre, String apellido, int telefono, String correo, String direccion, String rut, boolean estado) {
         this.id = id;
-        this.rut = rut;
         this.rsocial = rsocial;
         this.nombre = nombre;
+        this.apellido = apellido;
         this.telefono = telefono;
-        this.correo = Correo;
+        this.correo = correo;
         this.direccion = direccion;
+        this.rut = rut;
         this.estado = estado;
     }
 
     public int getId() {
         return id;
-    }
-
-    public String getRut() {
-        return rut;
     }
 
     public String getRsocial() {
@@ -47,6 +45,10 @@ public class OProveedor {
 
     public String getNombre() {
         return nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
     }
 
     public int getTelefono() {
@@ -61,16 +63,16 @@ public class OProveedor {
         return direccion;
     }
 
+    public String getRut() {
+        return rut;
+    }
+
     public boolean isEstado() {
         return estado;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public void setRut(String rut) {
-        this.rut = rut;
     }
 
     public void setRsocial(String rsocial) {
@@ -81,22 +83,30 @@ public class OProveedor {
         this.nombre = nombre;
     }
 
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
     public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
 
-    public void setCorreo(String Correo) {
-        this.correo = Correo;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
 
+    public void setRut(String rut) {
+        this.rut = rut;
+    }
+
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
+    
 
-    
-    
+      
 }
