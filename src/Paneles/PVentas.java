@@ -117,6 +117,11 @@ public class PVentas extends javax.swing.JPanel {
         butActualizacionDespacho.setMinimumSize(new java.awt.Dimension(69, 69));
         butActualizacionDespacho.setPreferredSize(new java.awt.Dimension(69, 69));
         butActualizacionDespacho.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        butActualizacionDespacho.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butActualizacionDespachoActionPerformed(evt);
+            }
+        });
         jToolBarMenu.add(butActualizacionDespacho);
 
         jButton1.setText("jButton1");
@@ -212,6 +217,19 @@ public class PVentas extends javax.swing.JPanel {
         panelVisor.revalidate();
         panelVisor.repaint();
     }//GEN-LAST:event_butListaDestinosActionPerformed
+
+    private void butActualizacionDespachoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butActualizacionDespachoActionPerformed
+        // TODO add your handling code here:
+        PActualizacionDespacho PanelActualizacionDespacho = new PActualizacionDespacho();
+        PanelActualizacionDespacho.setVisible(true);
+        PanelActualizacionDespacho.setSize(1000, 525);
+        PanelActualizacionDespacho.setLocation(0, 0);
+        
+        panelVisor.removeAll();
+        panelVisor.add(PanelActualizacionDespacho, BorderLayout.CENTER);
+        panelVisor.revalidate();
+        panelVisor.repaint();
+    }//GEN-LAST:event_butActualizacionDespachoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
