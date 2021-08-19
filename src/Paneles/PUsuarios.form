@@ -261,7 +261,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Recursos/r_ico_adelante_32.png"/>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value="Avanzar Pagina"/>
+        <Property name="toolTipText" type="java.lang.String" value="Pagina Siguiente"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="butRetroseder">
@@ -269,7 +269,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Recursos/r_ico_atras_32.png"/>
         </Property>
-        <Property name="toolTipText" type="java.lang.String" value="Retroceder Pagina"/>
+        <Property name="toolTipText" type="java.lang.String" value="Pagina Anterior"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="labPagina">

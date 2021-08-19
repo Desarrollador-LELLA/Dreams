@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -80,18 +80,15 @@
           <Font name="Tahoma" size="11" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Lista Destinos para Despacho por D&#xed;a"/>
+        <Property name="text" type="java.lang.String" value="Actualizaci&#xf3;n Estado Despacho"/>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtBusqueda">
     </Component>
     <Container class="javax.swing.JToolBar" name="jToolBarMenu">
       <Properties>
         <Property name="floatable" type="boolean" value="false"/>
         <Property name="orientation" type="int" value="1"/>
         <Property name="rollover" type="boolean" value="true"/>
-        <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="opaque" type="boolean" value="false"/>
       </Properties>
 
@@ -157,6 +154,8 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
+    <Component class="javax.swing.JTextField" name="txtBusqueda">
+    </Component>
     <Component class="javax.swing.JLabel" name="labBusqueda">
       <Properties>
         <Property name="text" type="java.lang.String" value="Busqueda"/>
@@ -173,39 +172,19 @@
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="7" rowCount="0">
-                <Column editable="true" title="N&#xb0; Pedido" type="java.lang.Integer"/>
-                <Column editable="true" title="Pack" type="java.lang.String"/>
-                <Column editable="true" title="Destinatario" type="java.lang.String"/>
-                <Column editable="true" title="Fecha Entrega" type="java.lang.String"/>
-                <Column editable="true" title="Comuna" type="java.lang.String"/>
-                <Column editable="true" title="Direcci&#xf3;n" type="java.lang.String"/>
-                <Column editable="true" title="Hora Entrega" type="java.lang.String"/>
+                <Column editable="false" title="N&#xb0; Pedido" type="java.lang.Integer"/>
+                <Column editable="false" title="Pack" type="java.lang.String"/>
+                <Column editable="false" title="Destinatario" type="java.lang.String"/>
+                <Column editable="false" title="Fecha Entrega" type="java.lang.String"/>
+                <Column editable="false" title="Comuna" type="java.lang.String"/>
+                <Column editable="false" title="Hora Entrega" type="java.lang.String"/>
+                <Column editable="false" title="Estado Entrega" type="java.lang.String"/>
               </Table>
             </Property>
             <Property name="autoResizeMode" type="int" value="0"/>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
-                <Column maxWidth="-1" minWidth="-1" prefWidth="90" resizable="false">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="155" resizable="false">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="155" resizable="false">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="90" resizable="false">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="100" resizable="false">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="95" resizable="false">
                   <Title/>
                   <Editor/>
                   <Renderer/>
@@ -215,7 +194,27 @@
                   <Editor/>
                   <Renderer/>
                 </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="215" resizable="false">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="90" resizable="false">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="95" resizable="false">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="85" resizable="false">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="95" resizable="false">
                   <Title/>
                   <Editor/>
                   <Renderer/>

@@ -27,62 +27,64 @@ public class PListaDestinos extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jToolBar1 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
+        labTitulo = new javax.swing.JLabel();
+        txtBusqueda = new javax.swing.JTextField();
+        jToolBarMenu = new javax.swing.JToolBar();
+        butImprimir = new javax.swing.JButton();
+        butDescargar = new javax.swing.JButton();
+        jComboBoxPor = new javax.swing.JComboBox<>();
+        labBusqueda = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        jTableLista = new javax.swing.JTable();
+        butSiguiente = new javax.swing.JButton();
+        butAnterior = new javax.swing.JButton();
+        labPagina = new javax.swing.JLabel();
 
-        jLabel1.setBackground(new java.awt.Color(102, 102, 255));
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Lista Destinos para Despacho por Día");
-        jLabel1.setOpaque(true);
+        labTitulo.setBackground(new java.awt.Color(102, 102, 255));
+        labTitulo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        labTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labTitulo.setText("Lista Destinos para Despacho por Día");
+        labTitulo.setOpaque(true);
 
-        jToolBar1.setFloatable(false);
-        jToolBar1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jToolBar1.setRollover(true);
-        jToolBar1.setBorderPainted(false);
-        jToolBar1.setOpaque(false);
+        jToolBarMenu.setFloatable(false);
+        jToolBarMenu.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jToolBarMenu.setRollover(true);
+        jToolBarMenu.setBorderPainted(false);
+        jToolBarMenu.setOpaque(false);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_imprimir_32.png"))); // NOI18N
-        jButton1.setText("Imprimir");
-        jButton1.setActionCommand("Imprimir");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setMaximumSize(new java.awt.Dimension(69, 69));
-        jButton1.setMinimumSize(new java.awt.Dimension(69, 69));
-        jButton1.setPreferredSize(new java.awt.Dimension(69, 69));
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton1);
+        butImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_imprimir_32.png"))); // NOI18N
+        butImprimir.setText("Imprimir");
+        butImprimir.setToolTipText("Imprimir");
+        butImprimir.setFocusable(false);
+        butImprimir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        butImprimir.setMaximumSize(new java.awt.Dimension(69, 69));
+        butImprimir.setMinimumSize(new java.awt.Dimension(69, 69));
+        butImprimir.setPreferredSize(new java.awt.Dimension(69, 69));
+        butImprimir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBarMenu.add(butImprimir);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_descargar_32.png"))); // NOI18N
-        jButton2.setText("Descargar");
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setMaximumSize(new java.awt.Dimension(69, 69));
-        jButton2.setMinimumSize(new java.awt.Dimension(69, 69));
-        jButton2.setPreferredSize(new java.awt.Dimension(69, 69));
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton2);
+        butDescargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_descargar_32.png"))); // NOI18N
+        butDescargar.setText("Descargar");
+        butDescargar.setToolTipText("Descargar");
+        butDescargar.setFocusable(false);
+        butDescargar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        butDescargar.setMaximumSize(new java.awt.Dimension(69, 69));
+        butDescargar.setMinimumSize(new java.awt.Dimension(69, 69));
+        butDescargar.setPreferredSize(new java.awt.Dimension(69, 69));
+        butDescargar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBarMenu.add(butDescargar);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxPor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxPor.setToolTipText("Seleccion Tipo Busqueda");
 
-        jLabel2.setText("Busqueda");
+        labBusqueda.setText("Busqueda");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableLista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Registro Venta", "Pack", "Destinatario", "Fecha Entrega", "Comuna", "Dirección", "Hora Entrega"
+                "N° Pedido", "Pack", "Destinatario", "Fecha Entrega", "Comuna", "Dirección", "Hora Entrega"
             }
         ) {
             Class[] types = new Class [] {
@@ -93,93 +95,95 @@ public class PListaDestinos extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        jTable1.setRowHeight(30);
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(90);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(155);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setPreferredWidth(155);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setPreferredWidth(90);
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
-            jTable1.getColumnModel().getColumn(4).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(5).setResizable(false);
-            jTable1.getColumnModel().getColumn(5).setPreferredWidth(200);
-            jTable1.getColumnModel().getColumn(6).setResizable(false);
-            jTable1.getColumnModel().getColumn(6).setPreferredWidth(85);
+        jTableLista.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jTableLista.setRowHeight(30);
+        jScrollPane1.setViewportView(jTableLista);
+        if (jTableLista.getColumnModel().getColumnCount() > 0) {
+            jTableLista.getColumnModel().getColumn(0).setResizable(false);
+            jTableLista.getColumnModel().getColumn(0).setPreferredWidth(90);
+            jTableLista.getColumnModel().getColumn(1).setResizable(false);
+            jTableLista.getColumnModel().getColumn(1).setPreferredWidth(155);
+            jTableLista.getColumnModel().getColumn(2).setResizable(false);
+            jTableLista.getColumnModel().getColumn(2).setPreferredWidth(155);
+            jTableLista.getColumnModel().getColumn(3).setResizable(false);
+            jTableLista.getColumnModel().getColumn(3).setPreferredWidth(90);
+            jTableLista.getColumnModel().getColumn(4).setResizable(false);
+            jTableLista.getColumnModel().getColumn(4).setPreferredWidth(100);
+            jTableLista.getColumnModel().getColumn(5).setResizable(false);
+            jTableLista.getColumnModel().getColumn(5).setPreferredWidth(200);
+            jTableLista.getColumnModel().getColumn(6).setResizable(false);
+            jTableLista.getColumnModel().getColumn(6).setPreferredWidth(85);
         }
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_adelante_32.png"))); // NOI18N
+        butSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_adelante_32.png"))); // NOI18N
+        butSiguiente.setToolTipText("Pagina Siguiente");
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_atras_32.png"))); // NOI18N
+        butAnterior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_atras_32.png"))); // NOI18N
+        butAnterior.setToolTipText("Pagina Anterior");
 
-        jLabel3.setText("Pagina 1 de 100");
+        labPagina.setText("Pagina 1 de 100");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(labTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(labBusqueda)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1)
+                        .addComponent(txtBusqueda)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jComboBoxPor, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 901, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labPagina, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton4)
+                        .addComponent(butAnterior)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)))
+                        .addComponent(butSiguiente)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToolBarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jComboBoxPor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labBusqueda))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE))
+                            .addComponent(butSiguiente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(butAnterior, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labPagina, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jToolBarMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton butAnterior;
+    private javax.swing.JButton butDescargar;
+    private javax.swing.JButton butImprimir;
+    private javax.swing.JButton butSiguiente;
+    private javax.swing.JComboBox<String> jComboBoxPor;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JTable jTableLista;
+    private javax.swing.JToolBar jToolBarMenu;
+    private javax.swing.JLabel labBusqueda;
+    private javax.swing.JLabel labPagina;
+    private javax.swing.JLabel labTitulo;
+    private javax.swing.JTextField txtBusqueda;
     // End of variables declaration//GEN-END:variables
 }

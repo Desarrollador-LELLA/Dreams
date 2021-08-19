@@ -165,10 +165,10 @@ public class PUsuarios extends javax.swing.JPanel {
         jComboBoxPor.setToolTipText("Seleccionar tipo de Busqueda");
 
         butAvanzar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_adelante_32.png"))); // NOI18N
-        butAvanzar.setToolTipText("Avanzar Pagina");
+        butAvanzar.setToolTipText("Pagina Siguiente");
 
         butRetroseder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_atras_32.png"))); // NOI18N
-        butRetroseder.setToolTipText("Retroceder Pagina");
+        butRetroseder.setToolTipText("Pagina Anterior");
 
         labPagina.setText("Pagina 1 de 100");
 

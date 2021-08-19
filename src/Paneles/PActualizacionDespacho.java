@@ -9,12 +9,12 @@ package Paneles;
  *
  * @author TOULON-NOTE
  */
-public class PConfirmacion extends javax.swing.JPanel {
+public class PActualizacionDespacho extends javax.swing.JPanel {
 
     /**
-     * Creates new form PConfirmacion
+     * Creates new form PActualizacionDespacho
      */
-    public PConfirmacion() {
+    public PActualizacionDespacho() {
         initComponents();
     }
 
@@ -28,58 +28,69 @@ public class PConfirmacion extends javax.swing.JPanel {
     private void initComponents() {
 
         labTitulo = new javax.swing.JLabel();
-        labBusqueda = new javax.swing.JLabel();
-        txtBusqueda = new javax.swing.JTextField();
         jToolBarMenu = new javax.swing.JToolBar();
-        butEditar = new javax.swing.JButton();
+        butImprimir = new javax.swing.JButton();
+        butDescargar = new javax.swing.JButton();
         jComboBoxPor = new javax.swing.JComboBox<>();
+        txtBusqueda = new javax.swing.JTextField();
+        labBusqueda = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableLista = new javax.swing.JTable();
-        labSiguiente = new javax.swing.JButton();
+        butSiguiente = new javax.swing.JButton();
         butAnterior = new javax.swing.JButton();
         labPagina = new javax.swing.JLabel();
 
         labTitulo.setBackground(new java.awt.Color(102, 102, 255));
         labTitulo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         labTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labTitulo.setText("Ventas Pendientes de Pago");
+        labTitulo.setText("Actualización Estado Despacho");
         labTitulo.setOpaque(true);
-
-        labBusqueda.setText("Busqueda");
 
         jToolBarMenu.setFloatable(false);
         jToolBarMenu.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jToolBarMenu.setRollover(true);
-        jToolBarMenu.setBorderPainted(false);
         jToolBarMenu.setOpaque(false);
 
-        butEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_editar_32.png"))); // NOI18N
-        butEditar.setText("Editar");
-        butEditar.setToolTipText("Editar");
-        butEditar.setFocusable(false);
-        butEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        butEditar.setMaximumSize(new java.awt.Dimension(69, 69));
-        butEditar.setMinimumSize(new java.awt.Dimension(69, 69));
-        butEditar.setPreferredSize(new java.awt.Dimension(69, 69));
-        butEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBarMenu.add(butEditar);
+        butImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_imprimir_32.png"))); // NOI18N
+        butImprimir.setText("Imprimir");
+        butImprimir.setToolTipText("Imprimir");
+        butImprimir.setFocusable(false);
+        butImprimir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        butImprimir.setMaximumSize(new java.awt.Dimension(69, 69));
+        butImprimir.setMinimumSize(new java.awt.Dimension(69, 69));
+        butImprimir.setPreferredSize(new java.awt.Dimension(69, 69));
+        butImprimir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBarMenu.add(butImprimir);
+
+        butDescargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_descargar_32.png"))); // NOI18N
+        butDescargar.setText("Descargar");
+        butDescargar.setToolTipText("Descargar");
+        butDescargar.setFocusable(false);
+        butDescargar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        butDescargar.setMaximumSize(new java.awt.Dimension(69, 69));
+        butDescargar.setMinimumSize(new java.awt.Dimension(69, 69));
+        butDescargar.setPreferredSize(new java.awt.Dimension(69, 69));
+        butDescargar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBarMenu.add(butDescargar);
 
         jComboBoxPor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBoxPor.setToolTipText("Seleccion Tipo Busqueda");
+
+        labBusqueda.setText("Busqueda");
 
         jTableLista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "N° Pedido", "Fecha Pedido", "Nombre Cliente", "N° Telefono", "Monto", "Pack"
+                "N° Pedido", "Pack", "Destinatario", "Fecha Entrega", "Comuna", "Hora Entrega", "Estado Entrega"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -97,19 +108,21 @@ public class PConfirmacion extends javax.swing.JPanel {
             jTableLista.getColumnModel().getColumn(0).setResizable(false);
             jTableLista.getColumnModel().getColumn(0).setPreferredWidth(95);
             jTableLista.getColumnModel().getColumn(1).setResizable(false);
-            jTableLista.getColumnModel().getColumn(1).setPreferredWidth(85);
+            jTableLista.getColumnModel().getColumn(1).setPreferredWidth(200);
             jTableLista.getColumnModel().getColumn(2).setResizable(false);
-            jTableLista.getColumnModel().getColumn(2).setPreferredWidth(280);
+            jTableLista.getColumnModel().getColumn(2).setPreferredWidth(215);
             jTableLista.getColumnModel().getColumn(3).setResizable(false);
-            jTableLista.getColumnModel().getColumn(3).setPreferredWidth(85);
+            jTableLista.getColumnModel().getColumn(3).setPreferredWidth(90);
             jTableLista.getColumnModel().getColumn(4).setResizable(false);
-            jTableLista.getColumnModel().getColumn(4).setPreferredWidth(90);
+            jTableLista.getColumnModel().getColumn(4).setPreferredWidth(95);
             jTableLista.getColumnModel().getColumn(5).setResizable(false);
-            jTableLista.getColumnModel().getColumn(5).setPreferredWidth(240);
+            jTableLista.getColumnModel().getColumn(5).setPreferredWidth(85);
+            jTableLista.getColumnModel().getColumn(6).setResizable(false);
+            jTableLista.getColumnModel().getColumn(6).setPreferredWidth(95);
         }
 
-        labSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_adelante_32.png"))); // NOI18N
-        labSiguiente.setToolTipText("Pagina Siguiente");
+        butSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_adelante_32.png"))); // NOI18N
+        butSiguiente.setToolTipText("Pagina Siguiente");
 
         butAnterior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_atras_32.png"))); // NOI18N
         butAnterior.setToolTipText("Pagina Anterior");
@@ -121,7 +134,7 @@ public class PConfirmacion extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(labTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -136,7 +149,7 @@ public class PConfirmacion extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(butAnterior)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labSiguiente)))
+                        .addComponent(butSiguiente)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jToolBarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -147,16 +160,16 @@ public class PConfirmacion extends javax.swing.JPanel {
                 .addComponent(labTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxPor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labBusqueda)
-                    .addComponent(jComboBoxPor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labBusqueda))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(labSiguiente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(butSiguiente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(butAnterior, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(labPagina, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jToolBarMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 446, Short.MAX_VALUE))
@@ -167,14 +180,15 @@ public class PConfirmacion extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton butAnterior;
-    private javax.swing.JButton butEditar;
+    private javax.swing.JButton butDescargar;
+    private javax.swing.JButton butImprimir;
+    private javax.swing.JButton butSiguiente;
     private javax.swing.JComboBox<String> jComboBoxPor;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableLista;
     private javax.swing.JToolBar jToolBarMenu;
     private javax.swing.JLabel labBusqueda;
     private javax.swing.JLabel labPagina;
-    private javax.swing.JButton labSiguiente;
     private javax.swing.JLabel labTitulo;
     private javax.swing.JTextField txtBusqueda;
     // End of variables declaration//GEN-END:variables
