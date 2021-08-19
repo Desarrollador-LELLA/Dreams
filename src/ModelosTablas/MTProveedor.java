@@ -22,7 +22,7 @@ public class MTProveedor implements TableModel {
         Proveedor = proveedor;
     }
 
-    public List<OProveedor> getUsuarios() {
+    public List<OProveedor> getProveedor() {
         return Proveedor;
     }
     
