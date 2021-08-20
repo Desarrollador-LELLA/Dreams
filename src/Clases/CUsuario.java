@@ -145,7 +145,7 @@ public class CUsuario extends OUsuario {
                 while(Resultado.next()){
                     Listado.add(new OUsuario(Resultado.getInt(1), Resultado.getString(2), Resultado.getString(3), Resultado.getString(4), Resultado.getString(5), Resultado.getBoolean(6)));
                 }
-                Error = new OError(String.format(TagCodigoClase, 10), "Consulta Realizada Corectamente", null, true);
+                Error = new OError(String.format(TagCodigoClase, 10), "Consulta Realizada Correctamente", null, true);
                 
                 Resultado.close();
                 Preparando.close();
@@ -255,7 +255,7 @@ public class CUsuario extends OUsuario {
                 while(Resultado.next()){
                     Listado.add(new OUsuario(Resultado.getInt(1), Resultado.getString(2), Resultado.getString(3), Resultado.getString(4), Resultado.getString(5), Resultado.getBoolean(6)));
                 }
-                Error = new OError(String.format(TagCodigoClase, 10), "Consulta Realizada Corectamente", null, true);
+                Error = new OError(String.format(TagCodigoClase, 10), "Consulta Realizada Correctamente", null, true);
                 
                 Resultado.close();
                 Preparando.close();

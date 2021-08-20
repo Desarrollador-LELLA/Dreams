@@ -5,12 +5,17 @@
  */
 package Paneles;
 
+import Clases.CAnimacion;
+import Dialogos.DError;
+import java.util.TimerTask;
+
 /**
  *
  * @author TOULON-NOTE
  */
 public class PVenta extends javax.swing.JPanel {
-
+    
+    private CAnimacion Animacion = null;
     /**
      * Creates new form PVenta
      */
@@ -93,12 +98,25 @@ public class PVenta extends javax.swing.JPanel {
         labNumeroPedido.setText("Numero Pedido");
 
         txtNumeroPedido.setEditable(false);
+        txtNumeroPedido.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        txtRut.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtRut.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtRutKeyReleased(evt);
+            }
+        });
 
         labRut.setText("Rut");
 
         butBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_buscar_24.png"))); // NOI18N
         butBuscar.setToolTipText("Buscar Cliente");
         butBuscar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        butBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butBuscarActionPerformed(evt);
+            }
+        });
 
         labNombreCliente.setText("Nombre Cliente");
 
@@ -115,6 +133,11 @@ public class PVenta extends javax.swing.JPanel {
         butLimpiarDCS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_limpio_24.png"))); // NOI18N
         butLimpiarDCS.setToolTipText("Limpiar Datos Cliente Solicitante");
         butLimpiarDCS.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        butLimpiarDCS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butLimpiarDCSActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelDCSLayout = new javax.swing.GroupLayout(jPanelDCS);
         jPanelDCS.setLayout(jPanelDCSLayout);
@@ -197,7 +220,11 @@ public class PVenta extends javax.swing.JPanel {
 
         labDireccion.setText("Direccion");
 
+        txtHoraInicio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
         labHoraFin.setText("Hora Fin Entrega");
+
+        txtHoraFin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         labHoraInicio.setText("Hora Inicio Entrega");
 
@@ -211,6 +238,11 @@ public class PVenta extends javax.swing.JPanel {
         butLimpiarDD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_limpio_24.png"))); // NOI18N
         butLimpiarDD.setToolTipText("Limpiar Datos Destinatario");
         butLimpiarDD.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        butLimpiarDD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butLimpiarDDActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelDDLayout = new javax.swing.GroupLayout(jPanelDD);
         jPanelDD.setLayout(jPanelDDLayout);
@@ -302,6 +334,8 @@ public class PVenta extends javax.swing.JPanel {
         txtCodigo.setEditable(false);
 
         txtNombrePack.setEditable(false);
+
+        txtCantidad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         txtPrecio.setEditable(false);
 
@@ -545,6 +579,58 @@ public class PVenta extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void butLimpiarDCSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butLimpiarDCSActionPerformed
+        // TODO add your handling code here:
+        txtNumeroPedido.setText("");
+        txtRut.setText("");
+        txtNombreCliente.setText("");
+        txtTelefono.setText("");
+        txtEmail.setText("");
+    }//GEN-LAST:event_butLimpiarDCSActionPerformed
+
+    private void butLimpiarDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butLimpiarDDActionPerformed
+        // TODO add your handling code here:
+        txtNombreDestinatario.setText("");
+        txtHoraInicio.setText("");
+        txtFechaEntrega.setText("");
+        //jComboBoxComuna.setText("");
+        txtHoraFin.setText("");
+        txtDireccion.setText("");
+        txtSaludo.setText("");
+    }//GEN-LAST:event_butLimpiarDDActionPerformed
+
+    private void butBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butBuscarActionPerformed
+        // TODO add your handling code here:
+        boolean Validacion = true;
+        if (!txtRut.getText().trim().isEmpty()) {
+            //AGREGAR VALIDACION DE RUT EN IF @true
+            if (true) {
+                
+            } else {
+                //RELLENAR MENSAJE DE ERROR DE VALIDACION DE RUT
+                //DError Mensaje = new DError(new javax.swing.JDialog(), true);
+                //Mensaje.labMensaje.setText(Usuario.getError().getMensaje());
+                //Mensaje.setVisible(true);
+            }
+        }
+        else{
+            if(Animacion == null){
+                Animacion = new CAnimacion(txtRut);
+                Animacion.Ejecutar();
+                txtRut.setToolTipText("ERROR");
+                //txtRut.
+            }
+        }
+    }//GEN-LAST:event_butBuscarActionPerformed
+
+    private void txtRutKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRutKeyReleased
+        // TODO add your handling code here:
+        if(Animacion != null){
+            Animacion.Detener();
+            Animacion = null;
+            txtRut.setToolTipText(null);
+        }
+    }//GEN-LAST:event_txtRutKeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton butBuscar;
