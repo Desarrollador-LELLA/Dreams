@@ -169,9 +169,16 @@
         <Component class="javax.swing.JTextField" name="txtNumeroPedido">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
+            <Property name="horizontalAlignment" type="int" value="0"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtRut">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+          </Properties>
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtRutKeyReleased"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="labRut">
           <Properties>
@@ -190,6 +197,9 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="butBuscarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="labNombreCliente">
           <Properties>
@@ -233,6 +243,9 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="butLimpiarDCSActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -409,6 +422,9 @@
         <Component class="javax.swing.JTextField" name="txtDireccion">
         </Component>
         <Component class="javax.swing.JTextField" name="txtHoraInicio">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labHoraFin">
           <Properties>
@@ -416,6 +432,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtHoraFin">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labHoraInicio">
           <Properties>
@@ -455,6 +474,9 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="butLimpiarDDActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -572,6 +594,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtCantidad">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtPrecio">
           <Properties>
