@@ -347,15 +347,7 @@ public class PMaestros extends javax.swing.JPanel {
         panelVisor.repaint();    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        PEstadoVenta PanelCanales = new PEstadoVenta();
-        PanelCanales.setVisible(true);
-        PanelCanales.setSize(1000, 525);
-        PanelCanales.setLocation(0, 0);
-        
-        panelVisor.removeAll();
-        panelVisor.add(PanelCanales, BorderLayout.CENTER);
-        panelVisor.revalidate();
-        panelVisor.repaint();
+       
     }//GEN-LAST:event_jButton9ActionPerformed
 
 
