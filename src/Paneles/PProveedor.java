@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Paneles;
 
 import Clases.CProveedor;
+import Clases.CVerificar;
 import Dialogos.DCorrecto;
 import Dialogos.DError;
 import ModelosTablas.MTProveedor;
@@ -30,37 +27,39 @@ public class PProveedor extends javax.swing.JPanel {
         MTProveedor MUProveedor = new MTProveedor(new CProveedor().Listar());
         tableProveedor.setModel(MUProveedor);
     }
-      public Boolean Validar(){
-         Boolean lDevuelve = false;
-         int Ult= this.txtRut.getText().length();
-         int Largo = this.txtRut.getText().length() -3;//19068257-4
-         int Constante = 2;
-         int Suma = 0;
-         int Digito = 0;
-        
-             for (int i= Largo; i >=0; i--){
-             
-             Suma= Suma + Integer.parseInt(this.txtRut.getText().substring(i,i+1)) * Constante;
-             Constante = Constante + 1 ;
-             if (Constante == 8){
-                 Constante =2; }
-             }
-             String Ultimo = this.txtRut.getText().substring(Ult-1).toUpperCase();
-             Digito =11 - (Suma % 11);
-             if (Digito==10 && Ultimo.equals("K")){
-             lDevuelve=true;
-             }else{ 
-                 
-             if(Digito == 11 && Ultimo.equals("0")){
-             lDevuelve=true;    
-             }else{      
-             if (Digito == Integer.parseInt(Ultimo)){
-             lDevuelve=true;
-            } 
-          }     
-        }  
-       return lDevuelve;
-    }
+     
+    
+     /*public Boolean Validar(){
+     Boolean lDevuelve = false;
+     int Ult= this.txtRut.getText().length();
+     int Largo = this.txtRut.getText().length() -3;//19068257-4
+     int Constante = 2;
+     int Suma = 0;
+     int Digito = 0;
+     
+     for (int i= Largo; i >=0; i--){
+     
+     Suma= Suma + Integer.parseInt(this.txtRut.getText().substring(i,i+1)) * Constante;
+     Constante = Constante + 1 ;
+     if (Constante == 8){
+     Constante =2; }
+     }
+     String Ultimo = this.txtRut.getText().substring(Ult-1).toUpperCase();
+     Digito =11 - (Suma % 11);
+     if (Digito==10 && Ultimo.equals("K")){
+     lDevuelve=true;
+     }else{
+     
+     if(Digito == 11 && Ultimo.equals("0")){
+     lDevuelve=true;
+     }else{
+     if (Digito == Integer.parseInt(Ultimo)){
+     lDevuelve=true;
+     }
+     }
+     }
+     return lDevuelve;
+     }*/
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -331,7 +330,8 @@ public class PProveedor extends javax.swing.JPanel {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         
-        if (Validar()==true){
+        OError validar = new CVerificar (txtRut.getText()).Validar();
+        if (validar.isConfirma()){
             OError Insertar = new CProveedor(0, txtRSocial.getText(),txtNombre.getText(),txtApellido.getText(),Integer.parseInt(txtTelefono.getText()),txtEmail.getText(),txtDireccion.getText(),txtRut.getText(),true).Insertar();
             if (Insertar.isConfirma()){
             System.out.println("rut valido");
@@ -344,14 +344,14 @@ public class PProveedor extends javax.swing.JPanel {
             this.txtDireccion.setText("");
             this.txtRut.setText("");  
             } 
-        }
-         if (Validar()==false){
+        }else{
             System.out.println("rut invalido no se puede guardar");
             DError Mensaje = new DError(new javax.swing.JDialog(), true);
-            Mensaje.labMensaje.setText("RUT Invalido");
+            Mensaje.labMensaje.setText(validar.getMensaje());
             Mensaje.setVisible(true);
             ListarUsuarios(); 
-            }
+        }
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtRutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRutActionPerformed
