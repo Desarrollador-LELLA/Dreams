@@ -5,8 +5,10 @@
  */
 package Paneles;
 
-import Clases.CAnimacion;
+import Clases.CVerificar;
+import Objetos.OAnimacion;
 import Dialogos.DError;
+import Objetos.OError;
 import java.util.TimerTask;
 
 /**
@@ -15,7 +17,7 @@ import java.util.TimerTask;
  */
 public class PVenta extends javax.swing.JPanel {
     
-    private CAnimacion Animacion = null;
+    private OAnimacion AnimacionRut = null;
     /**
      * Creates new form PVenta
      */
@@ -603,31 +605,29 @@ public class PVenta extends javax.swing.JPanel {
         // TODO add your handling code here:
         boolean Validacion = true;
         if (!txtRut.getText().trim().isEmpty()) {
-            //AGREGAR VALIDACION DE RUT EN IF @true
-            if (true) {
+            OError Error = new CVerificar(txtRut.getText()).Validar();
+            if (Error.isConfirma()) {
                 
             } else {
-                //RELLENAR MENSAJE DE ERROR DE VALIDACION DE RUT
-                //DError Mensaje = new DError(new javax.swing.JDialog(), true);
-                //Mensaje.labMensaje.setText(Usuario.getError().getMensaje());
-                //Mensaje.setVisible(true);
+                DError Mensaje = new DError(new javax.swing.JDialog(), true);
+                Mensaje.labMensaje.setText(Error.getMensaje());
+                Mensaje.setVisible(true);
             }
         }
         else{
-            if(Animacion == null){
-                Animacion = new CAnimacion(txtRut);
-                Animacion.Ejecutar();
-                txtRut.setToolTipText("ERROR");
-                //txtRut.
+            if(AnimacionRut == null){
+                AnimacionRut = new OAnimacion(txtRut);
+                AnimacionRut.EjecutarTxt();
+                txtRut.setToolTipText("El Rut es Obligatorio");
             }
         }
     }//GEN-LAST:event_butBuscarActionPerformed
 
     private void txtRutKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRutKeyReleased
         // TODO add your handling code here:
-        if(Animacion != null){
-            Animacion.Detener();
-            Animacion = null;
+        if(AnimacionRut != null){
+            AnimacionRut.DetenerTxt();
+            AnimacionRut = null;
             txtRut.setToolTipText(null);
         }
     }//GEN-LAST:event_txtRutKeyReleased
