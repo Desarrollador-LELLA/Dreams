@@ -185,6 +185,7 @@ public class PMaestros extends javax.swing.JPanel {
         jButton9.setText("Estado Ventas");
         jButton9.setToolTipText("Estado Ventas");
         jButton9.setBorderPainted(false);
+        jButton9.setEnabled(false);
         jButton9.setFocusable(false);
         jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton9.setMaximumSize(new java.awt.Dimension(69, 69));
