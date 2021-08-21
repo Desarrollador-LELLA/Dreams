@@ -164,7 +164,7 @@
             </Component>
             <Component class="javax.swing.JToggleButton" name="jToggleButton4">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jToggleButton4"/>
+                <Property name="text" type="java.lang.String" value="Cancelar"/>
               </Properties>
             </Component>
             <Component class="java.awt.Label" name="label2">
