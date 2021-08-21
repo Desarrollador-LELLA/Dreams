@@ -69,7 +69,7 @@ public class PEstadoVenta extends javax.swing.JPanel {
 
         label1.setText("Estado Venta");
 
-        jToggleButton4.setText("jToggleButton4");
+        jToggleButton4.setText("Cancelar");
 
         label2.setText(" ID ");
 
