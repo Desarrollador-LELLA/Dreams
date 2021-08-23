@@ -35,7 +35,7 @@ public class CEstadoVenta extends OEstadoVenta {
         OError Error = Sql.Conectar();
         if(Error.isConfirma()){
             try {
-                Preparando = Sql.getCon().prepareStatement("SELECT * FROM comuna");
+                Preparando = Sql.getCon().prepareStatement("SELECT * FROM estado_venta");
                 Resultado = Preparando.executeQuery();
                 
                 while(Resultado.next()){
@@ -54,5 +54,91 @@ public class CEstadoVenta extends OEstadoVenta {
             }
         }
         return Listado;
+    }
+    
+    public OError Insertar(){
+        PreparedStatement Preparando = null;
+        CMysqlHelp Sql = new CMysqlHelp();
+        Error = Sql.Conectar();
+        if(Error.isConfirma()){
+            try {
+                Preparando = Sql.getCon().prepareStatement("INSERT INTO estado_venta(EST_DESCRIPCION, EST_ESTADO) VALUES(?,?)");
+                Preparando.setString(1, this.getNombre());
+                Preparando.setBoolean(2, this.getEstado());
+        
+                
+                if(!Preparando.execute()){
+                    Error = new OError(String.format(TagCodigoClase, 1), "Estado de venta Agregado Correctamente", null, true);
+                }
+                else{
+                    Error = new OError(String.format(TagCodigoClase, 2), "El Estado de venta no fue Agregado", null, false);
+                }
+                Preparando.close();
+            } catch (SQLException ex) {
+                System.out.println("Error: " + ex);
+                Error = new OError(String.format(TagCodigoClase, 3), String.format("<html>%s (Codigo %s)</html>", ex, String.format(TagCodigoClase, 3)), null, false);
+            }
+            finally{
+                Sql.Desconectar();
+            }
+        }
+        return Error;
+    }
+    
+    public OError Eliminar(){
+        PreparedStatement Preparando = null;
+        CMysqlHelp Sql = new CMysqlHelp();
+        Error = Sql.Conectar();
+        if(Error.isConfirma()){
+        
+            try{
+                Preparando = Sql.getCon().prepareStatement("UPDATE estado_venta SET EST_ESTADO = ? WHERE EST_ID_ESTADO = ?");
+                Preparando.setBoolean (1,this.getEstado());
+                Preparando.setInt(2, this.getId());
+                
+                if(!Preparando.execute()){
+                    Error = new OError(String.format(TagCodigoClase, 1), "Estado de Venta Desactivada Correctamente", null, true);
+                }
+                else{
+                    Error = new OError(String.format(TagCodigoClase, 2), "LEstado de Venta no fue Agregado", null, false);
+                }
+                Preparando.close();
+           
+            }catch(SQLException e){
+                System.out.println("error"+ e);
+                //Error = new OError(String.format(TagCodigoClase, 3), String.format("<html>%s (Codigo %s)</html>", e, String.format(TagCodigoClase, 3)), null, false);
+      
+            }finally{  
+                Sql.Desconectar();
+            }
+        
+        }
+        return Error;
+    }    
+    
+    public OError Editar() {
+        PreparedStatement Preparando = null;
+        CMysqlHelp Sql = new CMysqlHelp();
+        Error = Sql.Conectar();
+        if (Error.isConfirma()) {
+            try {
+                Preparando = Sql.getCon().prepareStatement("UPDATE estado_venta SET EST_DESCRIPCION = ?, EST_ESTADO = ? WHERE EST_ID_ESTADO  = ?");
+                Preparando.setString(1, this.getNombre());
+                Preparando.setInt(2, this.getId());
+
+                if (!Preparando.execute()) {
+                    Error = new OError(String.format(TagCodigoClase, 4), "Estado de Venta Editado Correctamente", null, true);
+                } else {
+                    Error = new OError(String.format(TagCodigoClase, 5), "El Estado de Venta no fue Editado", null, false);
+                }
+                Preparando.close();
+            } catch (SQLException ex) {
+                System.out.println("Error: " + ex);
+                Error = new OError(String.format(TagCodigoClase, 6), String.format("<html>%s (Codigo %s)</html>", ex, String.format(TagCodigoClase, 6)), null, false);
+            } finally {
+                Sql.Desconectar();
+            }
+        }
+        return Error;
     }
 }
