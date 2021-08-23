@@ -25,6 +25,9 @@ public class CCanal extends OCanales{
     public CCanal(int id, String nombre, Boolean estado) {
         super(id, nombre, estado);
     }
+
+   
+
     
     public OError Agregar(){
         PreparedStatement Preparando = null;
@@ -53,5 +56,9 @@ public class CCanal extends OCanales{
             }
         }
         return Error;
+    }
+
+    public OError Insertar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
