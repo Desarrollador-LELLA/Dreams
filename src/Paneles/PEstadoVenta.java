@@ -3,6 +3,8 @@ package Paneles;
 
 import Clases.CEstadoVenta;
 import ModelosTablas.MTEstadoVenta;
+import Objetos.OError;
+import Objetos.OEstadoVenta;
 
 /**
  *
@@ -20,7 +22,7 @@ public class PEstadoVenta extends javax.swing.JPanel {
     
     private void ListarUsuarios(){
         MTEstadoVenta MUsuarios = new MTEstadoVenta(new CEstadoVenta().Listar());
-        jTable1.setModel(MUsuarios);
+        tableEstadoVenta.setModel(MUsuarios);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,31 +35,41 @@ public class PEstadoVenta extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableEstadoVenta = new javax.swing.JTable();
         labTitulo = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         label1 = new java.awt.Label();
-        jTextField1 = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         jToggleButton4 = new javax.swing.JToggleButton();
         label2 = new java.awt.Label();
-        jTextField2 = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
         jToolBar2 = new javax.swing.JToolBar();
         btnEditar = new javax.swing.JButton();
         btnOcultar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableEstadoVenta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Nombre", "Estado"
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.Boolean.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tableEstadoVenta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableEstadoVentaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tableEstadoVenta);
 
         labTitulo.setBackground(new java.awt.Color(102, 102, 255));
         labTitulo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -73,7 +85,7 @@ public class PEstadoVenta extends javax.swing.JPanel {
 
         label2.setText(" ID ");
 
-        jTextField2.setEditable(false);
+        txtId.setEditable(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -83,11 +95,11 @@ public class PEstadoVenta extends javax.swing.JPanel {
                 .addGap(46, 46, 46)
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75)
                 .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(98, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -101,13 +113,13 @@ public class PEstadoVenta extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(label2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtId, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                 .addComponent(jToggleButton4)
                 .addGap(16, 16, 16))
@@ -207,20 +219,51 @@ public class PEstadoVenta extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-    
+        OEstadoVenta Esta = ((MTEstadoVenta) tableEstadoVenta.getModel()).getUsuarios().get(tableEstadoVenta.getSelectedRow());
+        OError Insertar = new CEstadoVenta(Esta.getId(), txtNombre.getText(),true).Editar();
+     
+        if (Insertar.isConfirma()) {
+            ListarUsuarios();
+            System.out.println(Insertar.getMensaje());
+            txtNombre.setText("");
+
+        } else {
+            System.out.println(Insertar.getMensaje());
+
+        }
 
         //int Editar = new CComuna(Integer.valueOf(txtId.getText()), txtNombre.getText(), true).Editar();
         //int Editar = this.comuna.Editar(txtId.getText(), txtNombre.getText(), txtCodigo.getText());
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnOcultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOcultarActionPerformed
+        OEstadoVenta bank = ((MTEstadoVenta) tableEstadoVenta.getModel()).getUsuarios().get(tableEstadoVenta.getSelectedRow());
+        OError Error = new CEstadoVenta(bank.getId(), bank.getNombre(), false).Eliminar();
+        if (Error.isConfirma()) {
+            ListarUsuarios();
+            this.txtNombre.setText("");
+        } else {
+            System.out.println(Error.getMensaje());
+        }
        
     }//GEN-LAST:event_btnOcultarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        
+        OError Insertar = new CEstadoVenta(0, txtNombre.getText(),true).Insertar();
+        if (Insertar.isConfirma()){
+            ListarUsuarios();
+            this.txtNombre.setText("");
+            this.txtId.setText("");
+        }
         //OError Insertar = this.Obj.Insertar(txtNombre.getText(),txtCodigo.getText());
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void tableEstadoVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableEstadoVentaMouseClicked
+         MTEstadoVenta comuna = (MTEstadoVenta)tableEstadoVenta.getModel();
+       // comuna.getUsuarios().get(datos.getSelectedRow()).getId();
+        txtId.setText(String.valueOf(comuna.getUsuarios().get(tableEstadoVenta.getSelectedRow()).getId()));
+        txtNombre.setText(comuna.getUsuarios().get(tableEstadoVenta.getSelectedRow()).getNombre());
+    }//GEN-LAST:event_tableEstadoVentaMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -230,13 +273,13 @@ public class PEstadoVenta extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JToggleButton jToggleButton4;
     private javax.swing.JToolBar jToolBar2;
     private javax.swing.JLabel labTitulo;
     private java.awt.Label label1;
     private java.awt.Label label2;
+    private javax.swing.JTable tableEstadoVenta;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

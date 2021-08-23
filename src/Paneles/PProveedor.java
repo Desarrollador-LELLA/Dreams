@@ -129,6 +129,11 @@ public class PProveedor extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tableProveedor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableProveedorMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tableProveedor);
 
         txtRut.addActionListener(new java.awt.event.ActionListener() {
@@ -378,8 +383,45 @@ public class PProveedor extends javax.swing.JPanel {
     }//GEN-LAST:event_btnDesactivarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
+        OError validar = new CVerificar(txtRut.getText()).Validar();
+        OProveedor provee = ((MTProveedor) tableProveedor.getModel()).getProveedor().get(tableProveedor.getSelectedRow());
+        if (validar.isConfirma()) {
+            OError Editar = new CProveedor(Integer.valueOf(provee.getId()), txtRSocial.getText(), txtNombre.getText(), txtApellido.getText(), Integer.parseInt(txtTelefono.getText()), txtEmail.getText(), txtDireccion.getText(), txtRut.getText(), true).Editar();
+
+            if (Editar.isConfirma()) {
+
+                ListarUsuarios();
+                this.txtRSocial.setText("");
+                this.txtNombre.setText("");
+                this.txtApellido.setText("");
+                this.txtTelefono.setText("");
+                this.txtEmail.setText("");
+                this.txtDireccion.setText("");
+                this.txtRut.setText("");
+            }
+        } else {
+            System.out.println("rut invalido no se puede guardar");
+            DError Mensaje = new DError(new javax.swing.JDialog(), true);
+            Mensaje.labMensaje.setText(validar.getMensaje());
+            Mensaje.setVisible(true);
+            ListarUsuarios();
+        }
     }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void tableProveedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableProveedorMouseClicked
+        MTProveedor provee = (MTProveedor) tableProveedor.getModel();
+        // comuna.getUsuarios().get(datos.getSelectedRow()).getId();
+
+        txtRSocial.setText(provee.getProveedor().get(tableProveedor.getSelectedRow()).getNombre());
+        txtNombre.setText(provee.getProveedor().get(tableProveedor.getSelectedRow()).getNombre());
+        txtApellido.setText(provee.getProveedor().get(tableProveedor.getSelectedRow()).getNombre());
+        txtTelefono.setText(provee.getProveedor().get(tableProveedor.getSelectedRow()).getNombre());
+        txtEmail.setText(provee.getProveedor().get(tableProveedor.getSelectedRow()).getNombre());
+        txtDireccion.setText(provee.getProveedor().get(tableProveedor.getSelectedRow()).getNombre());
+        txtRut.setText(provee.getProveedor().get(tableProveedor.getSelectedRow()).getNombre());
+
+        
+    }//GEN-LAST:event_tableProveedorMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
