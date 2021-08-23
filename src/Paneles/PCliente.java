@@ -234,6 +234,11 @@ public class PCliente extends javax.swing.JPanel {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_limpio_24.png"))); // NOI18N
         jButton1.setText("Limpiar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_agregar_32.png"))); // NOI18N
         jButton2.setText("Guardar");
@@ -484,6 +489,16 @@ public class PCliente extends javax.swing.JPanel {
         NombreCanal.setText("");
         CodeCanal.setText("");
     }//GEN-LAST:event_butDesactivar1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        textnombre.setText("");
+        txtfono.setText("");
+        txtMail.setText("");
+        txtCelu.setText("");
+        txtRUN.setText("");
+        txtNacimiento.setText("");
+        txtRRSS.setText("");
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
