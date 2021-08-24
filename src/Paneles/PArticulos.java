@@ -326,7 +326,7 @@ public class PArticulos extends javax.swing.JPanel {
 
     private void butEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butEditarActionPerformed
         // TODO add your handling code here:
-        //Editar
+        //Editarasa
         OArticulos arti = ((MTArticulos) JTableArticulos.getModel()).getArticulo().get(JTableArticulos.getSelectedRow());
         CArticulos Articulo = new CArticulos(arti.getId(), txtNombreArticulo.getText(), Integer.parseInt(txtStock.getText()), txtFVencimiento.getText(), true, CBoxCatArticulo.getSelectedIndex());
         OError error1 = Articulo.Editar();
