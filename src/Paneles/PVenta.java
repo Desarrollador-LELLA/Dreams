@@ -637,8 +637,7 @@ public class PVenta extends javax.swing.JPanel {
     }//GEN-LAST:event_txtRutKeyReleased
 
     private void LlenarComboComuna(){
-        MCComuna Tester = new MCComuna(new CComuna().Listar());
-        jComboBoxComuna.setModel(new MCComuna(new CComuna().Listar()));
+        jComboBoxComuna.setModel(new MCComuna(new CComuna().ListarActivos()));
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

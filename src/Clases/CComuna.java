@@ -206,7 +206,7 @@ public class CComuna extends OComuna {
         Error = Sql.Conectar();
         if(Error.isConfirma()){
             try {
-                Preparando = Sql.getCon().prepareStatement("SELECT * FROM comuna WHERE COM_ESTADO = false");
+                Preparando = Sql.getCon().prepareStatement("SELECT * FROM comuna WHERE COM_ESTADO = true");
                 Resultado = Preparando.executeQuery();
                 
                 while(Resultado.next()){
