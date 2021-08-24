@@ -32,10 +32,10 @@ public class PMaestros extends javax.swing.JPanel {
         jToolBarMenu = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        BurArticulos = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         butCanales = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        ButCategoria = new javax.swing.JButton();
         butComunas = new javax.swing.JButton();
         butBancos = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
@@ -84,19 +84,23 @@ public class PMaestros extends javax.swing.JPanel {
         });
         jToolBarMenu.add(jButton2);
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_articulos_32.png"))); // NOI18N
-        jButton3.setText("Articulos");
-        jButton3.setToolTipText("Articulos");
-        jButton3.setBorderPainted(false);
-        jButton3.setEnabled(false);
-        jButton3.setFocusable(false);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setMaximumSize(new java.awt.Dimension(69, 69));
-        jButton3.setMinimumSize(new java.awt.Dimension(69, 69));
-        jButton3.setPreferredSize(new java.awt.Dimension(69, 69));
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBarMenu.add(jButton3);
+        BurArticulos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BurArticulos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_articulos_32.png"))); // NOI18N
+        BurArticulos.setText("Articulos");
+        BurArticulos.setToolTipText("Articulos");
+        BurArticulos.setBorderPainted(false);
+        BurArticulos.setFocusable(false);
+        BurArticulos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BurArticulos.setMaximumSize(new java.awt.Dimension(69, 69));
+        BurArticulos.setMinimumSize(new java.awt.Dimension(69, 69));
+        BurArticulos.setPreferredSize(new java.awt.Dimension(69, 69));
+        BurArticulos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        BurArticulos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BurArticulosActionPerformed(evt);
+            }
+        });
+        jToolBarMenu.add(BurArticulos);
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_packs_32.png"))); // NOI18N
@@ -130,19 +134,23 @@ public class PMaestros extends javax.swing.JPanel {
         });
         jToolBarMenu.add(butCanales);
 
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_categorias_32.png"))); // NOI18N
-        jButton6.setText("Categorias Articulos");
-        jButton6.setToolTipText("Categorias Articulos");
-        jButton6.setBorderPainted(false);
-        jButton6.setEnabled(false);
-        jButton6.setFocusable(false);
-        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton6.setMaximumSize(new java.awt.Dimension(69, 69));
-        jButton6.setMinimumSize(new java.awt.Dimension(69, 69));
-        jButton6.setPreferredSize(new java.awt.Dimension(69, 69));
-        jButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBarMenu.add(jButton6);
+        ButCategoria.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        ButCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_categorias_32.png"))); // NOI18N
+        ButCategoria.setText("Categorias Articulos");
+        ButCategoria.setToolTipText("Categorias Articulos");
+        ButCategoria.setBorderPainted(false);
+        ButCategoria.setFocusable(false);
+        ButCategoria.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ButCategoria.setMaximumSize(new java.awt.Dimension(69, 69));
+        ButCategoria.setMinimumSize(new java.awt.Dimension(69, 69));
+        ButCategoria.setPreferredSize(new java.awt.Dimension(69, 69));
+        ButCategoria.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButCategoriaActionPerformed(evt);
+            }
+        });
+        jToolBarMenu.add(ButCategoria);
 
         butComunas.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         butComunas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_comunas_32.png"))); // NOI18N
@@ -295,6 +303,7 @@ public class PMaestros extends javax.swing.JPanel {
         panelVisor.repaint();
     }//GEN-LAST:event_butUsuariosActionPerformed
 
+    
     private void butBancosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butBancosActionPerformed
         // TODO add your handling code here:
         PBancos PanelBancos = new PBancos();
@@ -357,8 +366,36 @@ public class PMaestros extends javax.swing.JPanel {
         panelVisor.repaint(); 
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    private void ButCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButCategoriaActionPerformed
+        // TODO add your handling code here:
+        PCatArticulos PanelCatArticulos = new PCatArticulos();
+        PanelCatArticulos.setVisible(true);
+        PanelCatArticulos.setSize(1000, 525);
+        PanelCatArticulos.setLocation(0, 0);
+        
+        panelVisor.removeAll();
+        panelVisor.add(PanelCatArticulos, BorderLayout.CENTER);
+        panelVisor.revalidate();
+        panelVisor.repaint(); 
+    }//GEN-LAST:event_ButCategoriaActionPerformed
+
+    private void BurArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BurArticulosActionPerformed
+        // TODO add your handling code here:
+        PArticulos PanelArticulos = new PArticulos();
+        PanelArticulos.setVisible(true);
+        PanelArticulos.setSize(1000, 525);
+        PanelArticulos.setLocation(0, 0);
+        
+        panelVisor.removeAll();
+        panelVisor.add(PanelArticulos, BorderLayout.CENTER);
+        panelVisor.revalidate();
+        panelVisor.repaint(); 
+    }//GEN-LAST:event_BurArticulosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BurArticulos;
+    private javax.swing.JButton ButCategoria;
     private javax.swing.JButton butBancos;
     private javax.swing.JButton butCanales;
     private javax.swing.JButton butComunas;
@@ -369,9 +406,7 @@ public class PMaestros extends javax.swing.JPanel {
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JToolBar jToolBarMenu;
