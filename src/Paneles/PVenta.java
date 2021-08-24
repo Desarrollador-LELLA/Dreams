@@ -5,9 +5,12 @@
  */
 package Paneles;
 
+import Clases.CComuna;
 import Clases.CVerificar;
 import Objetos.OAnimacion;
 import Dialogos.DError;
+import ModeloCombox.MCComuna;
+import ModelosTablas.MTComuna;
 import Objetos.OError;
 import java.util.TimerTask;
 
@@ -23,6 +26,7 @@ public class PVenta extends javax.swing.JPanel {
      */
     public PVenta() {
         initComponents();
+        LlenarComboComuna();
     }
 
     /**
@@ -632,6 +636,11 @@ public class PVenta extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtRutKeyReleased
 
+    private void LlenarComboComuna(){
+        MCComuna Tester = new MCComuna(new CComuna().Listar());
+        jComboBoxComuna.setModel(new MCComuna(new CComuna().Listar()));
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton butBuscar;
     private javax.swing.JButton butCancelar;
