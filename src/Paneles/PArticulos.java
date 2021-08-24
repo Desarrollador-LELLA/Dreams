@@ -5,6 +5,11 @@
  */
 package Paneles;
 
+import Clases.CArticulos;
+import ModelosTablas.MTArticulos;
+import Objetos.OArticulos;
+import Objetos.OError;
+
 /**
  *
  * @author Usuario
@@ -16,6 +21,7 @@ public class PArticulos extends javax.swing.JPanel {
      */
     public PArticulos() {
         initComponents();
+        ListarArticulos();
     }
 
     /**
@@ -29,26 +35,27 @@ public class PArticulos extends javax.swing.JPanel {
 
         labTitulo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        textField1 = new java.awt.TextField();
+        txtNombreArticulo = new java.awt.TextField();
         jLabel2 = new javax.swing.JLabel();
-        textField2 = new java.awt.TextField();
+        txtStock = new java.awt.TextField();
         jLabel3 = new javax.swing.JLabel();
-        textField3 = new java.awt.TextField();
+        txtMarca = new java.awt.TextField();
         jLabel4 = new javax.swing.JLabel();
-        textField4 = new java.awt.TextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        txtCodArticulo = new java.awt.TextField();
+        CBoxCatArticulo = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        textField5 = new java.awt.TextField();
-        textField6 = new java.awt.TextField();
+        txtFVencimiento = new java.awt.TextField();
+        txtProveedor = new java.awt.TextField();
         jToolBar1 = new javax.swing.JToolBar();
         butAgregar = new javax.swing.JButton();
         jToolBar2 = new javax.swing.JToolBar();
         butEditar = new javax.swing.JButton();
         butDesactivar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        JTableArticulos = new javax.swing.JTable();
+        ButCancelar = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(1000, 502));
 
@@ -60,48 +67,44 @@ public class PArticulos extends javax.swing.JPanel {
 
         jLabel1.setText("Nombre Articulo:");
 
-        textField1.setBackground(new java.awt.Color(0, 0, 0));
-        textField1.setText("textField1");
-        textField1.addActionListener(new java.awt.event.ActionListener() {
+        txtNombreArticulo.setBackground(new java.awt.Color(255, 255, 255));
+        txtNombreArticulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField1ActionPerformed(evt);
+                txtNombreArticuloActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Unidades:");
+        jLabel2.setText("Stock:");
 
-        textField2.setBackground(new java.awt.Color(0, 0, 0));
-        textField2.setText("textField1");
-        textField2.addActionListener(new java.awt.event.ActionListener() {
+        txtStock.setBackground(new java.awt.Color(255, 255, 255));
+        txtStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField2ActionPerformed(evt);
+                txtStockActionPerformed(evt);
             }
         });
 
         jLabel3.setText("Marca:");
 
-        textField3.setBackground(new java.awt.Color(0, 0, 0));
-        textField3.setText("textField1");
-        textField3.addActionListener(new java.awt.event.ActionListener() {
+        txtMarca.setBackground(new java.awt.Color(255, 255, 255));
+        txtMarca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField3ActionPerformed(evt);
+                txtMarcaActionPerformed(evt);
             }
         });
 
         jLabel4.setText("Codigo Articulo:");
 
-        textField4.setBackground(new java.awt.Color(0, 0, 0));
-        textField4.setText("textField1");
-        textField4.addActionListener(new java.awt.event.ActionListener() {
+        txtCodArticulo.setBackground(new java.awt.Color(255, 255, 255));
+        txtCodArticulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textField4ActionPerformed(evt);
+                txtCodArticuloActionPerformed(evt);
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        CBoxCatArticulo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Accesorios", "Bebestibles", "Comestibles" }));
+        CBoxCatArticulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                CBoxCatArticuloActionPerformed(evt);
             }
         });
 
@@ -111,11 +114,9 @@ public class PArticulos extends javax.swing.JPanel {
 
         jLabel7.setText("Proveedor:");
 
-        textField5.setBackground(new java.awt.Color(0, 0, 0));
-        textField5.setText("textField5");
+        txtFVencimiento.setBackground(new java.awt.Color(255, 255, 255));
 
-        textField6.setBackground(new java.awt.Color(0, 0, 0));
-        textField6.setText("textField6");
+        txtProveedor.setBackground(new java.awt.Color(255, 255, 255));
 
         jToolBar1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jToolBar1.setRollover(true);
@@ -171,64 +172,73 @@ public class PArticulos extends javax.swing.JPanel {
         });
         jToolBar2.add(butDesactivar);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        JTableArticulos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Código", "Descripción", "Stock", "F. Vencimiento", "Estado", "Categoria"
+                "Código", "Descripción", "Stock", "F. Vencimiento", "Estado", "Proveedor", "Categoria"
             }
         ));
-        jTable1.setFillsViewportHeight(true);
-        jScrollPane1.setViewportView(jTable1);
+        JTableArticulos.setFillsViewportHeight(true);
+        jScrollPane1.setViewportView(JTableArticulos);
+
+        ButCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_limpio_24.png"))); // NOI18N
+        ButCancelar.setFocusable(false);
+        ButCancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ButCancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        ButCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addGap(14, 14, 14)
-                                    .addComponent(textField4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(14, 14, 14)
+                                .addComponent(txtCodArticulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtNombreArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel3))
-                                .addGap(42, 42, 42)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(textField2, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
-                                    .addComponent(textField3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(164, 164, 164)
+                                    .addComponent(txtStock, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
+                                    .addComponent(txtMarca, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE))))
+                        .addGap(70, 70, 70)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(textField5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(textField6, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(CBoxCatArticulo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtFVencimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 873, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ButCancelar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
+            .addComponent(labTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,32 +249,34 @@ public class PArticulos extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtNombreArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(textField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
-                            .addComponent(textField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtCodArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CBoxCatArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(textField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtFVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(textField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7)))
-                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ButCancelar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
@@ -273,35 +285,39 @@ public class PArticulos extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void textField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField1ActionPerformed
+    private void txtNombreArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreArticuloActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textField1ActionPerformed
+    }//GEN-LAST:event_txtNombreArticuloActionPerformed
 
-    private void textField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField2ActionPerformed
+    private void txtStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStockActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textField2ActionPerformed
+    }//GEN-LAST:event_txtStockActionPerformed
 
-    private void textField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField3ActionPerformed
+    private void txtMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMarcaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textField3ActionPerformed
+    }//GEN-LAST:event_txtMarcaActionPerformed
 
-    private void textField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField4ActionPerformed
+    private void txtCodArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodArticuloActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textField4ActionPerformed
+    }//GEN-LAST:event_txtCodArticuloActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void CBoxCatArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBoxCatArticuloActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+        
+        
+    }//GEN-LAST:event_CBoxCatArticuloActionPerformed
 
     private void butAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butAgregarActionPerformed
         // TODO add your handling code here:
         //Agregar
-        CBanco banc = new CBanco(0, txtNombreBanco.getText(), true);
-        OError error = banc.Agregar();
+        CArticulos arti = new CArticulos(0, txtNombreArticulo.getText(), Integer.parseInt(txtStock.getText()), txtFVencimiento.getText(), true, CBoxCatArticulo.getSelectedIndex());
+        OError error = arti.Insertar();
         if (error.isConfirma()) {
-            ListarBancos();
+            ListarArticulos();
             System.out.println(error.getMensaje());
-            txtNombreBanco.setText("");
+            txtNombreArticulo.setText("");
+            txtStock.setText("");
+            txtFVencimiento.setText("");
 
         } else {
             System.out.println(error.getMensaje());
@@ -311,13 +327,15 @@ public class PArticulos extends javax.swing.JPanel {
     private void butEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butEditarActionPerformed
         // TODO add your handling code here:
         //Editar
-        OBanco bank = ((MTBancos) jTableBancos.getModel()).getBancos().get(jTableBancos.getSelectedRow());
-        CBanco banc1 = new CBanco(bank.getId(), txtNombreBanco.getText(), true);
-        OError error1 = banc1.Editar();
+        OArticulos arti = ((MTArticulos) JTableArticulos.getModel()).getArticulo().get(JTableArticulos.getSelectedRow());
+        CArticulos Articulo = new CArticulos(arti.getId(), txtNombreArticulo.getText(), Integer.parseInt(txtStock.getText()), txtFVencimiento.getText(), true, CBoxCatArticulo.getSelectedIndex());
+        OError error1 = Articulo.Editar();
         if (error1.isConfirma()) {
-            ListarBancos();
+            ListarArticulos();
             System.out.println(error1.getMensaje());
-            txtNombreBanco.setText("");
+            txtNombreArticulo.setText("");
+            txtStock.setText("");
+            txtFVencimiento.setText("");
 
         } else {
             System.out.println(error1.getMensaje());
@@ -327,22 +345,37 @@ public class PArticulos extends javax.swing.JPanel {
 
     private void butDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butDesactivarActionPerformed
         //TODO add your handling code here:
-        OBanco bank = ((MTBancos) jTableBancos.getModel()).getBancos().get(jTableBancos.getSelectedRow());
-        OError Error = new CBanco(bank.getId(), bank.getNombre(), false).Eliminar();
+        OArticulos bank = ((MTArticulos) JTableArticulos.getModel()).getArticulo().get(JTableArticulos.getSelectedRow());
+        OError Error = new CArticulos(bank.getId(), bank.getDescripcion(), bank.getStock(), bank.getFecha(), false, bank.getCategoria()).Eliminar();
         if (Error.isConfirma()) {
-            ListarBancos();
-            this.txtNombreBanco.setText("");
+            ListarArticulos();
+            txtNombreArticulo.setText("");
+            txtStock.setText("");
+            txtFVencimiento.setText("");
         } else {
             System.out.println(Error.getMensaje());
         }
     }//GEN-LAST:event_butDesactivarActionPerformed
 
-
+    private void ButCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButCancelarActionPerformed
+        // TODO add your handling code here:
+        txtNombreArticulo.setText("");
+        txtStock.setText("");
+        txtFVencimiento.setText("");
+    }//GEN-LAST:event_ButCancelarActionPerformed
+    
+       public void ListarArticulos() {
+        MTArticulos ModeloBanco = new MTArticulos(new CArticulos().Listar());
+        JTableArticulos.setModel(ModeloBanco);
+       }
+       
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButCancelar;
+    private javax.swing.JComboBox<String> CBoxCatArticulo;
+    private javax.swing.JTable JTableArticulos;
     private javax.swing.JButton butAgregar;
     private javax.swing.JButton butDesactivar;
     private javax.swing.JButton butEditar;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -351,15 +384,14 @@ public class PArticulos extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JToolBar jToolBar2;
     private javax.swing.JLabel labTitulo;
-    private java.awt.TextField textField1;
-    private java.awt.TextField textField2;
-    private java.awt.TextField textField3;
-    private java.awt.TextField textField4;
-    private java.awt.TextField textField5;
-    private java.awt.TextField textField6;
+    private java.awt.TextField txtCodArticulo;
+    private java.awt.TextField txtFVencimiento;
+    private java.awt.TextField txtMarca;
+    private java.awt.TextField txtNombreArticulo;
+    private java.awt.TextField txtProveedor;
+    private java.awt.TextField txtStock;
     // End of variables declaration//GEN-END:variables
 }

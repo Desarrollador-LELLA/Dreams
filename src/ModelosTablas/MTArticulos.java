@@ -6,6 +6,7 @@
 package ModelosTablas;
 
 import Objetos.OArticulos;
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import java.util.List;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
@@ -87,7 +88,7 @@ public class MTArticulos implements TableModel {
                 Valor = Articulo.get(rowIndex).getDescripcion();
                 break;
             case 1:
-                Valor = Articulo.get(rowIndex).getStock();
+                Valor = toString(Articulo.get(rowIndex).getStock()); //Problemas con Int, no se puede convertir a String
                 break;
             case 2:
                 Valor = String.valueOf(Articulo.get(rowIndex).getFecha());
@@ -96,7 +97,7 @@ public class MTArticulos implements TableModel {
                 Valor = Articulo.get(rowIndex).isEstado()? "Activado" : "Desactivado";
                 break;    
             case 4:
-                Valor = Articulo.get(rowIndex).getCategoria();
+                Valor = toString(Articulo.get(rowIndex).getCategoria()); //Problemas con Int, no se puede convertir a String
                 break;
         }
         
@@ -115,6 +116,10 @@ public class MTArticulos implements TableModel {
     @Override
     public void removeTableModelListener(TableModelListener l) {
         //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private String toString(int stock) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
    
