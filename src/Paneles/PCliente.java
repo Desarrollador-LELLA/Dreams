@@ -5,6 +5,10 @@
  */
 package Paneles;
 
+import Clases.CVerificar;
+import Dialogos.DError;
+import Objetos.OError;
+
 /**
  *
  * @author Usuario
@@ -243,6 +247,11 @@ public class PCliente extends javax.swing.JPanel {
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_agregar_32.png"))); // NOI18N
         jButton2.setText("Guardar");
         jButton2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -447,16 +456,27 @@ public class PCliente extends javax.swing.JPanel {
 
     private void txtRutKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRutKeyReleased
         // TODO add your handling code here:
-        if(AnimacionRut != null){
+        /*if(AnimacionRut != null){
             AnimacionRut.DetenerTxt();
             AnimacionRut = null;
             txtRut.setToolTipText(null);
-        }
+        }*/
     }//GEN-LAST:event_txtRutKeyReleased
 
     private void butBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butBuscarActionPerformed
         // TODO add your handling code here:
-        boolean Validacion = true;
+    }//GEN-LAST:event_butBuscarActionPerformed
+
+    private void butLimpiarDCSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butLimpiarDCSActionPerformed
+        // TODO add your handling c
+    }//GEN-LAST:event_butLimpiarDCSActionPerformed
+
+    private void butDesactivar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butDesactivar1ActionPerformed
+
+    }//GEN-LAST:event_butDesactivar1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    boolean Validacion = true;
         if (!txtRut.getText().trim().isEmpty()) {
             OError Error = new CVerificar(txtRut.getText()).Validar();
             if (Error.isConfirma()) {
@@ -468,36 +488,16 @@ public class PCliente extends javax.swing.JPanel {
             }
         }
         else{
-            if(AnimacionRut == null){
+            /* if(AnimacionRut == null){
                 AnimacionRut = new OAnimacion(txtRut);
                 AnimacionRut.EjecutarTxt();
                 txtRut.setToolTipText("El Rut es Obligatorio");
             }
-        }
-    }//GEN-LAST:event_butBuscarActionPerformed
-
-    private void butLimpiarDCSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butLimpiarDCSActionPerformed
-        // TODO add your handling code here:
-        txtNumeroPedido.setText("");
-        txtRut.setText("");
-        txtNombreCliente.setText("");
-        txtTelefono.setText("");
-        txtEmail.setText("");
-    }//GEN-LAST:event_butLimpiarDCSActionPerformed
-
-    private void butDesactivar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butDesactivar1ActionPerformed
-        NombreCanal.setText("");
-        CodeCanal.setText("");
-    }//GEN-LAST:event_butDesactivar1ActionPerformed
+        */}
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        textnombre.setText("");
-        txtfono.setText("");
-        txtMail.setText("");
-        txtCelu.setText("");
-        txtRUN.setText("");
-        txtNacimiento.setText("");
-        txtRRSS.setText("");
+        // TODO add your handling code here
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

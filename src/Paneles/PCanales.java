@@ -6,6 +6,10 @@
 package Paneles;
 
 import Clases.CCanal;
+import Dialogos.DCorrecto;
+import Dialogos.DError;
+import ModelosTablas.MTCanales;
+import Objetos.OCanales;
 import Objetos.OError;
 /**
  *
@@ -20,8 +24,10 @@ public class PCanales extends javax.swing.JPanel {
      */
     public PCanales() {
         initComponents();
+        ListarCanales();
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,7 +44,7 @@ public class PCanales extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         labTitulo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable = new javax.swing.JTable();
+        tableRedes = new javax.swing.JTable();
         panel1 = new java.awt.Panel();
         label1 = new java.awt.Label();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -118,28 +124,9 @@ public class PCanales extends javax.swing.JPanel {
         labTitulo.setText("Canales");
         labTitulo.setOpaque(true);
 
-        jTable.setModel(new javax.swing.table.DefaultTableModel(
+        tableRedes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Código RRSS", "Nombre RRSS", "Estado"
@@ -148,12 +135,29 @@ public class PCanales extends javax.swing.JPanel {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-        jScrollPane1.setViewportView(jTable);
+        tableRedes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableRedesMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tableRedes);
+        if (tableRedes.getColumnModel().getColumnCount() > 0) {
+            tableRedes.getColumnModel().getColumn(0).setResizable(false);
+            tableRedes.getColumnModel().getColumn(1).setResizable(false);
+            tableRedes.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         label1.setText("Nombre Canal");
 
@@ -169,6 +173,7 @@ public class PCanales extends javax.swing.JPanel {
             }
         });
 
+        CodeCanal.setEditable(false);
         jScrollPane6.setViewportView(CodeCanal);
 
         label4.setText("Estado");
@@ -351,6 +356,27 @@ public class PCanales extends javax.swing.JPanel {
     }//GEN-LAST:event_butDesactivar1ActionPerformed
 
     private void butAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butAgregarActionPerformed
+        int combo = Combobox.getSelectedIndex();
+        boolean auxiliar=true;
+        if(combo == 0){
+            auxiliar = false;
+        }else{
+            auxiliar = true;
+        }
+        CCanal red = new CCanal(0, NombreCanal.getText(), auxiliar);
+        OError error = red.Agregar();
+        if (error.isConfirma()) {
+            ListarCanales();
+            System.out.println(error.getMensaje());
+            NombreCanal.setText("");
+            DCorrecto Mensaje = new DCorrecto(new javax.swing.JDialog(), true);
+                        Mensaje.labMensaje.setText(error.getMensaje());
+                        Mensaje.setVisible(true);
+        } else {
+            DError Mensaje = new DError(new javax.swing.JDialog(), true);
+                        Mensaje.labMensaje.setText(error.getMensaje());
+                        Mensaje.setVisible(true);
+        }
     }//GEN-LAST:event_butAgregarActionPerformed
 
     private void ComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboboxActionPerformed
@@ -358,14 +384,78 @@ public class PCanales extends javax.swing.JPanel {
     }//GEN-LAST:event_ComboboxActionPerformed
 
     private void butEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butEditarActionPerformed
-        // TODO add your handling code here:
+        int combo = Combobox.getSelectedIndex();
+        boolean auxiliar=true;
+        if(combo == 0){
+            auxiliar = false;
+        }else{
+            auxiliar = true;
+        }
+        OCanales canal = ((MTCanales) tableRedes.getModel()).getCanal().get(tableRedes.getSelectedRow());
+        CCanal canal1 = new CCanal(canal.getId(), NombreCanal.getText(), auxiliar);
+        OError error1 = canal1.Editar();
+        if (error1.isConfirma()) {
+            ListarCanales();
+            System.out.println(error1.getMensaje());
+            NombreCanal.setText("");
+            CodeCanal.setText("");
+            DCorrecto Mensaje = new DCorrecto(new javax.swing.JDialog(), true);
+                        Mensaje.labMensaje.setText(error1.getMensaje());
+                        Mensaje.setVisible(true);
+        } else {
+            System.out.println(error1.getMensaje());
+            DError Mensaje = new DError(new javax.swing.JDialog(), true);
+                        Mensaje.labMensaje.setText(error1.getMensaje());
+                        Mensaje.setVisible(true);    
+        }
     }//GEN-LAST:event_butEditarActionPerformed
 
     private void butDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butDesactivarActionPerformed
-        // TODO add your handling code here:
+        OCanales canal = ((MTCanales) tableRedes.getModel()).getCanal().get(tableRedes.getSelectedRow());
+        OError Error = new CCanal(canal.getId(), canal.getNombre(), false).Eliminar();
+        if (Error.isConfirma()) {
+            ListarCanales();
+            System.out.println(Error.getMensaje());
+            NombreCanal.setText("");
+            CodeCanal.setText("");
+            DCorrecto Mensaje = new DCorrecto(new javax.swing.JDialog(), true);
+                        Mensaje.labMensaje.setText(Error.getMensaje());
+                        Mensaje.setVisible(true);
+        } else {
+            System.out.println(Error.getMensaje());
+            DError Mensaje = new DError(new javax.swing.JDialog(), true);
+                        Mensaje.labMensaje.setText(Error.getMensaje());
+                        Mensaje.setVisible(true); 
+        }
     }//GEN-LAST:event_butDesactivarActionPerformed
 
+    private void tableRedesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableRedesMouseClicked
+        OCanales red = ((MTCanales) tableRedes.getModel()).getCanal().get(tableRedes.getSelectedRow());
+        NombreCanal.setText(red.getNombre());
+        CodeCanal.setText( String.valueOf(red.getId()));
+        if (red.getEstado()){
+            Combobox.setSelectedIndex(1);
+        }
+        else{
+            Combobox.setSelectedIndex(0);
+        }      
+    }//GEN-LAST:event_tableRedesMouseClicked
 
+public void ListarCanales() {
+        MTCanales ModeloCanales = new MTCanales(new CCanal().Listar());
+        tableRedes.setModel(ModeloCanales);
+
+        //jTableBancos.setPreferredSize(new java.awt.Dimension(891, 0));
+        tableRedes.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tableRedes);
+        jScrollPane1.setViewportView(tableRedes);
+        if (tableRedes.getColumnModel().getColumnCount() > 0) {
+            tableRedes.getColumnModel().getColumn(0).setResizable(false);
+            tableRedes.getColumnModel().getColumn(1).setResizable(false);
+            tableRedes.getColumnModel().getColumn(2).setResizable(false);
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextPane CodeCanal;
     private javax.swing.JComboBox<String> Combobox;
@@ -380,7 +470,6 @@ public class PCanales extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTable jTable;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JToolBar jToolBar1;
@@ -391,23 +480,8 @@ public class PCanales extends javax.swing.JPanel {
     private java.awt.Label label3;
     private java.awt.Label label4;
     private java.awt.Panel panel1;
+    private javax.swing.JTable tableRedes;
     // End of variables declaration//GEN-END:variables
 
-    private void ListarCanal() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    private Boolean auxiliar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private static class txtCanal {
-
-        private static void setText(String string) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        public txtCanal() {
-        }
-    }
 }

@@ -71,8 +71,11 @@ public class MTCanales implements TableModel{
         switch(columnIndex){
             
             case 0:
-                Valor = Canal.get(rowIndex).getNombre();
+                Valor =  String.valueOf(Canal.get(rowIndex).getId());
                 break;
+            case 1:
+                Valor = Canal.get(rowIndex).getNombre(); 
+                break; 
             case 2:
                 Valor = Canal.get(rowIndex).getEstado() ? "Activado" : "Desactivado";
                 break;
