@@ -22,6 +22,10 @@ public class CComuna extends OComuna {
     public CComuna(int id, String nombre, boolean estado) {
         super(id, nombre, estado);
     }
+
+    public OError getError() {
+        return Error;
+    }
     
     /*public OError Insertar(){
     CMysqlHelp con = new CMysqlHelp();
@@ -193,8 +197,33 @@ public class CComuna extends OComuna {
         }
         return Listado;
     }
-
-  
-           
     
+    public List<OComuna> ListarActivos(){
+        PreparedStatement Preparando = null;
+        ResultSet Resultado = null;
+        List<OComuna> Listado = new ArrayList();
+        CMysqlHelp Sql = new CMysqlHelp();
+        Error = Sql.Conectar();
+        if(Error.isConfirma()){
+            try {
+                Preparando = Sql.getCon().prepareStatement("SELECT * FROM comuna WHERE COM_ESTADO = false");
+                Resultado = Preparando.executeQuery();
+                
+                while(Resultado.next()){
+                    Listado.add(new OComuna(Resultado.getInt(1), Resultado.getString(2), Resultado.getBoolean(3)));
+                }
+                Error = new OError(String.format(TagCodigoClase, 10), "Consulta Realizada Corectamente", null, true);
+                
+                Resultado.close();
+                Preparando.close();
+            } catch (SQLException ex) {
+                System.out.println("Error: " + ex);
+                Error = new OError(String.format(TagCodigoClase, 11), String.format("<html>%s (Codigo %s)</html>", ex, String.format(TagCodigoClase, 11)), null, false);
+            }
+            finally{
+                Sql.Desconectar();
+            }
+        }
+        return Listado;
+    }
 }
