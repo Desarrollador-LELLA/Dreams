@@ -276,7 +276,7 @@ public class PCatArticulos extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
   public void ListarCategoria() {
-        MTCatArticulos ModeloCategoria = new MTCatArticulos(new CCatArticulos().Listar());
+        MTCatArticulos ModeloCategoria = new MTCatArticulos(new CCatArticulos().Listar(""));
         jTableCArticulos.setModel(ModeloCategoria);
 
         jTableCArticulos.getTableHeader().setReorderingAllowed(false);

@@ -6,7 +6,10 @@
 package Paneles;
 
 import Clases.CArticulos;
+import Clases.CCatArticulos;
+import ModeloCombox.MCCatArticulos;
 import ModelosTablas.MTArticulos;
+import ModelosTablas.MTCatArticulos;
 import Objetos.OArticulos;
 import Objetos.OError;
 
@@ -22,6 +25,7 @@ public class PArticulos extends javax.swing.JPanel {
     public PArticulos() {
         initComponents();
         ListarArticulos();
+        LlenarComboCatArticulos();
     }
 
     /**
@@ -46,7 +50,6 @@ public class PArticulos extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        txtFVencimiento = new java.awt.TextField();
         txtProveedor = new java.awt.TextField();
         jToolBar1 = new javax.swing.JToolBar();
         butAgregar = new javax.swing.JButton();
@@ -56,6 +59,7 @@ public class PArticulos extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         JTableArticulos = new javax.swing.JTable();
         ButCancelar = new javax.swing.JButton();
+        txtFVencimiento = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(1000, 502));
 
@@ -113,8 +117,6 @@ public class PArticulos extends javax.swing.JPanel {
         jLabel6.setText("Fecha de Vencimiento:");
 
         jLabel7.setText("Proveedor:");
-
-        txtFVencimiento.setBackground(new java.awt.Color(255, 255, 255));
 
         txtProveedor.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -196,6 +198,8 @@ public class PArticulos extends javax.swing.JPanel {
             }
         });
 
+        txtFVencimiento.setBackground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -229,8 +233,8 @@ public class PArticulos extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(CBoxCatArticulo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtFVencimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                            .addComponent(txtFVencimiento)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 873, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ButCancelar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
@@ -267,10 +271,10 @@ public class PArticulos extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(CBoxCatArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtFVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(txtFVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -303,10 +307,12 @@ public class PArticulos extends javax.swing.JPanel {
 
     private void CBoxCatArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBoxCatArticuloActionPerformed
         // TODO add your handling code here:
-        
-        
     }//GEN-LAST:event_CBoxCatArticuloActionPerformed
-
+    
+    private void LlenarComboCatArticulos(){
+        CBoxCatArticulo.setModel(new MCCatArticulos(new CCatArticulos().Listar("Activos")));
+    }
+    
     private void butAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butAgregarActionPerformed
         // TODO add your handling code here:
         //Agregar
@@ -388,7 +394,7 @@ public class PArticulos extends javax.swing.JPanel {
     private javax.swing.JToolBar jToolBar2;
     private javax.swing.JLabel labTitulo;
     private java.awt.TextField txtCodArticulo;
-    private java.awt.TextField txtFVencimiento;
+    private javax.swing.JTextField txtFVencimiento;
     private java.awt.TextField txtMarca;
     private java.awt.TextField txtNombreArticulo;
     private java.awt.TextField txtProveedor;
