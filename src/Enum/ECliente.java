@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Objetos;
+package Enum;
 
 /**
  *
- * @author Usuario
+ * @author TOULON-NOTE
  */
-public class OPack {
-    
+public enum ECliente {
+    TODOS,
+    TODOS_ACTIVOS,
+    SOLO_BUSCA_RUT    
 }
