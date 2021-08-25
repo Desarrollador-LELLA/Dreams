@@ -169,44 +169,24 @@ public class CComuna extends OComuna {
      *
      * @return
      */
-    public List<OComuna> Listar(){
+    public List<OComuna> Listar(String Tipo){
+        String sql = "";
         PreparedStatement Preparando = null;
         ResultSet Resultado = null;
         List<OComuna> Listado = new ArrayList();
         CMysqlHelp Sql = new CMysqlHelp();
         OError Error = Sql.Conectar();
         if(Error.isConfirma()){
-            try {
-                Preparando = Sql.getCon().prepareStatement("SELECT * FROM comuna");
-                Resultado = Preparando.executeQuery();
-                
-                while(Resultado.next()){
-                    Listado.add(new OComuna(Resultado.getInt(1), Resultado.getString(2), Resultado.getBoolean(3)));
-                }
-                Error = new OError(String.format(TagCodigoClase, 10), "Consulta Realizada Corectamente", null, true);
-                
-                Resultado.close();
-                Preparando.close();
-            } catch (SQLException ex) {
-                System.out.println("Error: " + ex);
-                Error = new OError(String.format(TagCodigoClase, 11), String.format("<html>%s (Codigo %s)</html>", ex, String.format(TagCodigoClase, 11)), null, false);
+            switch(Tipo){
+                case "Activos":
+                    sql = "SELECT * FROM comuna WHERE COM_ESTADO = true";
+                    break;
+                default:
+                    sql = "SELECT * FROM comuna";
+                    break;
             }
-            finally{
-                Sql.Desconectar();
-            }
-        }
-        return Listado;
-    }
-    
-    public List<OComuna> ListarActivos(){
-        PreparedStatement Preparando = null;
-        ResultSet Resultado = null;
-        List<OComuna> Listado = new ArrayList();
-        CMysqlHelp Sql = new CMysqlHelp();
-        Error = Sql.Conectar();
-        if(Error.isConfirma()){
             try {
-                Preparando = Sql.getCon().prepareStatement("SELECT * FROM comuna WHERE COM_ESTADO = true");
+                Preparando = Sql.getCon().prepareStatement(sql);
                 Resultado = Preparando.executeQuery();
                 
                 while(Resultado.next()){
