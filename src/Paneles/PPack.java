@@ -28,29 +28,377 @@ public class PPack extends javax.swing.JPanel {
     private void initComponents() {
 
         labTitulo = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        txtBusquedaCArticulos = new javax.swing.JTextField();
+        labBusqueda = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableCArticulos = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        labBusqueda1 = new javax.swing.JLabel();
+        txtBusquedaCArticulos1 = new javax.swing.JTextField();
+        butAgregar = new javax.swing.JButton();
+        butCancelar = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTableCArticulos2 = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTableCArticulos1 = new javax.swing.JTable();
+        butEditar = new javax.swing.JButton();
+        butDesactivar = new javax.swing.JButton();
+        txtBusquedaCArticulos2 = new javax.swing.JTextField();
+        labBusqueda2 = new javax.swing.JLabel();
 
         labTitulo.setBackground(new java.awt.Color(102, 102, 255));
         labTitulo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         labTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labTitulo.setText("Pack");
+        labTitulo.setText("Pack´s");
         labTitulo.setOpaque(true);
+
+        txtBusquedaCArticulos.setToolTipText("Tipee lo que desea Buscar");
+
+        labBusqueda.setText("Nombre");
+
+        jTableCArticulos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Unidades", "Articulo"
+            }
+        ));
+        jTableCArticulos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableCArticulosMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTableCArticulos);
+
+        jButton1.setText("jButton1");
+
+        jButton2.setText("jButton2");
+
+        labBusqueda1.setText("Unidades :");
+
+        txtBusquedaCArticulos1.setToolTipText("Tipee lo que desea Buscar");
+
+        butAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_agregar_32.png"))); // NOI18N
+        butAgregar.setText("Crear Pack");
+        butAgregar.setFocusable(false);
+        butAgregar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        butAgregar.setMaximumSize(new java.awt.Dimension(69, 69));
+        butAgregar.setMinimumSize(new java.awt.Dimension(69, 69));
+        butAgregar.setName(""); // NOI18N
+        butAgregar.setPreferredSize(new java.awt.Dimension(69, 69));
+        butAgregar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        butAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butAgregarActionPerformed(evt);
+            }
+        });
+
+        butCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_cancelar_32.png"))); // NOI18N
+        butCancelar.setText("Cancelar");
+        butCancelar.setToolTipText("Cancelar");
+        butCancelar.setFocusable(false);
+        butCancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        butCancelar.setMaximumSize(new java.awt.Dimension(69, 69));
+        butCancelar.setMinimumSize(new java.awt.Dimension(69, 69));
+        butCancelar.setPreferredSize(new java.awt.Dimension(69, 69));
+        butCancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        jTableCArticulos2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Articulos"
+            }
+        ));
+        jTableCArticulos2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableCArticulos2MouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(jTableCArticulos2);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(labBusqueda)
+                .addGap(4, 4, 4)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtBusquedaCArticulos, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(labBusqueda1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtBusquedaCArticulos1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(54, 54, 54)
+                                .addComponent(jButton1))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(54, 54, 54)
+                                .addComponent(jButton2)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(butAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                            .addComponent(butCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtBusquedaCArticulos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labBusqueda))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labBusqueda1)
+                            .addComponent(txtBusquedaCArticulos1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(butAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(butCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+
+        jTableCArticulos1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Codigo Pack", "Nombre Pack", "Unidades en Bodega", "Estado"
+            }
+        ));
+        jTableCArticulos1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableCArticulos1MouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(jTableCArticulos1);
+
+        butEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_editar_32.png"))); // NOI18N
+        butEditar.setText("Editar");
+        butEditar.setFocusable(false);
+        butEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        butEditar.setMaximumSize(new java.awt.Dimension(69, 69));
+        butEditar.setMinimumSize(new java.awt.Dimension(69, 69));
+        butEditar.setName(""); // NOI18N
+        butEditar.setPreferredSize(new java.awt.Dimension(69, 69));
+        butEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        butEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butEditarActionPerformed(evt);
+            }
+        });
+
+        butDesactivar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_desactivar_32.png"))); // NOI18N
+        butDesactivar.setText("Desactivar");
+        butDesactivar.setFocusable(false);
+        butDesactivar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        butDesactivar.setMaximumSize(new java.awt.Dimension(69, 69));
+        butDesactivar.setMinimumSize(new java.awt.Dimension(69, 69));
+        butDesactivar.setName(""); // NOI18N
+        butDesactivar.setPreferredSize(new java.awt.Dimension(69, 69));
+        butDesactivar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        butDesactivar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butDesactivarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 824, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(butEditar, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                    .addComponent(butDesactivar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(butEditar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(butDesactivar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 11, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        txtBusquedaCArticulos2.setText("Search");
+        txtBusquedaCArticulos2.setToolTipText("Tipee lo que desea Buscar");
+
+        labBusqueda2.setText("Tabla Packs");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(labTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labBusqueda2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtBusquedaCArticulos2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(153, 153, 153))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(labTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 476, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtBusquedaCArticulos2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labBusqueda2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTableCArticulosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCArticulosMouseClicked
+        // TODO add your handling code here:
+        OCatArticulos catArt = ((MTCatArticulos) jTableCArticulos.getModel()).getCategoria().get(jTableCArticulos.getSelectedRow());
+        txtNombreCatArt.setText(catArt.getNombre());
+    }//GEN-LAST:event_jTableCArticulosMouseClicked
+
+    private void jTableCArticulos1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCArticulos1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableCArticulos1MouseClicked
+
+    private void butAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butAgregarActionPerformed
+        // TODO add your handling code here:
+        //Agregar
+        CCatArticulos cateArt = new CCatArticulos(0, txtNombreCatArt.getText(), true);
+        OError error = cateArt.Agregar();
+        if (error.isConfirma()) {
+            ListarCategoria();
+            System.out.println(error.getMensaje());
+            txtNombreCatArt.setText("");
+
+        } else {
+            System.out.println(error.getMensaje());
+        }
+    }//GEN-LAST:event_butAgregarActionPerformed
+
+    private void jTableCArticulos2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCArticulos2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableCArticulos2MouseClicked
+
+    private void butEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butEditarActionPerformed
+        // TODO add your handling code here:
+        //Editar
+        OCatArticulos cateArt = ((MTCatArticulos) jTableCArticulos.getModel()).getCategoria().get(jTableCArticulos.getSelectedRow());
+        CCatArticulos CaArt = new CCatArticulos(cateArt.getId(), txtNombreCatArt.getText(), true);
+        OError error1 = CaArt.Editar();
+        if (error1.isConfirma()) {
+            ListarCategoria();
+            System.out.println(error1.getMensaje());
+            txtNombreCatArt.setText("");
+
+        } else {
+            System.out.println(error1.getMensaje());
+
+        }
+    }//GEN-LAST:event_butEditarActionPerformed
+
+    private void butDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butDesactivarActionPerformed
+        //TODO add your handling code here:
+        OCatArticulos catArt = (OCatArticulos) ((MTCatArticulos) jTableCArticulos.getModel()).getCategoria().get(jTableCArticulos.getSelectedRow());
+        OError Error = new CCatArticulos(catArt.getId(), catArt.getNombre(), false).Eliminar();
+        if (Error.isConfirma()) {
+            ListarCategoria();
+            this.txtNombreCatArt.setText("");
+        } else {
+            System.out.println(Error.getMensaje());
+        }
+    }//GEN-LAST:event_butDesactivarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton butAgregar;
+    private javax.swing.JButton butCancelar;
+    private javax.swing.JButton butDesactivar;
+    private javax.swing.JButton butEditar;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTable jTableCArticulos;
+    private javax.swing.JTable jTableCArticulos1;
+    private javax.swing.JTable jTableCArticulos2;
+    private javax.swing.JLabel labBusqueda;
+    private javax.swing.JLabel labBusqueda1;
+    private javax.swing.JLabel labBusqueda2;
     private javax.swing.JLabel labTitulo;
+    private javax.swing.JTextField txtBusquedaCArticulos;
+    private javax.swing.JTextField txtBusquedaCArticulos1;
+    private javax.swing.JTextField txtBusquedaCArticulos2;
     // End of variables declaration//GEN-END:variables
 }
