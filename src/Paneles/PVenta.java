@@ -8,15 +8,14 @@ package Paneles;
 import Clases.CCliente;
 import Clases.CComuna;
 import Clases.CVerificar;
+import Dialogos.DCrudCliente;
 import Objetos.OAnimacion;
 import Dialogos.DError;
 import Dialogos.DPregunta;
 import ModeloCombox.MCComuna;
-import ModelosTablas.MTComuna;
 import Objetos.OCliente;
 import Objetos.OError;
 import java.awt.Color;
-import java.util.TimerTask;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -672,6 +671,13 @@ public class PVenta extends javax.swing.JPanel {
         txtNombreCliente.setText("");
         txtTelefono.setText("");
         txtEmail.setText("");
+    }
+    
+    public void AgregarCliente(){
+        DCrudCliente CrudUsuario = new DCrudCliente(new javax.swing.JDialog(), true);
+        CrudUsuario.setTitle("Agregar Cliente");
+        CrudUsuario.txtRut.setText(txtRut.getText());
+        CrudUsuario.setVisible(true);
     }
     
     public void setJTexFieldChanged(javax.swing.JTextField textField){

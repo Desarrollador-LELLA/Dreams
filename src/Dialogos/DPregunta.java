@@ -101,13 +101,17 @@ public class DPregunta extends javax.swing.JDialog {
     private void butSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butSiActionPerformed
         // TODO add your handling code here:
         if(Venta != null){
-            System.out.println("INSERT:");
+            
+            this.dispose();
+            Venta.AgregarCliente();
         }
     }//GEN-LAST:event_butSiActionPerformed
 
     private void butNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butNoActionPerformed
         // TODO add your handling code here:
-        Venta.LimpiarDatosClienteSolicitante();
+        if(Venta != null){
+            Venta.LimpiarDatosClienteSolicitante();
+        }
         this.dispose();
     }//GEN-LAST:event_butNoActionPerformed
 
