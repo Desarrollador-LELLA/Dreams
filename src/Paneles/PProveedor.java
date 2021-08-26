@@ -2,7 +2,7 @@
 
 package Paneles;
 
-import Clases.CAnimacion;
+import Objetos.OAnimacion;
 import Clases.CProveedor;
 import Clases.CVerificar;
 import Dialogos.DCorrecto;
@@ -33,9 +33,9 @@ public class PProveedor extends javax.swing.JPanel {
         initComponents();
         ListarUsuarios();
     }
-     private CAnimacion Animacion = null;
-     private CAnimacion Animacion2 = null;
-     private CAnimacion Animacion3 = null;
+     private OAnimacion Animacion = null;
+     private OAnimacion Animacion2 = null;
+     private OAnimacion Animacion3 = null;
      
      private void ListarUsuarios(){
         MTProveedor MUProveedor = new MTProveedor(new CProveedor().Listar());
@@ -402,16 +402,16 @@ public class PProveedor extends javax.swing.JPanel {
             Mensaje.setVisible(true);
             ListarUsuarios(); */
                 if (Animacion == null) {
-                    Animacion = new CAnimacion(txtRut2);
-                    Animacion.Ejecutar();
+                    Animacion = new OAnimacion(txtRut2);
+                    Animacion.EjecutarTxt();
                     txtRut2.setToolTipText("ERROR");
                     //txtRut.
                 }
             }
         } else {
             if (Animacion == null) {
-                Animacion = new CAnimacion(txtRut2);
-                Animacion.Ejecutar();
+                Animacion = new OAnimacion(txtRut2);
+                Animacion.EjecutarTxt();
                 txtRut2.setToolTipText("Email invalido");
             }
 
@@ -487,7 +487,7 @@ public class PProveedor extends javax.swing.JPanel {
 
     private void txtRut2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRut2KeyReleased
          if(Animacion != null){
-            Animacion.Detener();
+            Animacion.DetenerTxt();
             Animacion = null;
             txtRut2.setToolTipText(null);
         }
@@ -516,7 +516,7 @@ public class PProveedor extends javax.swing.JPanel {
 
     private void txtEmailKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyReleased
         if(Animacion2 != null){
-            Animacion2.Detener();
+            Animacion2.DetenerTxt();
             Animacion2 = null;
             txtEmail.setToolTipText(null);
         }
@@ -525,7 +525,7 @@ public class PProveedor extends javax.swing.JPanel {
 
     private void txtMaskTelefonoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaskTelefonoKeyReleased
         if(Animacion3 != null){
-            Animacion3.Detener();
+            Animacion3.DetenerTxt();
             Animacion3 = null;
             txtMaskTelefono.setToolTipText(null);
         }
