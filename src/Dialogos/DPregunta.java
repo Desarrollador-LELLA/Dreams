@@ -5,18 +5,29 @@
  */
 package Dialogos;
 
+import Paneles.PVenta;
+import javax.swing.JDialog;
+
 /**
  *
  * @author TOULON-NOTE
  */
 public class DPregunta extends javax.swing.JDialog {
+    
+    private PVenta Venta = null;
 
     /**
      * Creates new form DPregunta
      */
-    public DPregunta(java.awt.Frame parent, boolean modal) {
+    public DPregunta(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+    }
+    
+    public DPregunta(javax.swing.JDialog parent, boolean modal, PVenta venta) {
+        super(parent, modal);
+        initComponents();
+        Venta = venta;
     }
 
     /**
@@ -43,8 +54,18 @@ public class DPregunta extends javax.swing.JDialog {
         labMensaje.setIconTextGap(20);
 
         butNo.setText("NO");
+        butNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butNoActionPerformed(evt);
+            }
+        });
 
         butSi.setText("SI");
+        butSi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butSiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -74,7 +95,20 @@ public class DPregunta extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void butSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butSiActionPerformed
+        // TODO add your handling code here:
+        if(Venta != null){
+            System.out.println("INSERT:");
+        }
+    }//GEN-LAST:event_butSiActionPerformed
+
+    private void butNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butNoActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_butNoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -106,7 +140,7 @@ public class DPregunta extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                DPregunta dialog = new DPregunta(new javax.swing.JFrame(), true);
+                DPregunta dialog = new DPregunta(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -121,6 +155,6 @@ public class DPregunta extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton butNo;
     private javax.swing.JButton butSi;
-    private javax.swing.JLabel labMensaje;
+    public javax.swing.JLabel labMensaje;
     // End of variables declaration//GEN-END:variables
 }

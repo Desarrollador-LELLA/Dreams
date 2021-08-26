@@ -5,7 +5,7 @@
  */
 package ModelosTablas;
 
-import Objetos.OCanales;
+import Objetos.OCatArticulos;
 import java.util.List;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
@@ -14,25 +14,28 @@ import javax.swing.table.TableModel;
  *
  * @author Usuario
  */
-public class MTCanales implements TableModel{
-    private final List<OCanales> Canal;
+public class MTCatArticulos implements TableModel {
+    
+    private List<OCatArticulos> Categoria;
 
-    public MTCanales(List<OCanales> Canal) {
-        this.Canal = Canal;
+    public MTCatArticulos(List<OCatArticulos> Categoria) {
+        this.Categoria = Categoria;
     }
 
-    public List<OCanales> getCanal() {
-        return Canal;
+    public List<OCatArticulos> getCategoria() {
+        return Categoria;
     }
-
+    
+    
+    
     @Override
     public int getRowCount() {
-        return Canal.size();
+        return Categoria.size();
     }
 
     @Override
     public int getColumnCount() {
-        return 3;      
+        return 2;
     }
 
     @Override
@@ -40,19 +43,14 @@ public class MTCanales implements TableModel{
         String NombreColumna = null;
         switch(columnIndex){
             case 0:
-                NombreColumna = "ID";
+                NombreColumna = "Categoría Artículo";
                 break;
             case 1:
-                NombreColumna = "Nombre";
-                break;
-            case 2:
                 NombreColumna = "Estado";
                 break;
-            
         }
         
         return NombreColumna;
-
     }
 
     @Override
@@ -63,42 +61,32 @@ public class MTCanales implements TableModel{
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         return false;
-    }
+        }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         String Valor = null;
         switch(columnIndex){
-            
             case 0:
-                Valor =  String.valueOf(Canal.get(rowIndex).getId());
+                Valor = Categoria.get(rowIndex).getNombre();
                 break;
             case 1:
-                Valor = Canal.get(rowIndex).getNombre(); 
-                break; 
-            case 2:
-                Valor = Canal.get(rowIndex).getEstado() ? "Activado" : "Desactivado";
+                Valor = Categoria.get(rowIndex).getEstado() ? "Activado" : "Desactivado";
                 break;
         }
-        
         return Valor;
     }
 
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        
     }
 
     @Override
     public void addTableModelListener(TableModelListener l) {
-        
     }
 
     @Override
     public void removeTableModelListener(TableModelListener l) {
-        
     }
     
-    
 }
-
