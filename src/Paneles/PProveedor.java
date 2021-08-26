@@ -1,5 +1,6 @@
 
 
+
 package Paneles;
 
 import Objetos.OAnimacion;
@@ -558,4 +559,6 @@ public class PProveedor extends javax.swing.JPanel {
     private javax.swing.JFormattedTextField txtRut2;
     // End of variables declaration//GEN-END:variables
 }
+
+
 
