@@ -107,6 +107,7 @@ public class DPregunta extends javax.swing.JDialog {
 
     private void butNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butNoActionPerformed
         // TODO add your handling code here:
+        Venta.LimpiarDatosClienteSolicitante();
         this.dispose();
     }//GEN-LAST:event_butNoActionPerformed
 
