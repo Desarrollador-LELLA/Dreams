@@ -1,6 +1,3 @@
-
-
-
 package Paneles;
 
 import Objetos.OAnimacion;
@@ -717,6 +714,3 @@ private List<OProveedor> Proveedor;
 
     
 }
-
-
-
