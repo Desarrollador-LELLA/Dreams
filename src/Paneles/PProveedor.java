@@ -1,6 +1,3 @@
-
-
-
 package Paneles;
 
 import Objetos.OAnimacion;
@@ -13,7 +10,13 @@ import ModelosTablas.MTProveedor;
 import Objetos.OError;
 import Objetos.OProveedor;
 import java.awt.Component;
+import java.awt.Desktop;
+import java.awt.Rectangle;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.ParseException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -21,16 +24,20 @@ import java.util.regex.Pattern;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  *
  * @author rodka
  */
 public class PProveedor extends javax.swing.JPanel {
-
-    /**
-     * Creates new form PProveedor
-     */
+private List<OProveedor> Proveedor;
+   
     public PProveedor() {
         initComponents();
         ListarUsuarios();
@@ -40,8 +47,11 @@ public class PProveedor extends javax.swing.JPanel {
      private OAnimacion Animacion2 = null;
      private OAnimacion Animacion3 = null;
      
+     private final String ruta = System.getProperties().getProperty("user.dir");
+     
      private void ListarUsuarios(){
-        MTProveedor MUProveedor = new MTProveedor(new CProveedor().Listar());
+        Proveedor = new CProveedor().Listar();
+        MTProveedor MUProveedor = new MTProveedor(Proveedor);
         tableProveedor.setModel(MUProveedor);
     }
      
@@ -119,6 +129,7 @@ public class PProveedor extends javax.swing.JPanel {
         txtBusqueda = new javax.swing.JTextField();
         butBuscar = new javax.swing.JButton();
         butBuscar1 = new javax.swing.JButton();
+        butImprimir = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(1000, 525));
         setPreferredSize(new java.awt.Dimension(1000, 525));
@@ -264,6 +275,21 @@ public class PProveedor extends javax.swing.JPanel {
             }
         });
 
+        butImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_imprimir_32.png"))); // NOI18N
+        butImprimir.setText("Imprimir");
+        butImprimir.setToolTipText("Imprimir");
+        butImprimir.setFocusable(false);
+        butImprimir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        butImprimir.setMaximumSize(new java.awt.Dimension(69, 69));
+        butImprimir.setMinimumSize(new java.awt.Dimension(69, 69));
+        butImprimir.setPreferredSize(new java.awt.Dimension(69, 69));
+        butImprimir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        butImprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butImprimirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -331,6 +357,8 @@ public class PProveedor extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(butBuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(butImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(109, 109, 109)
                 .addComponent(btnComprar)
                 .addGap(25, 25, 25))
         );
@@ -372,6 +400,10 @@ public class PProveedor extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(butBuscar)
+                        .addGap(238, 238, 238))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
@@ -389,17 +421,16 @@ public class PProveedor extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(btnComprar)
-                                .addComponent(comboBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel1)
-                                .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(butBuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(butBuscar)))
-                .addGap(183, 183, 183))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(btnComprar)
+                                    .addComponent(comboBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1)
+                                    .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(butBuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                            .addComponent(butImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(236, 236, 236))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -555,15 +586,18 @@ public class PProveedor extends javax.swing.JPanel {
 
     private void txtMaskTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMaskTelefonoKeyTyped
         char validar = evt.getKeyChar();
-      
-        
-        if (Character.isLetter(validar)){
+
+        if (Character.isDigit(validar)) {
+            if((txtMaskTelefono.getText().length() == 9)){
+            
+               getToolkit().beep();
+               evt.consume();
+               txtMaskTelefono.setToolTipText("Ingrese solo numeros"); 
+            } 
+        }else{
             getToolkit().beep();
             evt.consume();
-         
-            txtMaskTelefono.setToolTipText("Ingrese solo numeros");
         }
-                
     }//GEN-LAST:event_txtMaskTelefonoKeyTyped
 
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
@@ -598,6 +632,53 @@ public class PProveedor extends javax.swing.JPanel {
         txtBusqueda.setText("");
     }//GEN-LAST:event_butBuscar1ActionPerformed
 
+    private void butImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butImprimirActionPerformed
+        
+        XSSFWorkbook workbook = new XSSFWorkbook();
+        XSSFSheet hoja = workbook.createSheet();
+
+        XSSFRow fila = hoja.createRow(0);
+        fila.createCell(0).setCellValue("RAZON SOCIAL");
+        fila.createCell(1).setCellValue("RAZON SOCIAL");
+        fila.createCell(2).setCellValue("RAZON SOCIAL");
+        fila.createCell(3).setCellValue("RAZON SOCIAL");
+        fila.createCell(4).setCellValue("RAZON SOCIAL");
+
+        XSSFRow filas;
+        Rectangle rect;
+        
+        
+
+        for (int i = 0; i < tableProveedor.getRowCount(); i++) {
+
+            rect = tableProveedor.getCellRect(i, 0, true);
+            try {
+                tableProveedor.scrollRectToVisible(rect);
+                tableProveedor.setRowSelectionInterval(i, i);
+
+                filas = hoja.createRow((i + 1));
+                filas.createCell(0).setCellValue(tableProveedor.getValueAt(i, 0).toString());
+                filas.createCell(1).setCellValue(tableProveedor.getValueAt(i, 1).toString());
+                filas.createCell(2).setCellValue(tableProveedor.getValueAt(i, 2).toString());
+                filas.createCell(3).setCellValue(tableProveedor.getValueAt(i, 3).toString());
+                filas.createCell(4).setCellValue(tableProveedor.getValueAt(i, 4).toString());
+
+            } catch (java.lang.ClassCastException e) {               
+            }
+        }
+        
+        
+        
+        try {
+                workbook.write(new FileOutputStream(new File(ruta + "//Excel.xlsx")));
+                Desktop.getDesktop().open(new File(ruta + "//Excel.xlsx"));
+
+            } catch (IOException ex) {
+                Logger.getLogger(PProveedor.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+    }//GEN-LAST:event_butImprimirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Label RUT;
@@ -608,6 +689,7 @@ public class PProveedor extends javax.swing.JPanel {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton butBuscar;
     private javax.swing.JButton butBuscar1;
+    private javax.swing.JButton butImprimir;
     private javax.swing.JComboBox<String> comboBusqueda;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
@@ -632,6 +714,3 @@ public class PProveedor extends javax.swing.JPanel {
 
     
 }
-
-
-
