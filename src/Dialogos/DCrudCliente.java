@@ -5,6 +5,9 @@
  */
 package Dialogos;
 
+import Clases.CCanal;
+import ModeloCombox.MCCanal;
+
 /**
  *
  * @author TOULON
@@ -17,6 +20,7 @@ public class DCrudCliente extends javax.swing.JDialog {
     public DCrudCliente(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        LlenarComboComuna();
     }
 
     /**
@@ -37,13 +41,13 @@ public class DCrudCliente extends javax.swing.JDialog {
         labFechaNacimiento = new javax.swing.JLabel();
         labEmail = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
-        txtTelefono = new javax.swing.JTextField();
         labTelefono = new javax.swing.JLabel();
         conboxCanal = new javax.swing.JComboBox<>();
         labCanal = new javax.swing.JLabel();
         jToggleButtonEstado = new javax.swing.JToggleButton();
         butGuardar = new javax.swing.JButton();
         dateFechaNacimiento = new com.toedter.calendar.JDateChooser();
+        txtTelefono = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Agregar Cliente");
@@ -79,6 +83,8 @@ public class DCrudCliente extends javax.swing.JDialog {
                 butGuardarActionPerformed(evt);
             }
         });
+
+        txtTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("000000000"))));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,23 +138,21 @@ public class DCrudCliente extends javax.swing.JDialog {
                     .addComponent(labTelefono))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtRut, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dateFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labNombre)
-                            .addComponent(labApellido))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labEmail)
-                            .addComponent(labCanal)))
+                    .addComponent(txtRut, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dateFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labNombre)
+                    .addComponent(labApellido))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labEmail)
+                    .addComponent(labCanal))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -209,6 +213,10 @@ public class DCrudCliente extends javax.swing.JDialog {
             }
         });
     }
+    
+    private void LlenarComboComuna(){
+        conboxCanal.setModel(new MCCanal(new CCanal().Listar("Activos")));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton butGuardar;
@@ -226,6 +234,6 @@ public class DCrudCliente extends javax.swing.JDialog {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNombre;
     public javax.swing.JTextField txtRut;
-    private javax.swing.JTextField txtTelefono;
+    private javax.swing.JFormattedTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }
