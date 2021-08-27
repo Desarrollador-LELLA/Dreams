@@ -38,6 +38,38 @@ public class CCliente extends OCliente {
     }
     
     //METODOS
+    public OError Agregar() {
+        PreparedStatement Preparando = null;
+        CMysqlHelp Sql = new CMysqlHelp();
+        Error = Sql.Conectar();
+        if (Error.isConfirma()) {
+            try {
+                Preparando = Sql.getCon().prepareStatement("INSERT INTO cliente(CLI_NOMBRE, CLI_APELLIDO, CLI_DIRECCION, CLI_TELEFONO, CLI_CORREO, CAN_ID_CANAL, CLI_RUT, CLI_ESTADO) VALUES (?,?,?,?,?,?,?,?)");
+                Preparando.setString(1, this.getNombre());
+                Preparando.setString(2, this.getApellido());
+                Preparando.setString(3, this.getDireccion());
+                Preparando.setInt(4, this.getTelefono());
+                Preparando.setString(5, this.getCorreo());
+                Preparando.setInt(6, this.getCanal().getId());
+                Preparando.setString(7, this.getRut());
+                Preparando.setBoolean(8, this.isEstado());
+                
+                if (!Preparando.execute()) {
+                    Error = new OError(String.format(TagCodigoClase, 1), "Cliente Agregado Correctamente", null, true);
+                } else {
+                    Error = new OError(String.format(TagCodigoClase, 2), "Cliente no fue Agregado", null, false);
+                }
+                Preparando.close();
+            } catch (SQLException ex) {
+                System.out.println("Error: " + ex);
+                Error = new OError(String.format(TagCodigoClase, 3), String.format("<html>%s (Codigo %s)</html>", ex, String.format(TagCodigoClase, 3)), null, false);
+            } finally {
+                Sql.Desconectar();
+            }
+        }
+        return Error;
+    }
+    
     public OError BuscaRut() {
         boolean encuentra = false;
         PreparedStatement Preparando = null;
