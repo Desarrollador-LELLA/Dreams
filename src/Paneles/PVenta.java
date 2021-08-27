@@ -8,15 +8,14 @@ package Paneles;
 import Clases.CCliente;
 import Clases.CComuna;
 import Clases.CVerificar;
+import Dialogos.DCrudCliente;
 import Objetos.OAnimacion;
 import Dialogos.DError;
 import Dialogos.DPregunta;
 import ModeloCombox.MCComuna;
-import ModelosTablas.MTComuna;
 import Objetos.OCliente;
 import Objetos.OError;
 import java.awt.Color;
-import java.util.TimerTask;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -594,11 +593,7 @@ public class PVenta extends javax.swing.JPanel {
 
     private void butLimpiarDCSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butLimpiarDCSActionPerformed
         // TODO add your handling code here:
-        txtNumeroPedido.setText("");
-        txtRut.setText("");
-        txtNombreCliente.setText("");
-        txtTelefono.setText("");
-        txtEmail.setText("");
+        LimpiarDatosClienteSolicitante();
     }//GEN-LAST:event_butLimpiarDCSActionPerformed
 
     private void butLimpiarDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butLimpiarDDActionPerformed
@@ -632,7 +627,9 @@ public class PVenta extends javax.swing.JPanel {
                         Mensaje.labMensaje.setText(Error.getMensaje());
                         Mensaje.setVisible(true);
                     } else if (Error.getMensaje().equals("Cliente NO Existe. Desea Agregarlo?")) {
-
+                        DPregunta Mensaje = new DPregunta(new javax.swing.JDialog(), true, this);
+                        Mensaje.labMensaje.setText(Error.getMensaje());
+                        Mensaje.setVisible(true);
                     } else {
                         DError Mensaje = new DError(new javax.swing.JDialog(), true);
                         Mensaje.labMensaje.setText(Error.getMensaje());
@@ -666,6 +663,21 @@ public class PVenta extends javax.swing.JPanel {
 
     private void LlenarComboComuna(){
         jComboBoxComuna.setModel(new MCComuna(new CComuna().Listar("Activos")));
+    }
+    
+    public void LimpiarDatosClienteSolicitante(){
+        //txtNumeroPedido.setText("");
+        txtRut.setText("");
+        txtNombreCliente.setText("");
+        txtTelefono.setText("");
+        txtEmail.setText("");
+    }
+    
+    public void AgregarCliente(){
+        DCrudCliente CrudUsuario = new DCrudCliente(new javax.swing.JDialog(), true);
+        CrudUsuario.setTitle("Agregar Cliente");
+        CrudUsuario.txtRut.setText(txtRut.getText());
+        CrudUsuario.setVisible(true);
     }
     
     public void setJTexFieldChanged(javax.swing.JTextField textField){
