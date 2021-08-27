@@ -8,6 +8,7 @@ import Clases.CProveedor;
 import Clases.CVerificar;
 import Dialogos.DCorrecto;
 import Dialogos.DError;
+import Dialogos.DPregunta;
 import ModelosTablas.MTProveedor;
 import Objetos.OError;
 import Objetos.OProveedor;
@@ -33,6 +34,7 @@ public class PProveedor extends javax.swing.JPanel {
     public PProveedor() {
         initComponents();
         ListarUsuarios();
+        Buscar(); 
     }
      private OAnimacion Animacion = null;
      private OAnimacion Animacion2 = null;
@@ -43,7 +45,11 @@ public class PProveedor extends javax.swing.JPanel {
         tableProveedor.setModel(MUProveedor);
     }
      
-    
+      private void Buscar(){ 
+        MTProveedor MProveedor = new MTProveedor(new CProveedor().Busqueda(txtBusqueda.getText(), comboBusqueda.getSelectedIndex()));
+        tableProveedor.setModel(MProveedor);
+        
+      }
      /*public Boolean Validar(){
      Boolean lDevuelve = false;
      int Ult= this.txtRut.getText().length();
@@ -108,6 +114,11 @@ public class PProveedor extends javax.swing.JPanel {
         txtApellido = new javax.swing.JTextField();
         txtRut2 = new javax.swing.JFormattedTextField();
         txtMaskTelefono = new javax.swing.JFormattedTextField();
+        comboBusqueda = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        txtBusqueda = new javax.swing.JTextField();
+        butBuscar = new javax.swing.JButton();
+        butBuscar1 = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(1000, 525));
         setPreferredSize(new java.awt.Dimension(1000, 525));
@@ -231,6 +242,28 @@ public class PProveedor extends javax.swing.JPanel {
             }
         });
 
+        comboBusqueda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Razon Social", "Rut", "Nombre" }));
+
+        jLabel1.setText("Buscar");
+
+        butBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_buscar_24.png"))); // NOI18N
+        butBuscar.setToolTipText("Buscar Cliente");
+        butBuscar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        butBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butBuscarActionPerformed(evt);
+            }
+        });
+
+        butBuscar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_cancelar_32.png"))); // NOI18N
+        butBuscar1.setToolTipText("Buscar Cliente");
+        butBuscar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        butBuscar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butBuscar1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -287,7 +320,17 @@ public class PProveedor extends javax.swing.JPanel {
                                     .addComponent(txtMaskTelefono))
                                 .addGap(52, 52, 52))))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(43, 43, 43)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(comboBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(butBuscar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(butBuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnComprar)
                 .addGap(25, 25, 25))
         );
@@ -328,23 +371,34 @@ public class PProveedor extends javax.swing.JPanel {
                     .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnGuardar, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnDesactivar, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnEditar, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnCancelar))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(btnComprar)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnGuardar, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnDesactivar, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnEditar, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnCancelar))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnComprar)
+                                .addComponent(comboBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel1)
+                                .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(butBuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(butBuscar)))
                 .addGap(183, 183, 183))
         );
 
@@ -369,6 +423,7 @@ public class PProveedor extends javax.swing.JPanel {
             this.txtEmail.setText("");
             this.txtDireccion.setText("");
             this.txtRut2.setText("");  
+            txtRut2.setEditable(true);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -474,7 +529,7 @@ public class PProveedor extends javax.swing.JPanel {
     private void tableProveedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableProveedorMouseClicked
         MTProveedor provee = (MTProveedor) tableProveedor.getModel();
         // comuna.getUsuarios().get(datos.getSelectedRow()).getId();
-
+        
         txtRSocial.setText(provee.getProveedor().get(tableProveedor.getSelectedRow()).getRsocial());
         txtNombre.setText(provee.getProveedor().get(tableProveedor.getSelectedRow()).getNombre());
         txtApellido.setText(provee.getProveedor().get(tableProveedor.getSelectedRow()).getApellido());
@@ -482,7 +537,7 @@ public class PProveedor extends javax.swing.JPanel {
         txtEmail.setText(provee.getProveedor().get(tableProveedor.getSelectedRow()).getCorreo());
         txtDireccion.setText(provee.getProveedor().get(tableProveedor.getSelectedRow()).getDireccion());
         txtRut2.setText(provee.getProveedor().get(tableProveedor.getSelectedRow()).getRut());
-
+        txtRut2.setEditable(false);
         
     }//GEN-LAST:event_tableProveedorMouseClicked
 
@@ -532,6 +587,17 @@ public class PProveedor extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtMaskTelefonoKeyReleased
 
+    private void butBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butBuscarActionPerformed
+        
+        Buscar ();
+    
+    }//GEN-LAST:event_butBuscarActionPerformed
+
+    private void butBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butBuscar1ActionPerformed
+        ListarUsuarios();
+        txtBusqueda.setText("");
+    }//GEN-LAST:event_butBuscar1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Label RUT;
@@ -540,6 +606,10 @@ public class PProveedor extends javax.swing.JPanel {
     private javax.swing.JButton btnDesactivar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton butBuscar;
+    private javax.swing.JButton butBuscar1;
+    private javax.swing.JComboBox<String> comboBusqueda;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labTitulo;
@@ -551,6 +621,7 @@ public class PProveedor extends javax.swing.JPanel {
     private java.awt.Label label6;
     private javax.swing.JTable tableProveedor;
     private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtBusqueda;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JFormattedTextField txtMaskTelefono;
@@ -558,6 +629,8 @@ public class PProveedor extends javax.swing.JPanel {
     private javax.swing.JTextField txtRSocial;
     private javax.swing.JFormattedTextField txtRut2;
     // End of variables declaration//GEN-END:variables
+
+    
 }
 
 
