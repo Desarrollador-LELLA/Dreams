@@ -74,6 +74,11 @@ public class DCrudCliente extends javax.swing.JDialog {
 
         butGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_guardar_32.png"))); // NOI18N
         butGuardar.setText("Guardar");
+        butGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -158,6 +163,10 @@ public class DCrudCliente extends javax.swing.JDialog {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void butGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butGuardarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_butGuardarActionPerformed
 
     /**
      * @param args the command line arguments
