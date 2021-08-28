@@ -26,6 +26,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.text.MaskFormatter;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -50,7 +51,7 @@ private List<OProveedor> Proveedor;
      private OAnimacion Animacion2 = null;
      private OAnimacion Animacion3 = null;
      
-     private final String ruta = System.getProperties().getProperty("user.dir");
+    
      
      private void ListarUsuarios(){
         Proveedor = new CProveedor().Listar();
@@ -636,52 +637,50 @@ private List<OProveedor> Proveedor;
     }//GEN-LAST:event_butBuscar1ActionPerformed
 
     private void butImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butImprimirActionPerformed
-        
+       imprimir(tableProveedor);
+    }//GEN-LAST:event_butImprimirActionPerformed
+    
+    private void imprimir(JTable tabla) {
+        String ruta = System.getProperties().getProperty("user.dir");
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet hoja = workbook.createSheet();
 
         XSSFRow fila = hoja.createRow(0);
-        fila.createCell(0).setCellValue("RAZON SOCIAL");
-        fila.createCell(1).setCellValue("RAZON SOCIAL");
-        fila.createCell(2).setCellValue("RAZON SOCIAL");
-        fila.createCell(3).setCellValue("RAZON SOCIAL");
-        fila.createCell(4).setCellValue("RAZON SOCIAL");
+        for (int i = 0; i < tabla.getColumnModel().getColumnCount(); i++) {
+
+            fila.createCell(i).setCellValue(tabla.getColumnName(i));
+        }
 
         XSSFRow filas;
         Rectangle rect;
-        
-        
 
-        for (int i = 0; i < tableProveedor.getRowCount(); i++) {
+        for (int i = 0; i < tabla.getRowCount(); i++) {
 
-            rect = tableProveedor.getCellRect(i, 0, true);
+            rect = tabla.getCellRect(i, 0, true);
             try {
-                tableProveedor.scrollRectToVisible(rect);
-                tableProveedor.setRowSelectionInterval(i, i);
+                tabla.scrollRectToVisible(rect);
+                tabla.setRowSelectionInterval(i, i);
 
                 filas = hoja.createRow((i + 1));
-                filas.createCell(0).setCellValue(tableProveedor.getValueAt(i, 0).toString());
-                filas.createCell(1).setCellValue(tableProveedor.getValueAt(i, 1).toString());
-                filas.createCell(2).setCellValue(tableProveedor.getValueAt(i, 2).toString());
-                filas.createCell(3).setCellValue(tableProveedor.getValueAt(i, 3).toString());
-                filas.createCell(4).setCellValue(tableProveedor.getValueAt(i, 4).toString());
+                for (int e = 0; e < tabla.getColumnModel().getColumnCount(); e++) {
 
-            } catch (java.lang.ClassCastException e) {               
+                    filas.createCell(e).setCellValue(tabla.getValueAt(i, e).toString());
+
+                }
+
+            } catch (java.lang.ClassCastException e) {
             }
         }
-        
-        
-        
+
         try {
-                workbook.write(new FileOutputStream(new File(ruta + "//Excel.xlsx")));
-                Desktop.getDesktop().open(new File(ruta + "//Excel.xlsx"));
+            workbook.write(new FileOutputStream(new File(ruta + "//Excel.xlsx")));
+            Desktop.getDesktop().open(new File(ruta + "//Excel.xlsx"));
 
-            } catch (IOException ex) {
-                Logger.getLogger(PProveedor.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-    }//GEN-LAST:event_butImprimirActionPerformed
-
+        } catch (IOException ex) {
+            Logger.getLogger(PProveedor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+            
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Label RUT;
