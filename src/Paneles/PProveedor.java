@@ -1,6 +1,3 @@
-
-
-
 package Paneles;
 
 import Objetos.OAnimacion;
