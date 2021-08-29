@@ -18,6 +18,9 @@ import java.util.List;
  * @author Usuario
  */
 public class CPack extends OPack {
+    
+    private final String TagCodigoClase = "CPack - %s";
+    private OError Error = new OError();
 
     public CPack() {
         super();
