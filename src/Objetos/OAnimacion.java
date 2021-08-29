@@ -5,6 +5,7 @@
  */
 package Objetos;
 
+import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -19,6 +20,7 @@ public class OAnimacion {
     private Timer Tiempo = new Timer();
     private JTextField txt;
     private JComboBox<String> cbox;
+    private JDateChooser datebox;
     private int valor = 1;
     
     private TimerTask TareaTxt = new TimerTask() {
@@ -46,6 +48,19 @@ public class OAnimacion {
             }
         }
     };
+    
+    private TimerTask TareaDateBox = new TimerTask() {
+        @Override
+        public void run() {
+            if (valor == 1) {
+                datebox.setBackground(Color.red);
+                valor = 2;
+            } else {
+                datebox.setBackground(Color.getHSBColor(240, 240, 240));
+                valor = 1;
+            }
+        }
+    };
 
     public OAnimacion(JTextField txt) {
         this.txt = txt;
@@ -53,7 +68,11 @@ public class OAnimacion {
     
     public OAnimacion(JComboBox<String> cbox) {
         this.cbox = cbox;
-    }   
+    }
+    
+    public OAnimacion(JDateChooser datebox) {
+        this.datebox = datebox;
+    }
 
     public void EjecutarTxt(){
         Tiempo.scheduleAtFixedRate(TareaTxt, 0, 500);
@@ -63,6 +82,10 @@ public class OAnimacion {
         Tiempo.scheduleAtFixedRate(TareaCbox, 0, 500);
     }
     
+    public void EjecutarDateBox(){
+        Tiempo.scheduleAtFixedRate(TareaDateBox, 0, 500);
+    }
+    
     public void DetenerTxt(){
         txt.setBackground(Color.WHITE);
         Tiempo.cancel();
@@ -70,6 +93,11 @@ public class OAnimacion {
     
     public void DetenerCbox(){
         cbox.setBackground(Color.WHITE);
+        Tiempo.cancel();
+    }
+    
+    public void DetenerDateBox(){
+        datebox.setBackground(Color.getHSBColor(240, 240, 240));
         Tiempo.cancel();
     }
 }

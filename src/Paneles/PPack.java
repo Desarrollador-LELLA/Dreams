@@ -326,8 +326,8 @@ public class PPack extends javax.swing.JPanel {
 
     private void jTableCArticulosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCArticulosMouseClicked
         // TODO add your handling code here:
-        OCatArticulos catArt = ((MTCatArticulos) jTableCArticulos.getModel()).getCategoria().get(jTableCArticulos.getSelectedRow());
-        txtNombreCatArt.setText(catArt.getNombre());
+        //OCatArticulos catArt = ((MTCatArticulos) jTableCArticulos.getModel()).getCategoria().get(jTableCArticulos.getSelectedRow());
+        //txtNombreCatArt.setText(catArt.getNombre());
     }//GEN-LAST:event_jTableCArticulosMouseClicked
 
     private void jTableCArticulos1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCArticulos1MouseClicked
@@ -337,7 +337,7 @@ public class PPack extends javax.swing.JPanel {
     private void butAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butAgregarActionPerformed
         // TODO add your handling code here:
         //Agregar
-        CCatArticulos cateArt = new CCatArticulos(0, txtNombreCatArt.getText(), true);
+        /*CCatArticulos cateArt = new CCatArticulos(0, txtNombreCatArt.getText(), true);
         OError error = cateArt.Agregar();
         if (error.isConfirma()) {
             ListarCategoria();
@@ -346,7 +346,7 @@ public class PPack extends javax.swing.JPanel {
 
         } else {
             System.out.println(error.getMensaje());
-        }
+        }*/
     }//GEN-LAST:event_butAgregarActionPerformed
 
     private void jTableCArticulos2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCArticulos2MouseClicked
@@ -356,7 +356,7 @@ public class PPack extends javax.swing.JPanel {
     private void butEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butEditarActionPerformed
         // TODO add your handling code here:
         //Editar
-        OCatArticulos cateArt = ((MTCatArticulos) jTableCArticulos.getModel()).getCategoria().get(jTableCArticulos.getSelectedRow());
+        /*OCatArticulos cateArt = ((MTCatArticulos) jTableCArticulos.getModel()).getCategoria().get(jTableCArticulos.getSelectedRow());
         CCatArticulos CaArt = new CCatArticulos(cateArt.getId(), txtNombreCatArt.getText(), true);
         OError error1 = CaArt.Editar();
         if (error1.isConfirma()) {
@@ -367,19 +367,19 @@ public class PPack extends javax.swing.JPanel {
         } else {
             System.out.println(error1.getMensaje());
 
-        }
+        }*/
     }//GEN-LAST:event_butEditarActionPerformed
 
     private void butDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butDesactivarActionPerformed
         //TODO add your handling code here:
-        OCatArticulos catArt = (OCatArticulos) ((MTCatArticulos) jTableCArticulos.getModel()).getCategoria().get(jTableCArticulos.getSelectedRow());
+        /*OCatArticulos catArt = (OCatArticulos) ((MTCatArticulos) jTableCArticulos.getModel()).getCategoria().get(jTableCArticulos.getSelectedRow());
         OError Error = new CCatArticulos(catArt.getId(), catArt.getNombre(), false).Eliminar();
         if (Error.isConfirma()) {
             ListarCategoria();
             this.txtNombreCatArt.setText("");
         } else {
             System.out.println(Error.getMensaje()); 
-        }
+        }*/
     }//GEN-LAST:event_butDesactivarActionPerformed
 
     
