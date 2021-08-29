@@ -168,4 +168,47 @@ public class CProveedor extends OProveedor {
         return Error;
     }
    
+      public List<OProveedor> Busqueda(String datoBusqueda, int tipo){
+        //USU_NOMBRE = ?, USU_APELLIDO = ?, USU_USERNAME
+        PreparedStatement Preparando = null;
+        ResultSet Resultado = null;
+        List<OProveedor> Listado = new ArrayList();
+        CMysqlHelp Sql = new CMysqlHelp();
+        Error = Sql.Conectar();
+        if(Error.isConfirma()){
+            try {
+                String atributo = "";
+                switch(tipo){
+                    case 0:
+                        atributo = "PRO_RAZON_SOCIAL";
+                        break;
+                    case 1:
+                        atributo = "PRO_RUT";
+                        break;
+                    case 2:
+                        atributo = "PRO_NOMBRE_CONTACTO";
+                        break;
+                }
+                Preparando = Sql.getCon().prepareStatement("SELECT * FROM Proveedor WHERE " + atributo + " LIKE ?");
+                Preparando.setString(1, "%" + datoBusqueda + "%");
+                Resultado = Preparando.executeQuery();
+                
+                while(Resultado.next()){
+                    Listado.add(new OProveedor(Resultado.getInt(1), Resultado.getString(2), Resultado.getString(3),Resultado.getString(4), Resultado.getInt(5), Resultado.getString(6), Resultado.getString(7), Resultado.getString(8),  Resultado.getBoolean(9) ));
+                }
+                Error = new OError(String.format(TagCodigoClase, 10), "Consulta Realizada Correctamente", null, true);
+                
+                Resultado.close();
+                Preparando.close();
+            } catch (SQLException ex) {
+                System.out.println("Error: " + ex);
+                Error = new OError(String.format(TagCodigoClase, 11), String.format("<html>%s (Codigo %s)</html>", ex, String.format(TagCodigoClase, 11)), null, false);
+            }
+            finally{
+                Sql.Desconectar();
+            }
+        }
+        return Listado;
+    }
 }
+

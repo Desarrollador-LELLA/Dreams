@@ -14,7 +14,7 @@ public class PComunas extends javax.swing.JPanel {
     }
     
     private void ListarUsuarios(){
-        MTComuna MUsuarios = new MTComuna(new CComuna().Listar());
+        MTComuna MUsuarios = new MTComuna(new CComuna().Listar(""));
         datos.setModel(MUsuarios);
     }
         /* private void llenaGrid() {

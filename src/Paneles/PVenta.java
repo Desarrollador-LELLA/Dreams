@@ -5,14 +5,19 @@
  */
 package Paneles;
 
+import Clases.CCliente;
 import Clases.CComuna;
 import Clases.CVerificar;
+import Dialogos.DCrudCliente;
 import Objetos.OAnimacion;
 import Dialogos.DError;
+import Dialogos.DPregunta;
 import ModeloCombox.MCComuna;
-import ModelosTablas.MTComuna;
+import Objetos.OCliente;
 import Objetos.OError;
-import java.util.TimerTask;
+import java.awt.Color;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -27,6 +32,7 @@ public class PVenta extends javax.swing.JPanel {
     public PVenta() {
         initComponents();
         LlenarComboComuna();
+        setJTexFieldChanged(txtRut);
     }
 
     /**
@@ -587,11 +593,7 @@ public class PVenta extends javax.swing.JPanel {
 
     private void butLimpiarDCSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butLimpiarDCSActionPerformed
         // TODO add your handling code here:
-        txtNumeroPedido.setText("");
-        txtRut.setText("");
-        txtNombreCliente.setText("");
-        txtTelefono.setText("");
-        txtEmail.setText("");
+        LimpiarDatosClienteSolicitante();
     }//GEN-LAST:event_butLimpiarDCSActionPerformed
 
     private void butLimpiarDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butLimpiarDDActionPerformed
@@ -607,11 +609,33 @@ public class PVenta extends javax.swing.JPanel {
 
     private void butBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butBuscarActionPerformed
         // TODO add your handling code here:
-        boolean Validacion = true;
+        //boolean Validacion = true;
         if (!txtRut.getText().trim().isEmpty()) {
             OError Error = new CVerificar(txtRut.getText()).Validar();
             if (Error.isConfirma()) {
-                
+                CCliente Cliente = new CCliente();
+                Cliente.setRut(txtRut.getText().trim());
+                Error = Cliente.BuscaRut();
+                if (Error.isConfirma()) {
+                    OCliente ocliente = (OCliente) Error.getRetorno();
+                    txtNombreCliente.setText(String.format("%s %s", ocliente.getNombre(), ocliente.getApellido()));
+                    txtTelefono.setText(String.valueOf(ocliente.getTelefono()));
+                    txtEmail.setText(ocliente.getCorreo());
+                } else {
+                    if (Error.getMensaje().equals("Cliente Existe y esta Desactivado. Desea Activarlo?")) {
+                        DPregunta Mensaje = new DPregunta(new javax.swing.JDialog(), true, this);
+                        Mensaje.labMensaje.setText(Error.getMensaje());
+                        Mensaje.setVisible(true);
+                    } else if (Error.getMensaje().equals("Cliente NO Existe. Desea Agregarlo?")) {
+                        DPregunta Mensaje = new DPregunta(new javax.swing.JDialog(), true, this);
+                        Mensaje.labMensaje.setText(Error.getMensaje());
+                        Mensaje.setVisible(true);
+                    } else {
+                        DError Mensaje = new DError(new javax.swing.JDialog(), true);
+                        Mensaje.labMensaje.setText(Error.getMensaje());
+                        Mensaje.setVisible(true);
+                    }
+                }
             } else {
                 DError Mensaje = new DError(new javax.swing.JDialog(), true);
                 Mensaje.labMensaje.setText(Error.getMensaje());
@@ -630,6 +654,7 @@ public class PVenta extends javax.swing.JPanel {
     private void txtRutKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRutKeyReleased
         // TODO add your handling code here:
         if(AnimacionRut != null){
+            if (txtRut.getText().trim().isEmpty()) return;
             AnimacionRut.DetenerTxt();
             AnimacionRut = null;
             txtRut.setToolTipText(null);
@@ -637,7 +662,100 @@ public class PVenta extends javax.swing.JPanel {
     }//GEN-LAST:event_txtRutKeyReleased
 
     private void LlenarComboComuna(){
-        jComboBoxComuna.setModel(new MCComuna(new CComuna().ListarActivos()));
+        jComboBoxComuna.setModel(new MCComuna(new CComuna().Listar("Activos")));
+    }
+    
+    public void LimpiarDatosClienteSolicitante(){
+        //txtNumeroPedido.setText("");
+        txtRut.setText("");
+        txtNombreCliente.setText("");
+        txtTelefono.setText("");
+        txtEmail.setText("");
+    }
+    
+    public void AgregarCliente(){
+        DCrudCliente CrudUsuario = new DCrudCliente(new javax.swing.JDialog(), true);
+        CrudUsuario.setTitle("Agregar Cliente");
+        CrudUsuario.txtRut.setText(txtRut.getText());
+        CrudUsuario.setVisible(true);
+    }
+    
+    public void setJTexFieldChanged(javax.swing.JTextField textField){
+        DocumentListener documentListener = new DocumentListener() {
+ 
+            @Override
+            public void changedUpdate(DocumentEvent documentEvent) {
+                printIt(documentEvent);
+            }
+
+            @Override
+            public void insertUpdate(DocumentEvent documentEvent) {
+                printIt(documentEvent);
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent documentEvent) {
+                printIt(documentEvent);
+            }
+        };
+        textField.getDocument().addDocumentListener(documentListener);
+    }
+    
+    private void printIt(DocumentEvent documentEvent) {
+        DocumentEvent.EventType type = documentEvent.getType();
+ 
+        if (type.equals(DocumentEvent.EventType.CHANGE))
+        {
+            System.out.println("CHANGE:" + txtRut.getText());
+        }
+        else if (type.equals(DocumentEvent.EventType.INSERT))
+        {
+            //txtEjemploJTextFieldChanged();
+            System.out.println("INSERT:" + txtRut.getText());
+            //if(AnimacionRut == null){
+            //    AnimacionRut = new OAnimacion(txtRut);
+            //    AnimacionRut.EjecutarTxt();
+            //    txtRut.setToolTipText("El Rut es Invalido");
+            //}
+            if (!txtRut.getText().trim().isEmpty()) {
+                OError Error = new CVerificar(txtRut.getText()).Validar();
+                if (Error.isConfirma()) {
+                    txtRut.setBackground(Color.green);
+                    txtRut.setToolTipText(Error.getMensaje());
+                } else {
+                    txtRut.setBackground(Color.red);
+                    txtRut.setToolTipText(Error.getMensaje());
+                }
+            }
+            else{
+                txtRut.setBackground(Color.WHITE);
+                txtRut.setToolTipText(null);
+            }
+        }
+        else if (type.equals(DocumentEvent.EventType.REMOVE))
+        {
+            //txtEjemploJTextFieldChanged();
+            System.out.println("REMOVE:" + txtRut.getText());
+            //if(AnimacionRut == null){
+            //    AnimacionRut = new OAnimacion(txtRut);
+            //    AnimacionRut.EjecutarTxt();
+            //    txtRut.setToolTipText("El Rut es Invalido");
+            //}
+            if (!txtRut.getText().trim().isEmpty()) {
+                OError Error = new CVerificar(txtRut.getText()).Validar();
+                if (Error.isConfirma()) {
+                    txtRut.setBackground(Color.green);
+                    txtRut.setToolTipText(Error.getMensaje());
+                } else {
+                    txtRut.setBackground(Color.red);
+                    txtRut.setToolTipText(Error.getMensaje());
+                }
+            }
+            else{
+                txtRut.setBackground(Color.WHITE);
+                txtRut.setToolTipText(null);
+            }
+        }
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

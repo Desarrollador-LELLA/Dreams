@@ -442,7 +442,7 @@ public class PCanales extends javax.swing.JPanel {
     }//GEN-LAST:event_tableRedesMouseClicked
 
 public void ListarCanales() {
-        MTCanales ModeloCanales = new MTCanales(new CCanal().Listar());
+        MTCanales ModeloCanales = new MTCanales(new CCanal().Listar(""));
         tableRedes.setModel(ModeloCanales);
 
         //jTableBancos.setPreferredSize(new java.awt.Dimension(891, 0));
