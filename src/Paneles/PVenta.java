@@ -9,6 +9,7 @@ import Clases.CCliente;
 import Clases.CComuna;
 import Clases.CVerificar;
 import Dialogos.DCrudCliente;
+import Dialogos.DCrudPack;
 import Objetos.OAnimacion;
 import Dialogos.DError;
 import Dialogos.DPregunta;
@@ -98,6 +99,7 @@ public class PVenta extends javax.swing.JPanel {
         txtBuscar = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableListaBuscar = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         labTitulo.setBackground(new java.awt.Color(102, 102, 255));
         labTitulo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -533,6 +535,13 @@ public class PVenta extends javax.swing.JPanel {
             jTableListaBuscar.getColumnModel().getColumn(2).setPreferredWidth(80);
         }
 
+        jButton1.setText("Prueba");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelSDPLayout = new javax.swing.GroupLayout(jPanelSDP);
         jPanelSDP.setLayout(jPanelSDPLayout);
         jPanelSDPLayout.setHorizontalGroup(
@@ -543,15 +552,19 @@ public class PVenta extends javax.swing.JPanel {
                     .addComponent(txtBuscar)
                     .addGroup(jPanelSDPLayout.createSequentialGroup()
                         .addComponent(labBuscar)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanelSDPLayout.setVerticalGroup(
             jPanelSDPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelSDPLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labBuscar)
+                .addGroup(jPanelSDPLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelSDPLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(labBuscar))
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -661,6 +674,14 @@ public class PVenta extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtRutKeyReleased
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        DCrudPack CrudArticulo = new DCrudPack(new javax.swing.JDialog(), true);
+        CrudArticulo.setTitle("Agregar Articulo");
+        //CrudUsuario.txtRut.setText(txtRut.getText());
+        CrudArticulo.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void LlenarComboComuna(){
         jComboBoxComuna.setModel(new MCComuna(new CComuna().Listar("Activos")));
     }
@@ -765,6 +786,7 @@ public class PVenta extends javax.swing.JPanel {
     private javax.swing.JButton butGuardar;
     private javax.swing.JButton butLimpiarDCS;
     private javax.swing.JButton butLimpiarDD;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBoxComuna;
     private javax.swing.JPanel jPanelDCS;
     private javax.swing.JPanel jPanelDD;

@@ -72,9 +72,9 @@
                           <Component id="butGuardar" alignment="1" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="jToggleButtonEstado" min="-2" pref="180" max="-2" attributes="0"/>
                   <Component id="labDireccion" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="txtDireccion" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jToggleButtonEstado" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>

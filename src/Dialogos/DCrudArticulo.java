@@ -5,6 +5,13 @@
  */
 package Dialogos;
 
+import Clases.CArticulos;
+import Clases.CCatArticulos;
+import ModeloCombox.MCCatArticulos;
+import Objetos.OError;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+
 /**
  *
  * @author TOULON-NOTE
@@ -14,9 +21,11 @@ public class DCrudArticulo extends javax.swing.JDialog {
     /**
      * Creates new form DCrudArticulo
      */
-    public DCrudArticulo(java.awt.Frame parent, boolean modal) {
+    public DCrudArticulo(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        LlenarComboComuna();
+        //JDateChooser dateChooser = new JDateChooser("yyyy/MM/dd", "####/##/##", '_');
     }
 
     /**
@@ -30,7 +39,7 @@ public class DCrudArticulo extends javax.swing.JDialog {
 
         labNombre = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        dateFechaVencimiento = new com.toedter.calendar.JDateChooser();
+        dateFechaVencimiento = new com.toedter.calendar.JDateChooser("dd-MM-yyyy", "##/##/####", '_');
         labFechaVencimiento = new javax.swing.JLabel();
         txtStok = new javax.swing.JTextField();
         labStok = new javax.swing.JLabel();
@@ -89,11 +98,11 @@ public class DCrudArticulo extends javax.swing.JDialog {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(labCategoria)
                                 .addComponent(conboxCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addComponent(jToggleButtonEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jToggleButtonEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(butGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(butGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -123,12 +132,34 @@ public class DCrudArticulo extends javax.swing.JDialog {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void butGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butGuardarActionPerformed
         // TODO add your handling code here:
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String date = sdf.format(dateFechaVencimiento.getDate());
+        CArticulos arti = new CArticulos(0, txtNombre.getText(), Integer.parseInt(txtStok.getText()), date
+                , jToggleButtonEstado.isSelected(), ((MCCatArticulos)conboxCategoria.getModel()).getCatArticulos().get(conboxCategoria.getSelectedIndex()).getId());
+        OError error = arti.Insertar();
+        if (error.isConfirma()) {
+            //ListarArticulos();
+            System.out.println(error.getMensaje());
+            txtNombre.setText("");
+            txtStok.setText("");
+            dateFechaVencimiento.setDate(null);
+            jToggleButtonEstado.setSelected(true);
+            
+
+        } else {
+            System.out.println(error.getMensaje());
+        }
     }//GEN-LAST:event_butGuardarActionPerformed
 
+    private void LlenarComboComuna(){
+        conboxCategoria.setModel(new MCCatArticulos(new CCatArticulos().Listar("Activos")));
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -159,7 +190,7 @@ public class DCrudArticulo extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                DCrudArticulo dialog = new DCrudArticulo(new javax.swing.JFrame(), true);
+                DCrudArticulo dialog = new DCrudArticulo(new javax.swing.JDialog(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

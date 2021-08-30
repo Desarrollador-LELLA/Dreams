@@ -5,61 +5,50 @@
  */
 package ModelosTablas;
 
-import Objetos.OArticulos;
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
+import Objetos.OPack;
 import java.util.List;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
 /**
  *
- * @author Usuario
+ * @author TOULON-NOTE
  */
-public class MTArticulos implements TableModel {
+public class MTVentaSelecPack implements TableModel {
     
-    private final List<OArticulos> Articulo;
+    private List<OPack> Packs;
     
-    public MTArticulos(List<OArticulos> articulo){
-        Articulo = articulo;
+    public MTVentaSelecPack(List<OPack> Packs){
+        this.Packs = Packs;
     }
 
-    public List<OArticulos> getArticulo() {
-        return Articulo;
+    public List<OPack> getPacks() {
+        return Packs;
     }
     
     @Override
     public int getRowCount() {
-        return Articulo.size();
+        return Packs.size();
     }
 
     @Override
     public int getColumnCount() {
-        return 5;
+        return 3;
     }
 
     @Override
     public String getColumnName(int columnIndex) {
         String NombreColumna = null;
         switch(columnIndex){
-            /* case 0:
-            NombreColumna = "ID";
-            break;*/
             case 0:
-                NombreColumna = "Descripción";
+                NombreColumna = "Codigo";
                 break;
             case 1:
-                NombreColumna = "Stock";
+                NombreColumna = "Nombre";
                 break;
             case 2:
-                NombreColumna = "Fecha";
+                NombreColumna = "Precio";
                 break;
-            case 3:
-                NombreColumna = "Estado";
-                break;
-            case 4:
-                NombreColumna = "Categoria";
-                break;
-
         }
         
         return NombreColumna;
@@ -67,7 +56,21 @@ public class MTArticulos implements TableModel {
 
     @Override
     public Class<?> getColumnClass(int columnIndex) {
-       
+        /**Class Tipo = null;
+        switch(columnIndex){
+            case 0:
+                Tipo = String.class;
+                break;
+            case 1:
+                Tipo = String.class;
+                break;
+            case 2:
+                Tipo = String.class;
+                break;
+            case 3:
+                Tipo = Boolean.class;
+                break;
+        }**/
         
         return String.class;
     }
@@ -81,23 +84,14 @@ public class MTArticulos implements TableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         String Valor = null;
         switch(columnIndex){
-            /*case 0:
-            Valor = Comuna.get(rowIndex).getId();
-            break;*/
             case 0:
-                Valor = Articulo.get(rowIndex).getDescripcion();
+                Valor = String.valueOf(Packs.get(rowIndex).getId());
                 break;
             case 1:
-                Valor = String.valueOf(Articulo.get(rowIndex).getStock()); //Problemas con Int, no se puede convertir a String
+                Valor = Packs.get(rowIndex).getNombre();
                 break;
             case 2:
-                Valor = String.valueOf(Articulo.get(rowIndex).getFecha());
-                break;
-            case 3:
-                Valor = Articulo.get(rowIndex).isEstado()? "Activado" : "Desactivado";
-                break;    
-            case 4:
-                Valor = String.valueOf(Articulo.get(rowIndex).getCategoria()); //Problemas con Int, no se puede convertir a String
+                Valor = String.format("$%s", String.valueOf(Packs.get(rowIndex).getCosto()));
                 break;
         }
         
@@ -106,6 +100,7 @@ public class MTArticulos implements TableModel {
 
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+        //Usuarios.set(rowIndex, (OUsuario)aValue);
     }
 
     @Override
@@ -116,5 +111,6 @@ public class MTArticulos implements TableModel {
     @Override
     public void removeTableModelListener(TableModelListener l) {
         //To change body of generated methods, choose Tools | Templates.
-    }   
+    }
+    
 }
