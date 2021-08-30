@@ -5,36 +5,35 @@
  */
 package ModelosTablas;
 
-import Objetos.OArticulos;
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
+import Objetos.OPackDetalle;
 import java.util.List;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
 /**
  *
- * @author Usuario
+ * @author TOULON-NOTE
  */
-public class MTArticulos implements TableModel {
+public class MTPackDetalle implements TableModel {
     
-    private final List<OArticulos> Articulo;
+    private final List<OPackDetalle> packdetalles;
     
-    public MTArticulos(List<OArticulos> articulo){
-        Articulo = articulo;
+    public MTPackDetalle(List<OPackDetalle> packdetalles){
+        this.packdetalles = packdetalles;
     }
 
-    public List<OArticulos> getArticulo() {
-        return Articulo;
+    public List<OPackDetalle> getPackDetalles() {
+        return packdetalles;
     }
     
     @Override
     public int getRowCount() {
-        return Articulo.size();
+        return packdetalles.size();
     }
 
     @Override
     public int getColumnCount() {
-        return 5;
+        return 2;
     }
 
     @Override
@@ -45,19 +44,10 @@ public class MTArticulos implements TableModel {
             NombreColumna = "ID";
             break;*/
             case 0:
-                NombreColumna = "Descripción";
+                NombreColumna = "Cantidad";
                 break;
             case 1:
-                NombreColumna = "Stock";
-                break;
-            case 2:
-                NombreColumna = "Fecha";
-                break;
-            case 3:
-                NombreColumna = "Estado";
-                break;
-            case 4:
-                NombreColumna = "Categoria";
+                NombreColumna = "Nombre";
                 break;
 
         }
@@ -85,19 +75,10 @@ public class MTArticulos implements TableModel {
             Valor = Comuna.get(rowIndex).getId();
             break;*/
             case 0:
-                Valor = Articulo.get(rowIndex).getDescripcion();
+                Valor = String.valueOf(packdetalles.get(rowIndex).getCantidad());
                 break;
             case 1:
-                Valor = String.valueOf(Articulo.get(rowIndex).getStock()); //Problemas con Int, no se puede convertir a String
-                break;
-            case 2:
-                Valor = String.valueOf(Articulo.get(rowIndex).getFecha());
-                break;
-            case 3:
-                Valor = Articulo.get(rowIndex).isEstado()? "Activado" : "Desactivado";
-                break;    
-            case 4:
-                Valor = String.valueOf(Articulo.get(rowIndex).getCategoria()); //Problemas con Int, no se puede convertir a String
+                Valor = packdetalles.get(rowIndex).getArticulo().getDescripcion(); //Problemas con Int, no se puede convertir a String
                 break;
         }
         

@@ -7,6 +7,7 @@ package Clases;
 
 import Objetos.OArticulos;
 import Objetos.OError;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -97,7 +98,7 @@ public class CArticulos extends OArticulos {
                 Preparando = Sql.getCon().prepareStatement("INSERT INTO Articulo(ART_DESCRIPCION, ART_STOCK, ART_FECHA_VENCIMIENTO, ART_ESTADO, CAT_ID_CATEGORIA) VALUES(?,?,?,?,?)");
                 Preparando.setString(1, this.getDescripcion());
                 Preparando.setInt(2, this.getStock());
-                Preparando.setString(3, this.getFecha());
+                Preparando.setDate(3, Date.valueOf(this.getFecha()));
                 Preparando.setBoolean(4, this.isEstado());
                 Preparando.setInt(5, this.getCategoria());
                      
