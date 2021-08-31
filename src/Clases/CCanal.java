@@ -60,7 +60,8 @@ public class CCanal extends OCanales{
         }
         return Error;
     }
-    public List<OCanales> Listar(){ 
+    public List<OCanales> Listar(String Tipo){ 
+        String sql = "";
         PreparedStatement Preparando = null;
         ResultSet Resultado = null;
         List<OCanales> Listado = new ArrayList();
@@ -68,7 +69,15 @@ public class CCanal extends OCanales{
         Error = Sql.Conectar();
         if (Error.isConfirma()) {
             try {
-                Preparando = Sql.getCon().prepareStatement("SELECT * FROM Canal");
+                switch (Tipo) {
+                    case "Activos":
+                        sql = "SELECT * FROM Canal WHERE CAN_ESTADO = true";
+                        break;
+                    default:
+                        sql = "SELECT * FROM Canal";
+                        break;
+                }
+                Preparando = Sql.getCon().prepareStatement(sql);
                 Resultado = Preparando.executeQuery();
 
                 while (Resultado.next()) {

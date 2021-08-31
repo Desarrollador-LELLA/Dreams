@@ -26,8 +26,9 @@ public class OVenta {
     private String horaEntregaInicial;
     private String horaEntregaFinal;
     private String saludoTexto;
+    private int cantidad;
     
-    //private OCliente cliente;
+    private OCliente cliente;
     //private OPack pack;
     private OBanco banco;
     private OComuna comuna;
