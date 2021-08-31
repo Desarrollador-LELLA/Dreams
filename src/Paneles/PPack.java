@@ -5,6 +5,9 @@
  */
 package Paneles;
 
+import ModelosTablas.MTPack;
+import Objetos.OPack;
+
 /**
  *
  * @author Usuario
@@ -29,24 +32,24 @@ public class PPack extends javax.swing.JPanel {
 
         labTitulo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        txtBusquedaCArticulos = new javax.swing.JTextField();
+        txtBusquedaPack = new javax.swing.JTextField();
         labBusqueda = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableCArticulos = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         labBusqueda1 = new javax.swing.JLabel();
-        txtBusquedaCArticulos1 = new javax.swing.JTextField();
+        txtBusquedaPackUn = new javax.swing.JTextField();
         butAgregar = new javax.swing.JButton();
         butCancelar = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTableCArticulos2 = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTableCArticulos1 = new javax.swing.JTable();
+        jTablePack = new javax.swing.JTable();
         butEditar = new javax.swing.JButton();
         butDesactivar = new javax.swing.JButton();
-        txtBusquedaCArticulos2 = new javax.swing.JTextField();
+        txtBusquedaPacks = new javax.swing.JTextField();
         labBusqueda2 = new javax.swing.JLabel();
 
         labTitulo.setBackground(new java.awt.Color(102, 102, 255));
@@ -55,7 +58,7 @@ public class PPack extends javax.swing.JPanel {
         labTitulo.setText("Pack´s");
         labTitulo.setOpaque(true);
 
-        txtBusquedaCArticulos.setToolTipText("Tipee lo que desea Buscar");
+        txtBusquedaPack.setToolTipText("Tipee lo que desea Buscar");
 
         labBusqueda.setText("Nombre");
 
@@ -93,7 +96,7 @@ public class PPack extends javax.swing.JPanel {
 
         labBusqueda1.setText("Unidades :");
 
-        txtBusquedaCArticulos1.setToolTipText("Tipee lo que desea Buscar");
+        txtBusquedaPackUn.setToolTipText("Tipee lo que desea Buscar");
 
         butAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_agregar_32.png"))); // NOI18N
         butAgregar.setText("Crear Pack");
@@ -152,7 +155,7 @@ public class PPack extends javax.swing.JPanel {
                 .addComponent(labBusqueda)
                 .addGap(4, 4, 4)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtBusquedaCArticulos, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBusquedaPack, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,7 +166,7 @@ public class PPack extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(labBusqueda1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtBusquedaCArticulos1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtBusquedaPackUn, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(54, 54, 54)
                                 .addComponent(jButton2)))
@@ -179,7 +182,7 @@ public class PPack extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBusquedaCArticulos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBusquedaPack, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labBusqueda))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -188,7 +191,7 @@ public class PPack extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labBusqueda1)
-                            .addComponent(txtBusquedaCArticulos1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtBusquedaPackUn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -203,7 +206,7 @@ public class PPack extends javax.swing.JPanel {
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
-        jTableCArticulos1.setModel(new javax.swing.table.DefaultTableModel(
+        jTablePack.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -220,12 +223,12 @@ public class PPack extends javax.swing.JPanel {
                 "Codigo Pack", "Nombre Pack", "Unidades en Bodega", "Estado"
             }
         ));
-        jTableCArticulos1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTablePack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableCArticulos1MouseClicked(evt);
+                jTablePackMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(jTableCArticulos1);
+        jScrollPane3.setViewportView(jTablePack);
 
         butEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_editar_32.png"))); // NOI18N
         butEditar.setText("Editar");
@@ -285,8 +288,8 @@ public class PPack extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        txtBusquedaCArticulos2.setText("Search");
-        txtBusquedaCArticulos2.setToolTipText("Tipee lo que desea Buscar");
+        txtBusquedaPacks.setText("Search");
+        txtBusquedaPacks.setToolTipText("Tipee lo que desea Buscar");
 
         labBusqueda2.setText("Tabla Packs");
 
@@ -305,7 +308,7 @@ public class PPack extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(labBusqueda2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtBusquedaCArticulos2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtBusquedaPacks, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(153, 153, 153))
         );
         layout.setVerticalGroup(
@@ -316,7 +319,7 @@ public class PPack extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBusquedaCArticulos2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBusquedaPacks, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labBusqueda2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -326,13 +329,13 @@ public class PPack extends javax.swing.JPanel {
 
     private void jTableCArticulosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCArticulosMouseClicked
         // TODO add your handling code here:
-        OCatArticulos catArt = ((MTCatArticulos) jTableCArticulos.getModel()).getCategoria().get(jTableCArticulos.getSelectedRow());
+        OPack catArt = ((MTPack) jTableCArticulos.getModel()).getPack().get(jTableCArticulos.getSelectedRow());
         txtNombreCatArt.setText(catArt.getNombre());
     }//GEN-LAST:event_jTableCArticulosMouseClicked
 
-    private void jTableCArticulos1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCArticulos1MouseClicked
+    private void jTablePackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePackMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTableCArticulos1MouseClicked
+    }//GEN-LAST:event_jTablePackMouseClicked
 
     private void butAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butAgregarActionPerformed
         // TODO add your handling code here:
@@ -402,14 +405,14 @@ public class PPack extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTableCArticulos;
-    private javax.swing.JTable jTableCArticulos1;
     private javax.swing.JTable jTableCArticulos2;
+    private javax.swing.JTable jTablePack;
     private javax.swing.JLabel labBusqueda;
     private javax.swing.JLabel labBusqueda1;
     private javax.swing.JLabel labBusqueda2;
     private javax.swing.JLabel labTitulo;
-    private javax.swing.JTextField txtBusquedaCArticulos;
-    private javax.swing.JTextField txtBusquedaCArticulos1;
-    private javax.swing.JTextField txtBusquedaCArticulos2;
+    private javax.swing.JTextField txtBusquedaPack;
+    private javax.swing.JTextField txtBusquedaPackUn;
+    private javax.swing.JTextField txtBusquedaPacks;
     // End of variables declaration//GEN-END:variables
 }
