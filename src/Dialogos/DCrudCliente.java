@@ -243,6 +243,7 @@ public class DCrudCliente extends javax.swing.JDialog {
 
     private void butGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butGuardarActionPerformed
         // TODO add your handling code here:
+        //tester
         Agregar();
     }//GEN-LAST:event_butGuardarActionPerformed
 

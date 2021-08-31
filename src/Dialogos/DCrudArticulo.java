@@ -9,7 +9,6 @@ import Clases.CArticulos;
 import Clases.CCatArticulos;
 import ModeloCombox.MCCatArticulos;
 import Objetos.OError;
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 
 /**

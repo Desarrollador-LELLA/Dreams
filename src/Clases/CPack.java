@@ -45,7 +45,7 @@ public class CPack extends OPack {
                 Resultado = Preparando.executeQuery();
 
                 while (Resultado.next()) {
-                    //Listado.add(new OPack(Resultado.getInt(1), Resultado.getString(2), Resultado.getString(3),Resultado.getInt(4), Resultado.getBoolean(5)));
+                    Listado.add(new OPack(Resultado.getInt(1), Resultado.getString(2), Resultado.getString(3),Resultado.getInt(4), Resultado.getBoolean(5), new ArrayList()));
                 }
                 Error = new OError(String.format(TagCodigoClase, 10), "Consulta Realizada Corectamente", null, true);
 
