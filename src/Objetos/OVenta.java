@@ -210,5 +210,9 @@ public class OVenta {
     public void setEstadoVenta(OEstadoVenta estadoVenta) {
         this.estadoVenta = estadoVenta;
     }
+    
+    public int getTotalT(){
+        return cantidad * Integer.valueOf(pack.getCosto());
+    }
 }
 
