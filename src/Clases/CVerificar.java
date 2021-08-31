@@ -3,6 +3,18 @@ package Clases;
 
 import Objetos.OError;
 import Objetos.OVerificar;
+import Paneles.PProveedor;
+import java.awt.Desktop;
+import java.awt.Rectangle;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTable;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /**
  *
@@ -12,6 +24,7 @@ public class CVerificar extends OVerificar{
 
     private OError Error = new OError();
     private String TagCodigoClase = "CVerificar - %s";
+    private JTable tabla;
 
     public CVerificar() {
         super();
@@ -20,6 +33,12 @@ public class CVerificar extends OVerificar{
     public CVerificar(String Rut) {
         super(Rut);
     }
+
+    public CVerificar(JTable tabla) {
+        this.tabla = tabla;
+    }
+    
+    
     
     public OError Validar() {
 
@@ -58,4 +77,46 @@ public class CVerificar extends OVerificar{
         }
         return Error;
     }
+    
+    private void imprimir() {
+        String ruta = System.getProperties().getProperty("user.dir");
+        XSSFWorkbook workbook = new XSSFWorkbook();
+        XSSFSheet hoja = workbook.createSheet();
+
+        XSSFRow fila = hoja.createRow(0);
+        for (int i = 0; i < tabla.getColumnModel().getColumnCount(); i++) {
+
+            fila.createCell(i).setCellValue(tabla.getColumnName(i));
+        }
+
+        XSSFRow filas;
+        Rectangle rect;
+
+        for (int i = 0; i < tabla.getRowCount(); i++) {
+
+            rect = tabla.getCellRect(i, 0, true);
+            try {
+                tabla.scrollRectToVisible(rect);
+                tabla.setRowSelectionInterval(i, i);
+
+                filas = hoja.createRow((i + 1));
+                for (int e = 0; e < tabla.getColumnModel().getColumnCount(); e++) {
+
+                    filas.createCell(e).setCellValue(tabla.getValueAt(i, e).toString());
+
+                }
+
+            } catch (java.lang.ClassCastException e) {
+            }
+        }
+
+        try {
+            workbook.write(new FileOutputStream(new File(ruta + "//Excel.xlsx")));
+            Desktop.getDesktop().open(new File(ruta + "//Excel.xlsx"));
+
+        } catch (IOException ex) {
+            Logger.getLogger(PProveedor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 }
