@@ -5,9 +5,6 @@
  */
 package Objetos;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author Usuario
@@ -19,20 +16,17 @@ public class OPack {
     private String costo;
     private int stock;
     private boolean estado;
-    
-    private List<OPackDetalle> detallearticulos = new ArrayList<>();
 
     public OPack() {
 
     }
 
-    public OPack(int id, String nombre, String costo, int stock, boolean estado, List<OPackDetalle> detallearticulos) {
+    public OPack(int id, String nombre, String costo, int stock, boolean estado) {
         this.id = id;
         this.nombre = nombre;
         this.costo = costo;
         this.stock = stock;
         this.estado = estado;
-        this.detallearticulos = detallearticulos;
     }
 
     public int getId() {
@@ -73,14 +67,6 @@ public class OPack {
 
     public void setEstado(boolean estado) {
         this.estado = estado;
-    }
-
-    public List<OPackDetalle> getArticulos() {
-        return detallearticulos;
-    }
-
-    public void setArticulos(List<OPackDetalle> detallearticulos) {
-        this.detallearticulos = detallearticulos;
     }
 
 }

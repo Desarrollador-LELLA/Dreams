@@ -107,13 +107,17 @@ public class PMaestros extends javax.swing.JPanel {
         jButton4.setText("Packs");
         jButton4.setToolTipText("Packs");
         jButton4.setBorderPainted(false);
-        jButton4.setEnabled(false);
         jButton4.setFocusable(false);
         jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton4.setMaximumSize(new java.awt.Dimension(69, 69));
         jButton4.setMinimumSize(new java.awt.Dimension(69, 69));
         jButton4.setPreferredSize(new java.awt.Dimension(69, 69));
         jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jToolBarMenu.add(jButton4);
 
         butCanales.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -391,6 +395,19 @@ public class PMaestros extends javax.swing.JPanel {
         panelVisor.revalidate();
         panelVisor.repaint(); 
     }//GEN-LAST:event_BurArticulosActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        PPack PanelPack = new PPack();
+        PanelPack.setVisible(true);
+        PanelPack.setSize(1000, 525);
+        PanelPack.setLocation(0, 0);
+        
+        panelVisor.removeAll();
+        panelVisor.add(PanelPack, BorderLayout.CENTER);
+        panelVisor.revalidate();
+        panelVisor.repaint();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
