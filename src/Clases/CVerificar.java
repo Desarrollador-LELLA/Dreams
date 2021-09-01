@@ -86,7 +86,7 @@ public class CVerificar extends OVerificar{
      *
      * @return
      */
-    public void Imprimir() {
+    public void Imprimir(JTable tabla) {
         String ruta = System.getProperties().getProperty("user.dir");
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet hoja = workbook.createSheet();
