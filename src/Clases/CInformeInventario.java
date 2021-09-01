@@ -18,18 +18,17 @@ import java.util.List;
  * @author rodka
  */
 public class CInformeInventario {
-    
-     private final String TagCodigoClase = "CComuna - %s";
-    private OError Error = new OError();
 
-    public CInformeInventario() {
-        super();
-    }
+       
+    
+    private OError Error = new OError();
+    private String TagCodigoClase = "CInformeInventario - %s";
     
     
-    
-    
-    public List<OCatArticulos> Listar(String Tipo) {
+    public List<OCatArticulos> ListarActivos(String Tipo) {
+        
+     
+
         
         String sql = "";
         PreparedStatement Preparando = null;
@@ -67,4 +66,5 @@ public class CInformeInventario {
         }
         return Listado;
     }
+
 }
