@@ -5,7 +5,10 @@
  */
 package Paneles;
 
+import Clases.CArticulos;
+import Clases.CPack;
 import ModelosTablas.MTPack;
+import ModelosTablas.MTPackArticulo;
 import Objetos.OPack;
 
 /**
@@ -19,6 +22,8 @@ public class PPack extends javax.swing.JPanel {
      */
     public PPack() {
         initComponents();
+        ListarPack();
+        ListarAticulos();
     }
 
     /**
@@ -67,6 +72,11 @@ public class PPack extends javax.swing.JPanel {
         labTitulo.setOpaque(true);
 
         txtBusquedaPack.setToolTipText("Tipee lo que desea Buscar");
+        txtBusquedaPack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBusquedaPackActionPerformed(evt);
+            }
+        });
 
         labBusqueda.setText("Nombre");
 
@@ -130,6 +140,11 @@ public class PPack extends javax.swing.JPanel {
         butCancelar.setMinimumSize(new java.awt.Dimension(69, 69));
         butCancelar.setPreferredSize(new java.awt.Dimension(69, 69));
         butCancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        butCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butCancelarActionPerformed(evt);
+            }
+        });
 
         jTableCArticulos2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -192,21 +207,19 @@ public class PPack extends javax.swing.JPanel {
                         .addComponent(txtBusquedaPack, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(labStock)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(butAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
-                            .addComponent(butCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19)
                         .addComponent(labPrecio)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtPrecio))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(butAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                    .addComponent(butCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -434,6 +447,24 @@ public class PPack extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtStockActionPerformed
 
+    private void txtBusquedaPackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBusquedaPackActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBusquedaPackActionPerformed
+
+    private void butCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butCancelarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_butCancelarActionPerformed
+    
+    public void ListarPack() {
+        MTPack ModeloBanco = new MTPack(new CPack().Listar());
+        jTablePack.setModel(ModeloBanco);
+       }
+    
+    public void ListarAticulos() {
+        MTPackArticulo ModeloBanco = new MTPackArticulo(new CArticulos().Listar());
+        jTableCArticulos2.setModel(ModeloBanco);
+       }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton butAgregar;
