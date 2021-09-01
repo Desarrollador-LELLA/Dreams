@@ -18,6 +18,7 @@ public class PInformes extends javax.swing.JPanel {
      */
     public PInformes() {
         initComponents();
+        butInformeVentasActionPerformed(null);
     }
 
     /**
@@ -50,8 +51,8 @@ public class PInformes extends javax.swing.JPanel {
         jToolBarMenu.setOpaque(false);
 
         butInformeVentas.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        butInformeVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_venta_32.png"))); // NOI18N
-        butInformeVentas.setText("Informe de Ventas");
+        butInformeVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_iventas_32.png"))); // NOI18N
+        butInformeVentas.setText("Ventas");
         butInformeVentas.setToolTipText("Informe de Ventas");
         butInformeVentas.setBorderPainted(false);
         butInformeVentas.setFocusable(false);
@@ -68,8 +69,8 @@ public class PInformes extends javax.swing.JPanel {
         jToolBarMenu.add(butInformeVentas);
 
         butInformeInventario.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        butInformeInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_confirmacion_32.png"))); // NOI18N
-        butInformeInventario.setText("Informe Inventario");
+        butInformeInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_iinventario_32.png"))); // NOI18N
+        butInformeInventario.setText("Inventario");
         butInformeInventario.setToolTipText("Informe Inventario");
         butInformeInventario.setBorderPainted(false);
         butInformeInventario.setFocusable(false);
@@ -86,8 +87,8 @@ public class PInformes extends javax.swing.JPanel {
         jToolBarMenu.add(butInformeInventario);
 
         butInformeVencimientos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        butInformeVencimientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_listasdestino_32.png"))); // NOI18N
-        butInformeVencimientos.setText("Informe de Vencimientos");
+        butInformeVencimientos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_ivencimiento_32.png"))); // NOI18N
+        butInformeVencimientos.setText("Vencimientos");
         butInformeVencimientos.setToolTipText("Informe de Vencimientos");
         butInformeVencimientos.setBorderPainted(false);
         butInformeVencimientos.setFocusable(false);
@@ -104,8 +105,8 @@ public class PInformes extends javax.swing.JPanel {
         jToolBarMenu.add(butInformeVencimientos);
 
         butInformeProveedores.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        butInformeProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_actualizardespacho_32.png"))); // NOI18N
-        butInformeProveedores.setText("Informe de Proveedores");
+        butInformeProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_iproveedores_32.png"))); // NOI18N
+        butInformeProveedores.setText("Proveedores");
         butInformeProveedores.setToolTipText("Informe de Proveedores");
         butInformeProveedores.setBorderPainted(false);
         butInformeProveedores.setFocusable(false);
@@ -122,8 +123,8 @@ public class PInformes extends javax.swing.JPanel {
         jToolBarMenu.add(butInformeProveedores);
 
         butInformeVentaPack.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        butInformeVentaPack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_actualizardespacho_32.png"))); // NOI18N
-        butInformeVentaPack.setText("Informe de Venta Pack");
+        butInformeVentaPack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_ipacks_32.png"))); // NOI18N
+        butInformeVentaPack.setText("Venta Pack");
         butInformeVentaPack.setToolTipText("Informe de Venta Pack");
         butInformeVentaPack.setBorderPainted(false);
         butInformeVentaPack.setFocusable(false);
@@ -140,8 +141,8 @@ public class PInformes extends javax.swing.JPanel {
         jToolBarMenu.add(butInformeVentaPack);
 
         butInformeComunas.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        butInformeComunas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_actualizardespacho_32.png"))); // NOI18N
-        butInformeComunas.setText("Informe por Comunas");
+        butInformeComunas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_icomuna_32.png"))); // NOI18N
+        butInformeComunas.setText("Comunas");
         butInformeComunas.setToolTipText("Informe por Comunas");
         butInformeComunas.setBorderPainted(false);
         butInformeComunas.setFocusable(false);
@@ -150,6 +151,11 @@ public class PInformes extends javax.swing.JPanel {
         butInformeComunas.setMinimumSize(new java.awt.Dimension(69, 69));
         butInformeComunas.setPreferredSize(new java.awt.Dimension(69, 69));
         butInformeComunas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        butInformeComunas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butInformeComunasActionPerformed(evt);
+            }
+        });
         jToolBarMenu.add(butInformeComunas);
 
         javax.swing.GroupLayout panelVisorLayout = new javax.swing.GroupLayout(panelVisor);
@@ -246,6 +252,19 @@ public class PInformes extends javax.swing.JPanel {
         panelVisor.revalidate();
         panelVisor.repaint();
     }//GEN-LAST:event_butInformeVentaPackActionPerformed
+
+    private void butInformeComunasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butInformeComunasActionPerformed
+        // TODO add your handling code here:
+        PInformeComunas PanelIComuna = new PInformeComunas();
+        PanelIComuna.setVisible(true);
+        PanelIComuna.setSize(1000, 525);
+        PanelIComuna.setLocation(0, 0);
+        
+        panelVisor.removeAll();
+        panelVisor.add(PanelIComuna, BorderLayout.CENTER);
+        panelVisor.revalidate();
+        panelVisor.repaint();
+    }//GEN-LAST:event_butInformeComunasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

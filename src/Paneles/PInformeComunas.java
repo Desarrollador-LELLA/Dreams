@@ -9,12 +9,12 @@ package Paneles;
  *
  * @author TOULON-NOTE
  */
-public class PInformeVentaPack extends javax.swing.JPanel {
+public class PInformeComunas extends javax.swing.JPanel {
 
     /**
-     * Creates new form PInformeVentaPack
+     * Creates new form PInformeComunas
      */
-    public PInformeVentaPack() {
+    public PInformeComunas() {
         initComponents();
     }
 
@@ -33,18 +33,20 @@ public class PInformeVentaPack extends javax.swing.JPanel {
         jDateChooserDesde = new com.toedter.calendar.JDateChooser("dd-MM-yyyy", "##/##/####", '_');
         jDateChooserHasta = new com.toedter.calendar.JDateChooser("dd-MM-yyyy", "##/##/####", '_');
         labHasta = new javax.swing.JLabel();
+        labComuna = new javax.swing.JLabel();
         butGuardar = new javax.swing.JButton();
-        jToolBarMenu = new javax.swing.JToolBar();
-        butExportarXLSX = new javax.swing.JButton();
+        comboxComuna = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableLista = new javax.swing.JTable();
-        labTotalCantidad = new javax.swing.JLabel();
+        jToolBarMenu = new javax.swing.JToolBar();
+        butExportarXLSX = new javax.swing.JButton();
         labTotalValor = new javax.swing.JLabel();
+        labTotalCantidad = new javax.swing.JLabel();
 
         labTitulo.setBackground(new java.awt.Color(102, 102, 255));
         labTitulo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         labTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        labTitulo.setText("Informe de Venta Pack");
+        labTitulo.setText("Informe por Comunas");
         labTitulo.setOpaque(true);
 
         jPanelBusqueda.setBorder(javax.swing.BorderFactory.createTitledBorder("Busqueda"));
@@ -53,8 +55,12 @@ public class PInformeVentaPack extends javax.swing.JPanel {
 
         labHasta.setText("Hasta");
 
+        labComuna.setText("Comuna");
+
         butGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_buscar_32.png"))); // NOI18N
         butGuardar.setText("Buscar");
+
+        comboxComuna.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanelBusquedaLayout = new javax.swing.GroupLayout(jPanelBusqueda);
         jPanelBusqueda.setLayout(jPanelBusquedaLayout);
@@ -71,7 +77,10 @@ public class PInformeVentaPack extends javax.swing.JPanel {
                         .addGroup(jPanelBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jDateChooserHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labHasta))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanelBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comboxComuna, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labComuna)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBusquedaLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(butGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -86,13 +95,53 @@ public class PInformeVentaPack extends javax.swing.JPanel {
                     .addGroup(jPanelBusquedaLayout.createSequentialGroup()
                         .addGroup(jPanelBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labDesde)
-                            .addComponent(labHasta))
+                            .addComponent(labHasta)
+                            .addComponent(labComuna))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jDateChooserDesde, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addGroup(jPanelBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jDateChooserDesde, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboxComuna, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
                 .addComponent(butGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jTableLista.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre Comuna", "Nombre Pack", "Cantidad Vendidos", "Valor"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableLista.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jTableLista.setRowHeight(30);
+        jScrollPane1.setViewportView(jTableLista);
+        if (jTableLista.getColumnModel().getColumnCount() > 0) {
+            jTableLista.getColumnModel().getColumn(0).setResizable(false);
+            jTableLista.getColumnModel().getColumn(0).setPreferredWidth(287);
+            jTableLista.getColumnModel().getColumn(1).setResizable(false);
+            jTableLista.getColumnModel().getColumn(1).setPreferredWidth(287);
+            jTableLista.getColumnModel().getColumn(2).setResizable(false);
+            jTableLista.getColumnModel().getColumn(2).setPreferredWidth(150);
+            jTableLista.getColumnModel().getColumn(3).setResizable(false);
+            jTableLista.getColumnModel().getColumn(3).setPreferredWidth(150);
+        }
 
         jToolBarMenu.setFloatable(false);
         jToolBarMenu.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -110,48 +159,13 @@ public class PInformeVentaPack extends javax.swing.JPanel {
         butExportarXLSX.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBarMenu.add(butExportarXLSX);
 
-        jTableLista.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nombre Pack", "Cantidad", "Valor"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTableLista.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
-        jTableLista.setRowHeight(30);
-        jScrollPane1.setViewportView(jTableLista);
-        if (jTableLista.getColumnModel().getColumnCount() > 0) {
-            jTableLista.getColumnModel().getColumn(0).setResizable(false);
-            jTableLista.getColumnModel().getColumn(0).setPreferredWidth(374);
-            jTableLista.getColumnModel().getColumn(1).setResizable(false);
-            jTableLista.getColumnModel().getColumn(1).setPreferredWidth(250);
-            jTableLista.getColumnModel().getColumn(2).setResizable(false);
-            jTableLista.getColumnModel().getColumn(2).setPreferredWidth(250);
-        }
-
-        labTotalCantidad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labTotalCantidad.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        labTotalCantidad.setText("Total Cantidad $0");
-
         labTotalValor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         labTotalValor.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         labTotalValor.setText("Total Valor $0");
+
+        labTotalCantidad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        labTotalCantidad.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labTotalCantidad.setText("Total Cantidad 0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -160,14 +174,14 @@ public class PInformeVentaPack extends javax.swing.JPanel {
             .addComponent(labTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanelBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(labTotalCantidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
-                                .addComponent(labTotalValor, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(labTotalValor, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 903, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jToolBarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -181,13 +195,13 @@ public class PInformeVentaPack extends javax.swing.JPanel {
                 .addComponent(jPanelBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jToolBarMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labTotalCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labTotalValor, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(labTotalValor, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labTotalCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jToolBarMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -196,12 +210,14 @@ public class PInformeVentaPack extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton butExportarXLSX;
     private javax.swing.JButton butGuardar;
+    private javax.swing.JComboBox<String> comboxComuna;
     private com.toedter.calendar.JDateChooser jDateChooserDesde;
     private com.toedter.calendar.JDateChooser jDateChooserHasta;
     private javax.swing.JPanel jPanelBusqueda;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableLista;
     private javax.swing.JToolBar jToolBarMenu;
+    private javax.swing.JLabel labComuna;
     private javax.swing.JLabel labDesde;
     private javax.swing.JLabel labHasta;
     private javax.swing.JLabel labTitulo;
