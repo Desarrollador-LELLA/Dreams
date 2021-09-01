@@ -507,4 +507,3 @@ public class DCrudCliente extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }
-

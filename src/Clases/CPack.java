@@ -42,7 +42,7 @@ public class CPack extends OPack {
             try {
                 Preparando = Sql.getCon().prepareStatement("SELECT * FROM Pack");
                 Resultado = Preparando.executeQuery();
-                
+
                 while(Resultado.next()){
                     Listado.add(new OPack(Resultado.getInt(1), Resultado.getString(2), Resultado.getString(3),Resultado.getInt(4), Resultado.getBoolean(5)));
                 }

@@ -7,6 +7,8 @@ package Paneles;
 
 import Clases.CCliente;
 import Clases.CComuna;
+import Clases.CPack;
+import Clases.CVenta;
 import Clases.CVerificar;
 import Dialogos.DCrudCliente;
 import Dialogos.DCrudPack;
@@ -14,9 +16,17 @@ import Objetos.OAnimacion;
 import Dialogos.DError;
 import Dialogos.DPregunta;
 import ModeloCombox.MCComuna;
+import ModelosTablas.MTVentaPackDeta;
+import ModelosTablas.MTVentaSelecPack;
+import Objetos.OBanco;
 import Objetos.OCliente;
 import Objetos.OError;
+import Objetos.OEstadoVenta;
+import Objetos.OVenta;
 import java.awt.Color;
+import java.awt.event.MouseEvent;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -25,8 +35,10 @@ import javax.swing.event.DocumentListener;
  * @author TOULON-NOTE
  */
 public class PVenta extends javax.swing.JPanel {
-    
+
+    private OVenta Venta = new OVenta();
     private OAnimacion AnimacionRut = null;
+
     /**
      * Creates new form PVenta
      */
@@ -34,6 +46,8 @@ public class PVenta extends javax.swing.JPanel {
         initComponents();
         LlenarComboComuna();
         setJTexFieldChanged(txtRut);
+        setJTexFieldChanged2(txtCantidad);
+        ListarArticulos();
     }
 
     /**
@@ -63,8 +77,6 @@ public class PVenta extends javax.swing.JPanel {
         labNombreDestinatario = new javax.swing.JLabel();
         txtNombreDestinatario = new javax.swing.JTextField();
         labFechaEntrega = new javax.swing.JLabel();
-        txtFechaEntrega = new javax.swing.JTextField();
-        butFechaEntrega = new javax.swing.JButton();
         jComboBoxComuna = new javax.swing.JComboBox<>();
         labComuna = new javax.swing.JLabel();
         labDireccion = new javax.swing.JLabel();
@@ -77,6 +89,11 @@ public class PVenta extends javax.swing.JPanel {
         txtSaludo = new javax.swing.JTextArea();
         labSaludo = new javax.swing.JLabel();
         butLimpiarDD = new javax.swing.JButton();
+        jDateChooserFE = new com.toedter.calendar.JDateChooser("dd-MM-yyyy", "##/##/####", '_');
+        txtApellidoDestinatario = new javax.swing.JTextField();
+        labApellidoDestinatario = new javax.swing.JLabel();
+        txtTelefonoDestinatario = new javax.swing.JTextField();
+        labTelefonoDestinatario = new javax.swing.JLabel();
         jPanelPS = new javax.swing.JPanel();
         labCodigo = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
@@ -225,9 +242,6 @@ public class PVenta extends javax.swing.JPanel {
 
         labFechaEntrega.setText("Fecha Entrega");
 
-        butFechaEntrega.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_calendario_24.png"))); // NOI18N
-        butFechaEntrega.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
         jComboBoxComuna.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         labComuna.setText("Comuna");
@@ -236,11 +250,11 @@ public class PVenta extends javax.swing.JPanel {
 
         txtHoraInicio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        labHoraFin.setText("Hora Fin Entrega");
+        labHoraFin.setText("H. F. Entrega");
 
         txtHoraFin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        labHoraInicio.setText("Hora Inicio Entrega");
+        labHoraInicio.setText("H. I. Entrega");
 
         txtSaludo.setColumns(20);
         txtSaludo.setLineWrap(true);
@@ -258,6 +272,10 @@ public class PVenta extends javax.swing.JPanel {
             }
         });
 
+        labApellidoDestinatario.setText("Apellido Destinatario");
+
+        labTelefonoDestinatario.setText("Telefono");
+
         javax.swing.GroupLayout jPanelDDLayout = new javax.swing.GroupLayout(jPanelDD);
         jPanelDD.setLayout(jPanelDDLayout);
         jPanelDDLayout.setHorizontalGroup(
@@ -265,6 +283,23 @@ public class PVenta extends javax.swing.JPanel {
             .addGroup(jPanelDDLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelDDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelDDLayout.createSequentialGroup()
+                        .addGroup(jPanelDDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labFechaEntrega)
+                            .addComponent(jDateChooserFE, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelDDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labComuna)
+                            .addComponent(jComboBoxComuna, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelDDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelDDLayout.createSequentialGroup()
+                                .addComponent(txtTelefonoDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtHoraFin))
+                            .addGroup(jPanelDDLayout.createSequentialGroup()
+                                .addComponent(labTelefonoDestinatario)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanelDDLayout.createSequentialGroup()
                         .addGroup(jPanelDDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -276,32 +311,23 @@ public class PVenta extends javax.swing.JPanel {
                                 .addComponent(labSaludo)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                    .addGroup(jPanelDDLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDDLayout.createSequentialGroup()
+                        .addGroup(jPanelDDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanelDDLayout.createSequentialGroup()
+                                .addComponent(labNombreDestinatario)
+                                .addGap(81, 81, 81))
+                            .addComponent(txtNombreDestinatario))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanelDDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtApellidoDestinatario)
                             .addGroup(jPanelDDLayout.createSequentialGroup()
-                                .addGroup(jPanelDDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNombreDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labNombreDestinatario))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanelDDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labHoraInicio)
-                                    .addComponent(txtHoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanelDDLayout.createSequentialGroup()
-                                .addGroup(jPanelDDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanelDDLayout.createSequentialGroup()
-                                        .addComponent(txtFechaEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(butFechaEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(labFechaEntrega))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanelDDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBoxComuna, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labComuna))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanelDDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labHoraFin)
-                                    .addComponent(txtHoraFin, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addComponent(labApellidoDestinatario)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelDDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labHoraFin)
+                            .addComponent(txtHoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labHoraInicio))))
                 .addContainerGap())
         );
         jPanelDDLayout.setVerticalGroup(
@@ -310,23 +336,26 @@ public class PVenta extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanelDDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labNombreDestinatario)
+                    .addComponent(labApellidoDestinatario)
                     .addComponent(labHoraInicio))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelDDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombreDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtApellidoDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtHoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelDDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labFechaEntrega)
                     .addComponent(labComuna)
-                    .addComponent(labHoraFin))
+                    .addComponent(labHoraFin)
+                    .addComponent(labTelefonoDestinatario))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelDDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtFechaEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(butFechaEntrega, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelDDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jComboBoxComuna, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtHoraFin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtHoraFin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTelefonoDestinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateChooserFE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelDDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labDireccion)
@@ -335,7 +364,7 @@ public class PVenta extends javax.swing.JPanel {
                 .addGroup(jPanelDDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelDDLayout.createSequentialGroup()
                         .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 32, Short.MAX_VALUE)
                         .addComponent(butLimpiarDD, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE))
                 .addContainerGap())
@@ -384,6 +413,11 @@ public class PVenta extends javax.swing.JPanel {
         butGuardar.setMinimumSize(new java.awt.Dimension(69, 69));
         butGuardar.setPreferredSize(new java.awt.Dimension(69, 69));
         butGuardar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        butGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butGuardarActionPerformed(evt);
+            }
+        });
         jToolBarMenu.add(butGuardar);
 
         jTableDetallePack.setModel(new javax.swing.table.DefaultTableModel(
@@ -525,6 +559,11 @@ public class PVenta extends javax.swing.JPanel {
         });
         jTableListaBuscar.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jTableListaBuscar.setRowHeight(30);
+        jTableListaBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableListaBuscarMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTableListaBuscar);
         if (jTableListaBuscar.getColumnModel().getColumnCount() > 0) {
             jTableListaBuscar.getColumnModel().getColumn(0).setResizable(false);
@@ -612,9 +651,11 @@ public class PVenta extends javax.swing.JPanel {
     private void butLimpiarDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butLimpiarDDActionPerformed
         // TODO add your handling code here:
         txtNombreDestinatario.setText("");
+        txtApellidoDestinatario.setText("");
+        txtTelefonoDestinatario.setText("");
         txtHoraInicio.setText("");
-        txtFechaEntrega.setText("");
-        //jComboBoxComuna.setText("");
+        jDateChooserFE.setCalendar(null);
+        LlenarComboComuna();
         txtHoraFin.setText("");
         txtDireccion.setText("");
         txtSaludo.setText("");
@@ -634,6 +675,7 @@ public class PVenta extends javax.swing.JPanel {
                     txtNombreCliente.setText(String.format("%s %s", ocliente.getNombre(), ocliente.getApellido()));
                     txtTelefono.setText(String.valueOf(ocliente.getTelefono()));
                     txtEmail.setText(ocliente.getCorreo());
+                    Venta.setCliente(ocliente);
                 } else {
                     if (Error.getMensaje().equals("Cliente Existe y esta Desactivado. Desea Activarlo?")) {
                         DPregunta Mensaje = new DPregunta(new javax.swing.JDialog(), true, this);
@@ -654,9 +696,8 @@ public class PVenta extends javax.swing.JPanel {
                 Mensaje.labMensaje.setText(Error.getMensaje());
                 Mensaje.setVisible(true);
             }
-        }
-        else{
-            if(AnimacionRut == null){
+        } else {
+            if (AnimacionRut == null) {
                 AnimacionRut = new OAnimacion(txtRut);
                 AnimacionRut.EjecutarTxt();
                 txtRut.setToolTipText("El Rut es Obligatorio");
@@ -666,8 +707,10 @@ public class PVenta extends javax.swing.JPanel {
 
     private void txtRutKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRutKeyReleased
         // TODO add your handling code here:
-        if(AnimacionRut != null){
-            if (txtRut.getText().trim().isEmpty()) return;
+        if (AnimacionRut != null) {
+            if (txtRut.getText().trim().isEmpty()) {
+                return;
+            }
             AnimacionRut.DetenerTxt();
             AnimacionRut = null;
             txtRut.setToolTipText(null);
@@ -682,28 +725,96 @@ public class PVenta extends javax.swing.JPanel {
         CrudArticulo.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void LlenarComboComuna(){
+    private void jTableListaBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListaBuscarMouseClicked
+        // TODO add your handling code here:
+        if (evt.getButton() == MouseEvent.BUTTON1) {
+            //butEditar.setEnabled(true);
+            //butDesactivar.setEnabled(true);
+
+            //RowIdSeleccionado = jTableTabla.rowAtPoint(evt.getPoint());
+            //String uno = jTableTabla.getValueAt(RowIdSeleccionado, 0).toString();
+            MTVentaSelecPack selecpack = (MTVentaSelecPack) jTableListaBuscar.getModel();
+            selecpack.getPacks().get(jTableListaBuscar.getSelectedRow()).getId();
+            Venta.setPack(selecpack.getPacks().get(jTableListaBuscar.getSelectedRow()));
+            txtCodigo.setText(String.valueOf(selecpack.getPacks().get(jTableListaBuscar.getSelectedRow()).getId()));
+            txtNombrePack.setText(selecpack.getPacks().get(jTableListaBuscar.getSelectedRow()).getNombre());
+            txtCantidad.setText(String.valueOf(1));
+            txtPrecio.setText(String.valueOf(selecpack.getPacks().get(jTableListaBuscar.getSelectedRow()).getCosto()));
+            jTableDetallePack.setModel(new MTVentaPackDeta(selecpack.getPacks().get(jTableListaBuscar.getSelectedRow()).getArticulos()));
+            jTableDetallePack.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+            jTableDetallePack.setRowHeight(30);
+            jScrollPane4.setViewportView(jTableDetallePack);
+            if (jTableDetallePack.getColumnModel().getColumnCount() > 0) {
+                jTableDetallePack.getColumnModel().getColumn(0).setResizable(false);
+                jTableDetallePack.getColumnModel().getColumn(0).setPreferredWidth(55);
+                jTableDetallePack.getColumnModel().getColumn(1).setResizable(false);
+                jTableDetallePack.getColumnModel().getColumn(1).setPreferredWidth(200);
+            }
+            Venta.setCantidad(1);
+            //System.out.println(String.valueOf(dos.getUsuarios().get(RowIdSeleccionado).getId()));
+            if (evt.getClickCount() == 2) {
+                System.out.println("2 Click");
+            }
+        }
+    }//GEN-LAST:event_jTableListaBuscarMouseClicked
+
+    private void butGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butGuardarActionPerformed
+        // TODO add your handling code here:
+        //int id, int total, String fechaVenta, String fechaTrasferencia, int codigoTrasferencia, String nombreDestinatario, 
+        //String apellidoDestinatario, String direccionDestinatario, int telefonoDestinatario, String fechaEntrega, String horaEntregaInicial, 
+        //String horaEntregaFinal, String saludoTexto, int cantidad, OCliente cliente, OPack pack, OBanco banco, OComuna comuna
+        //, OEstadoVenta estadoVenta
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String date = sdf.format(new Date());
+        String date2 = sdf.format(jDateChooserFE.getDate());
+        CVenta Ven = new CVenta(0, Venta.getTotalT(), date, "", 0, txtNombreDestinatario.getText().trim(), txtApellidoDestinatario.getText().trim()
+                , txtDireccion.getText().trim(), Integer.valueOf(txtTelefonoDestinatario.getText().trim()), date2
+                , txtHoraInicio.getText().trim(), txtHoraFin.getText().trim(), txtSaludo.getText().trim(), Venta.getCantidad(), Venta.getCliente()
+                , Venta.getPack(), new OBanco(), ((MCComuna)jComboBoxComuna.getModel()).getComunas().get(jComboBoxComuna.getSelectedIndex())
+                , new OEstadoVenta());
+                
+    }//GEN-LAST:event_butGuardarActionPerformed
+
+    private void ListarArticulos() {
+        MTVentaSelecPack articulosmt = new MTVentaSelecPack(new CPack().Listar());
+        jTableListaBuscar.setModel(articulosmt);
+        jTableListaBuscar.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jTableListaBuscar.setRowHeight(30);
+        jScrollPane2.setViewportView(jTableListaBuscar);
+        if (jTableListaBuscar.getColumnModel().getColumnCount() > 0) {
+            jTableListaBuscar.getColumnModel().getColumn(0).setResizable(false);
+            jTableListaBuscar.getColumnModel().getColumn(0).setPreferredWidth(97);
+            jTableListaBuscar.getColumnModel().getColumn(1).setResizable(false);
+            jTableListaBuscar.getColumnModel().getColumn(1).setPreferredWidth(237);
+            jTableListaBuscar.getColumnModel().getColumn(2).setResizable(false);
+            jTableListaBuscar.getColumnModel().getColumn(2).setPreferredWidth(80);
+        }
+    }
+
+    private void LlenarComboComuna() {
         jComboBoxComuna.setModel(new MCComuna(new CComuna().Listar("Activos")));
     }
-    
-    public void LimpiarDatosClienteSolicitante(){
+
+    public void LimpiarDatosClienteSolicitante() {
         //txtNumeroPedido.setText("");
         txtRut.setText("");
         txtNombreCliente.setText("");
         txtTelefono.setText("");
         txtEmail.setText("");
+        Venta.setCliente(new OCliente());
     }
-    
-    public void AgregarCliente(){
+
+    public void AgregarCliente() {
         DCrudCliente CrudUsuario = new DCrudCliente(new javax.swing.JDialog(), true);
         CrudUsuario.setTitle("Agregar Cliente");
         CrudUsuario.txtRut.setText(txtRut.getText());
         CrudUsuario.setVisible(true);
     }
-    
-    public void setJTexFieldChanged(javax.swing.JTextField textField){
+
+    public void setJTexFieldChanged(javax.swing.JTextField textField) {
         DocumentListener documentListener = new DocumentListener() {
- 
+
             @Override
             public void changedUpdate(DocumentEvent documentEvent) {
                 printIt(documentEvent);
@@ -721,16 +832,13 @@ public class PVenta extends javax.swing.JPanel {
         };
         textField.getDocument().addDocumentListener(documentListener);
     }
-    
+
     private void printIt(DocumentEvent documentEvent) {
         DocumentEvent.EventType type = documentEvent.getType();
- 
-        if (type.equals(DocumentEvent.EventType.CHANGE))
-        {
+
+        if (type.equals(DocumentEvent.EventType.CHANGE)) {
             System.out.println("CHANGE:" + txtRut.getText());
-        }
-        else if (type.equals(DocumentEvent.EventType.INSERT))
-        {
+        } else if (type.equals(DocumentEvent.EventType.INSERT)) {
             //txtEjemploJTextFieldChanged();
             System.out.println("INSERT:" + txtRut.getText());
             //if(AnimacionRut == null){
@@ -747,14 +855,11 @@ public class PVenta extends javax.swing.JPanel {
                     txtRut.setBackground(Color.red);
                     txtRut.setToolTipText(Error.getMensaje());
                 }
-            }
-            else{
+            } else {
                 txtRut.setBackground(Color.WHITE);
                 txtRut.setToolTipText(null);
             }
-        }
-        else if (type.equals(DocumentEvent.EventType.REMOVE))
-        {
+        } else if (type.equals(DocumentEvent.EventType.REMOVE)) {
             //txtEjemploJTextFieldChanged();
             System.out.println("REMOVE:" + txtRut.getText());
             //if(AnimacionRut == null){
@@ -771,23 +876,69 @@ public class PVenta extends javax.swing.JPanel {
                     txtRut.setBackground(Color.red);
                     txtRut.setToolTipText(Error.getMensaje());
                 }
-            }
-            else{
+            } else {
                 txtRut.setBackground(Color.WHITE);
                 txtRut.setToolTipText(null);
             }
         }
     }
-    
+
+    public void setJTexFieldChanged2(javax.swing.JTextField textField) {
+        DocumentListener documentListener = new DocumentListener() {
+
+            @Override
+            public void changedUpdate(DocumentEvent documentEvent) {
+                printIt2(documentEvent);
+            }
+
+            @Override
+            public void insertUpdate(DocumentEvent documentEvent) {
+                printIt2(documentEvent);
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent documentEvent) {
+                printIt2(documentEvent);
+            }
+        };
+        textField.getDocument().addDocumentListener(documentListener);
+    }
+
+    private void printIt2(DocumentEvent documentEvent) {
+        DocumentEvent.EventType type = documentEvent.getType();
+
+        if (type.equals(DocumentEvent.EventType.CHANGE)) {
+            System.out.println("CHANGE:" + txtCantidad.getText());
+        } else if (type.equals(DocumentEvent.EventType.INSERT)) {
+            System.out.println("INSERT:" + txtCantidad.getText());
+            if (!txtCantidad.getText().trim().isEmpty()) {
+                int cant = Integer.parseInt(txtCantidad.getText().trim());
+                Venta.setCantidad(cant);
+                txtTotal.setText(String.format("$ %s", String.valueOf(Venta.getTotalT())));
+            } else {
+                txtTotal.setText("$0");
+            }
+        } else if (type.equals(DocumentEvent.EventType.REMOVE)) {
+            System.out.println("REMOVE:" + txtCantidad.getText());
+            if (!txtCantidad.getText().trim().isEmpty()) {
+                int cant = Integer.parseInt(txtCantidad.getText().trim());
+                Venta.setCantidad(cant);
+                txtTotal.setText(String.format("$ %s", String.valueOf(Venta.getTotalT())));
+            } else {
+                txtTotal.setText("$0");
+            }
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton butBuscar;
     private javax.swing.JButton butCancelar;
-    private javax.swing.JButton butFechaEntrega;
     private javax.swing.JButton butGuardar;
     private javax.swing.JButton butLimpiarDCS;
     private javax.swing.JButton butLimpiarDD;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBoxComuna;
+    private com.toedter.calendar.JDateChooser jDateChooserFE;
     private javax.swing.JPanel jPanelDCS;
     private javax.swing.JPanel jPanelDD;
     private javax.swing.JPanel jPanelPS;
@@ -798,6 +949,7 @@ public class PVenta extends javax.swing.JPanel {
     private javax.swing.JTable jTableDetallePack;
     private javax.swing.JTable jTableListaBuscar;
     private javax.swing.JToolBar jToolBarMenu;
+    private javax.swing.JLabel labApellidoDestinatario;
     private javax.swing.JLabel labBuscar;
     private javax.swing.JLabel labCantidad;
     private javax.swing.JLabel labCodigo;
@@ -816,14 +968,15 @@ public class PVenta extends javax.swing.JPanel {
     private javax.swing.JLabel labRut;
     private javax.swing.JLabel labSaludo;
     private javax.swing.JLabel labTelefono;
+    private javax.swing.JLabel labTelefonoDestinatario;
     private javax.swing.JLabel labTitulo;
     private javax.swing.JLabel labTotal;
+    private javax.swing.JTextField txtApellidoDestinatario;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtFechaEntrega;
     private javax.swing.JTextField txtHoraFin;
     private javax.swing.JTextField txtHoraInicio;
     private javax.swing.JTextField txtNombreCliente;
@@ -834,6 +987,7 @@ public class PVenta extends javax.swing.JPanel {
     private javax.swing.JTextField txtRut;
     private javax.swing.JTextArea txtSaludo;
     private javax.swing.JTextField txtTelefono;
+    private javax.swing.JTextField txtTelefonoDestinatario;
     private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }
