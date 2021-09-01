@@ -991,4 +991,3 @@ public class PVenta extends javax.swing.JPanel {
     private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 }
-
