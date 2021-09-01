@@ -5,35 +5,35 @@
  */
 package ModelosTablas;
 
-import Objetos.OArticulos;
+import Objetos.OIVentaPack;
 import java.util.List;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
 /**
  *
- * @author Usuario
+ * @author TOULON-NOTE
  */
-public class MTArticulos implements TableModel {
+public class MTIVentaPack implements TableModel {
     
-    private final List<OArticulos> Articulo;
+    private final List<OIVentaPack> iventapack;
     
-    public MTArticulos(List<OArticulos> articulo){
-        Articulo = articulo;
+    public MTIVentaPack(List<OIVentaPack> iventapack){
+        this.iventapack = iventapack;
     }
 
-    public List<OArticulos> getArticulo() {
-        return Articulo;
+    public List<OIVentaPack> getIVentaPack() {
+        return iventapack;
     }
     
     @Override
     public int getRowCount() {
-        return Articulo.size();
+        return iventapack.size();
     }
 
     @Override
     public int getColumnCount() {
-        return 5;
+        return 3;
     }
 
     @Override
@@ -44,21 +44,14 @@ public class MTArticulos implements TableModel {
             NombreColumna = "ID";
             break;*/
             case 0:
-                NombreColumna = "Descripción";
+                NombreColumna = "Nombre Pack";
                 break;
             case 1:
-                NombreColumna = "Stock";
+                NombreColumna = "Cantidad";
                 break;
             case 2:
-                NombreColumna = "Fecha";
+                NombreColumna = "Valor";
                 break;
-            case 3:
-                NombreColumna = "Estado";
-                break;
-            case 4:
-                NombreColumna = "Categoria";
-                break;
-
         }
         
         return NombreColumna;
@@ -84,19 +77,13 @@ public class MTArticulos implements TableModel {
             Valor = Comuna.get(rowIndex).getId();
             break;*/
             case 0:
-                Valor = Articulo.get(rowIndex).getDescripcion();
+                Valor = iventapack.get(rowIndex).getNombre();
                 break;
             case 1:
-                Valor = String.valueOf(Articulo.get(rowIndex).getStock()); //Problemas con Int, no se puede convertir a String
+                Valor = String.valueOf(iventapack.get(rowIndex).getCantidad());
                 break;
-            case 2:
-                Valor = String.valueOf(Articulo.get(rowIndex).getFecha());
-                break;
-            case 3:
-                Valor = Articulo.get(rowIndex).isEstado()? "Activado" : "Desactivado";
-                break;    
-            case 4:
-                Valor = String.valueOf(Articulo.get(rowIndex).getCategoria().getNombre()); //Problemas con Int, no se puede convertir a String
+                case 2:
+                Valor = String.format("$%s", String.valueOf(iventapack.get(rowIndex).getValor()));
                 break;
         }
         
@@ -105,6 +92,7 @@ public class MTArticulos implements TableModel {
 
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+        //Usuarios.set(rowIndex, (OUsuario)aValue);
     }
 
     @Override
@@ -115,5 +103,6 @@ public class MTArticulos implements TableModel {
     @Override
     public void removeTableModelListener(TableModelListener l) {
         //To change body of generated methods, choose Tools | Templates.
-    }   
+    }
+    
 }

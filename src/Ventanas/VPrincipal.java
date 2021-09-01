@@ -10,6 +10,7 @@ import Paneles.PInformes;
 import Paneles.PInicioSesion;
 import Paneles.PMaestros;
 import Paneles.PVentas;
+import Paneles.PCompras;
 import java.awt.BorderLayout;
 
 /**
@@ -85,13 +86,17 @@ public class VPrincipal extends javax.swing.JFrame {
         butCompras.setText("Compras");
         butCompras.setToolTipText("Compras");
         butCompras.setBorderPainted(false);
-        butCompras.setEnabled(false);
         butCompras.setFocusable(false);
         butCompras.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         butCompras.setMaximumSize(new java.awt.Dimension(69, 69));
         butCompras.setMinimumSize(new java.awt.Dimension(69, 69));
         butCompras.setPreferredSize(new java.awt.Dimension(69, 69));
         butCompras.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        butCompras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butComprasActionPerformed(evt);
+            }
+        });
         jToolBarMenuPrincipal.add(butCompras);
 
         butInformes.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -271,6 +276,19 @@ public class VPrincipal extends javax.swing.JFrame {
         panelVisor.revalidate();
         panelVisor.repaint();
     }//GEN-LAST:event_butInformesActionPerformed
+
+    private void butComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butComprasActionPerformed
+        // TODO add your handling code here:
+        PCompras PanelCompras = new PCompras();
+        PanelCompras.setVisible(true);
+        PanelCompras.setSize(1000, 631);
+        PanelCompras.setLocation(0, 0);
+        
+        panelVisor.removeAll();
+        panelVisor.add(PanelCompras, BorderLayout.CENTER);
+        panelVisor.revalidate();
+        panelVisor.repaint();
+    }//GEN-LAST:event_butComprasActionPerformed
 
     /**
      * @param args the command line arguments
