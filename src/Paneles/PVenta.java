@@ -740,7 +740,7 @@ public class PVenta extends javax.swing.JPanel {
             txtNombrePack.setText(selecpack.getPacks().get(jTableListaBuscar.getSelectedRow()).getNombre());
             txtCantidad.setText(String.valueOf(1));
             txtPrecio.setText(String.valueOf(selecpack.getPacks().get(jTableListaBuscar.getSelectedRow()).getCosto()));
-            jTableDetallePack.setModel(new MTVentaPackDeta(selecpack.getPacks().get(jTableListaBuscar.getSelectedRow()).getArticulos()));
+            //jTableDetallePack.setModel(new MTVentaPackDeta(selecpack.getPacks().get(jTableListaBuscar.getSelectedRow()).getArticulos()));
             jTableDetallePack.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
             jTableDetallePack.setRowHeight(30);
             jScrollPane4.setViewportView(jTableDetallePack);
