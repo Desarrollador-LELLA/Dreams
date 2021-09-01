@@ -155,7 +155,7 @@ public class PInformeInventario extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void butImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butImprimirActionPerformed
-        imprimir(tableProveedor);
+        //imprimir(tableProveedor);
     }//GEN-LAST:event_butImprimirActionPerformed
 
 
