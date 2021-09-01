@@ -57,7 +57,6 @@ public class PMaestros extends javax.swing.JPanel {
         jButton1.setText("Clientes");
         jButton1.setToolTipText("Clientes");
         jButton1.setBorderPainted(false);
-        jButton1.setEnabled(false);
         jButton1.setFocusable(false);
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setMaximumSize(new java.awt.Dimension(69, 69));
