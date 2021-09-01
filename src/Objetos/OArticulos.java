@@ -5,26 +5,24 @@
  */
 package Objetos;
 
-import java.util.Date;
-
 /**
  *
  * @author Usuario
  */
 public class OArticulos {
-    
+
     private int id;
     private String descripcion;
     private int stock;
     private String fecha;
     private boolean estado;
-    private int categoria;
+    private OCatArticulos categoria;
 
-    public OArticulos(){
-        
+    public OArticulos() {
+
     }
-       
-        public OArticulos(int id, String descripcion, int stock, String fecha, boolean estado, int categoria) {
+
+    public OArticulos(int id, String descripcion, int stock, String fecha, boolean estado, OCatArticulos categoria) {
         this.id = id;
         this.descripcion = descripcion;
         this.stock = stock;
@@ -73,14 +71,12 @@ public class OArticulos {
         this.estado = estado;
     }
 
-    public int getCategoria() {
+    public OCatArticulos getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(int categoria) {
+    public void setCategoria(OCatArticulos categoria) {
         this.categoria = categoria;
     }
-        
-        
 
 }
