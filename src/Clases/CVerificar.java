@@ -1,4 +1,3 @@
-
 package Clases;
 
 import Objetos.OError;
@@ -14,6 +13,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.paint.Color;
 import javax.swing.JTable;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFColor;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -92,11 +93,13 @@ public class CVerificar extends OVerificar{
         XSSFSheet hoja = workbook.createSheet();
         XSSFCellStyle styleE = workbook.createCellStyle();
         XSSFCellStyle styleC = workbook.createCellStyle();
-        
-        
-        styleE.setFillPattern(XSSFCellStyle.SOLID_FOREGROUND);
-        
-        
+       
+       // styleE.setFillForegroundColor(XSSFColor.class.cast(Color.ALICEBLUE));
+        styleE.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
+        styleE.setFillForegroundColor(HSSFColor.BLUE_GREY.index);
+       
+       
+       
         
         
     
@@ -104,7 +107,7 @@ public class CVerificar extends OVerificar{
         for (int i = 0; i < tabla.getColumnModel().getColumnCount(); i++) {
          
             fila.createCell(i).setCellValue(tabla.getColumnName(i));
-            
+            fila(styleE);
         }
 
         XSSFRow filas;
@@ -138,6 +141,10 @@ public class CVerificar extends OVerificar{
             
         }
 
+    }
+
+    private void fila(XSSFCellStyle styleE) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 
