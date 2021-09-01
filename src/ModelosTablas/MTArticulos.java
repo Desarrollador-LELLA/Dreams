@@ -6,7 +6,6 @@
 package ModelosTablas;
 
 import Objetos.OArticulos;
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import java.util.List;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
@@ -97,7 +96,7 @@ public class MTArticulos implements TableModel {
                 Valor = Articulo.get(rowIndex).isEstado()? "Activado" : "Desactivado";
                 break;    
             case 4:
-                Valor = String.valueOf(Articulo.get(rowIndex).getCategoria()); //Problemas con Int, no se puede convertir a String
+                Valor = String.valueOf(Articulo.get(rowIndex).getCategoria().getNombre()); //Problemas con Int, no se puede convertir a String
                 break;
         }
         
