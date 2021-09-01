@@ -1,9 +1,9 @@
-
 package Clases;
 
 import Objetos.OError;
 import Objetos.OVerificar;
 import Paneles.PProveedor;
+import static java.awt.Color.red;
 import java.awt.Desktop;
 import java.awt.Rectangle;
 import java.io.File;
@@ -11,7 +11,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.paint.Color;
 import javax.swing.JTable;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFColor;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -78,20 +83,36 @@ public class CVerificar extends OVerificar{
         return Error;
     }
     
-    private void imprimir() {
+    /**
+     *
+     * @return
+     */
+    public void Imprimir() {
         String ruta = System.getProperties().getProperty("user.dir");
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet hoja = workbook.createSheet();
-
+        XSSFCellStyle styleE = workbook.createCellStyle();
+        XSSFCellStyle styleC = workbook.createCellStyle();
+       
+       // styleE.setFillForegroundColor(XSSFColor.class.cast(Color.ALICEBLUE));
+        styleE.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
+        styleE.setFillForegroundColor(HSSFColor.BLUE_GREY.index);
+       
+       
+       
+        
+        
+    
         XSSFRow fila = hoja.createRow(0);
         for (int i = 0; i < tabla.getColumnModel().getColumnCount(); i++) {
-
+         
             fila.createCell(i).setCellValue(tabla.getColumnName(i));
+            fila(styleE);
         }
 
         XSSFRow filas;
         Rectangle rect;
-
+        
         for (int i = 0; i < tabla.getRowCount(); i++) {
 
             rect = tabla.getCellRect(i, 0, true);
@@ -102,11 +123,12 @@ public class CVerificar extends OVerificar{
                 filas = hoja.createRow((i + 1));
                 for (int e = 0; e < tabla.getColumnModel().getColumnCount(); e++) {
 
-                    filas.createCell(e).setCellValue(tabla.getValueAt(i, e).toString());
+                    filas.createCell(e).setCellValue(tabla.getValueAt(i, e).toString());      
 
                 }
 
             } catch (java.lang.ClassCastException e) {
+                
             }
         }
 
@@ -116,7 +138,15 @@ public class CVerificar extends OVerificar{
 
         } catch (IOException ex) {
             Logger.getLogger(PProveedor.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
+
     }
+
+    private void fila(XSSFCellStyle styleE) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+
     
 }

@@ -266,6 +266,29 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="labFechaEntrega" min="-2" max="-2" attributes="0"/>
+                              <Component id="jDateChooserFE" min="-2" pref="95" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="labComuna" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBoxComuna" min="-2" pref="145" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="txtTelefonoDestinatario" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="txtHoraFin" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="labTelefonoDestinatario" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="txtDireccion" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
                               <Component id="labDireccion" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="butLimpiarDD" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
@@ -279,41 +302,28 @@
                               <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txtNombreDestinatario" alignment="0" min="-2" pref="300" max="-2" attributes="0"/>
-                                      <Component id="labNombreDestinatario" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="labHoraInicio" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtHoraInicio" min="-2" pref="150" max="-2" attributes="0"/>
-                                  </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="labNombreDestinatario" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="txtFechaEntrega" min="-2" pref="90" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="butFechaEntrega" min="-2" pref="30" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Component id="labFechaEntrega" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jComboBoxComuna" alignment="0" min="-2" pref="156" max="-2" attributes="0"/>
-                                      <Component id="labComuna" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="labHoraFin" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtHoraFin" min="-2" pref="150" max="-2" attributes="0"/>
-                                  </Group>
+                              <Component id="txtNombreDestinatario" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtApellidoDestinatario" max="32767" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="labApellidoDestinatario" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="labHoraFin" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtHoraInicio" min="-2" pref="74" max="-2" attributes="0"/>
+                              <Component id="labHoraInicio" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -326,11 +336,13 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="labNombreDestinatario" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labApellidoDestinatario" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="labHoraInicio" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtNombreDestinatario" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="txtApellidoDestinatario" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="txtHoraInicio" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -338,15 +350,16 @@
                       <Component id="labFechaEntrega" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="labComuna" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="labHoraFin" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="labTelefonoDestinatario" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="txtFechaEntrega" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="butFechaEntrega" max="32767" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jComboBoxComuna" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="txtHoraFin" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="txtTelefonoDestinatario" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="jDateChooserFE" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -357,7 +370,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="txtDireccion" min="-2" pref="30" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace type="separate" pref="32" max="32767" attributes="0"/>
                           <Component id="butLimpiarDD" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane1" pref="92" max="32767" attributes="0"/>
@@ -378,20 +391,6 @@
         <Component class="javax.swing.JLabel" name="labFechaEntrega">
           <Properties>
             <Property name="text" type="java.lang.String" value="Fecha Entrega"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtFechaEntrega">
-        </Component>
-        <Component class="javax.swing.JButton" name="butFechaEntrega">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Recursos/r_ico_calendario_24.png"/>
-            </Property>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
-                <BevelBorder/>
-              </Border>
-            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBoxComuna">
@@ -428,7 +427,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="labHoraFin">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Hora Fin Entrega"/>
+            <Property name="text" type="java.lang.String" value="H. F. Entrega"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtHoraFin">
@@ -438,7 +437,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="labHoraInicio">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Hora Inicio Entrega"/>
+            <Property name="text" type="java.lang.String" value="H. I. Entrega"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -477,6 +476,25 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="butLimpiarDDActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooserFE">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.toedter.calendar.JDateChooser(&quot;dd-MM-yyyy&quot;, &quot;##/##/####&quot;, &apos;_&apos;)"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtApellidoDestinatario">
+        </Component>
+        <Component class="javax.swing.JLabel" name="labApellidoDestinatario">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Apellido Destinatario"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtTelefonoDestinatario">
+        </Component>
+        <Component class="javax.swing.JLabel" name="labTelefonoDestinatario">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Telefono"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
@@ -669,6 +687,9 @@
                 </Property>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="butGuardarActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -827,6 +848,9 @@
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableListaBuscarMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

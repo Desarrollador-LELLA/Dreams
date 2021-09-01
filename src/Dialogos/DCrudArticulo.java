@@ -9,7 +9,6 @@ import Clases.CArticulos;
 import Clases.CCatArticulos;
 import ModeloCombox.MCCatArticulos;
 import Objetos.OError;
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 
 /**
@@ -136,24 +135,24 @@ public class DCrudArticulo extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void butGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butGuardarActionPerformed
-        /*        // TODO add your handling code here:
+        // TODO add your handling code here:
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String date = sdf.format(dateFechaVencimiento.getDate());
-        //    CArticulos arti = new CArticulos(0, txtNombre.getText(), Integer.parseInt(txtStok.getText()), date
-        //           , jToggleButtonEstado.isSelected(), ((MCCatArticulos)conboxCategoria.getModel()).getCatArticulos().get(conboxCategoria.getSelectedIndex()).getId());
-        //  OError error = arti.Insertar();
+        CArticulos arti = new CArticulos(0, txtNombre.getText(), Integer.parseInt(txtStok.getText()), date
+                , jToggleButtonEstado.isSelected(), ((MCCatArticulos)conboxCategoria.getModel()).getCatArticulos().get(conboxCategoria.getSelectedIndex()).getId());
+        OError error = arti.Insertar();
         if (error.isConfirma()) {
-        //ListarArticulos();
-        System.out.println(error.getMensaje());
-        txtNombre.setText("");
-        txtStok.setText("");
-        dateFechaVencimiento.setDate(null);
-        jToggleButtonEstado.setSelected(true);
-        
-        
+            //ListarArticulos();
+            System.out.println(error.getMensaje());
+            txtNombre.setText("");
+            txtStok.setText("");
+            dateFechaVencimiento.setDate(null);
+            jToggleButtonEstado.setSelected(true);
+            
+
         } else {
-        System.out.println(error.getMensaje());
-        }*/
+            System.out.println(error.getMensaje());
+        }
     }//GEN-LAST:event_butGuardarActionPerformed
 
     private void LlenarComboComuna(){
