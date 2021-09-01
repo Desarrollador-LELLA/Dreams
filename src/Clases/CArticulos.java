@@ -6,6 +6,7 @@
 package Clases;
 
 import Objetos.OArticulos;
+import Objetos.OCatArticulos;
 import Objetos.OError;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -27,7 +28,7 @@ public class CArticulos extends OArticulos {
         super();
     }
     
-    public CArticulos(int id, String descripcion, int stock, String fecha, boolean estado, int categoria) {
+    public CArticulos(int id, String descripcion, int stock, String fecha, boolean estado, OCatArticulos categoria) {
         super(id, descripcion, stock, fecha, estado, categoria);
     }
     
@@ -39,11 +40,12 @@ public class CArticulos extends OArticulos {
         OError Error = Sql.Conectar();
         if(Error.isConfirma()){
             try {
-                Preparando = Sql.getCon().prepareStatement("SELECT * FROM Articulo");
+                Preparando = Sql.getCon().prepareStatement("SELECT * FROM Articulo A inner join Categoria C on A.CAT_ID_CATEGORIA = C.CAT_ID_CATEGORIA");
                 Resultado = Preparando.executeQuery();
                 
                 while(Resultado.next()){
-                    Listado.add(new OArticulos(Resultado.getInt(1), Resultado.getString(2), Resultado.getInt(3),Resultado.getString(4), Resultado.getBoolean(5), Resultado.getInt(6)));
+                    OCatArticulos cat = new OCatArticulos(Resultado.getInt(7),Resultado.getString(8),Resultado.getBoolean(9));
+                    Listado.add(new OArticulos(Resultado.getInt(1), Resultado.getString(2), Resultado.getInt(3),Resultado.getString(4), Resultado.getBoolean(5), cat));
                 }
                 Error = new OError(String.format(TagCodigoClase, 10), "Consulta Realizada Corectamente", null, true);
                 
@@ -66,12 +68,15 @@ public class CArticulos extends OArticulos {
         Error = Sql.Conectar();
         if (Error.isConfirma()) {
             try {
-                Preparando = Sql.getCon().prepareStatement("UPDATE Articulo SET ART_DESCRIPCION = ?, ART_STOCK = ?, ART_FECHA_VENCIMIENTO = ?, ART_ESTADO = ? WHERE ART_ID_ARTICULOS = ?");
+                Preparando = Sql.getCon().prepareStatement("UPDATE Articulo SET ART_DESCRIPCION = ?, ART_STOCK = ?, ART_FECHA_VENCIMIENTO = ?, ART_ESTADO = ?, CAT_ID_CATEGORIA = ? WHERE ART_ID_ARTICULOS = ?");
                 Preparando.setString(1, this.getDescripcion());
                 Preparando.setInt(2, this.getStock());
                 Preparando.setString(3, this.getFecha());
                 Preparando.setBoolean(4, this.isEstado());
-                Preparando.setInt(5, this.getId());
+                Preparando.setInt(5,this.getCategoria().getId());
+                Preparando.setInt(6, this.getId());
+                
+ 
 
                 if (!Preparando.execute()) {
                     Error = new OError(String.format(TagCodigoClase, 4), "Articulo Editado Correctamente", null, true);
@@ -100,7 +105,7 @@ public class CArticulos extends OArticulos {
                 Preparando.setInt(2, this.getStock());
                 Preparando.setDate(3, Date.valueOf(this.getFecha()));
                 Preparando.setBoolean(4, this.isEstado());
-                Preparando.setInt(5, this.getCategoria());
+                Preparando.setInt(5, this.getCategoria().getId());
                      
                 
                 if(!Preparando.execute()){
@@ -142,7 +147,7 @@ public class CArticulos extends OArticulos {
            
             }catch(SQLException e){
                 System.out.println("error"+ e);
-                //Error = new OError(String.format(TagCodigoClase, 3), String.format("<html>%s (Codigo %s)</html>", e, String.format(TagCodigoClase, 3)), null, false);
+                Error = new OError(String.format(TagCodigoClase, 3), String.format("<html>%s (Codigo %s)</html>", e, String.format(TagCodigoClase, 3)), null, false);
       
             }finally{  
                 Sql.Desconectar();

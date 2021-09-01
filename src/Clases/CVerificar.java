@@ -1,4 +1,3 @@
-
 package Clases;
 
 import Objetos.OError;
@@ -143,3 +142,4 @@ public class CVerificar extends OVerificar{
 
     
 }
+

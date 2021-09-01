@@ -18,6 +18,7 @@ import java.util.List;
  * @author rodka
  */
 public class CInformeInventario {
+
        
     
     private OError Error = new OError();
@@ -27,6 +28,7 @@ public class CInformeInventario {
     public List<OCatArticulos> ListarActivos(String Tipo) {
         
      
+
         
         String sql = "";
         PreparedStatement Preparando = null;
@@ -64,5 +66,5 @@ public class CInformeInventario {
         }
         return Listado;
     }
-    
+
 }
