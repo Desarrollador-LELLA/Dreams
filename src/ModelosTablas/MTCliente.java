@@ -92,17 +92,16 @@ public class MTCliente implements TableModel {
 
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-        //Usuarios.set(rowIndex, (OUsuario)aValue);
-    }
+            }
 
     @Override
     public void addTableModelListener(TableModelListener l) {
-        //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void removeTableModelListener(TableModelListener l) {
-        //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
