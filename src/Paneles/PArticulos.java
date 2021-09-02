@@ -9,12 +9,9 @@ import Clases.CArticulos;
 import Clases.CCatArticulos;
 import ModeloCombox.MCCatArticulos;
 import ModelosTablas.MTArticulos;
-import ModelosTablas.MTCatArticulos;
 import Objetos.OArticulos;
 import Objetos.OError;
-import java.sql.Date;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 /**
  *
@@ -354,9 +351,10 @@ public class PArticulos extends javax.swing.JPanel {
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
       //Date fecha = formato.parse("23/11/2015");
       //jDateChooserFV.setDate(formato.parse("23/11/2015"));
-        txtId.setText(String.valueOf(comuna.getUsuarios().get(datos.getSelectedRow()).getId()));
-        txtNombre.setText(comuna.getUsuarios().get(datos.getSelectedRow()).getNombre());
-        Combobox.setSelectedIndex(comuna.getUsuarios().get(datos.getSelectedRow()).isEstado() ? 1 : 0);
+      //txtId.setText(String.valueOf(comuna.getUsuarios().get(datos.getSelectedRow()).getId()));
+      //txtNombre.setText(comuna.getUsuarios().get(datos.getSelectedRow()).getNombre());
+      //Combobox.setSelectedIndex(comuna.getUsuarios().get(datos.getSelectedRow()).isEstado() ? 1 : 0);
+      
     }//GEN-LAST:event_JTableArticulosMouseClicked
     
        public void ListarArticulos() {

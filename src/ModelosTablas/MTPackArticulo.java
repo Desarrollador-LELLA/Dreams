@@ -5,7 +5,7 @@
  */
 package ModelosTablas;
 
-import Objetos.OPack;
+import Objetos.OArticulos;
 import java.util.List;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
@@ -14,25 +14,25 @@ import javax.swing.table.TableModel;
  *
  * @author Usuario
  */
-public class MTPack implements TableModel{
-    private final List<OPack> Pack;
+public class MTPackArticulo implements TableModel{
+    private final List<OArticulos> Articulos;
     
-     public MTPack (List<OPack> pack){
-        Pack = pack;
+     public MTPackArticulo (List<OArticulos> Articulos){
+        this.Articulos = Articulos;
     }
 
-    public List<OPack> getPack() {
-        return Pack;
+    public List<OArticulos> getArticulos() {
+        return Articulos;
     }
 
     @Override
     public int getRowCount() {
-        return Pack.size();
+        return Articulos.size();
     }
 
     @Override
     public int getColumnCount() {
-        return 4;
+        return 1;
     }
 
     @Override
@@ -43,16 +43,7 @@ public class MTPack implements TableModel{
             NombreColumna = "ID";
             break;*/
             case 0:
-                NombreColumna = "Nombre";
-                break;
-            case 1:
-                NombreColumna = "Costo";
-                break;
-            case 2:
-                NombreColumna = "Stock";
-                break;
-            case 3:
-                NombreColumna = "Estado";
+                NombreColumna = "Nombre Articulos";
                 break;
         }
         return NombreColumna;
@@ -77,17 +68,8 @@ public class MTPack implements TableModel{
             Valor = Comuna.get(rowIndex).getId();
             break;*/
             case 0:
-                Valor = Pack.get(rowIndex).getNombre();
+                Valor = Articulos.get(rowIndex).getDescripcion();
                 break;
-            case 1:
-                Valor = Pack.get(rowIndex).getCosto();
-                break;
-            case 2:
-                Valor = String.valueOf(Pack.get(rowIndex).getStock());;
-                break;
-            case 3:
-                Valor = Pack.get(rowIndex).isEstado()? "Activado" : "Desactivado";
-                break;    
         }
         
         return Valor;
@@ -95,18 +77,18 @@ public class MTPack implements TableModel{
 
     @Override
     public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
-      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void addTableModelListener(TableModelListener l) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void removeTableModelListener(TableModelListener l) {
-      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }  
     
 }
+
