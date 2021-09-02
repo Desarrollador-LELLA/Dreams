@@ -41,11 +41,6 @@ public class PMaestros extends javax.swing.JPanel {
         jButton9 = new javax.swing.JButton();
         butUsuarios = new javax.swing.JButton();
         panelVisor = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton10 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
         labTitulo = new javax.swing.JLabel();
 
         jToolBarMenu.setFloatable(false);
@@ -228,45 +223,15 @@ public class PMaestros extends javax.swing.JPanel {
         });
         jToolBarMenu.add(butUsuarios);
 
-        jLabel1.setText("PANEL MAESTROS");
-
-        jButton10.setText("jButton10");
-
-        jButton15.setText("jButton15");
-
-        jButton16.setText("jButton16");
-
-        jButton17.setText("jButton17");
-
         javax.swing.GroupLayout panelVisorLayout = new javax.swing.GroupLayout(panelVisor);
         panelVisor.setLayout(panelVisorLayout);
         panelVisorLayout.setHorizontalGroup(
             panelVisorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelVisorLayout.createSequentialGroup()
-                .addGap(451, 451, 451)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panelVisorLayout.createSequentialGroup()
-                .addComponent(jButton10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton15))
-            .addGroup(panelVisorLayout.createSequentialGroup()
-                .addComponent(jButton16)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton17))
+            .addGap(0, 1000, Short.MAX_VALUE)
         );
         panelVisorLayout.setVerticalGroup(
             panelVisorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVisorLayout.createSequentialGroup()
-                .addGroup(panelVisorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton10)
-                    .addComponent(jButton15))
-                .addGap(223, 223, 223)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 242, Short.MAX_VALUE)
-                .addGroup(panelVisorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton16)
-                    .addComponent(jButton17)))
+            .addGap(0, 525, Short.MAX_VALUE)
         );
 
         labTitulo.setBackground(new java.awt.Color(102, 102, 255));
@@ -418,14 +383,9 @@ public class PMaestros extends javax.swing.JPanel {
     private javax.swing.JButton butComunas;
     private javax.swing.JButton butUsuarios;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JToolBar jToolBarMenu;
     private javax.swing.JLabel labTitulo;
     private javax.swing.JPanel panelVisor;
