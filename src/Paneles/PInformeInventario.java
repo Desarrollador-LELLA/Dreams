@@ -5,6 +5,10 @@
  */
 package Paneles;
 
+import Clases.CInformeInventario;
+import Clases.CVerificar;
+import ModeloCombox.MCCatArticulos;
+
 /**
  *
  * @author rodka
@@ -17,7 +21,15 @@ public class PInformeInventario extends javax.swing.JPanel {
     public PInformeInventario() {
         initComponents();
     }
-
+    
+    private void Imprimir(){
+        CVerificar impri = new CVerificar();
+        impri.Imprimir(jTable1);
+    }
+    
+    private void LlenarComboComuna() {
+        jComboBox1.setModel(new MCCatArticulos(new CInformeInventario().ListarActivos("Activos")));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -155,7 +167,7 @@ public class PInformeInventario extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void butImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butImprimirActionPerformed
-        imprimir(tableProveedor);
+        Imprimir();
     }//GEN-LAST:event_butImprimirActionPerformed
 
 

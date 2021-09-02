@@ -37,10 +37,6 @@ public class PVentas extends javax.swing.JPanel {
         butListaDestinos = new javax.swing.JButton();
         butActualizacionDespacho = new javax.swing.JButton();
         panelVisor = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
 
         labTitulo.setBackground(new java.awt.Color(102, 102, 255));
         labTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -124,37 +120,15 @@ public class PVentas extends javax.swing.JPanel {
         });
         jToolBarMenu.add(butActualizacionDespacho);
 
-        jButton1.setText("jButton1");
-
-        jButton2.setText("jButton2");
-
-        jButton3.setText("jButton3");
-
-        jButton4.setText("jButton4");
-
         javax.swing.GroupLayout panelVisorLayout = new javax.swing.GroupLayout(panelVisor);
         panelVisor.setLayout(panelVisorLayout);
         panelVisorLayout.setHorizontalGroup(
             panelVisorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelVisorLayout.createSequentialGroup()
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2))
-            .addGroup(panelVisorLayout.createSequentialGroup()
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4))
+            .addGap(0, 1000, Short.MAX_VALUE)
         );
         panelVisorLayout.setVerticalGroup(
             panelVisorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelVisorLayout.createSequentialGroup()
-                .addGroup(panelVisorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 479, Short.MAX_VALUE)
-                .addGroup(panelVisorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)))
+            .addGap(0, 525, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -237,10 +211,6 @@ public class PVentas extends javax.swing.JPanel {
     private javax.swing.JButton butConfirmacion;
     private javax.swing.JButton butListaDestinos;
     private javax.swing.JButton butVenta;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JToolBar jToolBarMenu;
     private javax.swing.JLabel labTitulo;
     private javax.swing.JPanel panelVisor;
