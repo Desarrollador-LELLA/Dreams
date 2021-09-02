@@ -274,20 +274,20 @@ public class DCrudPack extends javax.swing.JDialog {
     private void butGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butGuardarActionPerformed
         // TODO add your handling code here:
         
-        CPack pack = new CPack(0, txtNombre.getText().trim(), txtPrecio.getText().trim(), Integer.valueOf(txtStock.getText().trim()), true, packdet);
+        /* CPack pack = new CPack(0, txtNombre.getText().trim(), txtPrecio.getText().trim(), Integer.valueOf(txtStock.getText().trim()), true, packdet);
         OError error = pack.Insertar();
         if (error.isConfirma()) {
-            //ListarCategoria();
-            System.out.println(error.getMensaje());
-            txtNombre.setText("");
-            txtPrecio.setText("");
-            txtStock.setText("");
-            packdet.clear();
-            MTPackDetalle packdetalles = new MTPackDetalle(packdet);
-            jTableArticulosPack.setModel(packdetalles);
+        //ListarCategoria();
+        System.out.println(error.getMensaje());
+        txtNombre.setText("");
+        txtPrecio.setText("");
+        txtStock.setText("");
+        packdet.clear();
+        MTPackDetalle packdetalles = new MTPackDetalle(packdet);
+        jTableArticulosPack.setModel(packdetalles);
         } else {
-            System.out.println(error.getMensaje());
-        }
+        System.out.println(error.getMensaje());
+        }*/
         
         /*boolean Validacion = true;
         if(txtNombre.getText().trim().isEmpty()){

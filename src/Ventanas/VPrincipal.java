@@ -6,9 +6,11 @@
 package Ventanas;
 
 import Objetos.OUsuario;
+import Paneles.PInformes;
 import Paneles.PInicioSesion;
 import Paneles.PMaestros;
 import Paneles.PVentas;
+import Paneles.PCompras;
 import java.awt.BorderLayout;
 
 /**
@@ -84,13 +86,17 @@ public class VPrincipal extends javax.swing.JFrame {
         butCompras.setText("Compras");
         butCompras.setToolTipText("Compras");
         butCompras.setBorderPainted(false);
-        butCompras.setEnabled(false);
         butCompras.setFocusable(false);
         butCompras.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         butCompras.setMaximumSize(new java.awt.Dimension(69, 69));
         butCompras.setMinimumSize(new java.awt.Dimension(69, 69));
         butCompras.setPreferredSize(new java.awt.Dimension(69, 69));
         butCompras.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        butCompras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butComprasActionPerformed(evt);
+            }
+        });
         jToolBarMenuPrincipal.add(butCompras);
 
         butInformes.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -98,13 +104,17 @@ public class VPrincipal extends javax.swing.JFrame {
         butInformes.setText("Informes");
         butInformes.setToolTipText("Informes");
         butInformes.setBorderPainted(false);
-        butInformes.setEnabled(false);
         butInformes.setFocusable(false);
         butInformes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         butInformes.setMaximumSize(new java.awt.Dimension(69, 69));
         butInformes.setMinimumSize(new java.awt.Dimension(69, 69));
         butInformes.setPreferredSize(new java.awt.Dimension(69, 69));
         butInformes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        butInformes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butInformesActionPerformed(evt);
+            }
+        });
         jToolBarMenuPrincipal.add(butInformes);
 
         butMaestros.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -253,6 +263,32 @@ public class VPrincipal extends javax.swing.JFrame {
         panelVisor.revalidate();
         panelVisor.repaint();
     }//GEN-LAST:event_butVentasActionPerformed
+
+    private void butInformesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butInformesActionPerformed
+        // TODO add your handling code here:
+        PInformes PanelInformes = new PInformes();
+        PanelInformes.setVisible(true);
+        PanelInformes.setSize(1000, 631);
+        PanelInformes.setLocation(0, 0);
+        
+        panelVisor.removeAll();
+        panelVisor.add(PanelInformes, BorderLayout.CENTER);
+        panelVisor.revalidate();
+        panelVisor.repaint();
+    }//GEN-LAST:event_butInformesActionPerformed
+
+    private void butComprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butComprasActionPerformed
+        // TODO add your handling code here:
+        PCompras PanelCompras = new PCompras();
+        PanelCompras.setVisible(true);
+        PanelCompras.setSize(1000, 631);
+        PanelCompras.setLocation(0, 0);
+        
+        panelVisor.removeAll();
+        panelVisor.add(PanelCompras, BorderLayout.CENTER);
+        panelVisor.revalidate();
+        panelVisor.repaint();
+    }//GEN-LAST:event_butComprasActionPerformed
 
     /**
      * @param args the command line arguments

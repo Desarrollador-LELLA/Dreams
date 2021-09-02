@@ -5,7 +5,10 @@
  */
 package Paneles;
 
+import Clases.CArticulos;
+import Clases.CPack;
 import ModelosTablas.MTPack;
+import ModelosTablas.MTPackArticulo;
 import Objetos.OPack;
 
 /**
@@ -19,6 +22,8 @@ public class PPack extends javax.swing.JPanel {
      */
     public PPack() {
         initComponents();
+        ListarPack();
+        ListarAticulos();
     }
 
     /**
@@ -30,6 +35,8 @@ public class PPack extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
         labTitulo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         txtBusquedaPack = new javax.swing.JTextField();
@@ -44,6 +51,10 @@ public class PPack extends javax.swing.JPanel {
         butCancelar = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTableCArticulos2 = new javax.swing.JTable();
+        labStock = new javax.swing.JLabel();
+        txtStock = new javax.swing.JTextField();
+        labPrecio = new javax.swing.JLabel();
+        txtPrecio = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTablePack = new javax.swing.JTable();
@@ -52,6 +63,8 @@ public class PPack extends javax.swing.JPanel {
         txtBusquedaPacks = new javax.swing.JTextField();
         labBusqueda2 = new javax.swing.JLabel();
 
+        jScrollPane1.setViewportView(jTextPane1);
+
         labTitulo.setBackground(new java.awt.Color(102, 102, 255));
         labTitulo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         labTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -59,6 +72,11 @@ public class PPack extends javax.swing.JPanel {
         labTitulo.setOpaque(true);
 
         txtBusquedaPack.setToolTipText("Tipee lo que desea Buscar");
+        txtBusquedaPack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBusquedaPackActionPerformed(evt);
+            }
+        });
 
         labBusqueda.setText("Nombre");
 
@@ -122,6 +140,11 @@ public class PPack extends javax.swing.JPanel {
         butCancelar.setMinimumSize(new java.awt.Dimension(69, 69));
         butCancelar.setPreferredSize(new java.awt.Dimension(69, 69));
         butCancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        butCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butCancelarActionPerformed(evt);
+            }
+        });
 
         jTableCArticulos2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -146,6 +169,16 @@ public class PPack extends javax.swing.JPanel {
         });
         jScrollPane4.setViewportView(jTableCArticulos2);
 
+        labStock.setText("Stock");
+
+        txtStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtStockActionPerformed(evt);
+            }
+        });
+
+        labPrecio.setText("Precio Pack");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -155,13 +188,9 @@ public class PPack extends javax.swing.JPanel {
                 .addComponent(labBusqueda)
                 .addGap(4, 4, 4)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtBusquedaPack, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(54, 54, 54)
-                                .addComponent(jButton1))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(labBusqueda1)
@@ -169,21 +198,42 @@ public class PPack extends javax.swing.JPanel {
                                 .addComponent(txtBusquedaPackUn, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(54, 54, 54)
-                                .addComponent(jButton2)))
-                        .addGap(24, 24, 24)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(butAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
-                            .addComponent(butCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jButton2))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(54, 54, 54)
+                                .addComponent(jButton1)))
+                        .addGap(19, 19, 19))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtBusquedaPack, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labStock)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(19, 19, 19)
+                        .addComponent(labPrecio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtPrecio))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(butAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                    .addComponent(butCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBusquedaPack, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labBusqueda))
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPrecio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtBusquedaPack, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labBusqueda)
+                        .addComponent(labStock)
+                        .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labPrecio)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
@@ -297,7 +347,7 @@ public class PPack extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+            .addComponent(labTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 1007, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -331,7 +381,7 @@ public class PPack extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         OPack catArt = ((MTPack) jTableCArticulos.getModel()).getPack().get(jTableCArticulos.getSelectedRow());
-        txtNombreCatArt.setText(catArt.getNombre());
+       // txtNombreCatArt.setText(catArt.getNombre());
 
     }//GEN-LAST:event_jTableCArticulosMouseClicked
 
@@ -393,6 +443,28 @@ public class PPack extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void txtStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStockActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtStockActionPerformed
+
+    private void txtBusquedaPackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBusquedaPackActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBusquedaPackActionPerformed
+
+    private void butCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butCancelarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_butCancelarActionPerformed
+    
+    public void ListarPack() {
+        MTPack ModeloBanco = new MTPack(new CPack().Listar());
+        jTablePack.setModel(ModeloBanco);
+       }
+    
+    public void ListarAticulos() {
+        MTPackArticulo ModeloBanco = new MTPackArticulo(new CArticulos().Listar());
+        jTableCArticulos2.setModel(ModeloBanco);
+       }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton butAgregar;
@@ -403,18 +475,24 @@ public class PPack extends javax.swing.JPanel {
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTableCArticulos;
     private javax.swing.JTable jTableCArticulos2;
     private javax.swing.JTable jTablePack;
+    private javax.swing.JTextPane jTextPane1;
     private javax.swing.JLabel labBusqueda;
     private javax.swing.JLabel labBusqueda1;
     private javax.swing.JLabel labBusqueda2;
+    private javax.swing.JLabel labPrecio;
+    private javax.swing.JLabel labStock;
     private javax.swing.JLabel labTitulo;
     private javax.swing.JTextField txtBusquedaPack;
     private javax.swing.JTextField txtBusquedaPackUn;
     private javax.swing.JTextField txtBusquedaPacks;
+    private javax.swing.JTextField txtPrecio;
+    private javax.swing.JTextField txtStock;
     // End of variables declaration//GEN-END:variables
 }

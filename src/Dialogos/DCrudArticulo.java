@@ -139,7 +139,7 @@ public class DCrudArticulo extends javax.swing.JDialog {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String date = sdf.format(dateFechaVencimiento.getDate());
         CArticulos arti = new CArticulos(0, txtNombre.getText(), Integer.parseInt(txtStok.getText()), date
-                , jToggleButtonEstado.isSelected(), ((MCCatArticulos)conboxCategoria.getModel()).getCatArticulos().get(conboxCategoria.getSelectedIndex()).getId());
+                , jToggleButtonEstado.isSelected(), ((MCCatArticulos)conboxCategoria.getModel()).getCatArticulos().get(conboxCategoria.getSelectedIndex()));
         OError error = arti.Insertar();
         if (error.isConfirma()) {
             //ListarArticulos();

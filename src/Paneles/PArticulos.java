@@ -9,9 +9,9 @@ import Clases.CArticulos;
 import Clases.CCatArticulos;
 import ModeloCombox.MCCatArticulos;
 import ModelosTablas.MTArticulos;
-import ModelosTablas.MTCatArticulos;
 import Objetos.OArticulos;
 import Objetos.OError;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -42,15 +42,11 @@ public class PArticulos extends javax.swing.JPanel {
         txtNombreArticulo = new java.awt.TextField();
         jLabel2 = new javax.swing.JLabel();
         txtStock = new java.awt.TextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtMarca = new java.awt.TextField();
         jLabel4 = new javax.swing.JLabel();
         txtCodArticulo = new java.awt.TextField();
         CBoxCatArticulo = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        txtProveedor = new java.awt.TextField();
         jToolBar1 = new javax.swing.JToolBar();
         butAgregar = new javax.swing.JButton();
         jToolBar2 = new javax.swing.JToolBar();
@@ -59,7 +55,7 @@ public class PArticulos extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         JTableArticulos = new javax.swing.JTable();
         ButCancelar = new javax.swing.JButton();
-        txtFVencimiento = new javax.swing.JTextField();
+        jDateChooserFV = new com.toedter.calendar.JDateChooser("dd-MM-yyyy", "##/##/####", '_');
 
         setPreferredSize(new java.awt.Dimension(1000, 502));
 
@@ -87,18 +83,10 @@ public class PArticulos extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setText("Marca:");
-
-        txtMarca.setBackground(new java.awt.Color(255, 255, 255));
-        txtMarca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMarcaActionPerformed(evt);
-            }
-        });
-
         jLabel4.setText("Codigo Articulo:");
 
         txtCodArticulo.setBackground(new java.awt.Color(255, 255, 255));
+        txtCodArticulo.setEditable(false);
         txtCodArticulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodArticuloActionPerformed(evt);
@@ -115,10 +103,6 @@ public class PArticulos extends javax.swing.JPanel {
         jLabel5.setText("Categoria Articulo:");
 
         jLabel6.setText("Fecha de Vencimiento:");
-
-        jLabel7.setText("Proveedor:");
-
-        txtProveedor.setBackground(new java.awt.Color(255, 255, 255));
 
         jToolBar1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jToolBar1.setRollover(true);
@@ -176,16 +160,21 @@ public class PArticulos extends javax.swing.JPanel {
 
         JTableArticulos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Código", "Descripción", "Stock", "F. Vencimiento", "Estado", "Proveedor", "Categoria"
+                "Código", "Descripción", "Stock", "F. Vencimiento", "Estado", "Categoria"
             }
         ));
         JTableArticulos.setFillsViewportHeight(true);
+        JTableArticulos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JTableArticulosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(JTableArticulos);
 
         ButCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_limpio_24.png"))); // NOI18N
@@ -198,8 +187,6 @@ public class PArticulos extends javax.swing.JPanel {
             }
         });
 
-        txtFVencimiento.setBackground(new java.awt.Color(255, 255, 255));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -208,33 +195,28 @@ public class PArticulos extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(14, 14, 14)
                                 .addComponent(txtCodArticulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNombreArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtNombreArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtStock, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
-                                    .addComponent(txtMarca, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE))))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(70, 70, 70)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
+                            .addComponent(jLabel6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(CBoxCatArticulo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
-                            .addComponent(txtFVencimiento)))
+                            .addComponent(CBoxCatArticulo, 0, 314, Short.MAX_VALUE)
+                            .addComponent(jDateChooserFV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 873, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ButCancelar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
@@ -258,11 +240,7 @@ public class PArticulos extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(txtCodArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -271,15 +249,11 @@ public class PArticulos extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(CBoxCatArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
-                            .addComponent(txtFVencimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jDateChooserFV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(48, 48, 48)
                         .addComponent(ButCancelar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -297,16 +271,13 @@ public class PArticulos extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtStockActionPerformed
 
-    private void txtMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMarcaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMarcaActionPerformed
-
     private void txtCodArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodArticuloActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodArticuloActionPerformed
 
     private void CBoxCatArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBoxCatArticuloActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_CBoxCatArticuloActionPerformed
     
     private void LlenarComboCatArticulos(){
@@ -316,14 +287,14 @@ public class PArticulos extends javax.swing.JPanel {
     private void butAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butAgregarActionPerformed
         // TODO add your handling code here:
         //Agregar
-        CArticulos arti = new CArticulos(0, txtNombreArticulo.getText(), Integer.parseInt(txtStock.getText()), txtFVencimiento.getText(), true, CBoxCatArticulo.getSelectedIndex());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String date = sdf.format(jDateChooserFV.getDate());
+       CArticulos arti = new CArticulos(0, txtNombreArticulo.getText(), Integer.parseInt(txtStock.getText()), date, true, ((MCCatArticulos)CBoxCatArticulo.getModel()).getCatArticulos().get(CBoxCatArticulo.getSelectedIndex()));
         OError error = arti.Insertar();
         if (error.isConfirma()) {
             ListarArticulos();
             System.out.println(error.getMensaje());
-            txtNombreArticulo.setText("");
-            txtStock.setText("");
-            txtFVencimiento.setText("");
+            ButCancelarActionPerformed(null);
 
         } else {
             System.out.println(error.getMensaje());
@@ -333,16 +304,14 @@ public class PArticulos extends javax.swing.JPanel {
     private void butEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butEditarActionPerformed
         // TODO add your handling code here:
         //Editar
-        OArticulos arti = ((MTArticulos) JTableArticulos.getModel()).getArticulo().get(JTableArticulos.getSelectedRow());
-        CArticulos Articulo = new CArticulos(arti.getId(), txtNombreArticulo.getText(), Integer.parseInt(txtStock.getText()), txtFVencimiento.getText(), true, CBoxCatArticulo.getSelectedIndex());
-        OError error1 = Articulo.Editar();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String date = sdf.format(jDateChooserFV.getDate());
+       CArticulos arti = new CArticulos(Integer.valueOf(txtCodArticulo.getText().trim()), txtNombreArticulo.getText(), Integer.parseInt(txtStock.getText()), date, true, ((MCCatArticulos)CBoxCatArticulo.getModel()).getCatArticulos().get(CBoxCatArticulo.getSelectedIndex()));
+        OError error1 = arti.Editar();
         if (error1.isConfirma()) {
             ListarArticulos();
             System.out.println(error1.getMensaje());
-            txtNombreArticulo.setText("");
-            txtStock.setText("");
-            txtFVencimiento.setText("");
-
+            ButCancelarActionPerformed(null);
         } else {
             System.out.println(error1.getMensaje());
 
@@ -352,12 +321,13 @@ public class PArticulos extends javax.swing.JPanel {
     private void butDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butDesactivarActionPerformed
         //TODO add your handling code here:
         OArticulos bank = ((MTArticulos) JTableArticulos.getModel()).getArticulo().get(JTableArticulos.getSelectedRow());
-        OError Error = new CArticulos(bank.getId(), bank.getDescripcion(), bank.getStock(), bank.getFecha(), false, bank.getCategoria()).Eliminar();
+        CArticulos Artic = new CArticulos();
+        Artic.setId(bank.getId());
+        Artic.setEstado(false);
+        OError Error = Artic.Eliminar();
         if (Error.isConfirma()) {
             ListarArticulos();
-            txtNombreArticulo.setText("");
-            txtStock.setText("");
-            txtFVencimiento.setText("");
+            ButCancelarActionPerformed(null);
         } else {
             System.out.println(Error.getMensaje());
         }
@@ -367,8 +337,25 @@ public class PArticulos extends javax.swing.JPanel {
         // TODO add your handling code here:
         txtNombreArticulo.setText("");
         txtStock.setText("");
-        txtFVencimiento.setText("");
+        txtCodArticulo.setText("");
+        LlenarComboCatArticulos();
+        jDateChooserFV.setCalendar(null);
     }//GEN-LAST:event_ButCancelarActionPerformed
+
+    private void JTableArticulosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTableArticulosMouseClicked
+        // TODO add your handling code here:
+        MTArticulos comuna = (MTArticulos)JTableArticulos.getModel();
+        txtNombreArticulo.setText(comuna.getArticulo().get(JTableArticulos.getSelectedRow()).getDescripcion());
+        txtStock.setText(String.valueOf(comuna.getArticulo().get(JTableArticulos.getSelectedRow()).getStock()));
+        txtCodArticulo.setText(String.valueOf(comuna.getArticulo().get(JTableArticulos.getSelectedRow()).getId()));
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy"); 
+      //Date fecha = formato.parse("23/11/2015");
+      //jDateChooserFV.setDate(formato.parse("23/11/2015"));
+      //txtId.setText(String.valueOf(comuna.getUsuarios().get(datos.getSelectedRow()).getId()));
+      //txtNombre.setText(comuna.getUsuarios().get(datos.getSelectedRow()).getNombre());
+      //Combobox.setSelectedIndex(comuna.getUsuarios().get(datos.getSelectedRow()).isEstado() ? 1 : 0);
+      
+    }//GEN-LAST:event_JTableArticulosMouseClicked
     
        public void ListarArticulos() {
         MTArticulos ModeloBanco = new MTArticulos(new CArticulos().Listar());
@@ -382,22 +369,18 @@ public class PArticulos extends javax.swing.JPanel {
     private javax.swing.JButton butAgregar;
     private javax.swing.JButton butDesactivar;
     private javax.swing.JButton butEditar;
+    private com.toedter.calendar.JDateChooser jDateChooserFV;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JToolBar jToolBar2;
     private javax.swing.JLabel labTitulo;
     private java.awt.TextField txtCodArticulo;
-    private javax.swing.JTextField txtFVencimiento;
-    private java.awt.TextField txtMarca;
     private java.awt.TextField txtNombreArticulo;
-    private java.awt.TextField txtProveedor;
     private java.awt.TextField txtStock;
     // End of variables declaration//GEN-END:variables
 }

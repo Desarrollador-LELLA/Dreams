@@ -634,48 +634,12 @@ private List<OProveedor> Proveedor;
     }//GEN-LAST:event_butBuscar1ActionPerformed
 
     private void butImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butImprimirActionPerformed
-       imprimir(tableProveedor);
+       Imprimir();
     }//GEN-LAST:event_butImprimirActionPerformed
     
-    private void imprimir(JTable tabla) {
-        String ruta = System.getProperties().getProperty("user.dir");
-        XSSFWorkbook workbook = new XSSFWorkbook();
-        XSSFSheet hoja = workbook.createSheet();
-
-        XSSFRow fila = hoja.createRow(0);
-        for (int i = 0; i < tabla.getColumnModel().getColumnCount(); i++) {
-
-            fila.createCell(i).setCellValue(tabla.getColumnName(i));
-        }
-
-        XSSFRow filas;
-        Rectangle rect;
-
-        for (int i = 0; i < tabla.getRowCount(); i++) {
-
-            rect = tabla.getCellRect(i, 0, true);
-            try {
-                tabla.scrollRectToVisible(rect);
-                tabla.setRowSelectionInterval(i, i);
-
-                filas = hoja.createRow((i + 1));
-                for (int e = 0; e < tabla.getColumnModel().getColumnCount(); e++) {
-
-                    filas.createCell(e).setCellValue(tabla.getValueAt(i, e).toString());
-
-                }
-
-            } catch (java.lang.ClassCastException e) {
-            }
-        }
-
-        try {
-            workbook.write(new FileOutputStream(new File(ruta + "//Excel.xlsx")));
-            Desktop.getDesktop().open(new File(ruta + "//Excel.xlsx"));
-
-        } catch (IOException ex) {
-            Logger.getLogger(PProveedor.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    private void Imprimir(){
+        CVerificar impri = new CVerificar();
+        impri.Imprimir(tableProveedor);
     }
             
 
