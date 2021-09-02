@@ -80,14 +80,13 @@ public class MTCliente implements TableModel {
             case 4:
                 Valor = Cliente.get(rowIndex).getCorreo();
                 break;
-       /*         case 5:
-                Valor = Cliente.get(rowIndex).getTelefono();
-                break; */
+                case 5:
+                Valor = String.valueOf(Cliente.get(rowIndex).getTelefono());
+                break; 
             case 6:
                 Valor = Cliente.get(rowIndex).isEstado() ? "Activado" : "Desactivado";
                 break; 
         }
-
         return Valor;
     }
 
