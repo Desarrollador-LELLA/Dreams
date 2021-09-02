@@ -58,6 +58,11 @@ public class PMaestros extends javax.swing.JPanel {
         jButton1.setMinimumSize(new java.awt.Dimension(69, 69));
         jButton1.setPreferredSize(new java.awt.Dimension(69, 69));
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jToolBarMenu.add(jButton1);
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -372,6 +377,18 @@ public class PMaestros extends javax.swing.JPanel {
         panelVisor.revalidate();
         panelVisor.repaint();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        PCliente PanelCliente = new PCliente();
+        PanelCliente.setVisible(true);
+        PanelCliente.setSize(1000, 525);
+        PanelCliente.setLocation(0, 0);
+        
+        panelVisor.removeAll();
+        panelVisor.add(PanelCliente, BorderLayout.CENTER);
+        panelVisor.revalidate();
+        panelVisor.repaint();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
