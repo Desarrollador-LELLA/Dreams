@@ -7,15 +7,24 @@ package Paneles;
 
 import Clases.CArticulos;
 import Clases.CPack;
+import ModelosTablas.MTArticulos;
 import ModelosTablas.MTPack;
 import ModelosTablas.MTPackArticulo;
+import ModelosTablas.MTPackDetalle;
+import Objetos.OArticulos;
+import Objetos.OError;
 import Objetos.OPack;
+import Objetos.OPackDetalle;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author Usuario
  */
 public class PPack extends javax.swing.JPanel {
+    
+    private List<OPackDetalle> packdet = new ArrayList();
 
     /**
      * Creates new form PPack
@@ -39,18 +48,18 @@ public class PPack extends javax.swing.JPanel {
         jTextPane1 = new javax.swing.JTextPane();
         labTitulo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        txtBusquedaPack = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         labBusqueda = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTableCArticulos = new javax.swing.JTable();
+        jTableArticulosPack = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         labBusqueda1 = new javax.swing.JLabel();
-        txtBusquedaPackUn = new javax.swing.JTextField();
+        txtUnidades = new javax.swing.JTextField();
         butAgregar = new javax.swing.JButton();
         butCancelar = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTableCArticulos2 = new javax.swing.JTable();
+        jTableArticulos = new javax.swing.JTable();
         labStock = new javax.swing.JLabel();
         txtStock = new javax.swing.JTextField();
         labPrecio = new javax.swing.JLabel();
@@ -71,16 +80,16 @@ public class PPack extends javax.swing.JPanel {
         labTitulo.setText("Pack´s");
         labTitulo.setOpaque(true);
 
-        txtBusquedaPack.setToolTipText("Tipee lo que desea Buscar");
-        txtBusquedaPack.addActionListener(new java.awt.event.ActionListener() {
+        txtNombre.setToolTipText("Tipee lo que desea Buscar");
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBusquedaPackActionPerformed(evt);
+                txtNombreActionPerformed(evt);
             }
         });
 
         labBusqueda.setText("Nombre");
 
-        jTableCArticulos.setModel(new javax.swing.table.DefaultTableModel(
+        jTableArticulosPack.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -96,12 +105,12 @@ public class PPack extends javax.swing.JPanel {
                 "Unidades", "Articulo"
             }
         ));
-        jTableCArticulos.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTableArticulosPack.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableCArticulosMouseClicked(evt);
+                jTableArticulosPackMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(jTableCArticulos);
+        jScrollPane2.setViewportView(jTableArticulosPack);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_adelante_32.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -111,10 +120,15 @@ public class PPack extends javax.swing.JPanel {
         });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_atras_32.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         labBusqueda1.setText("Unidades :");
 
-        txtBusquedaPackUn.setToolTipText("Tipee lo que desea Buscar");
+        txtUnidades.setToolTipText("Tipee lo que desea Buscar");
 
         butAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_agregar_32.png"))); // NOI18N
         butAgregar.setText("Crear Pack");
@@ -146,7 +160,7 @@ public class PPack extends javax.swing.JPanel {
             }
         });
 
-        jTableCArticulos2.setModel(new javax.swing.table.DefaultTableModel(
+        jTableArticulos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},
                 {null},
@@ -162,12 +176,12 @@ public class PPack extends javax.swing.JPanel {
                 "Articulos"
             }
         ));
-        jTableCArticulos2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTableArticulos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableCArticulos2MouseClicked(evt);
+                jTableArticulosMouseClicked(evt);
             }
         });
-        jScrollPane4.setViewportView(jTableCArticulos2);
+        jScrollPane4.setViewportView(jTableArticulos);
 
         labStock.setText("Stock");
 
@@ -195,7 +209,7 @@ public class PPack extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(labBusqueda1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtBusquedaPackUn, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(54, 54, 54)
                                 .addComponent(jButton2))
@@ -204,7 +218,7 @@ public class PPack extends javax.swing.JPanel {
                                 .addComponent(jButton1)))
                         .addGap(19, 19, 19))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtBusquedaPack, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(labStock)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -229,7 +243,7 @@ public class PPack extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtPrecio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtBusquedaPack, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(labBusqueda)
                         .addComponent(labStock)
                         .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -241,7 +255,7 @@ public class PPack extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labBusqueda1)
-                            .addComponent(txtBusquedaPackUn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -377,20 +391,37 @@ public class PPack extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTableCArticulosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCArticulosMouseClicked
+    private void jTableArticulosPackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableArticulosPackMouseClicked
         // TODO add your handling code here:
-
-        OPack catArt = ((MTPack) jTableCArticulos.getModel()).getPack().get(jTableCArticulos.getSelectedRow());
-       // txtNombreCatArt.setText(catArt.getNombre());
-
-    }//GEN-LAST:event_jTableCArticulosMouseClicked
+    }//GEN-LAST:event_jTableArticulosPackMouseClicked
 
     private void jTablePackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePackMouseClicked
         // TODO add your handling code here:
+        OPack opack = ((MTPack)jTablePack.getModel()).getPack().get(jTablePack.getSelectedRow());
+        txtNombre.setText(opack.getNombre());
+        txtPrecio.setText(String.valueOf(opack.getCosto()));
+        txtStock.setText(String.valueOf(opack.getStock()));        
+        jTableArticulosPack.setModel(new MTPackDetalle(opack.getPackDetalles()));
     }//GEN-LAST:event_jTablePackMouseClicked
 
     private void butAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butAgregarActionPerformed
         // TODO add your handling code here:
+        CPack pack = new CPack(0, txtNombre.getText().trim(), txtPrecio.getText().trim(), Integer.valueOf(txtStock.getText().trim()), true, packdet);
+        OError error = pack.Insertar();
+        if (error.isConfirma()) {
+        //ListarCategoria();
+        System.out.println(error.getMensaje());
+        txtNombre.setText("");
+        txtPrecio.setText("");
+        txtStock.setText("");
+        packdet.clear();
+        MTPackDetalle packdetalles = new MTPackDetalle(packdet);
+        jTableArticulosPack.setModel(packdetalles);
+        ListarPack();
+        } else {
+        System.out.println(error.getMensaje());
+        }
+        
         //Agregar
         /*CCatArticulos cateArt = new CCatArticulos(0, txtNombreCatArt.getText(), true);
         OError error = cateArt.Agregar();
@@ -404,25 +435,15 @@ public class PPack extends javax.swing.JPanel {
         }*/
     }//GEN-LAST:event_butAgregarActionPerformed
 
-    private void jTableCArticulos2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCArticulos2MouseClicked
+    private void jTableArticulosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableArticulosMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTableCArticulos2MouseClicked
+        
+    }//GEN-LAST:event_jTableArticulosMouseClicked
 
     private void butEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butEditarActionPerformed
         // TODO add your handling code here:
-        //Editar
-        /*OCatArticulos cateArt = ((MTCatArticulos) jTableCArticulos.getModel()).getCategoria().get(jTableCArticulos.getSelectedRow());
-        CCatArticulos CaArt = new CCatArticulos(cateArt.getId(), txtNombreCatArt.getText(), true);
-        OError error1 = CaArt.Editar();
-        if (error1.isConfirma()) {
-            ListarCategoria();
-            System.out.println(error1.getMensaje());
-            txtNombreCatArt.setText("");
-
-        } else {
-            System.out.println(error1.getMensaje());
-
-        }*/
+        
+        
     }//GEN-LAST:event_butEditarActionPerformed
 
     private void butDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butDesactivarActionPerformed
@@ -437,24 +458,46 @@ public class PPack extends javax.swing.JPanel {
         }*/
     }//GEN-LAST:event_butDesactivarActionPerformed
 
-    
+   
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        Object cualquier = jTableArticulos.getModel();
+        MTPackArticulo descrip = (MTPackArticulo)jTableArticulos.getModel();
+        OArticulos ArtiPack = (descrip).getArticulos().get(jTableArticulos.getSelectedRow());
+        OPackDetalle Pack2 = new OPackDetalle(Integer.valueOf(txtUnidades.getText().trim()), ArtiPack);
+        packdet.add(Pack2);
+        MTPackDetalle packdetalles = new MTPackDetalle(packdet);
+        jTableArticulosPack.setModel(packdetalles);
+        txtUnidades.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStockActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtStockActionPerformed
 
-    private void txtBusquedaPackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBusquedaPackActionPerformed
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtBusquedaPackActionPerformed
+    }//GEN-LAST:event_txtNombreActionPerformed
 
     private void butCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butCancelarActionPerformed
         // TODO add your handling code here:
+        txtNombre.setText("");
+        txtPrecio.setText("");
+        txtStock.setText("");
+        txtUnidades.setText("");
+        packdet.clear();
+        MTPackDetalle packdetalles = new MTPackDetalle(packdet);
+        jTableArticulosPack.setModel(packdetalles);
         
     }//GEN-LAST:event_butCancelarActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        OPackDetalle Pack2 = ((MTPackDetalle)jTableArticulosPack.getModel()).getPackDetalles().get(jTableArticulosPack.getSelectedRow());
+        packdet.remove(Pack2);
+        jTableArticulosPack.setModel(new MTPackDetalle(packdet));
+
+    }//GEN-LAST:event_jButton2ActionPerformed
     
     public void ListarPack() {
         MTPack ModeloBanco = new MTPack(new CPack().Listar());
@@ -463,7 +506,7 @@ public class PPack extends javax.swing.JPanel {
     
     public void ListarAticulos() {
         MTPackArticulo ModeloBanco = new MTPackArticulo(new CArticulos().Listar());
-        jTableCArticulos2.setModel(ModeloBanco);
+        jTableArticulos.setModel(ModeloBanco);
        }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -479,8 +522,8 @@ public class PPack extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTableCArticulos;
-    private javax.swing.JTable jTableCArticulos2;
+    private javax.swing.JTable jTableArticulos;
+    private javax.swing.JTable jTableArticulosPack;
     private javax.swing.JTable jTablePack;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JLabel labBusqueda;
@@ -489,10 +532,10 @@ public class PPack extends javax.swing.JPanel {
     private javax.swing.JLabel labPrecio;
     private javax.swing.JLabel labStock;
     private javax.swing.JLabel labTitulo;
-    private javax.swing.JTextField txtBusquedaPack;
-    private javax.swing.JTextField txtBusquedaPackUn;
     private javax.swing.JTextField txtBusquedaPacks;
+    private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPrecio;
     private javax.swing.JTextField txtStock;
+    private javax.swing.JTextField txtUnidades;
     // End of variables declaration//GEN-END:variables
 }

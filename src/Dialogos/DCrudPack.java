@@ -89,6 +89,11 @@ public class DCrudPack extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTableArticulos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableArticulosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableArticulos);
 
         butAgregarArticulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_adelante_32.png"))); // NOI18N
@@ -101,6 +106,11 @@ public class DCrudPack extends javax.swing.JDialog {
         labUnidades.setText("Unidades");
 
         butQuitarArticulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_atras_32.png"))); // NOI18N
+        butQuitarArticulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butQuitarArticuloActionPerformed(evt);
+            }
+        });
 
         jTableArticulosPack.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -390,6 +400,14 @@ public class DCrudPack extends javax.swing.JDialog {
         MTPackDetalle packdetalles = new MTPackDetalle(packdet);
         jTableArticulosPack.setModel(packdetalles);
     }//GEN-LAST:event_butAgregarArticuloActionPerformed
+
+    private void butQuitarArticuloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butQuitarArticuloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_butQuitarArticuloActionPerformed
+
+    private void jTableArticulosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableArticulosMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableArticulosMouseClicked
 
     /**
      * @param args the command line arguments

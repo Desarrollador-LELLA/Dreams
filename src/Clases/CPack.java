@@ -9,10 +9,10 @@ import Objetos.OArticulos;
 import Objetos.OError;
 import Objetos.OPack;
 import Objetos.OPackDetalle;
-import com.mysql.jdbc.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,15 +45,22 @@ public class CPack extends OPack {
                 Preparando = Sql.getCon().prepareStatement("SELECT * FROM Pack");
                 Resultado = Preparando.executeQuery();
                 PreparedStatement Preparando1 = null;
+                ResultSet Resultado1 = null;
                 
+                
+              
                 while (Resultado.next()) {
-                    Preparando1 = Sql.getCon().prepareStatement("SELECT * FROM Pack_has_Articulo P inner join Articulo A on P.ART_ID_ARTICULO = A.ART_ID_ARTICULO");
-                    ResultSet Resultado1 = Preparando1.executeQuery();
+                int packd = Resultado.getInt(1);
+                Preparando1 = null;
+                Resultado1 = null;
+                Preparando1 = Sql.getCon().prepareStatement("SELECT * FROM Pack_has_Articulo P inner join Articulo A on P.ART_ID_ARTICULO = A.ART_ID_ARTICULO WHERE P.PCK_ID_PACK = ?");
+                Preparando1.setInt(1, Resultado.getInt(1));
+                Resultado1 = Preparando1.executeQuery();
                     while (Resultado1.next()) {
                         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-                        String date = sdf.format(Resultado.getDate(7));
-                        OArticulos packArticulo = new OArticulos(Resultado.getInt(4), Resultado.getString(5), Resultado.getInt(6), date, Resultado.getBoolean(8), null);
-                        OPackDetalle packDetalle1 = new OPackDetalle(Resultado.getInt(3), packArticulo);
+                        String date = sdf.format(Resultado1.getDate(7));
+                        OArticulos packArticulo = new OArticulos(Resultado1.getInt(4), Resultado1.getString(5), Resultado1.getInt(6), date, Resultado1.getBoolean(8), null);
+                        OPackDetalle packDetalle1 = new OPackDetalle(Resultado1.getInt(3), packArticulo);
                         getPackDetalles().add(packDetalle1);
                     }
                     Listado.add(new OPack(Resultado.getInt(1), Resultado.getString(2), Resultado.getString(3), Resultado.getInt(4), Resultado.getBoolean(5), getPackDetalles()));
@@ -63,7 +70,9 @@ public class CPack extends OPack {
                 Resultado.close();
                 Preparando.close();
                 if (Preparando1 != null) {
+                    Resultado1.close();
                     Preparando1.close();
+                    
                 }
                 
                 

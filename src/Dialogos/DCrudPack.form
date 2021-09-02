@@ -210,6 +210,9 @@
               </Table>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableArticulosMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -236,6 +239,9 @@
           <Image iconType="3" name="/Recursos/r_ico_atras_32.png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="butQuitarArticuloActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane2">
       <AuxValues>

@@ -96,7 +96,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="labBusqueda1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txtBusquedaPackUn" min="-2" pref="99" max="-2" attributes="0"/>
+                                  <Component id="txtUnidades" min="-2" pref="99" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
@@ -110,7 +110,7 @@
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="txtBusquedaPack" min="-2" pref="277" max="-2" attributes="0"/>
+                          <Component id="txtNombre" min="-2" pref="277" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="labStock" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -142,7 +142,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="txtPrecio" alignment="1" min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtBusquedaPack" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="txtNombre" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="labBusqueda" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="labStock" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtStock" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
@@ -156,7 +156,7 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labBusqueda1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtBusquedaPackUn" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="txtUnidades" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jButton2" min="-2" max="-2" attributes="0"/>
@@ -180,12 +180,12 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="txtBusquedaPack">
+        <Component class="javax.swing.JTextField" name="txtNombre">
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value="Tipee lo que desea Buscar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBusquedaPackActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="labBusqueda">
@@ -200,7 +200,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTableCArticulos">
+            <Component class="javax.swing.JTable" name="jTableArticulosPack">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="2" rowCount="9">
@@ -227,7 +227,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableCArticulosMouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableArticulosPackMouseClicked"/>
               </Events>
             </Component>
           </SubComponents>
@@ -248,13 +248,16 @@
               <Image iconType="3" name="/Recursos/r_ico_atras_32.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="labBusqueda1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Unidades :"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtBusquedaPackUn">
+        <Component class="javax.swing.JTextField" name="txtUnidades">
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value="Tipee lo que desea Buscar"/>
           </Properties>
@@ -314,7 +317,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTableCArticulos2">
+            <Component class="javax.swing.JTable" name="jTableArticulos">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="1" rowCount="9">
@@ -335,7 +338,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableCArticulos2MouseClicked"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableArticulosMouseClicked"/>
               </Events>
             </Component>
           </SubComponents>
