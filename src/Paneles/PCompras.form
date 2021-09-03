@@ -43,7 +43,7 @@
           <Font name="Tahoma" size="14" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Informes"/>
+        <Property name="text" type="java.lang.String" value="Compras"/>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
     </Component>
@@ -56,17 +56,18 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="butInformeVentas">
+        <Component class="javax.swing.JButton" name="butOrdenesCompra">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Recursos/r_ico_iventas_32.png"/>
+              <Image iconType="3" name="/Recursos/r_ico_ordendecompra_32.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ventas"/>
-            <Property name="toolTipText" type="java.lang.String" value="Informe de Ventas"/>
+            <Property name="text" type="java.lang.String" value="Ordenes de Compra"/>
+            <Property name="toolTipText" type="java.lang.String" value="Ordenes de Compra"/>
             <Property name="borderPainted" type="boolean" value="false"/>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -80,21 +81,19 @@
             </Property>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="butInformeVentasActionPerformed"/>
-          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="butInformeInventario">
+        <Component class="javax.swing.JButton" name="butRegistroCompra">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Recursos/r_ico_iinventario_32.png"/>
+              <Image iconType="3" name="/Recursos/r_ico_registrocompra_32.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Inventario"/>
-            <Property name="toolTipText" type="java.lang.String" value="Informe Inventario"/>
+            <Property name="text" type="java.lang.String" value="Registro Compra"/>
+            <Property name="toolTipText" type="java.lang.String" value="Registro Compra"/>
             <Property name="borderPainted" type="boolean" value="false"/>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -108,21 +107,19 @@
             </Property>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="butInformeInventarioActionPerformed"/>
-          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="butInformeVencimientos">
+        <Component class="javax.swing.JButton" name="butRevisionFacturas">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Recursos/r_ico_ivencimiento_32.png"/>
+              <Image iconType="3" name="/Recursos/r_ico_revisarfactura_32.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Vencimientos"/>
-            <Property name="toolTipText" type="java.lang.String" value="Informe de Vencimientos"/>
+            <Property name="text" type="java.lang.String" value="Revision de Facturas"/>
+            <Property name="toolTipText" type="java.lang.String" value="Revision de Facturas"/>
             <Property name="borderPainted" type="boolean" value="false"/>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -136,93 +133,6 @@
             </Property>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="butInformeVencimientosActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="butInformeProveedores">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="11" style="1"/>
-            </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Recursos/r_ico_iproveedores_32.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Proveedores"/>
-            <Property name="toolTipText" type="java.lang.String" value="Informe de Proveedores"/>
-            <Property name="borderPainted" type="boolean" value="false"/>
-            <Property name="focusable" type="boolean" value="false"/>
-            <Property name="horizontalTextPosition" type="int" value="0"/>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[69, 69]"/>
-            </Property>
-            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[69, 69]"/>
-            </Property>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[69, 69]"/>
-            </Property>
-            <Property name="verticalTextPosition" type="int" value="3"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="butInformeProveedoresActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="butInformeVentaPack">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="11" style="1"/>
-            </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Recursos/r_ico_ipacks_32.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Venta Pack"/>
-            <Property name="toolTipText" type="java.lang.String" value="Informe de Venta Pack"/>
-            <Property name="borderPainted" type="boolean" value="false"/>
-            <Property name="focusable" type="boolean" value="false"/>
-            <Property name="horizontalTextPosition" type="int" value="0"/>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[69, 69]"/>
-            </Property>
-            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[69, 69]"/>
-            </Property>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[69, 69]"/>
-            </Property>
-            <Property name="verticalTextPosition" type="int" value="3"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="butInformeVentaPackActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="butInformeComunas">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="11" style="1"/>
-            </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Recursos/r_ico_icomuna_32.png"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Comunas"/>
-            <Property name="toolTipText" type="java.lang.String" value="Informe por Comunas"/>
-            <Property name="borderPainted" type="boolean" value="false"/>
-            <Property name="focusable" type="boolean" value="false"/>
-            <Property name="horizontalTextPosition" type="int" value="0"/>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[69, 69]"/>
-            </Property>
-            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[69, 69]"/>
-            </Property>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[69, 69]"/>
-            </Property>
-            <Property name="verticalTextPosition" type="int" value="3"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="butInformeComunasActionPerformed"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>

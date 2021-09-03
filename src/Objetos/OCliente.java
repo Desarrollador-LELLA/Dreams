@@ -107,4 +107,8 @@ public class OCliente {
     public void setCanal(OCanales canal) {
         this.canal = canal;
     }
+
+    public String getCell() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
