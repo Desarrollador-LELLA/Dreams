@@ -639,7 +639,7 @@ private List<OProveedor> Proveedor;
     
     private void Imprimir(){
         CVerificar impri = new CVerificar();
-        impri.Imprimir(tableProveedor);
+        impri.Imprimir(tableProveedor, labTitulo.getText());
     }
             
 

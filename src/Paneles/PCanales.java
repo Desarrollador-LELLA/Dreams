@@ -218,9 +218,9 @@ public class PCanales extends javax.swing.JPanel {
         label2.getAccessibleContext().setAccessibleDescription("");
 
         label3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        label3.setFont(new java.awt.Font("Miriam Libre", 3, 18)); // NOI18N
-        label3.setForeground(new java.awt.Color(102, 102, 255));
-        label3.setText("Redes Sociales");
+        label3.setForeground(new java.awt.Color(187, 187, 187));
+        label3.setName(""); // NOI18N
+        label3.setText("Tabla Canales");
 
         jToolBar1.setFloatable(false);
         jToolBar1.setOrientation(javax.swing.SwingConstants.VERTICAL);

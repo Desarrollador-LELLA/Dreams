@@ -40,9 +40,7 @@ public class MTInformeInventario implements TableModel {
     public String getColumnName(int columnIndex) {
         String NombreColumna = null;
         switch(columnIndex){
-            /* case 0:
-            NombreColumna = "ID";
-            break;*/
+            
             case 0:
                 NombreColumna = "Codigo Articulo";
                 break;
@@ -77,9 +75,7 @@ public class MTInformeInventario implements TableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         String Valor = null;
         switch(columnIndex){
-            /*case 0:
-            Valor = Comuna.get(rowIndex).getId();
-            break;*/
+           
             case 0:
                 Valor = String.valueOf(InformeInventario.get(rowIndex).getArticulo().getId());
                 break;

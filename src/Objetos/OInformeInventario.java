@@ -13,6 +13,9 @@ public class OInformeInventario {
     private OArticulos Articulo;
     private OCatArticulos categoria;
 
+    public OInformeInventario() {
+    }
+
     public OInformeInventario(OArticulos Articulo, OCatArticulos categoria) {
         this.Articulo = Articulo;
         this.categoria = categoria;
