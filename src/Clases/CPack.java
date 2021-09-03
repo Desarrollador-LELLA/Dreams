@@ -23,15 +23,25 @@ import java.util.List;
  */
 public class CPack extends OPack {
 
-    private final String TagCodigoClase = "CPack - %s";
     private OError Error = new OError();
-
+    private final String TagCodigoClase = "CPack - %s";
+  
+    
+    
     public CPack() {
         super();
     }
 
     public CPack(int id, String nombre, String costo, int stock, boolean estado, List<OPackDetalle> packDetalles) {
         super(id, nombre, costo, stock, estado, packDetalles);
+    }
+
+    public CPack(int id, String nombre, int stock, boolean b) {
+    //    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public CPack(int id, String nombre, String costo, int stock, boolean b) {
+      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public List<OPack> Listar() {
@@ -51,8 +61,7 @@ public class CPack extends OPack {
               
                 while (Resultado.next()) {
                 int packd = Resultado.getInt(1);
-                Preparando1 = null;
-                Resultado1 = null;
+                List<OPackDetalle> detalles = new ArrayList();
                 Preparando1 = Sql.getCon().prepareStatement("SELECT * FROM Pack_has_Articulo P inner join Articulo A on P.ART_ID_ARTICULO = A.ART_ID_ARTICULO WHERE P.PCK_ID_PACK = ?");
                 Preparando1.setInt(1, Resultado.getInt(1));
                 Resultado1 = Preparando1.executeQuery();
@@ -61,9 +70,9 @@ public class CPack extends OPack {
                         String date = sdf.format(Resultado1.getDate(7));
                         OArticulos packArticulo = new OArticulos(Resultado1.getInt(4), Resultado1.getString(5), Resultado1.getInt(6), date, Resultado1.getBoolean(8), null);
                         OPackDetalle packDetalle1 = new OPackDetalle(Resultado1.getInt(3), packArticulo);
-                        getPackDetalles().add(packDetalle1);
+                        detalles.add(packDetalle1);
                     }
-                    Listado.add(new OPack(Resultado.getInt(1), Resultado.getString(2), Resultado.getString(3), Resultado.getInt(4), Resultado.getBoolean(5), getPackDetalles()));
+                    Listado.add(new OPack(Resultado.getInt(1), Resultado.getString(2), Resultado.getString(3), Resultado.getInt(4), Resultado.getBoolean(5), detalles));
                 }
                 Error = new OError(String.format(TagCodigoClase, 10), "Consulta Realizada Corectamente", null, true);
 
@@ -175,7 +184,7 @@ public class CPack extends OPack {
 
             } catch (SQLException e) {
                 System.out.println("error" + e);
-                //Error = new OError(String.format(TagCodigoClase, 3), String.format("<html>%s (Codigo %s)</html>", e, String.format(TagCodigoClase, 3)), null, false);
+              //  Error = new OError(String.format(TagCodigoClase, 3), String.format("<html>%s (Codigo %s)</html>", e, String.format(TagCodigoClase, 3)), null, false);
 
             } finally {
                 Sql.Desconectar();

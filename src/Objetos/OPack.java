@@ -34,6 +34,10 @@ public class OPack {
         this.packDetalles = packDetalles;
     }
 
+    public OPack(int id, String nombre, int stock, boolean b) {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public List<OPackDetalle> getPackDetalles() {
         return packDetalles;
     }
@@ -81,5 +85,6 @@ public class OPack {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
+    
 
 }
