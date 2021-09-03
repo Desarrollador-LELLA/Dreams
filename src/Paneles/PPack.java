@@ -7,7 +7,6 @@ package Paneles;
 
 import Clases.CArticulos;
 import Clases.CPack;
-import ModelosTablas.MTArticulos;
 import ModelosTablas.MTPack;
 import ModelosTablas.MTPackArticulo;
 import ModelosTablas.MTPackDetalle;
@@ -30,9 +29,9 @@ public class PPack extends javax.swing.JPanel {
      * Creates new form PPack
      */
     public PPack() {
-        initComponents();
-        ListarPack();
-        ListarAticulos();
+           initComponents();
+           ListarPack();
+           ListarArticulos();
     }
 
     /**
@@ -131,7 +130,7 @@ public class PPack extends javax.swing.JPanel {
         txtUnidades.setToolTipText("Tipee lo que desea Buscar");
 
         butAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_agregar_32.png"))); // NOI18N
-        butAgregar.setText("Crear Pack");
+        butAgregar.setText("Guardar");
         butAgregar.setFocusable(false);
         butAgregar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         butAgregar.setMaximumSize(new java.awt.Dimension(69, 69));
@@ -230,11 +229,11 @@ public class PPack extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtPrecio))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(butAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
-                    .addComponent(butCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(butAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(butCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -331,11 +330,11 @@ public class PPack extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 824, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(butEditar, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
-                    .addComponent(butDesactivar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(butEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(butDesactivar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -361,7 +360,7 @@ public class PPack extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(labTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, 1007, Short.MAX_VALUE)
+            .addComponent(labTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -448,14 +447,16 @@ public class PPack extends javax.swing.JPanel {
 
     private void butDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butDesactivarActionPerformed
         //TODO add your handling code here:
-        /*OCatArticulos catArt = (OCatArticulos) ((MTCatArticulos) jTableCArticulos.getModel()).getCategoria().get(jTableCArticulos.getSelectedRow());
-        OError Error = new CCatArticulos(catArt.getId(), catArt.getNombre(), false).Eliminar();
-        if (Error.isConfirma()) {
-            ListarCategoria();
-            this.txtNombreCatArt.setText("");
+        OPack Pack3 = (OPack) ((MTPack) jTablePack.getModel()).getPack().get(jTablePack.getSelectedRow());
+        CPack Pack4 = new CPack();
+        Pack4.setId(Pack3.getId());
+        Pack4.setEstado(false);
+        OError Error = Pack4.Eliminar();
+        if (Error.isConfirma()){
+            ListarPack();
         } else {
             System.out.println(Error.getMensaje()); 
-        }*/
+        }
     }//GEN-LAST:event_butDesactivarActionPerformed
 
    
@@ -504,10 +505,11 @@ public class PPack extends javax.swing.JPanel {
         jTablePack.setModel(ModeloBanco);
        }
     
-    public void ListarAticulos() {
+    public void ListarArticulos() {
         MTPackArticulo ModeloBanco = new MTPackArticulo(new CArticulos().Listar());
         jTableArticulos.setModel(ModeloBanco);
        }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton butAgregar;

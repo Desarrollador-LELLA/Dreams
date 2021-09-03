@@ -20,8 +20,8 @@ public class PCatArticulos extends javax.swing.JPanel {
      * Creates new form PCatArticulos
      */
     public PCatArticulos() {
-        initComponents();
-        ListarCategoria();
+           initComponents();
+           ListarCategoria();
     }
 
     /**
