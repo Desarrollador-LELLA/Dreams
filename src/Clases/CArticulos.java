@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//TESTER DE TESTER DE LOS TESTER
 package Clases;
 
 import Objetos.OArticulos;
