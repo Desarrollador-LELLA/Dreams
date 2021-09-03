@@ -22,7 +22,10 @@ public class OCliente {
     private OCanales canal = new OCanales();
 
     public OCliente() {
+        
     }
+    
+    
     
     public OCliente(int _id, String _rut, String _nombre, String _apellido, String _direccion, String _correo, int _telefono, boolean _estado, OCanales _canal) {
         id = _id;

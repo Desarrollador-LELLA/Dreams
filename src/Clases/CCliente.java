@@ -28,7 +28,8 @@ public class CCliente extends OCliente {
         super();
     }
 
-    public CCliente(int _id, String _rut, String _nombre, String _apellido, String _direccion, String _correo, int _telefono, boolean _estado, OCanales _canal) {
+    public CCliente(int _id, String _rut, String _nombre, String _apellido, String _direccion
+            , String _correo, int _telefono, boolean _estado, OCanales _canal) {
         super(_id, _rut, _nombre, _apellido, _direccion, _correo, _telefono, _estado, _canal);
     }
 
@@ -69,6 +70,46 @@ public class CCliente extends OCliente {
         }
         return Error;
     }
+    public List<OCliente> Listar(String Tipo) {
+        
+        String sql = "";
+        PreparedStatement Preparando = null;
+        ResultSet Resultado = null;
+        List<OCliente> Listado = new ArrayList();
+        CMysqlHelp Sql = new CMysqlHelp();
+        Error = Sql.Conectar();
+        if (Error.isConfirma()) {
+            try {
+                
+                switch (Tipo) {
+                    case "Activos":
+                        sql = "SELECT * FROM Cliente CL INNER JOIN Canal CA ON CL.CAN_ID_CANAL = CA.CAN_ID_CANAL WHERE CL.CLI_ESTADO = true";
+                        break;
+                    default:
+                        sql = "SELECT * FROM Cliente CL INNER JOIN Canal CA ON CL.CAN_ID_CANAL = CA.CAN_ID_CANAL";
+                        break;
+                }
+                Preparando = Sql.getCon().prepareStatement(sql);
+                Resultado = Preparando.executeQuery();
+
+                while (Resultado.next()) {
+                    Listado.add(new OCliente(Resultado.getInt(1), Resultado.getString(9), Resultado.getString(2), Resultado.getString(3), Resultado.getString(4), Resultado.getString(6), Resultado.getInt(5), Resultado.getBoolean(8), new OCanales(Resultado.getInt(10), Resultado.getString(11), Resultado.getBoolean(12))));
+                }
+                Error = new OError(String.format(TagCodigoClase, 10), "Operación Realizada Corectamente", null, true);
+
+                Resultado.close();
+                Preparando.close();
+            } catch (SQLException ex) {
+                System.out.println("Error: " + ex);
+                Error = new OError(String.format(TagCodigoClase, 11), String.format("<html>%s (Codigo %s)</html>", ex, String.format(TagCodigoClase, 11)), null, false);
+            } finally {
+                Sql.Desconectar();
+            }
+        }
+        return Listado;
+    }
+    
+    
     
     public OError BuscaRut() {
         boolean encuentra = false;
