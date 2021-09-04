@@ -57,6 +57,7 @@ private List<OProveedor> Proveedor;
     }
      
       private void Buscar(){ 
+          
         MTProveedor MProveedor = new MTProveedor(new CProveedor().Busqueda(txtBusqueda.getText(), comboBusqueda.getSelectedIndex()));
         tableProveedor.setModel(MProveedor);
         
