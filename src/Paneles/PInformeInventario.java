@@ -47,8 +47,8 @@ public class PInformeInventario extends javax.swing.JPanel {
         jTable1.setModel(ModeloBanco);
        }
     private void LlenarComboCategoria() {
-        jComboBox1.setModel(new MCInformeInventario(new CInformeInventario().ListarActivos("Activos")));
-        
+        jComboBox1.setModel(new MCInformeInventario(new CInformeInventario().ListarActivos("ActivosTodo")));
+        jComboBox1.setSelectedIndex(0);
     }
     
     /**
@@ -213,7 +213,7 @@ public class PInformeInventario extends javax.swing.JPanel {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
         this.txtBuscar.setText("");
-
+        ListarArticulos();
         LlenarComboCategoria();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
