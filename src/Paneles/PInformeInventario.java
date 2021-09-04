@@ -48,9 +48,9 @@ public class PInformeInventario extends javax.swing.JPanel {
         jTable1.setModel(ModeloBanco);
        }
     private void LlenarComboCategoria() {
-        
-        jComboBox1.setModel(new MCInformeInventario(new CInformeInventario().ListarActivos("Activos")));
-        
+
+        jComboBox1.setModel(new MCInformeInventario(new CInformeInventario().ListarActivos("ActivosTodo")));
+        jComboBox1.setSelectedIndex(0);
     }
     
     /**

@@ -163,9 +163,16 @@ public class CArticulos extends OArticulos {
         CMysqlHelp Sql = new CMysqlHelp();
         OError Error = Sql.Conectar();
         if(Error.isConfirma()){
+            
             try {
                 //Preparando = Sql.getCon().prepareStatement("SELECT * FROM Articulo A inner join Categoria C on A.CAT_ID_CATEGORIA = C.CAT_ID_CATEGORIA" );
-                Preparando = Sql.getCon().prepareStatement("SELECT * FROM Articulo A inner join Categoria C on A.CAT_ID_CATEGORIA = C.CAT_ID_CATEGORIA WHERE (ART_STOCK >=" + datoBusqueda + " AND C.CAT_ID_CATEGORIA = " + (tipo+1) +")");
+                if(tipo==0){
+                    Preparando = Sql.getCon().prepareStatement("SELECT * FROM Articulo A inner join Categoria C on A.CAT_ID_CATEGORIA = C.CAT_ID_CATEGORIA WHERE (ART_STOCK >=" + datoBusqueda + ")");
+
+                }else{
+                    Preparando = Sql.getCon().prepareStatement("SELECT * FROM Articulo A inner join Categoria C on A.CAT_ID_CATEGORIA = C.CAT_ID_CATEGORIA WHERE (ART_STOCK >=" + datoBusqueda + " AND C.CAT_ID_CATEGORIA = " + (tipo) +")");
+  
+                }
                 Resultado = Preparando.executeQuery();
                 
                 while(Resultado.next()){

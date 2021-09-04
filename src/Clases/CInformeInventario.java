@@ -57,6 +57,12 @@ public class CInformeInventario extends OInformeInventario {
                     case "Activos":
                         sql = "SELECT * FROM Categoria WHERE CAT_ESTADO = true";
                         break;
+                        
+                    case "ActivosTodo":
+                        sql = "SELECT * FROM Categoria WHERE CAT_ESTADO = true";
+                        Listado.add(new OCatArticulos(0,"Todo",true));
+                        break;
+                    
                     default:
                         sql = "SELECT * FROM Categoria";
                         break;
@@ -65,6 +71,7 @@ public class CInformeInventario extends OInformeInventario {
                 Resultado = Preparando.executeQuery();
 
                 while (Resultado.next()) {
+                    
                     Listado.add(new OCatArticulos(Resultado.getInt(1), Resultado.getString(2), Resultado.getBoolean(3)));
                 }
                 Error = new OError(String.format(TagCodigoClase, 10), "Operación Realizada Corectamente", null, true);
