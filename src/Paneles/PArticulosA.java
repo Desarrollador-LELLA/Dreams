@@ -5,11 +5,23 @@
  */
 package Paneles;
 
+import Clases.CArticulos;
+import Clases.CCatArticulos;
+import ModeloCombox.MCCatArticulos;
+import ModeloCombox.Tester;
+import ModelosTablas.MTArticulos;
+import Objetos.OArticulos;
+import Objetos.OCatArticulos;
+import Objetos.OError;
+import java.text.SimpleDateFormat;
+
 /**
  *
  * @author TOULON
  */
 public class PArticulosA extends javax.swing.JPanel {
+    
+    private MCCatArticulos ModeloCategoria = null;
 
     /**
      * Creates new form PArticulosA
@@ -34,16 +46,27 @@ public class PArticulosA extends javax.swing.JPanel {
         butDesactivar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         JTableArticulos = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        txtCodArticulo = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        txtNombreArticulo = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtStock = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooserFV = new com.toedter.calendar.JDateChooser("dd-MM-yyyy", "##/##/####", '_');
+        ButCancelar = new javax.swing.JButton();
+
+        addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                formAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         labTitulo.setBackground(new java.awt.Color(102, 102, 255));
         labTitulo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -123,23 +146,79 @@ public class PArticulosA extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(JTableArticulos);
 
-        jTextField1.setText("jTextField1");
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Articulo"));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLabel4.setText("Codigo Articulo:");
 
         jLabel1.setText("Nombre Articulo:");
 
         jLabel5.setText("Categoria Articulo:");
 
-        jTextField2.setText("jTextField2");
-
         jLabel2.setText("Stock:");
 
-        jLabel4.setText("Codigo Articulo:");
-
-        jTextField3.setText("jTextField3");
-
         jLabel6.setText("Fecha de Vencimiento:");
+
+        ButCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_limpio_24.png"))); // NOI18N
+        ButCancelar.setToolTipText("Limpiar Datos Cliente Solicitante");
+        ButCancelar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ButCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButCancelarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtStock, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                    .addComponent(txtCodArticulo))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNombreArticulo)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(CBoxCatArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jDateChooserFV, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ButCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCodArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel1)
+                    .addComponent(txtNombreArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CBoxCatArticulo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel6))
+                    .addComponent(jDateChooserFV, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ButCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -148,31 +227,9 @@ public class PArticulosA extends javax.swing.JPanel {
             .addComponent(labTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                            .addComponent(jTextField1))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(12, 12, 12)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 905, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jToolBarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -184,92 +241,129 @@ public class PArticulosA extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel1))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel6))
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 274, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jToolBarMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jToolBarMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void butAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butAgregarActionPerformed
-        // TODO add your handling code here:
-        DCrudUsuario CrudUsuario = new DCrudUsuario(new Ventanas.VPrincipal(), true);
-        CrudUsuario.setTitle("Agregar Usuario");
-        CrudUsuario.setVisible(true);
-        if(CrudUsuario.Actualizar){
-            ListarUsuarios();
-        }
-    }//GEN-LAST:event_butAgregarActionPerformed
-
-    private void butEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butEditarActionPerformed
-        // TODO add your handling code here:
-        DCrudUsuario CrudUsuario = new DCrudUsuario(new Ventanas.VPrincipal(), true, ((MTUsuarios)jTableTabla.getModel()).getUsuarios().get(jTableTabla.getSelectedRow()));
-        CrudUsuario.setTitle("Editar Usuario");
-        CrudUsuario.setVisible(true);
-        if(CrudUsuario.Actualizar){
-            ListarUsuarios();
-        }
-    }//GEN-LAST:event_butEditarActionPerformed
-
-    private void butDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butDesactivarActionPerformed
-        // TODO add your handling code here:
-        OUsuario user = ((MTUsuarios)jTableTabla.getModel()).getUsuarios().get(jTableTabla.getSelectedRow());
-        OError error = new CUsuario(user.getId(), "", "", "", "", false).Desactivar();
-        if(error.isConfirma()){
-            DCorrecto Mensaje = new DCorrecto(new javax.swing.JDialog(), true);
-            Mensaje.labMensaje.setText(error.getMensaje());
-            Mensaje.setVisible(true);
-            ListarUsuarios();
-        }
-    }//GEN-LAST:event_butDesactivarActionPerformed
-
     private void JTableArticulosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTableArticulosMouseClicked
         // TODO add your handling code here:
-        MTArticulos comuna = (MTArticulos)JTableArticulos.getModel();
-        txtNombreArticulo.setText(comuna.getArticulo().get(JTableArticulos.getSelectedRow()).getDescripcion());
+        //CBoxCatArticulo.setModel(new MCCatArticulos(new CCatArticulos().Listar("Activos")));
+        //CBoxCatArticulo.setModel(ModeloCategoria);
+        //Object pene = CBoxCatArticulo
+        MTArticulos comuna = (MTArticulos) JTableArticulos.getModel();
+        txtCodArticulo.setText(comuna.getArticulo().get(JTableArticulos.getSelectedRow()).getDescripcion());
         txtStock.setText(String.valueOf(comuna.getArticulo().get(JTableArticulos.getSelectedRow()).getStock()));
         txtCodArticulo.setText(String.valueOf(comuna.getArticulo().get(JTableArticulos.getSelectedRow()).getId()));
+        txtNombreArticulo.setText(String.valueOf(comuna.getArticulo().get(JTableArticulos.getSelectedRow()).getDescripcion()));
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         //Date fecha = formato.parse("23/11/2015");
         //jDateChooserFV.setDate(formato.parse("23/11/2015"));
         //txtId.setText(String.valueOf(comuna.getUsuarios().get(datos.getSelectedRow()).getId()));
         //txtNombre.setText(comuna.getUsuarios().get(datos.getSelectedRow()).getNombre());
-        //Combobox.setSelectedIndex(comuna.getUsuarios().get(datos.getSelectedRow()).isEstado() ? 1 : 0);
-
+        int uno1 = comuna.getArticulo().get(JTableArticulos.getSelectedRow()).getCategoria().getId();
+        OCatArticulos nn = comuna.getArticulo().get(JTableArticulos.getSelectedRow()).getCategoria();
+        CBoxCatArticulo.getModel().setSelectedItem(nn);
+        //CBoxCatArticulo.setSelectedItem(nn.toString());
+        //CBoxCatArticulo.setSelectedIndex(5);
     }//GEN-LAST:event_JTableArticulosMouseClicked
 
+    private void butAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butAgregarActionPerformed
+        // TODO add your handling code here:
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String date = sdf.format(jDateChooserFV.getDate());
+        CArticulos arti = new CArticulos(0, txtNombreArticulo.getText(), Integer.parseInt(txtStock.getText()), date, true, ((MCCatArticulos) CBoxCatArticulo.getModel()).getCatArticulos().get(CBoxCatArticulo.getSelectedIndex()));
+        OError error = arti.Insertar();
+        if (error.isConfirma()) {
+            ListarArticulos();
+            System.out.println(error.getMensaje());
+            ButCancelarActionPerformed(null);
+
+        } else {
+            System.out.println(error.getMensaje());
+        }
+    }//GEN-LAST:event_butAgregarActionPerformed
+
+    private void butEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butEditarActionPerformed
+        // TODO add your handling code here:
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String date = sdf.format(jDateChooserFV.getDate());
+        CArticulos arti = new CArticulos(Integer.valueOf(txtCodArticulo.getText().trim()), txtNombreArticulo.getText(), Integer.parseInt(txtStock.getText()), date, true, ((MCCatArticulos) CBoxCatArticulo.getModel()).getCatArticulos().get(CBoxCatArticulo.getSelectedIndex()));
+        OError error1 = arti.Editar();
+        if (error1.isConfirma()) {
+            ListarArticulos();
+            System.out.println(error1.getMensaje());
+            ButCancelarActionPerformed(null);
+        } else {
+            System.out.println(error1.getMensaje());
+
+        }
+    }//GEN-LAST:event_butEditarActionPerformed
+
+    private void butDesactivarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butDesactivarActionPerformed
+        // TODO add your handling code here:
+        OArticulos bank = ((MTArticulos) JTableArticulos.getModel()).getArticulo().get(JTableArticulos.getSelectedRow());
+        CArticulos Artic = new CArticulos();
+        Artic.setId(bank.getId());
+        Artic.setEstado(false);
+        OError Error = Artic.Eliminar();
+        if (Error.isConfirma()) {
+            ListarArticulos();
+            ButCancelarActionPerformed(null);
+        } else {
+            System.out.println(Error.getMensaje());
+        }
+    }//GEN-LAST:event_butDesactivarActionPerformed
+
+    private void ButCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButCancelarActionPerformed
+        // TODO add your handling code here:
+        txtNombreArticulo.setText("");
+        txtStock.setText("");
+        txtCodArticulo.setText("");
+        LlenarComboCatArticulos();
+        jDateChooserFV.setCalendar(null);
+    }//GEN-LAST:event_ButCancelarActionPerformed
+
+    private void formAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_formAncestorAdded
+        // TODO add your handling code here:
+        ListarArticulos();
+        LlenarComboCatArticulos();
+    }//GEN-LAST:event_formAncestorAdded
+
+    public void ListarArticulos() {
+        MTArticulos ModeloBanco = new MTArticulos(new CArticulos().Listar());
+        JTableArticulos.setModel(ModeloBanco);
+    }
+
+    private void LlenarComboCatArticulos() {
+        //ModeloCategoria = new MCCatArticulos(new CCatArticulos().Listar("Activos"));
+        //CBoxCatArticulo.setModel(ModeloCategoria);
+        
+        CBoxCatArticulo.setModel(new Tester(new CCatArticulos().Listar("Activos")));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButCancelar;
+    private final javax.swing.JComboBox<OCatArticulos> CBoxCatArticulo = new javax.swing.JComboBox<>();
     private javax.swing.JTable JTableArticulos;
     private javax.swing.JButton butAgregar;
     private javax.swing.JButton butDesactivar;
     private javax.swing.JButton butEditar;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooserFV;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JToolBar jToolBarMenu;
     private javax.swing.JLabel labTitulo;
+    private javax.swing.JTextField txtCodArticulo;
+    private javax.swing.JTextField txtNombreArticulo;
+    private javax.swing.JTextField txtStock;
     // End of variables declaration//GEN-END:variables
 }
