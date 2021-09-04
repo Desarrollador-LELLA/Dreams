@@ -354,7 +354,7 @@ public class PMaestros extends javax.swing.JPanel {
 
     private void BurArticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BurArticulosActionPerformed
         // TODO add your handling code here:
-        PArticulos PanelArticulos = new PArticulos();
+        PArticulosA PanelArticulos = new PArticulosA();
         PanelArticulos.setVisible(true);
         PanelArticulos.setSize(1000, 525);
         PanelArticulos.setLocation(0, 0);

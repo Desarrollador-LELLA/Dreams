@@ -49,4 +49,7 @@ public class OCatArticulos {
         this.estado = estado;
     }
     
+    public String toString() {
+      return nombre;
+   }
 }

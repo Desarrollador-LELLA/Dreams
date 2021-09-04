@@ -9,12 +9,12 @@ package Paneles;
  *
  * @author TOULON
  */
-public class Tester extends javax.swing.JPanel {
+public class Tester2 extends javax.swing.JPanel {
 
     /**
      * Creates new form Tester
      */
-    public Tester() {
+    public Tester2() {
         initComponents();
     }
 
