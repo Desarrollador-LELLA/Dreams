@@ -5,6 +5,13 @@
  */
 package Paneles;
 
+import Clases.CIVentaPack;
+import Clases.CVerificar;
+import ModelosTablas.MTIVentaPack;
+import Objetos.OIVentaPack;
+import java.text.SimpleDateFormat;
+import java.util.List;
+
 /**
  *
  * @author TOULON-NOTE
@@ -33,7 +40,7 @@ public class PInformeVentaPack extends javax.swing.JPanel {
         jDateChooserDesde = new com.toedter.calendar.JDateChooser("dd-MM-yyyy", "##/##/####", '_');
         jDateChooserHasta = new com.toedter.calendar.JDateChooser("dd-MM-yyyy", "##/##/####", '_');
         labHasta = new javax.swing.JLabel();
-        butGuardar = new javax.swing.JButton();
+        butBuscar = new javax.swing.JButton();
         jToolBarMenu = new javax.swing.JToolBar();
         butExportarXLSX = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -53,8 +60,13 @@ public class PInformeVentaPack extends javax.swing.JPanel {
 
         labHasta.setText("Hasta");
 
-        butGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_buscar_32.png"))); // NOI18N
-        butGuardar.setText("Buscar");
+        butBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_buscar_32.png"))); // NOI18N
+        butBuscar.setText("Buscar");
+        butBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelBusquedaLayout = new javax.swing.GroupLayout(jPanelBusqueda);
         jPanelBusqueda.setLayout(jPanelBusquedaLayout);
@@ -74,7 +86,7 @@ public class PInformeVentaPack extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBusquedaLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(butGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(butBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanelBusquedaLayout.setVerticalGroup(
@@ -90,7 +102,7 @@ public class PInformeVentaPack extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jDateChooserDesde, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(butGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(butBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -108,6 +120,11 @@ public class PInformeVentaPack extends javax.swing.JPanel {
         butExportarXLSX.setMinimumSize(new java.awt.Dimension(69, 69));
         butExportarXLSX.setPreferredSize(new java.awt.Dimension(69, 69));
         butExportarXLSX.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        butExportarXLSX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butExportarXLSXActionPerformed(evt);
+            }
+        });
         jToolBarMenu.add(butExportarXLSX);
 
         jTableLista.setModel(new javax.swing.table.DefaultTableModel(
@@ -135,6 +152,15 @@ public class PInformeVentaPack extends javax.swing.JPanel {
         });
         jTableLista.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jTableLista.setRowHeight(30);
+        jTableLista.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jTableListaAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
         jScrollPane1.setViewportView(jTableLista);
         if (jTableLista.getColumnModel().getColumnCount() > 0) {
             jTableLista.getColumnModel().getColumn(0).setResizable(false);
@@ -192,10 +218,54 @@ public class PInformeVentaPack extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void butBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butBuscarActionPerformed
+        // TODO add your handling code here:
+        CIVentaPack IVentaPack = new CIVentaPack();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String dateInicio = sdf.format(jDateChooserDesde.getDate());
+        String dateFinal = sdf.format(jDateChooserHasta.getDate());
+        jTableLista.setModel(new MTIVentaPack(IVentaPack.Listar(dateInicio, dateFinal)));
+        jTableLista.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jTableLista.setRowHeight(30);
+        jScrollPane1.setViewportView(jTableLista);
+        if (jTableLista.getColumnModel().getColumnCount() > 0) {
+            jTableLista.getColumnModel().getColumn(0).setResizable(false);
+            jTableLista.getColumnModel().getColumn(0).setPreferredWidth(374);
+            jTableLista.getColumnModel().getColumn(1).setResizable(false);
+            jTableLista.getColumnModel().getColumn(1).setPreferredWidth(250);
+            jTableLista.getColumnModel().getColumn(2).setResizable(false);
+            jTableLista.getColumnModel().getColumn(2).setPreferredWidth(250);
+        }
+        int cantTotal = 0;
+        int valorTotal = 0;
+        List<OIVentaPack> lista = ((MTIVentaPack)jTableLista.getModel()).getIVentaPack();
+        
+        for(OIVentaPack item : lista){
+            cantTotal = cantTotal + item.getCantidad();
+            valorTotal = valorTotal + item.getValor();
+        }
+        labTotalCantidad.setText(String.format("Total Cantidad $%s", cantTotal));
+        labTotalValor.setText(String.format("Total Valor $%s", valorTotal));
+    }//GEN-LAST:event_butBuscarActionPerformed
+
+    private void jTableListaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTableListaAncestorAdded
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jTableListaAncestorAdded
+
+    private void butExportarXLSXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butExportarXLSXActionPerformed
+        // TODO add your handling code here:
+        Imprimir();
+    }//GEN-LAST:event_butExportarXLSXActionPerformed
+
+    private void Imprimir(){
+        CVerificar impri = new CVerificar();
+        impri.Imprimir(jTableLista, labTitulo.getText());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton butBuscar;
     private javax.swing.JButton butExportarXLSX;
-    private javax.swing.JButton butGuardar;
     private com.toedter.calendar.JDateChooser jDateChooserDesde;
     private com.toedter.calendar.JDateChooser jDateChooserHasta;
     private javax.swing.JPanel jPanelBusqueda;

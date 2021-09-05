@@ -33,7 +33,7 @@ public class CIVentaPack extends OIVentaPack {
         return Error;
     }
     
-    public List<OIVentaPack> Listar(){
+    public List<OIVentaPack> Listar(String Inicio, String Final){
         PreparedStatement Preparando = null;
         ResultSet Resultado = null;
         List<OIVentaPack> Listado = new ArrayList();
@@ -41,7 +41,10 @@ public class CIVentaPack extends OIVentaPack {
         Error = Sql.Conectar();
         if(Error.isConfirma()){
             try {
-                Preparando = Sql.getCon().prepareStatement("SELECT P.PCK_NOMBRE, V.VTA_CANTIDAD, V.VTA_TOTAL FROM venta V INNER JOIN pack P ON V.PCK_ID_PACK = P.PCK_ID_PACK WHERE V.VTA_FECHA_VENTA BETWEEN CAST('2014-02-01' AS DATE) AND CAST('2014-02-28' AS DATE) GROUP BY V.VTA_FECHA_VENTA");
+                Preparando = Sql.getCon().prepareStatement("SELECT P.PCK_NOMBRE, SUM(V.VTA_CANTIDAD), SUM(V.VTA_TOTAL) FROM venta V INNER JOIN pack P "
+                        + "ON V.PCK_ID_PACK = P.PCK_ID_PACK WHERE V.VTA_FECHA_VENTA BETWEEN CAST(? AS DATE) AND CAST(? AS DATE) GROUP BY P.PCK_NOMBRE");
+                Preparando.setString(1, Inicio);
+                Preparando.setString(2, Final);
                 Resultado = Preparando.executeQuery();
                 
                 while(Resultado.next()){

@@ -68,7 +68,7 @@ public class CArticulos extends OArticulos {
         Error = Sql.Conectar();
         if (Error.isConfirma()) {
             try {
-                Preparando = Sql.getCon().prepareStatement("UPDATE Articulo SET ART_DESCRIPCION = ?, ART_STOCK = ?, ART_FECHA_VENCIMIENTO = ?, ART_ESTADO = ?, CAT_ID_CATEGORIA = ? WHERE ART_ID_ARTICULOS = ?");
+                Preparando = Sql.getCon().prepareStatement("UPDATE Articulo SET ART_DESCRIPCION = ?, ART_STOCK = ?, ART_FECHA_VENCIMIENTO = ?, ART_ESTADO = ?, CAT_ID_CATEGORIA = ? WHERE ART_ID_ARTICULO = ?");
                 Preparando.setString(1, this.getDescripcion());
                 Preparando.setInt(2, this.getStock());
                 Preparando.setString(3, this.getFecha());

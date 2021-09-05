@@ -10,6 +10,7 @@ import Clases.CComuna;
 import Clases.CPack;
 import Clases.CVenta;
 import Clases.CVerificar;
+import Dialogos.DCorrecto;
 import Dialogos.DCrudCliente;
 import Dialogos.DCrudPack;
 import Objetos.OAnimacion;
@@ -22,11 +23,14 @@ import Objetos.OBanco;
 import Objetos.OCliente;
 import Objetos.OError;
 import Objetos.OEstadoVenta;
+import Objetos.OPackDetalle;
 import Objetos.OVenta;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -402,6 +406,11 @@ public class PVenta extends javax.swing.JPanel {
         butCancelar.setMinimumSize(new java.awt.Dimension(69, 69));
         butCancelar.setPreferredSize(new java.awt.Dimension(69, 69));
         butCancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        butCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butCancelarActionPerformed(evt);
+            }
+        });
         jToolBarMenu.add(butCancelar);
 
         butGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_guardar_32.png"))); // NOI18N
@@ -759,22 +768,34 @@ public class PVenta extends javax.swing.JPanel {
     }//GEN-LAST:event_jTableListaBuscarMouseClicked
 
     private void butGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butGuardarActionPerformed
-        // TODO add your handling code here:
-        //int id, int total, String fechaVenta, String fechaTrasferencia, int codigoTrasferencia, String nombreDestinatario, 
-        //String apellidoDestinatario, String direccionDestinatario, int telefonoDestinatario, String fechaEntrega, String horaEntregaInicial, 
-        //String horaEntregaFinal, String saludoTexto, int cantidad, OCliente cliente, OPack pack, OBanco banco, OComuna comuna
-        //, OEstadoVenta estadoVenta
-        
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String date = sdf.format(new Date());
         String date2 = sdf.format(jDateChooserFE.getDate());
-        CVenta Ven = new CVenta(0, Venta.getTotalT(), date, "", 0, txtNombreDestinatario.getText().trim(), txtApellidoDestinatario.getText().trim()
-                , txtDireccion.getText().trim(), Integer.valueOf(txtTelefonoDestinatario.getText().trim()), date2
-                , txtHoraInicio.getText().trim(), txtHoraFin.getText().trim(), txtSaludo.getText().trim(), Venta.getCantidad(), Venta.getCliente()
-                , Venta.getPack(), new OBanco(), ((MCComuna)jComboBoxComuna.getModel()).getComunas().get(jComboBoxComuna.getSelectedIndex())
-                , new OEstadoVenta());
-                
+        CVenta Ven = new CVenta(0, Venta.getTotalT(), date, "1900-01-01", 0, txtNombreDestinatario.getText().trim(), txtApellidoDestinatario.getText().trim(),
+                txtDireccion.getText().trim(), Integer.valueOf(txtTelefonoDestinatario.getText().trim()), date2,
+                txtHoraInicio.getText().trim(), txtHoraFin.getText().trim(), txtSaludo.getText().trim(), Venta.getCantidad(), Venta.getCliente(),
+                Venta.getPack(), new OBanco(1, "", true), ((MCComuna) jComboBoxComuna.getModel()).getComunas().get(jComboBoxComuna.getSelectedIndex()),
+                new OEstadoVenta(1, "", true));
+        if (Ven.Agregar().isConfirma()) {
+            DCorrecto Mensaje = new DCorrecto(new javax.swing.JDialog(), true);
+            Mensaje.labMensaje.setText(Ven.getError().getMensaje());
+            Mensaje.setVisible(true);
+            butCancelarActionPerformed(null);
+        } else {
+            DError Mensaje = new DError(new javax.swing.JDialog(), true);
+            Mensaje.labMensaje.setText(Ven.getError().getMensaje());
+            Mensaje.setVisible(true);
+        }
     }//GEN-LAST:event_butGuardarActionPerformed
+
+    private void butCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butCancelarActionPerformed
+        // TODO add your handling code here:
+        LlenarComboComuna();
+        LimpiarDatosClienteSolicitante();
+        butLimpiarDDActionPerformed(null);
+        LimpiarPackSeleciconado();
+        Venta = new OVenta();
+    }//GEN-LAST:event_butCancelarActionPerformed
 
     private void ListarArticulos() {
         MTVentaSelecPack articulosmt = new MTVentaSelecPack(new CPack().Listar());
@@ -803,6 +824,26 @@ public class PVenta extends javax.swing.JPanel {
         txtTelefono.setText("");
         txtEmail.setText("");
         Venta.setCliente(new OCliente());
+    }
+
+    public void LimpiarPackSeleciconado() {
+        //txtNumeroPedido.setText("");
+        txtCodigo.setText("");
+        txtNombrePack.setText("");
+        txtCantidad.setText("");
+        txtPrecio.setText("");
+        Venta.setCliente(new OCliente());
+        List<OPackDetalle> packsDetalle = new ArrayList<>();
+        jTableDetallePack.setModel(new MTVentaPackDeta(packsDetalle));
+        jTableDetallePack.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jTableDetallePack.setRowHeight(30);
+        jScrollPane4.setViewportView(jTableDetallePack);
+        if (jTableDetallePack.getColumnModel().getColumnCount() > 0) {
+            jTableDetallePack.getColumnModel().getColumn(0).setResizable(false);
+            jTableDetallePack.getColumnModel().getColumn(0).setPreferredWidth(55);
+            jTableDetallePack.getColumnModel().getColumn(1).setResizable(false);
+            jTableDetallePack.getColumnModel().getColumn(1).setPreferredWidth(200);
+        }
     }
 
     public void AgregarCliente() {
