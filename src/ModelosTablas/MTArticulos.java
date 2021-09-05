@@ -6,7 +6,12 @@
 package ModelosTablas;
 
 import Objetos.OArticulos;
+import Paneles.PArticulosA;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
@@ -15,17 +20,17 @@ import javax.swing.table.TableModel;
  * @author Usuario
  */
 public class MTArticulos implements TableModel {
-    
+
     private final List<OArticulos> Articulo;
-    
-    public MTArticulos(List<OArticulos> articulo){
+
+    public MTArticulos(List<OArticulos> articulo) {
         Articulo = articulo;
     }
 
     public List<OArticulos> getArticulo() {
         return Articulo;
     }
-    
+
     @Override
     public int getRowCount() {
         return Articulo.size();
@@ -39,7 +44,7 @@ public class MTArticulos implements TableModel {
     @Override
     public String getColumnName(int columnIndex) {
         String NombreColumna = null;
-        switch(columnIndex){
+        switch (columnIndex) {
             /* case 0:
             NombreColumna = "ID";
             break;*/
@@ -60,14 +65,13 @@ public class MTArticulos implements TableModel {
                 break;
 
         }
-        
+
         return NombreColumna;
     }
 
     @Override
     public Class<?> getColumnClass(int columnIndex) {
-       
-        
+
         return String.class;
     }
 
@@ -79,7 +83,7 @@ public class MTArticulos implements TableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         String Valor = null;
-        switch(columnIndex){
+        switch (columnIndex) {
             /*case 0:
             Valor = Comuna.get(rowIndex).getId();
             break;*/
@@ -93,13 +97,13 @@ public class MTArticulos implements TableModel {
                 Valor = String.valueOf(Articulo.get(rowIndex).getFecha());
                 break;
             case 3:
-                Valor = Articulo.get(rowIndex).isEstado()? "Activado" : "Desactivado";
-                break;    
+                Valor = Articulo.get(rowIndex).isEstado() ? "Activado" : "Desactivado";
+                break;
             case 4:
                 Valor = String.valueOf(Articulo.get(rowIndex).getCategoria().getNombre()); //Problemas con Int, no se puede convertir a String
                 break;
         }
-        
+
         return Valor;
     }
 
@@ -115,5 +119,5 @@ public class MTArticulos implements TableModel {
     @Override
     public void removeTableModelListener(TableModelListener l) {
         //To change body of generated methods, choose Tools | Templates.
-    }   
+    }
 }

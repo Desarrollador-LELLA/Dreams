@@ -253,6 +253,9 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JTextField" name="txtCodArticulo">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>

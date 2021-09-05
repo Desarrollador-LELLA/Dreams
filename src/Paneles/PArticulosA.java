@@ -13,15 +13,17 @@ import ModelosTablas.MTArticulos;
 import Objetos.OArticulos;
 import Objetos.OCatArticulos;
 import Objetos.OError;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author TOULON
  */
 public class PArticulosA extends javax.swing.JPanel {
-    
-    private MCCatArticulos ModeloCategoria = null;
 
     /**
      * Creates new form PArticulosA
@@ -59,10 +61,10 @@ public class PArticulosA extends javax.swing.JPanel {
         ButCancelar = new javax.swing.JButton();
 
         addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 formAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -147,6 +149,8 @@ public class PArticulosA extends javax.swing.JPanel {
         jScrollPane1.setViewportView(JTableArticulos);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del Articulo"));
+
+        txtCodArticulo.setEditable(false);
 
         jLabel4.setText("Codigo Articulo:");
 
@@ -250,25 +254,19 @@ public class PArticulosA extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JTableArticulosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTableArticulosMouseClicked
-        // TODO add your handling code here:
-        //CBoxCatArticulo.setModel(new MCCatArticulos(new CCatArticulos().Listar("Activos")));
-        //CBoxCatArticulo.setModel(ModeloCategoria);
-        //Object pene = CBoxCatArticulo
+        LlenarComboCatArticulos();
         MTArticulos comuna = (MTArticulos) JTableArticulos.getModel();
         txtCodArticulo.setText(comuna.getArticulo().get(JTableArticulos.getSelectedRow()).getDescripcion());
         txtStock.setText(String.valueOf(comuna.getArticulo().get(JTableArticulos.getSelectedRow()).getStock()));
         txtCodArticulo.setText(String.valueOf(comuna.getArticulo().get(JTableArticulos.getSelectedRow()).getId()));
         txtNombreArticulo.setText(String.valueOf(comuna.getArticulo().get(JTableArticulos.getSelectedRow()).getDescripcion()));
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        //Date fecha = formato.parse("23/11/2015");
-        //jDateChooserFV.setDate(formato.parse("23/11/2015"));
-        //txtId.setText(String.valueOf(comuna.getUsuarios().get(datos.getSelectedRow()).getId()));
-        //txtNombre.setText(comuna.getUsuarios().get(datos.getSelectedRow()).getNombre());
-        int uno1 = comuna.getArticulo().get(JTableArticulos.getSelectedRow()).getCategoria().getId();
-        OCatArticulos nn = comuna.getArticulo().get(JTableArticulos.getSelectedRow()).getCategoria();
-        CBoxCatArticulo.getModel().setSelectedItem(nn);
-        //CBoxCatArticulo.setSelectedItem(nn.toString());
-        //CBoxCatArticulo.setSelectedIndex(5);
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+        jDateChooserFV.setDate(formato.parse(comuna.getArticulo().get(JTableArticulos.getSelectedRow()).getFecha()));
+        } catch (ParseException ex) {
+        Logger.getLogger(PArticulosA.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        CBoxCatArticulo.setSelectedItem(comuna.getArticulo().get(JTableArticulos.getSelectedRow()).getCategoria().getNombre());
     }//GEN-LAST:event_JTableArticulosMouseClicked
 
     private void butAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butAgregarActionPerformed
@@ -339,10 +337,10 @@ public class PArticulosA extends javax.swing.JPanel {
     }
 
     private void LlenarComboCatArticulos() {
-        //ModeloCategoria = new MCCatArticulos(new CCatArticulos().Listar("Activos"));
-        //CBoxCatArticulo.setModel(ModeloCategoria);
+        MCCatArticulos ModeloCategoria = new MCCatArticulos(new CCatArticulos().Listar("Activos"));
+        CBoxCatArticulo.setModel(ModeloCategoria);
         
-        CBoxCatArticulo.setModel(new Tester(new CCatArticulos().Listar("Activos")));
+        //CBoxCatArticulo.setModel(new Tester(new CCatArticulos().Listar("Activos")));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

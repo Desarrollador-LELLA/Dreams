@@ -42,23 +42,27 @@ public class CVenta extends OVenta {
             try {
                 Preparando = Sql.getCon().prepareStatement("INSERT INTO venta(CLI_ID_CLIENTE, PCK_ID_PACK, VTA_TOTAL, VTA_FECHA_VENTA"
                         + ", VTA_NOMBRE_DESTINATARIO, VTA_APELLIDO_DESTINATARIO, VTA_DIRECCION_DESTINATARIO, COM_ID_COMUNA, VTA_TELEFONO_DESTINATARIO"
-                        + ", VTA_FECHA_ENTREGA, VTA_HORA_ENTREGA_INICIAL, VTA_HORA_ENTREGA_FINAL, VTA_SALUDO_TEXTO, VTA_CANTIDAD, EST_ID_ESTADO) VALUES ("
-                        + " ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                        + ", VTA_FECHA_ENTREGA, VTA_HORA_ENTREGA_INICIAL, VTA_HORA_ENTREGA_FINAL, VTA_SALUDO_TEXTO, VTA_CANTIDAD, EST_ID_ESTADO, BAN_ID_BANCO, VTA_FECHA_TRANSFERENCIA"
+                        + ", VTA_CODIGO_TRANSFERENCIA) VALUES ("
+                        + " ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                 Preparando.setInt(1, this.getCliente().getId());
                 Preparando.setInt(2, this.getPack().getId());
                 Preparando.setInt(3, this.getTotalT());
-                //Preparando.setDate(4, this.getFechaVenta());
+                Preparando.setString(4, this.getFechaVenta());
                 Preparando.setString(5, this.getNombreDestinatario());
                 Preparando.setString(6, this.getApellidoDestinatario());
                 Preparando.setString(7, this.getDireccionDestinatario());
                 Preparando.setInt(8, this.getComuna().getId());
                 Preparando.setInt(9, this.getTelefonoDestinatario());
-                //Preparando.setDate(10, this.getFechaEntrega());
-                //Preparando.setTime(11, this.getHoraEntregaInicial());
-                //Preparando.setTime(12, this.getHoraEntregaFinal());
+                Preparando.setString(10, this.getFechaEntrega());
+                Preparando.setString(11, this.getHoraEntregaInicial());//revisar
+                Preparando.setString(12, this.getHoraEntregaFinal());//revisar
                 Preparando.setString(13, this.getSaludoTexto());
                 Preparando.setInt(14, this.getCantidad());
                 Preparando.setInt(15, this.getEstadoVenta().getId());
+                Preparando.setInt(16, this.getBanco().getId());
+                Preparando.setString(17, this.getFechaTrasferencia());
+                Preparando.setInt(18, this.getCodigoTrasferencia());
                 
                 if(!Preparando.execute()){
                     Error = new OError(String.format(TagCodigoClase, 1), "Venta Agregada Correctamente", null, true);
