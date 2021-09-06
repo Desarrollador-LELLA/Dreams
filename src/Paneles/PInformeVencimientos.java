@@ -6,7 +6,9 @@
 package Paneles;
 
 import Clases.CArticulos;
+import Clases.CInformeInventario;
 import Clases.CVerificar;
+import ModeloCombox.MCInformeInventario;
 import ModelosTablas.MTArticulos;
 import ModelosTablas.MTIVencimientos;
 
@@ -18,6 +20,7 @@ public class PInformeVencimientos extends javax.swing.JPanel {
     public PInformeVencimientos() {
         initComponents();
         ListarArticulos();
+        LlenarComboCategoria();
     }
 
     public void ListarArticulos() {
@@ -44,7 +47,15 @@ public class PInformeVencimientos extends javax.swing.JPanel {
     private void Imprimir(){
         CVerificar impri = new CVerificar();
         impri.Imprimir(jTableLista, labTitulo.getText());
+   
     }
+    
+    private void LlenarComboCategoria() {
+
+        comboxCategoriaArticulo.setModel(new MCInformeInventario(new CInformeInventario().ListarActivos("ActivosTodo")));
+        comboxCategoriaArticulo.setSelectedIndex(0);
+    }
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -86,6 +97,11 @@ public class PInformeVencimientos extends javax.swing.JPanel {
 
         butGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_buscar_32.png"))); // NOI18N
         butGuardar.setText("Buscar");
+        butGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butGuardarActionPerformed(evt);
+            }
+        });
 
         comboxCategoriaArticulo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -234,6 +250,10 @@ public class PInformeVencimientos extends javax.swing.JPanel {
     private void butExportarXLSXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butExportarXLSXActionPerformed
         Imprimir();
     }//GEN-LAST:event_butExportarXLSXActionPerformed
+
+    private void butGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butGuardarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_butGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

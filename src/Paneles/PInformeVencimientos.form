@@ -167,6 +167,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Buscar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="butGuardarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="comboxCategoriaArticulo">
           <Properties>
