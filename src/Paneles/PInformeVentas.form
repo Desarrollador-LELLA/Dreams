@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -139,11 +139,17 @@
           </Properties>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="jDateChooserDesde">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.toedter.calendar.JDateChooser(&quot;dd-MM-yyyy&quot;, &quot;##/##/####&quot;, &apos;_&apos;)"/>
           </AuxValues>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="jDateChooserHasta">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.toedter.calendar.JDateChooser(&quot;dd-MM-yyyy&quot;, &quot;##/##/####&quot;, &apos;_&apos;)"/>
           </AuxValues>
@@ -154,6 +160,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtBusquedaCliente">
+          <Properties>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labBusquedaCliente">
           <Properties>
@@ -166,6 +175,7 @@
               <Image iconType="3" name="/Recursos/r_ico_buscar_32.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Buscar"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -252,6 +262,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Exportar"/>
             <Property name="toolTipText" type="java.lang.String" value="Agregar un Nuevo Usuario"/>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">

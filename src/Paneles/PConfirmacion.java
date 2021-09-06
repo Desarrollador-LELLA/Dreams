@@ -47,6 +47,8 @@ public class PConfirmacion extends javax.swing.JPanel {
 
         labBusqueda.setText("Busqueda");
 
+        txtBusqueda.setEnabled(false);
+
         jToolBarMenu.setFloatable(false);
         jToolBarMenu.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jToolBarMenu.setRollover(true);
@@ -56,16 +58,23 @@ public class PConfirmacion extends javax.swing.JPanel {
         butEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_editar_32.png"))); // NOI18N
         butEditar.setText("Editar");
         butEditar.setToolTipText("Editar");
+        butEditar.setEnabled(false);
         butEditar.setFocusable(false);
         butEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         butEditar.setMaximumSize(new java.awt.Dimension(69, 69));
         butEditar.setMinimumSize(new java.awt.Dimension(69, 69));
         butEditar.setPreferredSize(new java.awt.Dimension(69, 69));
         butEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        butEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butEditarActionPerformed(evt);
+            }
+        });
         jToolBarMenu.add(butEditar);
 
         jComboBoxPor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBoxPor.setToolTipText("Seleccion Tipo Busqueda");
+        jComboBoxPor.setEnabled(false);
 
         jTableLista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -110,9 +119,11 @@ public class PConfirmacion extends javax.swing.JPanel {
 
         labSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_adelante_32.png"))); // NOI18N
         labSiguiente.setToolTipText("Pagina Siguiente");
+        labSiguiente.setEnabled(false);
 
         butAnterior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_atras_32.png"))); // NOI18N
         butAnterior.setToolTipText("Pagina Anterior");
+        butAnterior.setEnabled(false);
 
         labPagina.setText("Pagina 1 de 100");
 
@@ -163,6 +174,10 @@ public class PConfirmacion extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void butEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_butEditarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

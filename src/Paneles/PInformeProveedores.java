@@ -51,14 +51,20 @@ public class PInformeProveedores extends javax.swing.JPanel {
 
         labDesde.setText("OC Desde");
 
+        jDateChooserDesde.setEnabled(false);
+
+        jDateChooserHasta.setEnabled(false);
+
         labHasta.setText("OC Hasta");
 
         labProveedor.setText("Proveedor");
 
         butGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_buscar_32.png"))); // NOI18N
         butGuardar.setText("Buscar");
+        butGuardar.setEnabled(false);
 
         comboxProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboxProveedor.setEnabled(false);
 
         javax.swing.GroupLayout jPanelBusquedaLayout = new javax.swing.GroupLayout(jPanelBusqueda);
         jPanelBusqueda.setLayout(jPanelBusquedaLayout);
@@ -151,6 +157,7 @@ public class PInformeProveedores extends javax.swing.JPanel {
         butExportarXLSX.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_excel_32.png"))); // NOI18N
         butExportarXLSX.setText("Exportar");
         butExportarXLSX.setToolTipText("Agregar un Nuevo Usuario");
+        butExportarXLSX.setEnabled(false);
         butExportarXLSX.setFocusable(false);
         butExportarXLSX.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         butExportarXLSX.setMaximumSize(new java.awt.Dimension(69, 69));

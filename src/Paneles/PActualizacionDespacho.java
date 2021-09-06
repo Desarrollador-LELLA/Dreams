@@ -54,6 +54,7 @@ public class PActualizacionDespacho extends javax.swing.JPanel {
         butImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_imprimir_32.png"))); // NOI18N
         butImprimir.setText("Imprimir");
         butImprimir.setToolTipText("Imprimir");
+        butImprimir.setEnabled(false);
         butImprimir.setFocusable(false);
         butImprimir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         butImprimir.setMaximumSize(new java.awt.Dimension(69, 69));
@@ -65,6 +66,7 @@ public class PActualizacionDespacho extends javax.swing.JPanel {
         butDescargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_descargar_32.png"))); // NOI18N
         butDescargar.setText("Descargar");
         butDescargar.setToolTipText("Descargar");
+        butDescargar.setEnabled(false);
         butDescargar.setFocusable(false);
         butDescargar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         butDescargar.setMaximumSize(new java.awt.Dimension(69, 69));
@@ -75,6 +77,9 @@ public class PActualizacionDespacho extends javax.swing.JPanel {
 
         jComboBoxPor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBoxPor.setToolTipText("Seleccion Tipo Busqueda");
+        jComboBoxPor.setEnabled(false);
+
+        txtBusqueda.setEnabled(false);
 
         labBusqueda.setText("Busqueda");
 
@@ -123,9 +128,11 @@ public class PActualizacionDespacho extends javax.swing.JPanel {
 
         butSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_adelante_32.png"))); // NOI18N
         butSiguiente.setToolTipText("Pagina Siguiente");
+        butSiguiente.setEnabled(false);
 
         butAnterior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_atras_32.png"))); // NOI18N
         butAnterior.setToolTipText("Pagina Anterior");
+        butAnterior.setEnabled(false);
 
         labPagina.setText("Pagina 1 de 100");
 

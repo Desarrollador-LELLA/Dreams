@@ -53,14 +53,20 @@ public class PInformeComunas extends javax.swing.JPanel {
 
         labDesde.setText("Desde");
 
+        jDateChooserDesde.setEnabled(false);
+
+        jDateChooserHasta.setEnabled(false);
+
         labHasta.setText("Hasta");
 
         labComuna.setText("Comuna");
 
         butGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_buscar_32.png"))); // NOI18N
         butGuardar.setText("Buscar");
+        butGuardar.setEnabled(false);
 
         comboxComuna.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboxComuna.setEnabled(false);
 
         javax.swing.GroupLayout jPanelBusquedaLayout = new javax.swing.GroupLayout(jPanelBusqueda);
         jPanelBusqueda.setLayout(jPanelBusquedaLayout);
@@ -151,6 +157,7 @@ public class PInformeComunas extends javax.swing.JPanel {
         butExportarXLSX.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_excel_32.png"))); // NOI18N
         butExportarXLSX.setText("Exportar");
         butExportarXLSX.setToolTipText("Agregar un Nuevo Usuario");
+        butExportarXLSX.setEnabled(false);
         butExportarXLSX.setFocusable(false);
         butExportarXLSX.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         butExportarXLSX.setMaximumSize(new java.awt.Dimension(69, 69));
