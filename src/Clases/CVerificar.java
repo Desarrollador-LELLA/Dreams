@@ -103,23 +103,28 @@ public class CVerificar extends OVerificar{
         XSSFFont fuente = workbook.createFont();
         XSSFFont fuenteT = workbook.createFont();
         
-       //Titulo
-       Header encabezado = hoja.getHeader();  
-       //encabezado.setCenter("Center Header"); 
-       Row row = hoja.createRow(0); 
-       Cell cell = row.createCell(0);            
-       cell=row.createCell(0);   
-       CellRangeAddress region=new CellRangeAddress(0, 1, 0, 4);
-       hoja.addMergedRegion(region);
-       cell.setCellValue(Titulo); 
-       encabezado.setCenter("Center Header");
-       cell.setCellStyle(styleT);
+      
        
        //estilo de fuente Titulo
         fuenteT.setFontHeightInPoints((short) 20);
         fuenteT.setColor(IndexedColors.BLACK.getIndex());
         fuenteT.setBold(true);
-       
+        for (int i = 0; i <= tabla.getColumnModel().getColumnCount(); i++) {
+         if(i==tabla.getColumnModel().getColumnCount()){
+              //Titulo
+            Header encabezado = hoja.getHeader();
+            //encabezado.setCenter("Center Header"); 
+            Row row = hoja.createRow(0);
+            Cell cell = row.createCell(0);
+            cell = row.createCell(0);
+            CellRangeAddress region = new CellRangeAddress(0, 1, 0 , (i-1));
+            hoja.addMergedRegion(region);
+            cell.setCellValue(Titulo);
+            encabezado.setCenter("Center Header");
+            cell.setCellStyle(styleT);  
+         }                
+        }
+        
         //estilo titulo
         //color
         styleT.setAlignment(HorizontalAlignment.CENTER);
