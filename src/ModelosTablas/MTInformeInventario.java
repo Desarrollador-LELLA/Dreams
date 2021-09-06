@@ -5,6 +5,7 @@
  */
 package ModelosTablas;
 
+import Objetos.OArticulos;
 import Objetos.OInformeInventario;
 import java.util.List;
 import javax.swing.event.TableModelListener;
@@ -16,19 +17,19 @@ import javax.swing.table.TableModel;
  */
 public class MTInformeInventario implements TableModel {
     
-    private final List<OInformeInventario> InformeInventario;
+      private final List<OArticulos> Articulo;
     
-    public MTInformeInventario(List<OInformeInventario> informeInventario){
-        InformeInventario = informeInventario;
+    public MTInformeInventario(List<OArticulos> articulo){
+        Articulo = articulo;
+    }
+
+    public List<OArticulos> getArticulo() {
+        return Articulo;
     }
     
-      public List<OInformeInventario> getArticulo() {
-        return InformeInventario;
-    }
-      
     @Override
     public int getRowCount() {
-        return InformeInventario.size();
+        return Articulo.size();
     }
 
     @Override
@@ -40,9 +41,11 @@ public class MTInformeInventario implements TableModel {
     public String getColumnName(int columnIndex) {
         String NombreColumna = null;
         switch(columnIndex){
-            
+            /* case 0:
+            NombreColumna = "ID";
+            break;*/
             case 0:
-                NombreColumna = "Codigo Articulo";
+                NombreColumna = "Codigo";
                 break;
             case 1:
                 NombreColumna = "Nombre";
@@ -75,41 +78,38 @@ public class MTInformeInventario implements TableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         String Valor = null;
         switch(columnIndex){
-           
+            /*case 0:
+            Valor = Comuna.get(rowIndex).getId();
+            break;*/
             case 0:
-                Valor = String.valueOf(InformeInventario.get(rowIndex).getArticulo().getId());
+                Valor = String.valueOf(Articulo.get(rowIndex).getId());
                 break;
             case 1:
-                Valor = InformeInventario.get(rowIndex).getArticulo().getDescripcion();
+                Valor = Articulo.get(rowIndex).getDescripcion(); //Problemas con Int, no se puede convertir a String
                 break;
             case 2:
-                Valor = String.valueOf(InformeInventario.get(rowIndex).getArticulo().getStock());
-                break;
+                Valor = String.valueOf(Articulo.get(rowIndex).getStock());
+                break;  
             case 3:
-                Valor = InformeInventario.get(rowIndex).getCategoria().getNombre();
-                break;    
+                Valor = String.valueOf(Articulo.get(rowIndex).getCategoria().getNombre()); //Problemas con Int, no se puede convertir a String
+                break;
         }
         
         return Valor;
     }
 
-   
-
     @Override
-    public void setValueAt(Object o, int i, int i1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
- 
-
-    @Override
-    public void removeTableModelListener(TableModelListener tl) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
     }
 
     @Override
-    public void addTableModelListener(TableModelListener tl) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void addTableModelListener(TableModelListener l) {
+        //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    @Override
+    public void removeTableModelListener(TableModelListener l) {
+        //To change body of generated methods, choose Tools | Templates.
+    }   
+
 }
