@@ -6,11 +6,14 @@
 package Paneles;
 
 import Clases.CArticulos;
+import Clases.CIVencimientos;
 import Clases.CInformeInventario;
 import Clases.CVerificar;
 import ModeloCombox.MCInformeInventario;
 import ModelosTablas.MTArticulos;
 import ModelosTablas.MTIVencimientos;
+import ModelosTablas.MTInformeInventario;
+import java.text.SimpleDateFormat;
 
 public class PInformeVencimientos extends javax.swing.JPanel {
 
@@ -252,9 +255,37 @@ public class PInformeVencimientos extends javax.swing.JPanel {
     }//GEN-LAST:event_butExportarXLSXActionPerformed
 
     private void butGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butGuardarActionPerformed
-        // TODO add your handling code here:
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String desde = sdf.format(jDateChooserDesde.getDate());  
+        if(desde!= ""){
+            
+        }
+        Buscar();
+        jTableLista.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jTableLista.setRowHeight(30);
+        jScrollPane1.setViewportView(jTableLista);
+        if (jTableLista.getColumnModel().getColumnCount() > 0) {
+            jTableLista.getColumnModel().getColumn(0).setResizable(false);
+            jTableLista.getColumnModel().getColumn(0).setPreferredWidth(150);
+            jTableLista.getColumnModel().getColumn(1).setResizable(false);
+            jTableLista.getColumnModel().getColumn(1).setPreferredWidth(274);
+            jTableLista.getColumnModel().getColumn(2).setResizable(false);
+            jTableLista.getColumnModel().getColumn(2).setPreferredWidth(150);
+            jTableLista.getColumnModel().getColumn(3).setResizable(false);
+            jTableLista.getColumnModel().getColumn(3).setPreferredWidth(150);
+            jTableLista.getColumnModel().getColumn(4).setResizable(false);
+            jTableLista.getColumnModel().getColumn(4).setPreferredWidth(150);
+        }
     }//GEN-LAST:event_butGuardarActionPerformed
-
+    
+     private void Buscar(){ 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String desde = sdf.format(jDateChooserDesde.getDate());     
+        String hasta = sdf.format(jDateChooserHasta.getDate());   
+        MTIVencimientos MPIInventario = new MTIVencimientos(new CIVencimientos().Buscar(comboxCategoriaArticulo.getSelectedIndex(),desde,hasta));
+        jTableLista.setModel(MPIInventario);
+        
+      }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton butExportarXLSX;
