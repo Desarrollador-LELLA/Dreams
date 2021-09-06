@@ -35,7 +35,7 @@ public class PInformeInventario extends javax.swing.JPanel {
         //MTArticulos MProveedor = new MTArticulos(new CArticulos().Busqueda(txtBuscar.getText(), jComboBox1.getSelectedIndex()));
         //jTable1.setModel(MProveedor);
         //jComboBox1.a        
-        MTArticulos MPIInventario = new MTArticulos(new CArticulos().Buscar(Integer.valueOf(txtBuscar.getText()), jComboBox1.getSelectedIndex()));
+        MTInformeInventario MPIInventario = new MTInformeInventario(new CArticulos().Buscar(Integer.valueOf(txtBuscar.getText()), jComboBox1.getSelectedIndex()));
         jTable1.setModel(MPIInventario);
         
       }
@@ -44,7 +44,7 @@ public class PInformeInventario extends javax.swing.JPanel {
         impri.Imprimir(jTable1, labTitulo.getText());
     }
     public void ListarArticulos() {
-        MTArticulos ModeloBanco = new MTArticulos(new CArticulos().Listar());
+        MTInformeInventario ModeloBanco = new MTInformeInventario(new CInformeInventario().Listar());
         jTable1.setModel(ModeloBanco);
        }
     private void LlenarComboCategoria() {

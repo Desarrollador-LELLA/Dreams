@@ -19,14 +19,14 @@ import java.util.List;
  *
  * @author rodka
  */
-public class CInformeInventario extends OInformeInventario {
+public class CInformeInventario extends OArticulos {
 
     private final String TagCodigoClase = "CIVentaPack - %s";
     private OError Error = new OError();
 
 
-    public CInformeInventario(OArticulos Articulo, OCatArticulos categoria) {
-        super(Articulo, categoria);
+    public CInformeInventario(int id, String descripcion, int stock, String fecha, boolean estado, OCatArticulos categoria) {
+        super(id, descripcion, stock, fecha, estado, categoria);
     }
 
     public CInformeInventario() {
