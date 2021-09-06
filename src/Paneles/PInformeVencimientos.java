@@ -5,10 +5,11 @@
  */
 package Paneles;
 
-/**
- *
- * @author TOULON-NOTE
- */
+import Clases.CArticulos;
+import Clases.CVerificar;
+import ModelosTablas.MTArticulos;
+import ModelosTablas.MTIVencimientos;
+
 public class PInformeVencimientos extends javax.swing.JPanel {
 
     /**
@@ -16,8 +17,35 @@ public class PInformeVencimientos extends javax.swing.JPanel {
      */
     public PInformeVencimientos() {
         initComponents();
+        ListarArticulos();
     }
 
+    public void ListarArticulos() {
+        MTIVencimientos ModeloBanco = new MTIVencimientos(new CArticulos().Listar());
+        jTableLista.setModel(ModeloBanco);
+        jTableLista.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jTableLista.setRowHeight(30);
+        jScrollPane1.setViewportView(jTableLista);
+        if (jTableLista.getColumnModel().getColumnCount() > 0) {
+            jTableLista.getColumnModel().getColumn(0).setResizable(false);
+            jTableLista.getColumnModel().getColumn(0).setPreferredWidth(150);
+            jTableLista.getColumnModel().getColumn(1).setResizable(false);
+            jTableLista.getColumnModel().getColumn(1).setPreferredWidth(274);
+            jTableLista.getColumnModel().getColumn(2).setResizable(false);
+            jTableLista.getColumnModel().getColumn(2).setPreferredWidth(150);
+            jTableLista.getColumnModel().getColumn(3).setResizable(false);
+            jTableLista.getColumnModel().getColumn(3).setPreferredWidth(150);
+            jTableLista.getColumnModel().getColumn(4).setResizable(false);
+            jTableLista.getColumnModel().getColumn(4).setPreferredWidth(150);
+        }
+       }
+    
+    
+    private void Imprimir(){
+        CVerificar impri = new CVerificar();
+        impri.Imprimir(jTableLista, labTitulo.getText());
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -158,6 +186,11 @@ public class PInformeVencimientos extends javax.swing.JPanel {
         butExportarXLSX.setMinimumSize(new java.awt.Dimension(69, 69));
         butExportarXLSX.setPreferredSize(new java.awt.Dimension(69, 69));
         butExportarXLSX.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        butExportarXLSX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butExportarXLSXActionPerformed(evt);
+            }
+        });
         jToolBarMenu.add(butExportarXLSX);
 
         labTotal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -197,6 +230,10 @@ public class PInformeVencimientos extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void butExportarXLSXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butExportarXLSXActionPerformed
+        Imprimir();
+    }//GEN-LAST:event_butExportarXLSXActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
