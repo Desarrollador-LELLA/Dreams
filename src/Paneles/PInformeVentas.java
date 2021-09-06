@@ -52,12 +52,19 @@ public class PInformeVentas extends javax.swing.JPanel {
 
         labDesde.setText("Desde");
 
+        jDateChooserDesde.setEnabled(false);
+
+        jDateChooserHasta.setEnabled(false);
+
         labHasta.setText("Hasta");
+
+        txtBusquedaCliente.setEnabled(false);
 
         labBusquedaCliente.setText("Busqueda por Cliente");
 
         butGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_buscar_32.png"))); // NOI18N
         butGuardar.setText("Buscar");
+        butGuardar.setEnabled(false);
 
         javax.swing.GroupLayout jPanelBusquedaLayout = new javax.swing.GroupLayout(jPanelBusqueda);
         jPanelBusqueda.setLayout(jPanelBusquedaLayout);
@@ -151,6 +158,7 @@ public class PInformeVentas extends javax.swing.JPanel {
         butExportarXLSX.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_excel_32.png"))); // NOI18N
         butExportarXLSX.setText("Exportar");
         butExportarXLSX.setToolTipText("Agregar un Nuevo Usuario");
+        butExportarXLSX.setEnabled(false);
         butExportarXLSX.setFocusable(false);
         butExportarXLSX.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         butExportarXLSX.setMaximumSize(new java.awt.Dimension(69, 69));

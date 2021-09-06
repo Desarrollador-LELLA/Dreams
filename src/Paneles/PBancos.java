@@ -114,6 +114,7 @@ public class PBancos extends javax.swing.JPanel {
         jToolBar1.add(butDesactivar);
 
         txtBusquedaBanco.setToolTipText("Tipee lo que desea Buscar");
+        txtBusquedaBanco.setEnabled(false);
 
         labBusqueda.setText("Busqueda");
 

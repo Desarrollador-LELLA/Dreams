@@ -174,6 +174,7 @@ public class PCanales extends javax.swing.JPanel {
         });
 
         CodeCanal.setEditable(false);
+        CodeCanal.setEnabled(false);
         jScrollPane6.setViewportView(CodeCanal);
 
         label4.setText("Estado");

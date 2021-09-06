@@ -90,6 +90,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtBusqueda">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Container class="javax.swing.JToolBar" name="jToolBarMenu">
       <Properties>
@@ -109,6 +112,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Editar"/>
             <Property name="toolTipText" type="java.lang.String" value="Editar"/>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -122,6 +126,9 @@
             </Property>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="butEditarActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -136,6 +143,7 @@
           </StringArray>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Seleccion Tipo Busqueda"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -209,6 +217,7 @@
           <Image iconType="3" name="/Recursos/r_ico_adelante_32.png"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Pagina Siguiente"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="butAnterior">
@@ -217,6 +226,7 @@
           <Image iconType="3" name="/Recursos/r_ico_atras_32.png"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Pagina Anterior"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="labPagina">
