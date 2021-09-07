@@ -131,7 +131,6 @@ private List<OProveedor> Proveedor;
         txtBusqueda = new javax.swing.JTextField();
         butBuscar = new javax.swing.JButton();
         butBuscar1 = new javax.swing.JButton();
-        butImprimir = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(1000, 525));
         setPreferredSize(new java.awt.Dimension(1000, 525));
@@ -277,21 +276,6 @@ private List<OProveedor> Proveedor;
             }
         });
 
-        butImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_imprimir_32.png"))); // NOI18N
-        butImprimir.setText("Imprimir");
-        butImprimir.setToolTipText("Imprimir");
-        butImprimir.setFocusable(false);
-        butImprimir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        butImprimir.setMaximumSize(new java.awt.Dimension(69, 69));
-        butImprimir.setMinimumSize(new java.awt.Dimension(69, 69));
-        butImprimir.setPreferredSize(new java.awt.Dimension(69, 69));
-        butImprimir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        butImprimir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                butImprimirActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -359,8 +343,6 @@ private List<OProveedor> Proveedor;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(butBuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(butImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(109, 109, 109)
                 .addComponent(btnComprar)
                 .addGap(25, 25, 25))
         );
@@ -423,16 +405,14 @@ private List<OProveedor> Proveedor;
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btnComprar)
-                                    .addComponent(comboBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1)
-                                    .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(butBuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                            .addComponent(butImprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(236, 236, 236))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(btnComprar)
+                                .addComponent(comboBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel1)
+                                .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(butBuscar1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGap(238, 238, 238))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -633,10 +613,6 @@ private List<OProveedor> Proveedor;
         ListarUsuarios();
         txtBusqueda.setText("");
     }//GEN-LAST:event_butBuscar1ActionPerformed
-
-    private void butImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butImprimirActionPerformed
-       Imprimir();
-    }//GEN-LAST:event_butImprimirActionPerformed
     
     private void Imprimir(){
         CVerificar impri = new CVerificar();
@@ -653,7 +629,6 @@ private List<OProveedor> Proveedor;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton butBuscar;
     private javax.swing.JButton butBuscar1;
-    private javax.swing.JButton butImprimir;
     private javax.swing.JComboBox<String> comboBusqueda;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
