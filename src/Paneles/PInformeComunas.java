@@ -5,6 +5,11 @@
  */
 package Paneles;
 
+import Clases.CIComunas;
+import Clases.CVerificar;
+import ModelosTablas.MTIComunas;
+import java.text.SimpleDateFormat;
+
 /**
  *
  * @author TOULON-NOTE
@@ -53,20 +58,25 @@ public class PInformeComunas extends javax.swing.JPanel {
 
         labDesde.setText("Desde");
 
-        jDateChooserDesde.setEnabled(false);
-
-        jDateChooserHasta.setEnabled(false);
-
         labHasta.setText("Hasta");
 
         labComuna.setText("Comuna");
 
         butGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_buscar_32.png"))); // NOI18N
         butGuardar.setText("Buscar");
-        butGuardar.setEnabled(false);
+        butGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butGuardarActionPerformed(evt);
+            }
+        });
 
         comboxComuna.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboxComuna.setEnabled(false);
+        comboxComuna.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboxComunaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelBusquedaLayout = new javax.swing.GroupLayout(jPanelBusqueda);
         jPanelBusqueda.setLayout(jPanelBusquedaLayout);
@@ -157,13 +167,17 @@ public class PInformeComunas extends javax.swing.JPanel {
         butExportarXLSX.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/r_ico_excel_32.png"))); // NOI18N
         butExportarXLSX.setText("Exportar");
         butExportarXLSX.setToolTipText("Agregar un Nuevo Usuario");
-        butExportarXLSX.setEnabled(false);
         butExportarXLSX.setFocusable(false);
         butExportarXLSX.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         butExportarXLSX.setMaximumSize(new java.awt.Dimension(69, 69));
         butExportarXLSX.setMinimumSize(new java.awt.Dimension(69, 69));
         butExportarXLSX.setPreferredSize(new java.awt.Dimension(69, 69));
         butExportarXLSX.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        butExportarXLSX.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butExportarXLSXActionPerformed(evt);
+            }
+        });
         jToolBarMenu.add(butExportarXLSX);
 
         labTotalValor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -213,6 +227,30 @@ public class PInformeComunas extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void comboxComunaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboxComunaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboxComunaActionPerformed
+
+    private void butGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butGuardarActionPerformed
+        // TODO add your handling code here:
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String datedesde = sdf.format(jDateChooserDesde.getDate());
+        String datehasta = sdf.format(jDateChooserHasta.getDate());
+        CIComunas cicom = new CIComunas();
+        cicom.Listar(0, datedesde, datehasta);        
+        jTableLista.setModel(new MTIComunas(cicom.Listar(0, datedesde, datehasta)));
+    }//GEN-LAST:event_butGuardarActionPerformed
+
+    private void butExportarXLSXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butExportarXLSXActionPerformed
+        // TODO add your handling code here:
+        Imprimir();
+    }//GEN-LAST:event_butExportarXLSXActionPerformed
+
+    private void Imprimir(){
+        CVerificar impri = new CVerificar();
+        impri.Imprimir(jTableLista, labTitulo.getText());
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton butExportarXLSX;

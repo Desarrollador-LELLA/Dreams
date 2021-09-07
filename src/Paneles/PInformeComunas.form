@@ -148,17 +148,11 @@
           </Properties>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="jDateChooserDesde">
-          <Properties>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.toedter.calendar.JDateChooser(&quot;dd-MM-yyyy&quot;, &quot;##/##/####&quot;, &apos;_&apos;)"/>
           </AuxValues>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="jDateChooserHasta">
-          <Properties>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new com.toedter.calendar.JDateChooser(&quot;dd-MM-yyyy&quot;, &quot;##/##/####&quot;, &apos;_&apos;)"/>
           </AuxValues>
@@ -179,8 +173,10 @@
               <Image iconType="3" name="/Recursos/r_ico_buscar_32.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Buscar"/>
-            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="butGuardarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="comboxComuna">
           <Properties>
@@ -194,6 +190,9 @@
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboxComunaActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -267,7 +266,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Exportar"/>
             <Property name="toolTipText" type="java.lang.String" value="Agregar un Nuevo Usuario"/>
-            <Property name="enabled" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -281,6 +279,9 @@
             </Property>
             <Property name="verticalTextPosition" type="int" value="3"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="butExportarXLSXActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
