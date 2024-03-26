@@ -46,7 +46,6 @@ public class PActualizacionDespacho extends javax.swing.JPanel {
         labTitulo.setText("Actualización Estado Despacho");
         labTitulo.setOpaque(true);
 
-        jToolBarMenu.setFloatable(false);
         jToolBarMenu.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jToolBarMenu.setRollover(true);
         jToolBarMenu.setOpaque(false);

@@ -93,7 +93,6 @@
     </Component>
     <Container class="javax.swing.JToolBar" name="jToolBarMenu">
       <Properties>
-        <Property name="floatable" type="boolean" value="false"/>
         <Property name="orientation" type="int" value="1"/>
         <Property name="rollover" type="boolean" value="true"/>
         <Property name="opaque" type="boolean" value="false"/>

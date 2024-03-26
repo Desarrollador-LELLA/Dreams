@@ -59,7 +59,6 @@ public class VPrincipal extends javax.swing.JFrame {
         setTitle("Sistema");
         setResizable(false);
 
-        jToolBarMenuPrincipal.setFloatable(false);
         jToolBarMenuPrincipal.setRollover(true);
         jToolBarMenuPrincipal.setOpaque(false);
 
@@ -153,6 +152,8 @@ public class VPrincipal extends javax.swing.JFrame {
         });
         jToolBarMenuPrincipal.add(butCerrarSesion);
 
+        panelVisor.setPreferredSize(new java.awt.Dimension(607, 1000));
+
         jButton15.setText("jButton15");
 
         jButton16.setText("jButton16");
@@ -180,7 +181,7 @@ public class VPrincipal extends javax.swing.JFrame {
                 .addGroup(panelVisorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton15)
                     .addComponent(jButton16))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 582, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 561, Short.MAX_VALUE)
                 .addGroup(panelVisorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton17)
                     .addComponent(jButton18)))
@@ -191,14 +192,14 @@ public class VPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jToolBarMenuPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
-            .addComponent(panelVisor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelVisor, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBarMenuPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelVisor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(panelVisor, javax.swing.GroupLayout.DEFAULT_SIZE, 607, Short.MAX_VALUE))
         );
 
         pack();

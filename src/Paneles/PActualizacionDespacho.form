@@ -86,7 +86,6 @@
     </Component>
     <Container class="javax.swing.JToolBar" name="jToolBarMenu">
       <Properties>
-        <Property name="floatable" type="boolean" value="false"/>
         <Property name="orientation" type="int" value="1"/>
         <Property name="rollover" type="boolean" value="true"/>
         <Property name="opaque" type="boolean" value="false"/>
@@ -232,6 +231,9 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="PActualizacionDespacho_jTableLista"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

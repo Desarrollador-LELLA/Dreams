@@ -63,7 +63,6 @@ public class PUsuarios extends javax.swing.JPanel {
         labTitulo.setText("Usuarios");
         labTitulo.setOpaque(true);
 
-        jToolBarMenu.setFloatable(false);
         jToolBarMenu.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jToolBarMenu.setRollover(true);
         jToolBarMenu.setOpaque(false);

@@ -26,7 +26,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jToolBarMenuPrincipal" pref="1000" max="32767" attributes="0"/>
-          <Component id="panelVisor" alignment="0" max="32767" attributes="0"/>
+          <Component id="panelVisor" alignment="0" pref="1000" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -34,7 +34,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jToolBarMenuPrincipal" min="-2" pref="69" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="panelVisor" max="32767" attributes="0"/>
+              <Component id="panelVisor" pref="607" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -42,7 +42,6 @@
   <SubComponents>
     <Container class="javax.swing.JToolBar" name="jToolBarMenuPrincipal">
       <Properties>
-        <Property name="floatable" type="boolean" value="false"/>
         <Property name="rollover" type="boolean" value="true"/>
         <Property name="opaque" type="boolean" value="false"/>
       </Properties>
@@ -192,6 +191,11 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="panelVisor">
+      <Properties>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[607, 1000]"/>
+        </Property>
+      </Properties>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -215,7 +219,7 @@
                       <Component id="jButton15" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton16" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="582" max="32767" attributes="0"/>
+                  <EmptySpace pref="561" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButton17" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton18" alignment="3" min="-2" max="-2" attributes="0"/>
